@@ -9,7 +9,6 @@
     - [X] Manifest
     - [X] Service worker
 - [X] Funcionalidades
-    - [X] Reloj hora Chile independiente de reloj dispositivo
     - [X] Botones compartir
         - [X] Usar navigator.share en telefonos
         - [X] botón copiado automático url

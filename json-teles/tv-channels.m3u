@@ -481,3 +481,18 @@ https://viamotionhsi.netplus.ch/live/eds/zdfhd/browser-dash/zdfhd.mpd
 https://viamotionhsi.netplus.ch/live/eds/zdfinfohd/browser-dash/zdfinfohd.mpd
 #EXTINF:-1 tvg-id="ZDFneo.de@HD" tvg-logo="https://i.imgur.com/1JIIGgL.png" group-title="",ZDFneo HD
 https://viamotionhsi.netplus.ch/live/eds/zdfneohd/browser-dash/zdfneohd.mpd
+# Spain - RTVE / Atresmedia / Mega
+#EXTINF:-1 tvg-name="La 1 (RTVE)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/4b/La_1_Logo.svg" group-title="News;Public",La 1
+https://rtvelivestream.rtve.es/rtvesec/la1/la1_main_dvr_720.m3u8
+#EXTINF:-1 tvg-name="La 2 (RTVE)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/5e/La_2_Logo.svg" group-title="General",La 2
+https://rtvelivestream.rtve.es/rtvesec/la2/la2_main_dvr_720.m3u8
+#EXTINF:-1 tvg-name="Antena 3" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/39/Antena_3_2022_logo.svg" group-title="General",Antena 3
+https://atres-live.atresmedia.com/33ff422b6b87a1e42e72f9fb87d94dba93b6861f_ES_1757721625_1757750365/hlsts/live/antena3_usp/antena3_usp.isml/antena3_usp-audio_spa=128000-video=2700000.m3u8
+#EXTINF:-1 tvg-name="La Sexta" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/27/LaSexta_Logo.png" group-title="General",La Sexta
+https://atres-live.atresmedia.com/cecad2262ebea7a1e85e08e21eb29759b3217dac_ES_1757723088_1757751828/hlsts/live/lasexta_usp/lasexta_usp.isml/playlist.m3u8
+#EXTINF:-1 tvg-name="Neox" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/6e/Neox_logo.svg" group-title="Entertainment",Neox
+https://atres-live.atresmedia.com/b9dc6653569523d4377933c49f9c30f43232340e_ES_1757723215_1757751955/hlsts/live/neox_usp/neox_usp.isml/neox_usp-audio_spa=128000-video=2700000.m3u8
+#EXTINF:-1 tvg-name="Nova" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/1/11/Nova_logo.svg" group-title="Entertainment",Nova
+https://atres-live.atresmedia.com/cc09bbee5aeac3497fd4272bf539eb28eb040a50_ES_1757723278_1757752018/hlsts/live/nova_usp/nova_usp.isml/nova_usp-audio_spa=128000-video=2700000.m3u8
+#EXTINF:-1 tvg-name="Mega (Atresmedia)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/5b/Mega_logo.svg" group-title="Entertainment",Mega
+https://atres-live.atresmedia.com/5d6ea961951b7c3dbb1df5a44e3d32298cf66e0d_ES_1757723305_1757752045/hlsts/live/mega_usp/mega_usp.isml/mega_usp-audio_spa=128000-video=2700000.m3u8
