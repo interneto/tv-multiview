@@ -2,8 +2,20 @@ import { URL_JSON_CANALES_PRINCIPAL, URL_M3U_CANALES_IPTV } from "./constants/in
 import { sonNombresSimilares, M3U_A_JSON } from "./helpers/index.js";
 
 // Gestión de backup y fetch de canales
-export const ARRAY_CANALES_PREDETERMINADOS = ['24-horas', 'meganoticias', 't13'];
-export const ARRAY_CANALES_PREDETERMINADOS_EXTRAS = ['chv-noticias', 'cnn-cl', 'lofi-girl'];
+// Lista de 9 canales predeterminados (ids existentes en json-teles/tv-channels.json)
+export const ARRAY_CANALES_PREDETERMINADOS = [
+    'nbc',
+    'abc',
+    'zdf',
+    'rai1',
+    'amc',
+    'abcnews',
+    'redbulltv',
+    'ctv',
+    'rtv'
+];
+// No añadimos extras para asegurar que se carguen exactamente 9 canales
+export const ARRAY_CANALES_PREDETERMINADOS_EXTRAS = [];
 
 export let listaCanales;
 const LS_KEY_CANALES = 'backup-json-canales';

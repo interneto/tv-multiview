@@ -1,0 +1,227 @@
+{
+  "cnn": {
+    "nombre": "CNN International",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.cnn.com/",
+    "categoría": "news",
+    "país": "us"
+  },
+  "espn": {
+    "nombre": "ESPN",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.espn.com/",
+    "categoría": "sports",
+    "país": "us"
+  },
+  "hbo": {
+    "nombre": "HBO",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.hbo.com/",
+    "categoría": "movies;series",
+    "país": "us"
+  },
+  "showtime": {
+    "nombre": "Showtime",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.showtime.com/",
+    "categoría": "movies;series",
+    "país": "us"
+  },
+  "telefe": {
+    "nombre": "Telefe",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://telefe.com/",
+    "categoría": "general",
+    "país": "ar"
+  },
+  "globo": {
+    "nombre": "Globo",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://globoplay.globo.com/",
+    "categoría": "general",
+    "país": "br"
+  },
+  "nhk": {
+    "nombre": "NHK World",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www3.nhk.or.jp/nhkworld/",
+    "categoría": "news;public",
+    "país": "jp"
+  },
+  "abs-cbn": {
+    "nombre": "ABS-CBN",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.abs-cbn.com/",
+    "categoría": "general",
+    "país": "ph"
+  },
+  "gma": {
+    "nombre": "GMA",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.gmanetwork.com/",
+    "categoría": "general",
+    "país": "ph"
+  },
+  "cartoonnetwork": {
+    "nombre": "Cartoon Network",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.cartoonnetwork.com/",
+    "categoría": "kids",
+    "país": "us"
+  },
+  "vh1": {
+    "nombre": "VH1",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.vh1.com/",
+    "categoría": "music",
+    "país": "us"
+  },
+  "eurosport": {
+    "nombre": "Eurosport",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.eurosport.com/",
+    "categoría": "sports",
+    "país": "eu"
+  },
+  "sky_sports": {
+    "nombre": "Sky Sports",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.skysports.com/",
+    "categoría": "sports",
+    "país": "gb"
+  },
+  "dazn": {
+    "nombre": "DAZN",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://www.dazn.com/",
+    "categoría": "sports",
+    "país": "gb"
+  },
+  "cnn_international": {
+    "nombre": "CNN International",
+    "logo": "",
+    "señales": {
+      "iframe_url": [],
+      "m3u8_url": [],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "sitio_oficial": "https://edition.cnn.com/",
+    "categoría": "news",
+    "país": "us"
+  }
+}
