@@ -26,9 +26,18 @@ npx http-server -c-1 . -p 8080
 - Ejecutar scripts de `tools` (ejemplos):
 
 ```powershell
-node .\tools\sort_json_by_country.js
-node .\tools\check_channels.js
-node .\tools\validate_additions.js
+node .\tools\sort_json_by_pais.js      # Ordena canales según lista de países
+node .\tools\check_channels.js         # Chequeo rápido de integridad
+node .\tools\validate_additions.js     # (Si existe) valida propuestas de nuevos canales
+node .\tools\validate_json_light.js    # Validación ligera sin dependencias
+```
+
+## Validación del JSON de canales
+
+Antes de commitear cambios en `json-teles/tv-channels.json`:
+
+```powershell
+node .\tools\validate_json_light.js
 ```
 
 ## Agregar o editar canales
@@ -50,23 +59,3 @@ Los canales se encuentran en `json-teles/tv-channels.json`. Cada clave es un id 
 
 - Validar nuevo JSON antes de subir cambios con los scripts en `tools/`.
 - Mantener las claves únicas y descriptivas.
-
-## Contribuir
-
-- Fork, crear branch, abrir PR con descripción clara de cambios.
-- Añade tests si modificas helpers o lógica de parsing.
-
-## Licencia
-
-- Revisa `LICENSE` en la raíz.
-
-## Deploy to GitHub Pages
-
-You can publish this static project to GitHub Pages from the `main` branch. Two common options:
-
-- Enable Pages in the repository settings and serve from the `main` branch root.
-- Or use the included GitHub Actions workflow `.github/workflows/gh-pages.yml` which deploys the repository root on every push to `main`.
-
-To use the workflow: ensure `npm ci` runs successfully in CI (the project has no build step). Push to `main` and the action will publish the repository files to the `gh-pages` branch automatically.
-
-If you prefer to publish locally, you can build a ZIP of the root folder and upload it via the Pages UI.

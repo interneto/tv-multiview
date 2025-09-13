@@ -2,9 +2,9 @@
 
 ## Nuevas opciones
 
-- Ampliar el listado [tv-channels](./json-teles/tv-channels.json)
-- Añadir filtrado de canales por temática
-- Comprobar si los canales están activos
+- [ ] Ampliar el listado [tv-channels](./json-teles/tv-channels.json)
+- [ ] Añadir filtrado de canales por temática
+- [ ] Comprobar si los canales están activos
 
 ----
 
