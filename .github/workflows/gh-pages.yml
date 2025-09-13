@@ -1,11 +1,22 @@
-name: Deploy to GitHub Pages
+name: Deploy (GitHub Pages)
 
 on:
   push:
     branches: [ main ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
+    name: Build & Upload Artifact
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,21 +26,33 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Install dependencies
         run: |
-          if [ -f package.json ]; then npm ci; else echo "No package.json, skipping npm ci"; fi
+          if [ -f package.json ]; then npm ci; else echo "No package.json, skipping"; fi
 
-      - name: Run validation and lint (CI)
+      - name: Run validation and lint
         run: |
-          npm run ci
+          if [ -f package.json ]; then npm run ci; fi
 
-      - name: Build (no-op)
-        run: echo "No build step required for this static site"
+      - name: Prepare public folder
+        run: |
+          mkdir public
+          shopt -s extglob
+          cp -r !(public|node_modules|.git|.github) public/ 2>/dev/null || true
+          # Si hay node modules que quieras servir (no debería), se ajustaría aquí
 
-      - name: Deploy to GitHub Pages
-        if: ${{ success() }}
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          path: ./public
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
