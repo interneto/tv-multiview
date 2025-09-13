@@ -21,9 +21,9 @@ export async function M3U_A_JSON(m3u) {
             const [NOMBRE_CANAL_PARA_ID, COUNTRY_ID = ""] = TVG_ID.toLowerCase().split('.');
 
             channels[NOMBRE_CANAL_PARA_ID] = {
-                "nombre": NOMBRE_CANAL,
+                "name": NOMBRE_CANAL,
                 "logo": LOGO_IMG,
-                "señales": {
+                "signals": {
                     "iframe_url": [],
                     "m3u8_url": [lines[i + 1]],
                     "yt_id": "",
@@ -31,9 +31,8 @@ export async function M3U_A_JSON(m3u) {
                     "yt_playlist": "",
                     "twitch_id": ""
                 },
-                "sitio_oficial": "",
-                "categoría": GROUP_TITLE_ID,
-                "país": COUNTRY_ID,
+                "website": "",
+                "country": COUNTRY_ID,
             };
         }
     }

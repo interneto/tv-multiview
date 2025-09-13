@@ -64,7 +64,7 @@ const BOTON_ACTIVAR_VISION_UNICA = document.querySelector('#boton-activar-diseñ
 const BOTON_ACTIVAR_VISION_GRID = document.querySelector('#boton-activar-diseño-vision-grid');
 
 export const MODAL_CAMBIAR_CANAL = document.querySelector('#modal-cambiar-canal');
-export const LABEL_MODAL_CAMBIAR_CANAL = document.querySelector('#label-para-nombre-canal-cambiar');
+export const LABEL_MODAL_CAMBIAR_CANAL = document.querySelector('#label-para-name-canal-cambiar');
 
 // MARK: LocalStorage
 let lsModal = localStorage.getItem('modal-status') ?? 'show';
@@ -513,13 +513,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
                     document.querySelector(`#${PREFIJO}-body-botones-canales`).classList.add('border', 'border-warning', 'rounded-3')
                     document.querySelector(`#${PREFIJO}-body-botones-canales`).innerHTML = '';
-                    document.querySelector(`#${PREFIJO}-collapse-botones-listado-filtro-paises`).innerHTML = '';
+                    document.querySelector(`#${PREFIJO}-collapse-botones-listado-filtro-countries`).innerHTML = '';
                 };
                 quitarTodoCanalActivo()
                 crearBotonesParaCanales();
                 crearBotonesPaises();
 
-                mostrarToast('Modo experimental activado. Se han combinado listas de canales y sus señales m3u8.', 'warning')
+                mostrarToast('Modo experimental activado. Se han combinado listas de canales y sus signals m3u8.', 'warning')
             } else {
                 playAudioSinDelay(AUDIO_FAIL);
                 mostrarToast('Ya estas en modo experimental. Revisa los canales que se cargaron. Para regresar al modo normal recarga la página. <br> <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>', 'info');

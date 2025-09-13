@@ -16,15 +16,15 @@
         - [X] Añadir canales
         - [X] Filtro canales
             - [X] Autofocus en PC
-        - [X] Overlay con nombre canal y enlace a sitio fuente
-        - [X] `QUIZAS` Categorías (nav)
+        - [X] Overlay con name canal y enlace a sitio fuente
+        - [X] `QUIZAS` categorys (nav)
             - [X] Pais
             - [ ] Tipo (Canal, Radio, Cámara, Música)
             - [ ] Activos/desactivados
         - [X] `QUIZAS` Botón ordenar canales a-z
             - [ ] Recordar con localStorage
         - [X] Botón limpiar todo canal activo
-        - [X] Bandera acorde a país
+        - [X] Bandera acorde a country
         - [X] Capacidad de mover canales dentro de grid
             - [X] Recordar con localStorage
     - [X] Habilidad de borrar localStorage

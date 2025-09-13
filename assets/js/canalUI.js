@@ -8,6 +8,7 @@ import {
     TWITCH_PARENT
 } from './constants/index.js';
 import { mostrarToast, playAudioSinDelay, hideTextoBotonesOverlay } from './helpers/index.js';
+import { insertarDivError } from './helpers/helperInsertarDivError.js';
 
 // Funciones de UI de canales extraídas de main.js
 function guardarSeñalPreferida(canalId, señalUtilizar = '', indexSeñalUtilizar = 0) {
@@ -21,14 +22,14 @@ export function crearIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
     const DIV_ELEMENT = document.createElement('div');
     DIV_ELEMENT.classList.add('ratio', 'ratio-16x9', 'h-100');
     DIV_ELEMENT.setAttribute('data-canal-cambio', canalId);
-    const { nombre, señales } = listaCanales[canalId];
+    const { name, signals } = listaCanales[canalId];
 
     const URL_POR_TIPO_SEÑAL = {
-        'iframe_url': señales.iframe_url && señales.iframe_url[valorIndex],
-        'yt_id': señales.yt_id && `https://www.youtube-nocookie.com/embed/live_stream?channel=${señales.yt_id}&autoplay=1&mute=1&modestbranding=1&vq=medium&showinfo=0`,
-        'yt_embed': señales.yt_embed && `https://www.youtube-nocookie.com/embed/${señales.yt_embed}?autoplay=1&mute=1&modestbranding=1&showinfo=0`,
-        'yt_playlist': señales.yt_playlist && `https://www.youtube-nocookie.com/embed/videoseries?list=${señales.yt_playlist}&autoplay=0&mute=0&modestbranding=1&showinfo=0`,
-        'twitch_id': señales.twitch_id && `https://player.twitch.tv/?channel=${señales.twitch_id}&parent=${TWITCH_PARENT}`
+        'iframe_url': signals.iframe_url && signals.iframe_url[valorIndex],
+        'yt_id': signals.yt_id && `https://www.youtube-nocookie.com/embed/live_stream?channel=${signals.yt_id}&autoplay=1&mute=1&modestbranding=1&vq=medium&showinfo=0`,
+        'yt_embed': signals.yt_embed && `https://www.youtube-nocookie.com/embed/${signals.yt_embed}?autoplay=1&mute=1&modestbranding=1&showinfo=0`,
+        'yt_playlist': signals.yt_playlist && `https://www.youtube-nocookie.com/embed/videoseries?list=${signals.yt_playlist}&autoplay=0&mute=0&modestbranding=1&showinfo=0`,
+        'twitch_id': signals.twitch_id && `https://player.twitch.tv/?channel=${signals.twitch_id}&parent=${TWITCH_PARENT}`
     };
 
     const IFRAME_ELEMENT = document.createElement('iframe');
@@ -36,7 +37,7 @@ export function crearIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
     IFRAME_ELEMENT.classList.add('pe-auto');
     IFRAME_ELEMENT.setAttribute('contenedor-canal-cambio', canalId);
     IFRAME_ELEMENT.allowFullscreen = true;
-    IFRAME_ELEMENT.title = nombre;
+    IFRAME_ELEMENT.title = name;
     IFRAME_ELEMENT.referrerPolicy = 'no-referrer';
 
     DIV_ELEMENT.append(IFRAME_ELEMENT);
@@ -63,11 +64,11 @@ export function crearVideoJs(canalId, urlCarga) {
 
 export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
     try {
-        let { nombre = 'Nombre Canal', señales, sitio_oficial, país, categoría } = listaCanales[canalId];
+    let { name = 'Nombre Canal', signals, website, country, category } = listaCanales[canalId];
 
-        valorIndex = Number(valorIndex);
-        categoría = categoría.toLowerCase();
-        let iconoCategoria = categoría in ICONOS_PARA_CATEGORIAS ? ICONOS_PARA_CATEGORIAS[categoría] : '<i class="bi bi-tv"></i>';
+    valorIndex = Number(valorIndex);
+    category = typeof category === 'string' ? category.toLowerCase() : '';
+    let iconoCategoria = (typeof category === 'string' && category in ICONOS_PARA_CATEGORIAS) ? ICONOS_PARA_CATEGORIAS[category] : '<i class="bi bi-tv"></i>';
 
         const FRAGMENT_OVERLAY = document.createDocumentFragment();
         const DIV_ELEMENT = document.createElement('div');
@@ -87,7 +88,7 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
         const DROPDOWN_MENU_SELECCIONAR_SEÑAL_CANAL = document.createElement("ul");
         DROPDOWN_MENU_SELECCIONAR_SEÑAL_CANAL.classList.add('dropdown-menu');
 
-        for (const key in señales) {
+        for (const key in signals) {
             let iconoSeñal = '<i class="bi bi-globe"></i>'
             if (key.startsWith('iframe_')) {
                 iconoSeñal = '<i class="bi bi-globe"></i>'
@@ -99,7 +100,7 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
                 iconoSeñal = '<i class="bi bi-twitch"></i>'
             }
 
-            const value = señales[key];
+            const value = signals[key];
             if (Array.isArray(value) && value.length > 0) {
                 value.forEach((url, index) => {
                     const listItem = document.createElement("li");
@@ -152,7 +153,7 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
         BOTON_CAMBIAR_CANAL.innerHTML = '<span>Cambiar</span><i class="bi bi-arrow-repeat"></i>';
         BOTON_CAMBIAR_CANAL.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3');
         BOTON_CAMBIAR_CANAL.addEventListener('click', () => {
-            LABEL_MODAL_CAMBIAR_CANAL.textContent = nombre;
+            LABEL_MODAL_CAMBIAR_CANAL.textContent = name;
             LABEL_MODAL_CAMBIAR_CANAL.setAttribute('id-canal-cambio', canalId);
             new bootstrap.Modal(MODAL_CAMBIAR_CANAL).show();
         });
@@ -160,17 +161,17 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
         const BOTON_SITIO_OFICIAL_CANAL = document.createElement('a');
         BOTON_SITIO_OFICIAL_CANAL.id = 'overlay-boton-pagina-oficial';
         BOTON_SITIO_OFICIAL_CANAL.title = 'Ir a la página oficial de esta transmisión';
-        if (tipoSeñalCargada === 'yt_id') sitio_oficial = `https://www.youtube.com/channel/${señales.yt_id}`;
-        if (tipoSeñalCargada === 'twitch_id') sitio_oficial = `https://www.twitch.tv/${señales.twitch_id}`;
-        BOTON_SITIO_OFICIAL_CANAL.href = sitio_oficial !== '' ? sitio_oficial : `https://www.qwant.com/?q=${nombre}+en+vivo`;
+        if (tipoSeñalCargada === 'yt_id') website = `https://www.youtube.com/channel/${signals.yt_id}`;
+        if (tipoSeñalCargada === 'twitch_id') website = `https://www.twitch.tv/${signals.twitch_id}`;
+        BOTON_SITIO_OFICIAL_CANAL.href = website !== '' ? website : `https://www.qwant.com/?q=${name}+en+vivo`;
         BOTON_SITIO_OFICIAL_CANAL.setAttribute('role', 'button');
         BOTON_SITIO_OFICIAL_CANAL.setAttribute('data-bs-toggle', 'tooltip');
         BOTON_SITIO_OFICIAL_CANAL.setAttribute('data-bs-title', 'Ir a la página oficial de esta transmisión');
         BOTON_SITIO_OFICIAL_CANAL.rel = 'noopener nofollow noreferrer';
         BOTON_SITIO_OFICIAL_CANAL.innerHTML = `<span>
-                ${nombre}
-                ${país
-                ? ` <img src="https://flagcdn.com/${país.toLowerCase()}.svg" alt="bandera ${CODIGOS_PAISES[país]}" title="${CODIGOS_PAISES[país]}" class="svg-bandera">`
+                ${name}
+                ${country && typeof country === 'string' && CODIGOS_PAISES[country]
+                ? ` <img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${CODIGOS_PAISES[country]}" title="${CODIGOS_PAISES[country]}" class="svg-bandera">`
                 : ''}
                 ${iconoCategoria
                 ? ` ${iconoCategoria}`
@@ -214,8 +215,8 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
 }
 
 export function crearFragmentCanal(canalId) {
-    if (listaCanales[canalId]?.señales) {
-        let { iframe_url = [], m3u8_url = [], yt_id = '', yt_embed = '', yt_playlist = '', twitch_id = '' } = listaCanales[canalId].señales;
+    if (listaCanales[canalId]?.signals) {
+        let { iframe_url = [], m3u8_url = [], yt_id = '', yt_embed = '', yt_playlist = '', twitch_id = '' } = listaCanales[canalId].signals;
         let lsPreferenciasSeñalCanales = JSON.parse(localStorage.getItem('preferencia-señal-canales')) || {};
 
         let señalUtilizar;
@@ -255,9 +256,9 @@ export function crearFragmentCanal(canalId) {
             return FRAGMENT_CANAL;
         }
     } else {
-        console.error(`${canalId} no tiene señales definidas.`);
+        console.error(`${canalId} no tiene signals definidas.`);
         mostrarToast(`
-        <span class="fw-bold">${canalId}</span> no tiene señales definidas. 
+        <span class="fw-bold">${canalId}</span> no tiene signals definidas. 
         <br>Prueba recargando o borrar la caché del navegador.
         <button type="button" class="btn btn-danger rounded-pill btn-sm w-100 border-light mt-2" data-bs-toggle="modal"
             data-bs-target="#modal-reset">Probar reiniciar almacenamiento local</button>`, 'danger', false);

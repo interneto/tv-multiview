@@ -1,8 +1,8 @@
 {
   "cnn": {
-    "nombre": "CNN International",
+    "name": "CNN International",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -10,14 +10,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.cnn.com/",
-    "categoría": "news",
-    "país": "us"
+    "website": "https://www.cnn.com/",
+    "country": "us"
   },
   "espn": {
-    "nombre": "ESPN",
+    "name": "ESPN",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -25,14 +24,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.espn.com/",
-    "categoría": "sports",
-    "país": "us"
+    "website": "https://www.espn.com/",
+    "country": "us"
   },
   "hbo": {
-    "nombre": "HBO",
+    "name": "HBO",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -40,14 +38,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.hbo.com/",
-    "categoría": "movies;series",
-    "país": "us"
+    "website": "https://www.hbo.com/",
+    "country": "us"
   },
   "showtime": {
-    "nombre": "Showtime",
+    "name": "Showtime",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -55,14 +52,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.showtime.com/",
-    "categoría": "movies;series",
-    "país": "us"
+    "website": "https://www.showtime.com/",
+    "country": "us"
   },
   "telefe": {
-    "nombre": "Telefe",
+    "name": "Telefe",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -70,14 +66,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://telefe.com/",
-    "categoría": "general",
-    "país": "ar"
+    "website": "https://telefe.com/",
+    "country": "ar"
   },
   "globo": {
-    "nombre": "Globo",
+    "name": "Globo",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -85,14 +80,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://globoplay.globo.com/",
-    "categoría": "general",
-    "país": "br"
+    "website": "https://globoplay.globo.com/",
+    "country": "br"
   },
   "nhk": {
-    "nombre": "NHK World",
+    "name": "NHK World",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -100,14 +94,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www3.nhk.or.jp/nhkworld/",
-    "categoría": "news;public",
-    "país": "jp"
+    "website": "https://www3.nhk.or.jp/nhkworld/",
+    "country": "jp"
   },
   "abs-cbn": {
-    "nombre": "ABS-CBN",
+    "name": "ABS-CBN",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -115,14 +108,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.abs-cbn.com/",
-    "categoría": "general",
-    "país": "ph"
+    "website": "https://www.abs-cbn.com/",
+    "country": "ph"
   },
   "gma": {
-    "nombre": "GMA",
+    "name": "GMA",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -130,14 +122,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.gmanetwork.com/",
-    "categoría": "general",
-    "país": "ph"
+    "website": "https://www.gmanetwork.com/",
+    "country": "ph"
   },
   "cartoonnetwork": {
-    "nombre": "Cartoon Network",
+    "name": "Cartoon Network",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -145,14 +136,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.cartoonnetwork.com/",
-    "categoría": "kids",
-    "país": "us"
+    "website": "https://www.cartoonnetwork.com/",
+    "country": "us"
   },
   "vh1": {
-    "nombre": "VH1",
+    "name": "VH1",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -160,14 +150,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.vh1.com/",
-    "categoría": "music",
-    "país": "us"
+    "website": "https://www.vh1.com/",
+    "country": "us"
   },
   "eurosport": {
-    "nombre": "Eurosport",
+    "name": "Eurosport",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -175,14 +164,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.eurosport.com/",
-    "categoría": "sports",
-    "país": "eu"
+    "website": "https://www.eurosport.com/",
+    "country": "eu"
   },
   "sky_sports": {
-    "nombre": "Sky Sports",
+    "name": "Sky Sports",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -190,14 +178,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.skysports.com/",
-    "categoría": "sports",
-    "país": "gb"
+    "website": "https://www.skysports.com/",
+    "country": "gb"
   },
   "dazn": {
-    "nombre": "DAZN",
+    "name": "DAZN",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -205,14 +192,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.dazn.com/",
-    "categoría": "sports",
-    "país": "gb"
+    "website": "https://www.dazn.com/",
+    "country": "gb"
   },
   "cnn_international": {
-    "nombre": "CNN International",
+    "name": "CNN International",
     "logo": "",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [],
       "yt_id": "",
@@ -220,8 +206,7 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://edition.cnn.com/",
-    "categoría": "news",
-    "país": "us"
+    "website": "https://edition.cnn.com/",
+    "country": "us"
   }
 }

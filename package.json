@@ -5,19 +5,21 @@
   "main": "index.html",
   "scripts": {
     "start": "npx http-server -c-1 . -p 8080",
-    "check-json": "node ./tools/validate_additions.js",
     "validate-json": "node ./tools/validate_json.js",
-    "sort-json": "node ./tools/sort_json_by_pais.js",
+    "check-json": "node ./tools/validate_additions.js",
+    "sort-json": "node ./tools/sort_json_by_country.js",
     "check-channels": "node ./tools/check_channels.js",
     "lint": "eslint assets/js tools --ext .js",
-    "format": "prettier --write .",
-    "test": "echo \"Run tests (configure jest)\""
+    "format": "prettier --write \"**/*.{js,md,json}\"",
+    "test": "echo \"Run tests (configure jest)\"",
+    "ci": "npm run validate-json && npm run lint"
   },
-  "keywords": ["pwa","tv","iptv","multiview"],
+  "keywords": ["pwa", "tv", "iptv", "multiview"],
   "author": "david7ce",
   "license": "MIT",
   "devDependencies": {
     "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
     "eslint": "^8.50.0",
     "prettier": "^2.8.8",
     "http-server": "^14.1.1"

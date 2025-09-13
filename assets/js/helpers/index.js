@@ -6,6 +6,7 @@ export * from './helperAjustarClasesCanalesActivos.js';
 export * from './helperAjustarVisibilidadBotonesQuitarTodaSeñal.js';
 export * from './helperBSToast.js';
 export * from './helperBSTooltips.js';
+export * from './helperInsertarDivError.js';
 export * from './helperCambioOrdenBotones.js';
 export * from './helperCanalesPorDefecto.js';
 export * from './helperCheckboxState.js';

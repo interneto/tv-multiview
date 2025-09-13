@@ -5,12 +5,13 @@ import {
     PREFIJOS_ID_CONTENEDORES_CANALES,
 } from "../constants/index.js";
 import { filtrarCanalesPorInput, mostrarToast } from "./index.js";
+import { insertarDivError } from './helperInsertarDivError.js';
 
 export function crearBotonesPaises() {
     try {
         const NUMERO_CANALES_CON_PAIS = Object.values(listaCanales).map(canal => {
-            if (canal?.país !== '') {
-                return canal.país.toLowerCase();
+            if (canal?.country !== '' && typeof canal.country === 'string') {
+                return canal.country.toLowerCase();
             } else {
                 return 'Desconocido';
             }
@@ -18,22 +19,22 @@ export function crearBotonesPaises() {
 
         const PAISES_SIN_REPETIRSE = [...new Set(NUMERO_CANALES_CON_PAIS)]
 
-        const CONTEO_NUMERO_CANALES_POR_PAIS = NUMERO_CANALES_CON_PAIS.reduce((conteo, pais) => {
-            conteo[CODIGOS_PAISES[pais] ?? 'Desconocido'] = (conteo[CODIGOS_PAISES[pais] ?? 'Desconocido'] || 0) + 1;
+        const CONTEO_NUMERO_CANALES_POR_PAIS = NUMERO_CANALES_CON_PAIS.reduce((conteo, country) => {
+            conteo[CODIGOS_PAISES[country] ?? 'Desconocido'] = (conteo[CODIGOS_PAISES[country] ?? 'Desconocido'] || 0) + 1;
             return conteo;
         }, {});
 
-        const PAISES_ORDENADOS = PAISES_SIN_REPETIRSE.filter(pais => CODIGOS_PAISES[pais]).sort((a, b) => {
-            const codigoA = CODIGOS_PAISES[a].toLowerCase();
-            const codigoB = CODIGOS_PAISES[b].toLowerCase();
+        const PAISES_ORDENADOS = PAISES_SIN_REPETIRSE.filter(country => CODIGOS_PAISES[country]).sort((a, b) => {
+            const codigoA = CODIGOS_PAISES[a] ? CODIGOS_PAISES[a].toLowerCase() : '';
+            const codigoB = CODIGOS_PAISES[b] ? CODIGOS_PAISES[b].toLowerCase() : '';
             return codigoA.localeCompare(codigoB);
         });
 
         const FRAGMENT_BOTONES_PAISES = document.createDocumentFragment();
         for (const PAIS of PAISES_ORDENADOS) {
             if (CODIGOS_PAISES[PAIS]) {
-                let nombrePais = CODIGOS_PAISES[PAIS];
-                let cantidadCanales = CONTEO_NUMERO_CANALES_POR_PAIS[nombrePais] || 0;
+                let namePais = CODIGOS_PAISES[PAIS];
+                let cantidadCanales = CONTEO_NUMERO_CANALES_POR_PAIS[namePais] || 0;
                 let botonPais = document.createElement('button');
                 botonPais.setAttribute('type', 'button');
                 botonPais.setAttribute('data-country', PAIS);
@@ -42,8 +43,8 @@ export function crearBotonesPaises() {
                     'd-flex', 'justify-content-between', 'align-items-center',
                     'text-start', 'gap-2', 'w-100', 'm-0', 'rounded-3');
                 botonPais.innerHTML =
-                    `<span class="flex-grow-1">${nombrePais}</span>
-                    <img src="https://flagcdn.com/${PAIS}.svg" alt="bandera ${nombrePais}" title="${nombrePais}" class="svg-bandera rounded-1">
+                    `<span class="flex-grow-1">${namePais}</span>
+                    <img src="https://flagcdn.com/${PAIS}.svg" alt="bandera ${namePais}" title="${namePais}" class="svg-bandera rounded-1">
                     <span class="badge bg-secondary">${cantidadCanales}</span>`;
                 FRAGMENT_BOTONES_PAISES.append(botonPais);
             }
@@ -69,7 +70,7 @@ export function crearBotonesPaises() {
             FRAGMENT_BOTONES_PAISES.prepend(BOTON_MOSTRAR_TODO_PAIS)
 
         for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
-            const contenedorBotonesFiltroPaises = document.querySelector(`#${PREFIJO}-collapse-botones-listado-filtro-paises`);
+            const contenedorBotonesFiltroPaises = document.querySelector(`#${PREFIJO}-collapse-botones-listado-filtro-countries`);
             contenedorBotonesFiltroPaises.append(FRAGMENT_BOTONES_PAISES.cloneNode(true));
             contenedorBotonesFiltroPaises.querySelectorAll('button').forEach(botonPaisEnDom => {
                 botonPaisEnDom.addEventListener('click', () => {
@@ -87,9 +88,9 @@ export function crearBotonesPaises() {
                             boton.classList.replace(CLASE_CSS_BOTON_PRIMARIO, 'btn-outline-secondary');
                         });
                         contenedorBotonesFiltroPaises.querySelector('button[data-country="all"]').classList.replace('btn-outline-secondary', CLASE_CSS_BOTON_PRIMARIO);
-                        console.error(`Error al intentar activar filtro país. ${error}`);
+                        console.error(`Error al intentar activar filtro country. ${error}`);
                         mostrarToast(`
-                        <span class="fw-bold">Ha ocurrido un error al intentar activar filtro país..</span>
+                        <span class="fw-bold">Ha ocurrido un error al intentar activar filtro country..</span>
                         <hr>
                         <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
                         <hr>
@@ -102,9 +103,9 @@ export function crearBotonesPaises() {
             }); 
         }
     } catch (error) {
-        console.error(`Error durante creación botones para filtros paises. ${error}`);
+        console.error(`Error durante creación botones para filtros countries. ${error}`);
         mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error durante la creación de botones para filtrado por país.</span>
+        <span class="fw-bold">Ha ocurrido un error durante la creación de botones para filtrado por country.</span>
         <hr>
         <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
         <hr>
@@ -112,7 +113,7 @@ export function crearBotonesPaises() {
         <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false);
         
         for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
-            document.querySelector(`#${PREFIJO}-body-botones-canales`).insertAdjacentElement('afterend', insertarDivError(error, 'Ha ocurrido un error durante la creación de botones para filtro paises'));
+            document.querySelector(`#${PREFIJO}-body-botones-canales`).insertAdjacentElement('afterend', insertarDivError(error, 'Ha ocurrido un error durante la creación de botones para filtro countries'));
         }
         return
     }

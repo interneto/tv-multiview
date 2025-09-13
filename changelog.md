@@ -20,15 +20,15 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-- Overflow de botones países en modales cambiar canal activo.
-- Suspensión de señales m3u8 cargadas con VideoJS de forma correcta, de manera que no sigan en segundo plano tras eliminar elemento del DOM.
+- Overflow de botones countries en modales cambiar canal activo.
+- Suspensión de signals m3u8 cargadas con VideoJS de forma correcta, de manera que no sigan en segundo plano tras eliminar elemento del DOM.
 
 ## [v0.18]
 
 ### Changed
 
 - Refactorizado código JS.
-- Combinan señales mismo canal en un solo botón.
+- Combinan signals mismo canal en un solo botón.
 - Imágenes previews
 
 ### Added
@@ -36,7 +36,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Opción de modificar señal de canal activo, junto a guardar en almacenamiento local opción seleccionada para futuras cargas.
 - Mayor número de comprobaciones para carga canales para evitar errores que dejen inutilizable sitio.
 - Opción experimental carga canales IPTV desde <https://github.com/iptv-org/iptv> (por problemas de rendimiento deja como activado manual en offcanvas personalizaciones).
-- Más canales, señales, logos a canales (opcional desde código).
+- Más canales, signals, logos a canales (opcional desde código).
 - Opción alternar entre vista "cuadricula" y "única", junto a recordar opción seleccionada.
 - Opción alternar uso 100% de la altura pantalla en vista "cuadricula"
 
@@ -44,7 +44,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- filtroCanales reescrito para tomar en cuenta si se pulsa filtro por país de modo de que el input usuario sea dentro de dicho país activo.
+- filtroCanales reescrito para tomar en cuenta si se pulsa filtro por country de modo de que el input usuario sea dentro de dicho country activo.
 - F_ordenBotones reescrito para abarcar modal dinámico de opción cambiar señal activa, guardando orden original de botones previo a ordenar de forma ascendente/descendente
 - div contenedor canales activos utiliza ahora el 100vh
 - Rediseño global
@@ -79,7 +79,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - manifesto PWA
 - CSS: .barra-overlay debido a que no estaba bien centrado su contenido
 - .barra-overlay se añade tabindex=0 para poder hacer focus con tecla TAB
-- Texto: de "Desactivar" a "Quitar" en modal canales (para que sea igual a botón quitar que tienen las señales)
+- Texto: de "Desactivar" a "Quitar" en modal canales (para que sea igual a botón quitar que tienen las signals)
 - Separados botones share de barra copiar enlace (para que modal muestre copiar enlace a personas con bloqueadores de publicidad)
 - Reescrito archivo "NOTICE.md"
 - Alerta tras borrado localStorage
@@ -503,7 +503,7 @@ Chile
 
 ### Added
 
-- Filtro canales por bandera pais dentro de modal.
+- Filtro canales por bandera country dentro de modal.
 
 #### 📺 Canales
 
@@ -617,12 +617,12 @@ Música
 
 ### Changed
 
-- Banderas países ahora provienen dinámicamente desde <https://flagcdn.com> (Gracias a sapear los proyectos de @martinsantibanez/tele-react y @AINMcl/MonitorTV)
+- Banderas countries ahora provienen dinámicamente desde <https://flagcdn.com> (Gracias a sapear los proyectos de @martinsantibanez/tele-react y @AINMcl/MonitorTV)
 - UCI 2 -> Nativa
 
 ### Removed
 
-- Carpeta archivos SVG de banderas países
+- Carpeta archivos SVG de banderas countries
 - Licencia "CSS Range Slider – with Fill"
 
 #### 📺 Canales
@@ -829,7 +829,7 @@ Ucrania
 - Pasados algunos scripts a vanilla js para comenzar a desechar jQuery (quedaron 2 que no supe como traducir ¯_(ツ)_/¯)
 - Cambios diseño generales
 - Habemus filtro! (gg jQuery)
-- Botón nombre transmisiones on/off funciona de pana ahora
+- Botón name transmisiones on/off funciona de pana ahora
 - Imágenes previews actualizadas
 - CSS reescrito bajo uso de nesting y separado (un poco mejor) por secciones
 
@@ -883,11 +883,11 @@ Ucrania
 - Biblioteca bootstrap (solo css) ahora dentro de archivos proyecto
 - Librerías externas (principales ya que los iframe no) ahora son llamadas desde dentro del repositorio y no de manera externa a otros servidores
 - Cambio menor en modal créditos
-- Canales tienen un svg de sus banderitas acorde al país donde se origina la transmisión (no todos)
+- Canales tienen un svg de sus banderitas acorde al country donde se origina la transmisión (no todos)
 - Actualizado tag href (+nofollow noreferrer)
 - Mejora en cuanto a tamaño responsivo con el uso de "clamp" (borrando media queries)
 - Solucionado filtro de búsqueda. Ahora permite tildes y letra ñ.
-- Cambio posición "nombre-barra" (me molestaba cuando quería leer las noticias que ponen en la barrita más pequeña)
+- Cambio posición "name-barra" (me molestaba cuando quería leer las noticias que ponen en la barrita más pequeña)
 - wena wena
 
 ### Removed
