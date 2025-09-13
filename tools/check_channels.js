@@ -1,10 +1,10 @@
-// Verificaciones ligeras sobre json-teles/tv-channels.json sin dependencias externas
+// Verificaciones ligeras sobre json-tv/tv-channels.json sin dependencias externas
 // Uso: node tools/check_channels.js
 
 const fs = require('fs');
 const path = require('path');
 
-const FILE = path.join(__dirname, '..', 'json-teles', 'tv-channels.json');
+const FILE = path.join(__dirname, '..', 'json-tv', 'tv-channels.json');
 
 function load() {
   try { return JSON.parse(fs.readFileSync(FILE, 'utf8')); }

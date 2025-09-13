@@ -65,7 +65,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Removed
 
-- archivo js/json con canales (se creo <https://github.com/Alplox/json-teles> para hacer fetch, dejando como respaldo ultimo archivo que existió en repositorio)
+- archivo js/json con canales (se creo <https://github.com/Alplox/json-tv> para hacer fetch, dejando como respaldo ultimo archivo que existió en repositorio)
 
 ### Fixed
 

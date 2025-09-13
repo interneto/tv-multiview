@@ -16,7 +16,7 @@ Para licencia del proyecto "tv-multiview" referirse al archivo LICENSE.
 * Fondos SVG generados con <https://wickedbackgrounds.com/app> - (No licencia) y transformados a CSS con <https://yoksel.github.io/url-encoder/> - (No licencia)
 * Screenshots PWA hechas con Progressier <https://progressier.com> - [(Terms)](https://progressier.com/terms)
 * Screenshots README hechas con <https://shots.so/> - (No licencia)
-* Canales <https://github.com/Alplox/json-teles> - (No licencia)
+* Canales <https://github.com/Alplox/json-tv> - (No licencia)
 * Efecto glow sobre tarjeta logo de fondo <https://codepen.io/Hyperplexed/pen/MWQeYLW> - [(MIT)](https://codepen.io/Hyperplexed/pen/MWQeYLW)
 
 ## Este software utiliza los siguientes paquetes de código abierto

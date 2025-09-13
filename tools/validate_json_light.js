@@ -1,11 +1,11 @@
-// Validador ligero para json-teles/tv-channels.json sin dependencias externas
+// Validador ligero para json-tv/tv-channels.json sin dependencias externas
 // Uso: node tools/validate_json_light.js
 // Sale con código 0 si OK, 1 si hay errores
 
 const fs = require('fs');
 const path = require('path');
 
-const DATA_PATH = path.join(__dirname, '..', 'json-teles', 'tv-channels.json');
+const DATA_PATH = path.join(__dirname, '..', 'json-tv', 'tv-channels.json');
 
 function loadJson(file) {
   try {

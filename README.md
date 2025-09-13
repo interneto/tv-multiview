@@ -1,12 +1,14 @@
 # tv-multiview (teles)
 
+> Fork de https://github.com/Alplox/teles
+
 Proyecto PWA open-source para visualizar múltiples transmisiones de TV en una cuadrícula o vista única.
 
 ## Estructura relevante
 
 - `index.html` – UI principal.
 - `assets/js/` – lógica de la app y helpers.
-- `json-teles/tv-channels.json` – fichero principal con canales.
+- `json-tv/tv-channels.json` – fichero principal con canales.
 - `tools/` – utilidades para manipular y validar JSON (ordenar, chequear añadidos).
 
 ## Rápido inicio (requisitos)
@@ -34,7 +36,7 @@ node .\tools\validate_json_light.js    # Validación ligera sin dependencias
 
 ## Validación del JSON de canales
 
-Antes de commitear cambios en `json-teles/tv-channels.json`:
+Antes de commitear cambios en `json-tv/tv-channels.json`:
 
 ```powershell
 node .\tools\validate_json_light.js
@@ -42,7 +44,7 @@ node .\tools\validate_json_light.js
 
 ## Agregar o editar canales
 
-Los canales se encuentran en `json-teles/tv-channels.json`. Cada clave es un id único y el objeto debe seguir la estructura:
+Los canales se encuentran en `json-tv/tv-channels.json`. Cada clave es un id único y el objeto debe seguir la estructura:
 
 ```json
 "id": {
