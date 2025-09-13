@@ -426,17 +426,17 @@
         let canalesConM3u8 = 0;
         let totalEntradas = 0;
         let canalesDuplicados = 0;
-        let nombresDuplicados = [];
+        let namesDuplicados = [];
 
         for (const key in canales) {
           const canal = canales[key];
           totalCanales++;
 
-          const nombre = canal.nombre || key;
+          const name = canal.name || key;
           const logo = canal.logo || '';
-          const categoria = canal.categoría || 'General';
-          const pais = canal.país ? canal.país.toUpperCase() : 'INTL';
-          const urls = canal.señales?.m3u8_url || [];
+          const category = canal.category || 'General';
+          const country = canal.country ? canal.country.toUpperCase() : 'INTL';
+          const urls = canal.signals?.m3u8_url || [];
 
           if (urls.length === 0) continue;
 
@@ -444,14 +444,14 @@
 
           if (urls.length > 1) {
             canalesDuplicados++;
-            nombresDuplicados.push(nombre);
+            namesDuplicados.push(name);
           }
 
           urls.forEach((url, idx) => {
             const numero = urls.length > 1 ? ` (${idx + 1})` : '';
-            const nombreVisible = `${nombre}${numero} [${pais}]`;
+            const nameVisible = `${name}${numero} [${country}]`;
 
-            m3u += `#EXTINF:-1 tvg-name="${nombre}" tvg-logo="${logo}" group-title="${categoria}", ${nombreVisible}\n`;
+            m3u += `#EXTINF:-1 tvg-name="${name}" tvg-logo="${logo}" group-title="${category}", ${nameVisible}\n`;
             m3u += `${url}\n`;
             totalEntradas++;
           });
@@ -459,24 +459,24 @@
 
         // Construir mensaje detallado
         if (totalEntradas === 0) {
-          estadoCanales.innerText = "⚠️ No se encontraron señales m3u8 válidas en el JSON.";
+          estadoCanales.innerText = "⚠️ No se encontraron signals m3u8 válidas en el JSON.";
           estadoCanales.classList.remove('text-success');
           estadoCanales.classList.add('text-danger');
         } else {
           let mensaje = `
             ✅ El JSON contiene <strong>${totalCanales}</strong> canales.<br>
-            📡 <strong>${canalesConM3u8}</strong> tienen señales <code>.m3u8</code> compatibles.<br>
+            📡 <strong>${canalesConM3u8}</strong> tienen signals <code>.m3u8</code> compatibles.<br>
             🎬 Se generaron <strong>${totalEntradas}</strong> entradas <code>.m3u8</code> en total.
           `;
 
           if (canalesDuplicados > 0) {
-            mensaje += `<br>🔁 <strong>${canalesDuplicados}</strong> canales contenían múltiples señales.`;
-            const lista = nombresDuplicados.slice(0, 5).join(', ');
-            mensaje += `<br>📋 Canales con señales <code>.m3u8</code> multiples: <em>${lista}${nombresDuplicados.length > 5 ? ', ...' : ''}</em>`;
+            mensaje += `<br>🔁 <strong>${canalesDuplicados}</strong> canales contenían múltiples signals.`;
+            const lista = namesDuplicados.slice(0, 5).join(', ');
+            mensaje += `<br>📋 Canales con signals <code>.m3u8</code> multiples: <em>${lista}${namesDuplicados.length > 5 ? ', ...' : ''}</em>`;
             mensaje += `
               <br><button id="toggleDuplicadosBtn" class="btn btn-sm btn-link p-0 mt-1">Ver lista completa</button>
               <div id="listaDuplicados" style="display:none; max-height:150px; overflow-y:auto; border:1px solid #ccc; padding:10px; margin-top:5px; background:#f9f9f9;">
-                ${nombresDuplicados.map(n => `<div>${n}</div>`).join('')}
+                ${namesDuplicados.map(n => `<div>${n}</div>`).join('')}
               </div>
             `;
           }
@@ -495,7 +495,7 @@
                   toggleBtn.textContent = 'Ocultar lista';
                 } else {
                   listaDiv.style.display = 'none';
-                  toggleBtn.textContent = 'Ver lista completa de canales que contenían múltiples señales m3u8';
+                  toggleBtn.textContent = 'Ver lista completa de canales que contenían múltiples signals m3u8';
                 }
               });
             }

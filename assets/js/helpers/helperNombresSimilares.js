@@ -1,5 +1,5 @@
-export function sonNombresSimilares(nombre1, nombre2) {
-    const nombre1Lower = nombre1.toLowerCase();
-    const nombre2Lower = nombre2.toLowerCase();
-    return nombre1Lower.includes(nombre2Lower) || nombre2Lower.includes(nombre1Lower);
+export function sonNombresSimilares(name1, name2) {
+    const a = typeof name1 === 'string' ? name1.toLowerCase() : String(name1 || '').toLowerCase();
+    const b = typeof name2 === 'string' ? name2.toLowerCase() : String(name2 || '').toLowerCase();
+    return a.includes(b) || b.includes(a);
 }

@@ -2,26 +2,27 @@ import { listaCanales } from "../canalesData.js";
 import { CLASE_CSS_BOTON_SECUNDARIO, CODIGOS_PAISES, ICONOS_PARA_CATEGORIAS, PREFIJOS_ID_CONTENEDORES_CANALES } from "../constants/index.js";
 import { CONTAINER_VIDEO_VISION_UNICA, tele } from "../main.js";
 import { mostrarToast, revisarSeñalesVacias, guardarOrdenOriginal } from "./index.js";
+import { insertarDivError } from './helperInsertarDivError.js';
 
 export function crearBotonesParaCanales() {
     try {
         const FRAGMENT_BOTONES_CANALES = document.createDocumentFragment();
         for (const canal of Object.keys(listaCanales)) {
-            let { nombre, /* logo, */ país, categoría } = listaCanales[canal];
-            categoría = categoría.toLowerCase();
-            let iconoCategoria = categoría && categoría in ICONOS_PARA_CATEGORIAS ? ICONOS_PARA_CATEGORIAS[categoría] : '<i class="bi bi-tv"></i>';
-            let nombrePais = país && CODIGOS_PAISES[país.toLowerCase()] ? CODIGOS_PAISES[país.toLowerCase()] : 'Desconocido';
+            let { name, /* logo, */ country, category } = listaCanales[canal];
+            category = typeof category === 'string' ? category.toLowerCase() : '';
+            let iconoCategoria = category && (category in ICONOS_PARA_CATEGORIAS) ? ICONOS_PARA_CATEGORIAS[category] : '<i class="bi bi-tv"></i>';
+            let namePais = country && typeof country === 'string' && CODIGOS_PAISES[country.toLowerCase()] ? CODIGOS_PAISES[country.toLowerCase()] : 'Desconocido';
 
             let botonCanal = document.createElement('button');
             botonCanal.setAttribute('data-canal', canal);
-            botonCanal.setAttribute('data-country', `${nombrePais}`);
+            botonCanal.setAttribute('data-country', `${namePais}`);
             botonCanal.classList.add('btn', CLASE_CSS_BOTON_SECUNDARIO, 'd-flex', 'justify-content-between', 'align-items-center', 'gap-2', 'text-start', 'rounded-3');
             if (revisarSeñalesVacias(canal)) botonCanal.classList.add('d-none');
             botonCanal.innerHTML =
-                `<span class="flex-grow-1">${nombre}</span>
-                    ${país ? `<img src="https://flagcdn.com/${país.toLowerCase()}.svg" alt="bandera ${nombrePais}" title="${nombrePais}" class="svg-bandera rounded-1">` : ''}
+                `<span class="flex-grow-1">${name}</span>
+                    ${country && typeof country === 'string' && CODIGOS_PAISES[country.toLowerCase()] ? `<img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${namePais}" title="${namePais}" class="svg-bandera rounded-1">` : ''}
                     ${iconoCategoria ? `${iconoCategoria}` : ''}`;
-                    // ${logo ? `<img src="${logo}" alt="logo ${nombre}" title="logo ${nombre}" class="img-logos rounded-1">` : ''}
+                    // ${logo ? `<img src="${logo}" alt="logo ${name}" title="logo ${name}" class="img-logos rounded-1">` : ''}
             FRAGMENT_BOTONES_CANALES.append(botonCanal);
         }
 

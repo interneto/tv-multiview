@@ -2,31 +2,6 @@
 
 Proyecto PWA open-source para visualizar múltiples transmisiones de TV en una cuadrícula o vista única.
 
-# tv-multiview (teles)
-
-Proyecto PWA open-source para visualizar múltiples transmisiones de TV en una cuadrícula o vista única.
-
-Resumen
-
-- PWA ligera para comparar transmisiones (noticias, deportes, general).
-- Datos de canales en `json-teles/tv-channels.json`.
-
-Estructura relevante
-
-- `index.html` – UI principal.
-- `assets/js/` – lógica de la app y helpers.
-- `json-teles/tv-channels.json` – fichero principal con canales.
-- `tools/` – utilidades para manipular y validar JSON (ordenar, chequear añadidos).
-
-# tv-multiview (teles)
-
-Proyecto PWA open-source para visualizar múltiples transmisiones de TV en una cuadrícula o vista única.
-
-## Resumen
-
-- PWA ligera para comparar transmisiones (noticias, deportes, general).
-- Datos de canales en `json-teles/tv-channels.json`.
-
 ## Estructura relevante
 
 - `index.html` – UI principal.
@@ -51,7 +26,7 @@ npx http-server -c-1 . -p 8080
 - Ejecutar scripts de `tools` (ejemplos):
 
 ```powershell
-node .\tools\sort_json_by_pais.js
+node .\tools\sort_json_by_country.js
 node .\tools\check_channels.js
 node .\tools\validate_additions.js
 ```
@@ -62,12 +37,12 @@ Los canales se encuentran en `json-teles/tv-channels.json`. Cada clave es un id 
 
 ```json
 "id": {
-  "nombre": "Nombre del Canal",
+  "name": "Nombre del Canal",
   "logo": "url_logo",
-  "señales": { "m3u8_url": ["..."] , "iframe_url": [], "yt_id":"" },
-  "sitio_oficial": "",
-  "categoría": "news",
-  "país": "cl"
+  "signals": { "m3u8_url": ["..."] , "iframe_url": [], "yt_id":"" },
+  "website": "",
+  "category": "news",
+  "country": "cl"
 }
 ```
 

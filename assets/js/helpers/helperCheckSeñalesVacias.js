@@ -1,9 +1,9 @@
 import { listaCanales } from "../canalesData.js";
 
 export function revisarSeñalesVacias(canalId) {
-    const señales = listaCanales?.[canalId]?.señales;
-    if (señales) {
-        const todasLasSeñalesVacias = Object.values(señales).every(señal => {
+    const signals = listaCanales?.[canalId]?.signals;
+    if (signals) {
+        const todasLasSeñalesVacias = Object.values(signals).every(señal => {
             if (typeof señal === 'undefined' || señal === null) {
                 return true;
             } else if (Array.isArray(señal)) {
@@ -12,8 +12,8 @@ export function revisarSeñalesVacias(canalId) {
                 return señal.trim() === '';
             }
         });
-        if (todasLasSeñalesVacias) console.error(`${canalId} tiene todas sus señales vacías`);
+        if (todasLasSeñalesVacias) console.error(`${canalId} tiene todas sus signals vacías`);
         return todasLasSeñalesVacias;
     }
-    return true; // Si no esta atributo señales, se considera que todas están vacías
+    return true; // Si no esta atributo signals, se considera que todas están vacías
 }

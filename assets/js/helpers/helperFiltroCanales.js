@@ -27,7 +27,7 @@ export function filtrarCanalesPorInput(valorInput, containerBotonesDeCanales) {
       if (ID_CONTENEDOR_BOTONES_CANALES.startsWith(PREFIJO)) {
         let booleanCoincidencia = false;
         let filtroPorPaisActivo = 'all';
-        const botonesFiltroPorPais = document.querySelectorAll(`#${PREFIJO}-collapse-botones-listado-filtro-paises button`);
+        const botonesFiltroPorPais = document.querySelectorAll(`#${PREFIJO}-collapse-botones-listado-filtro-countries button`);
         botonesFiltroPorPais.forEach(boton => {
           if (boton.classList.contains(CLASE_CSS_BOTON_PRIMARIO)) {
             filtroPorPaisActivo = CODIGOS_PAISES[boton.dataset.country] ?? boton.dataset.country;

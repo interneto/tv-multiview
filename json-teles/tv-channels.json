@@ -1,8 +1,8 @@
 {
   "cnbcarabiya": {
-    "nombre": "CNBC Arabiya",
+    "name": "CNBC Arabiya",
     "logo": "https://i.imgur.com/opBXx1K.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cnbc-live.akamaized.net/cnbc/master.m3u8"
@@ -12,14 +12,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "business",
-    "país": "ae"
+    "website": "",
+    "country": "ae"
   },
   "1tv": {
-    "nombre": "1TV SD",
+    "name": "1TV SD",
     "logo": "https://i.imgur.com/EEcNI9E.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live20.bozztv.com/dvrfl05/gin-1tvafg/index.m3u8"
@@ -29,14 +28,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "af"
+    "website": "",
+    "country": "af"
   },
   "amc": {
-    "nombre": "AMC",
+    "name": "AMC",
     "logo": "https://i.imgur.com/yj8RNnG.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amchls.wns.live/hls/stream.m3u8"
@@ -46,14 +44,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "music",
-    "país": "af"
+    "website": "",
+    "country": "af"
   },
   "news24": {
-    "nombre": "News 24",
+    "name": "News 24",
     "logo": "https://i.imgur.com/eG33jue.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://tv.balkanweb.com:8081/news24/livestream/playlist.m3u8"
@@ -63,14 +60,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "al"
+    "website": "",
+    "country": "al"
   },
   "alternatv": {
-    "nombre": "AlternaTV",
+    "name": "AlternaTV",
     "logo": "https://alternatv.ar/alternatv.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://alternatv.ar/stream/hls/live.m3u8"
@@ -80,14 +76,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "culture;documentary;entertainment;general;movies;music",
-    "país": "ar"
+    "website": "",
+    "country": "ar"
   },
   "rtn": {
-    "nombre": "RTN",
+    "name": "RTN",
     "logo": "https://i.imgur.com/8xqYg4C.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://media.neuquen.gov.ar/rtn/television/media.m3u8"
@@ -97,14 +92,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "ar"
+    "website": "",
+    "country": "ar"
   },
   "sicarditv": {
-    "nombre": "Sicardi TV",
+    "name": "Sicardi TV",
     "logo": "https://i.imgur.com/W2EUIL2.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://vivo.solumedia.com:19360/sicarditv/sicarditv.m3u8"
@@ -114,14 +108,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "ar"
+    "website": "",
+    "country": "ar"
   },
   "atv": {
-    "nombre": "ATV",
+    "name": "ATV",
     "logo": "https://i.imgur.com/1pA0Tid.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://strm.hdtvizlecanli.com/live/atv.m3u8"
@@ -131,14 +124,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "at"
+    "website": "",
+    "country": "at"
   },
   "atv2": {
-    "nombre": "ATV2 HD",
+    "name": "ATV2 HD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Logo_ATV2.svg/512px-Logo_ATV2.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/atv/browser-dash/atv.mpd"
@@ -148,14 +140,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "at"
+    "website": "",
+    "country": "at"
   },
   "redbulltv": {
-    "nombre": "Red Bull TV",
+    "name": "Red Bull TV",
     "logo": "https://i.postimg.cc/8c78JM28/image.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://3ea22335.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWdiX1JlZEJ1bGxUVl9ITFM/playlist.m3u8"
@@ -165,14 +156,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "at"
+    "website": "",
+    "country": "at"
   },
   "rtv": {
-    "nombre": "RTV",
+    "name": "RTV",
     "logo": "https://raw.githubusercontent.com/jnk22/kodinerds-iptv/master/logos/tv/rtvat.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://iptv.rtv-ooe.at/stream.m3u8"
@@ -182,14 +172,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "at"
+    "website": "",
+    "country": "at"
   },
   "abcnews": {
-    "nombre": "ABC News",
+    "name": "ABC News",
     "logo": "https://i.imgur.com/BrW7gk8.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://c.mjh.nz/abc-news.m3u8"
@@ -199,14 +188,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "au"
+    "website": "",
+    "country": "au"
   },
   "arubatvplus": {
-    "nombre": "ArubaTV +",
+    "name": "ArubaTV +",
     "logo": "https://i.imgur.com/9s6LZJZ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://livertmptwo.com:19360/atvplusrelay/atvplusrelay.m3u8"
@@ -216,14 +204,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "aw"
+    "website": "",
+    "country": "aw"
   },
   "cbcsport": {
-    "nombre": "CBC Sport",
+    "name": "CBC Sport",
     "logo": "https://i.imgur.com/3mEdjuq.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://mn-nl.mncdn.com/cbcsports_live/cbcsports/playlist.m3u8"
@@ -233,14 +220,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "az"
+    "website": "",
+    "country": "az"
   },
   "aljazeerabalkans": {
-    "nombre": "Al Jazeera Balkans",
+    "name": "Al Jazeera Balkans",
     "logo": "https://i.imgur.com/vMzCr8O.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live-hls-apps-ajb-v3-fa.getaj.net/AJB/index.m3u8"
@@ -250,14 +236,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "ba"
+    "website": "",
+    "country": "ba"
   },
   "cbctv8": {
-    "nombre": "CBC TV8",
+    "name": "CBC TV8",
     "logo": "https://i.imgur.com/WsD83lq.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://1740288887.rsc.cdn77.org/1740288887/index.m3u8"
@@ -267,14 +252,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "bb"
+    "website": "",
+    "country": "bb"
   },
   "belrtl": {
-    "nombre": "Bel RTL",
+    "name": "Bel RTL",
     "logo": "https://i.imgur.com/0DUprIW.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://bel-live-hls.akamaized.net/hls/live/2038650/BEL-Live-HLS/master.m3u8"
@@ -284,14 +268,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "music",
-    "país": "be"
+    "website": "",
+    "country": "be"
   },
   "ctv": {
-    "nombre": "CTV",
+    "name": "CTV",
     "logo": "https://i.imgur.com/ljKb0UX.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live.ctvbolivia.com/hls/ctv.m3u8"
@@ -301,14 +284,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "bo"
+    "website": "",
+    "country": "bo"
   },
   "catve2": {
-    "nombre": "Catve2",
+    "name": "Catve2",
     "logo": "https://i.imgur.com/qiVfsfB.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://5b33b873179a2.streamlock.net:1443/catve2/catve2/playlist.m3u8"
@@ -318,14 +300,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "br"
+    "website": "",
+    "country": "br"
   },
   "catvefm": {
-    "nombre": "Catve FM",
+    "name": "Catve FM",
     "logo": "https://i.imgur.com/w89yw36.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://5b33b873179a2.streamlock.net:1443/radiocamera/livestream/playlist.m3u8"
@@ -335,14 +316,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "br"
+    "website": "",
+    "country": "br"
   },
   "catvemastertv": {
-    "nombre": "Catve Master TV",
+    "name": "Catve Master TV",
     "logo": "https://i.imgur.com/4m7Iazm.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://5b33b873179a2.streamlock.net:1443/mastertv/livestream/playlist.m3u8"
@@ -352,14 +332,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "br"
+    "website": "",
+    "country": "br"
   },
   "rbatv": {
-    "nombre": "RBATV",
+    "name": "RBATV",
     "logo": "https://i.imgur.com/ZWFxlU1.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cdn.live.br1.jmvstream.com/w/LVW-15748/LVW15748_Yed7yzLuRC/playlist.m3u8"
@@ -369,14 +348,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "br"
+    "website": "",
+    "country": "br"
   },
   "sbtinterior": {
-    "nombre": "SBT Interior",
+    "name": "SBT Interior",
     "logo": "https://i.imgur.com/IkZfa4j.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cdn.jmvstream.com/w/LVW-10801/LVW10801_Xvg4R0u57n/playlist.m3u8"
@@ -386,14 +364,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "br"
+    "website": "",
+    "country": "br"
   },
   "tvmon": {
-    "nombre": "TV Mon",
+    "name": "TV Mon",
     "logo": "https://i.imgur.com/Gjan8rl.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://srv1.zcast.com.br/tvmon/tvmon/playlist.m3u8"
@@ -403,14 +380,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "br"
+    "website": "",
+    "country": "br"
   },
   "guardiantalkradio": {
-    "nombre": "Guardian Talk Radio",
+    "name": "Guardian Talk Radio",
     "logo": "https://i.imgur.com/o3cWUwL.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cdn-edge1.streamcomedia.com/abr_tngr969fm/abr-tngr969fm_streams/playlist.m3u8"
@@ -420,14 +396,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "bs"
+    "website": "",
+    "country": "bs"
   },
   "cbcnewsnetwork": {
-    "nombre": "CBC News Network",
+    "name": "CBC News Network",
     "logo": "https://i.imgur.com/SjTdhvJ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amg00788-cbc-amg00788c4-xumo-us-3045.playouts.now.amagi.tv/master.m3u8"
@@ -437,14 +412,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "ca"
+    "website": "",
+    "country": "ca"
   },
   "cbctdt": {
-    "nombre": "CBCT-DT",
+    "name": "CBCT-DT",
     "logo": "https://upload.wikimedia.org/wikipedia/en/e/e9/CBCT-DT_logo.jpg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cbcrclinear-tor.akamaized.net/hls/live/2042756/CBCRCLINEAR_TOR_2/master5.m3u8"
@@ -454,14 +428,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "ca"
+    "website": "",
+    "country": "ca"
   },
   "hamdardtv": {
-    "nombre": "Hamdard TV",
+    "name": "Hamdard TV",
     "logo": "https://i.ibb.co/JcD2xck/logo-hamda.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://tv.hamdardtv.com/hamdard/index.m3u8"
@@ -471,14 +444,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "ca"
+    "website": "",
+    "country": "ca"
   },
   "hardknocks": {
-    "nombre": "Hard Knocks",
+    "name": "Hard Knocks",
     "logo": "https://i.imgur.com/nt9B6jx.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://d3uyzhwvmemdyf.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/Hard-Knocks-DistroTV/109.m3u8"
@@ -488,14 +460,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "ca"
+    "website": "",
+    "country": "ca"
   },
   "pardesitv": {
-    "nombre": "Pardesi TV",
+    "name": "Pardesi TV",
     "logo": "https://i.imgur.com/CwAdPpZ.jpg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://stream.pardesitv.online/pardesi/index.m3u8"
@@ -505,14 +476,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "culture",
-    "país": "ca"
+    "website": "",
+    "country": "ca"
   },
   "sardaritv": {
-    "nombre": "Sardari TV",
+    "name": "Sardari TV",
     "logo": "https://i.imgur.com/AhbJjPL.jpg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://158.69.124.9:1935/sardaritv/sardaritv/playlist.m3u8"
@@ -522,14 +492,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "ca"
+    "website": "",
+    "country": "ca"
   },
   "tsn1": {
-    "nombre": "TSN1",
+    "name": "TSN1",
     "logo": "https://i.imgur.com/eRFE0jZ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://fl5.moveonjoy.com/TSN_1/index.m3u8"
@@ -539,14 +508,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "ca"
+    "website": "",
+    "country": "ca"
   },
   "cbctv": {
-    "nombre": "CBC TV",
+    "name": "CBC TV",
     "logo": "https://i.imgur.com/zmsDo6X.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://stream.berosat.live:19360/cbc-tv/cbc-tv.m3u8"
@@ -556,14 +524,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "cd"
+    "website": "",
+    "country": "cd"
   },
   "rtnc": {
-    "nombre": "RTNC",
+    "name": "RTNC",
     "logo": "https://i.imgur.com/oVXO950.jpeg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://69.64.57.208/rtnc/playlist.m3u8"
@@ -573,14 +540,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "cd"
+    "website": "",
+    "country": "cd"
   },
   "rtnc3": {
-    "nombre": "RTNC 3 SD",
+    "name": "RTNC 3 SD",
     "logo": "https://i.imgur.com/rr9Zsno.jpeg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://51.254.199.122:8080/e-cableRTNC3/index.m3u8"
@@ -590,14 +556,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "cd"
+    "website": "",
+    "country": "cd"
   },
   "rsila1": {
-    "nombre": "RSI La 1 SD",
+    "name": "RSI La 1 SD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/RSI_La_1_2012.svg/512px-RSI_La_1_2012.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/rsila1hd/browser-dash/rsila1hd.mpd"
@@ -607,14 +572,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "ch"
+    "website": "",
+    "country": "ch"
   },
   "13c": {
-    "nombre": "13C",
+    "name": "13C",
     "logo": "https://i.ibb.co/3fbvkZ3/13cultura.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://origin.dpsgo.com/ssai/event/GI-9cp_bT8KcerLpZwkuhw/master.m3u8"
@@ -624,14 +588,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "cl"
+    "website": "",
+    "country": "cl"
   },
   "uatv": {
-    "nombre": "UATV",
+    "name": "UATV",
     "logo": "https://i.imgur.com/BdZGS66.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://unlimited1-us.dps.live/uatv/uatv.smil/playlist.m3u8"
@@ -641,14 +604,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "cl"
+    "website": "",
+    "country": "cl"
   },
   "cctvbilliards": {
-    "nombre": "CCTV-Billiards",
+    "name": "CCTV-Billiards",
     "logo": "https://i.imgur.com/WK3keM9.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://117.161.133.51:81/gitv_live/G_TAIQIU-CQ/G_TAIQIU-CQ.m3u8?p=GITV"
@@ -658,14 +620,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "cctvplus1": {
-    "nombre": "CCTV+ 1",
+    "name": "CCTV+ 1",
     "logo": "https://i.imgur.com/U8d4Is6.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8"
@@ -675,14 +636,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "cctvplus2": {
-    "nombre": "CCTV+ 2",
+    "name": "CCTV+ 2",
     "logo": "https://i.imgur.com/qSg862A.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL2.smil/playlist.m3u8"
@@ -692,14 +652,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "cgtn": {
-    "nombre": "CGTN",
+    "name": "CGTN",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/CGTN.svg/512px-CGTN.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amg00405-rakutentv-cgtn-rakuten-i9tar.amagi.tv/master.m3u8"
@@ -709,14 +668,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "cgtnarabic": {
-    "nombre": "CGTN Arabic",
+    "name": "CGTN Arabic",
     "logo": "https://i.imgur.com/AkFFrS7.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://arabic-livews.cgtn.com/hls/LSveq57bErWLinBnxosqjisZ220802LSTefTAS9zc9mpU08y3np9TH220802cd/playlist.m3u8"
@@ -726,14 +684,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "cgtndocumentary": {
-    "nombre": "CGTN Documentary",
+    "name": "CGTN Documentary",
     "logo": "https://i.imgur.com/JHv0WxM.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv/master.m3u8"
@@ -743,14 +700,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "documentary",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "cgtnfrench": {
-    "nombre": "CGTN French SD",
+    "name": "CGTN French SD",
     "logo": "https://i.imgur.com/BwhledK.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amg01314-cgtn-amg01314c2-rakuten-us-1319.playouts.now.amagi.tv/cgtn-fr-rakuten/playlist.m3u8"
@@ -760,14 +716,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "cgtnrussian": {
-    "nombre": "CGTN Russian",
+    "name": "CGTN Russian",
     "logo": "https://i.imgur.com/nDWkCmL.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://russian-livews.cgtn.com/hls/LSvexABhNipibK5KRuUkvHZ7220802LSTeze9o8tdFXMHsb1VosgoT220802cd/playlist.m3u8"
@@ -777,14 +732,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "cgtnspanish": {
-    "nombre": "CGTN Spanish SD",
+    "name": "CGTN Spanish SD",
     "logo": "https://i.imgur.com/Poz3xfi.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amg01314-cgtn-amg01314c3-rakuten-uk-1318.playouts.now.amagi.tv/cgtn-es-rakuten/playlist.m3u8"
@@ -794,14 +748,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "cn"
+    "website": "",
+    "country": "cn"
   },
   "caracoltv": {
-    "nombre": "Caracol TV SD",
+    "name": "Caracol TV SD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Caracol_Televisi%C3%B3n_logo.svg/512px-Caracol_Televisi%C3%B3n_logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://138.121.15.230:8000/play/CARACOL/index.m3u8"
@@ -811,14 +764,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "co"
+    "website": "",
+    "country": "co"
   },
   "nicoyatv": {
-    "nombre": "NicoyaTV",
+    "name": "NicoyaTV",
     "logo": "https://i.imgur.com/Lj2jRn3.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/playlist.m3u8"
@@ -828,14 +780,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "cr"
+    "website": "",
+    "country": "cr"
   },
   "nationalgeographic": {
-    "nombre": "National Geographic",
+    "name": "National Geographic",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/512px-Natgeologo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://78.130.250.2:8023/play/a02e/index.m3u8"
@@ -845,14 +796,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "documentary",
-    "país": "cz"
+    "website": "",
+    "country": "cz"
   },
   "ardalpha": {
-    "nombre": "ARD-alpha",
+    "name": "ARD-alpha",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/ARD_alpha.svg/512px-ARD_alpha.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://brlive-lh.akamaihd.net/i/bralpha_germany@119899/master.m3u8"
@@ -862,14 +812,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "education",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "disneychannel": {
-    "nombre": "Disney Channel",
+    "name": "Disney Channel",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/disneychannelde/browser-HLS8/disneychannelde.m3u8"
@@ -879,14 +828,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "kids",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "dw": {
-    "nombre": "DW English",
+    "name": "DW English",
     "logo": "https://i.imgur.com/8MRNFb9.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8"
@@ -896,14 +844,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "kabeleins": {
-    "nombre": "kabel eins SD",
+    "name": "kabel eins SD",
     "logo": "https://i.imgur.com/6pulSHZ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://strm.hdtvizlecanli.com/live/kabel1.m3u8"
@@ -913,14 +860,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "ltv": {
-    "nombre": "L TV",
+    "name": "L TV",
     "logo": "https://i.imgur.com/HuGaMJj.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live2.telvi.de/hls/l-tv_s1.m3u8"
@@ -930,14 +876,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "nickelodeon": {
-    "nombre": "Nickelodeon",
+    "name": "Nickelodeon",
     "logo": "https://i.imgur.com/E84jnP8.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://ma.anixa.tv/clips/stream/nickelodeon/playlist.php"
@@ -947,14 +892,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "kids",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "oktvludwigshafen": {
-    "nombre": "OK-TV Ludwigshafen",
+    "name": "OK-TV Ludwigshafen",
     "logo": "https://i.imgur.com/xiDeF8Y.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://s.ok54.de/oklu/livestream/playlist.m3u8"
@@ -964,14 +908,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "rtl": {
-    "nombre": "RTL HD",
+    "name": "RTL HD",
     "logo": "https://i.imgur.com/94K94k2.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://strm.hdtvizlecanli.com/live/rtl.m3u8"
@@ -981,14 +924,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "rtlsuper": {
-    "nombre": "RTL Super SD",
+    "name": "RTL Super SD",
     "logo": "https://i.imgur.com/KbdK8t9.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/superrtl/browser-dash/superrtl.mpd"
@@ -998,14 +940,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "rtlzwei": {
-    "nombre": "RTL Zwei HD",
+    "name": "RTL Zwei HD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/512px-RTLZWEI_Logo_2019.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/rtl2/browser-dash/rtl2.mpd"
@@ -1015,14 +956,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "zdf": {
-    "nombre": "ZDF HD",
+    "name": "ZDF HD",
     "logo": "https://i.imgur.com/rtLb6m9.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/zdfhd/browser-dash/zdfhd.mpd"
@@ -1032,14 +972,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "zdfinfo": {
-    "nombre": "ZDFinfo HD",
+    "name": "ZDFinfo HD",
     "logo": "https://i.imgur.com/vtq1IWp.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/zdfinfohd/browser-dash/zdfinfohd.mpd"
@@ -1049,14 +988,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "zdfneo": {
-    "nombre": "ZDFneo HD",
+    "name": "ZDFneo HD",
     "logo": "https://i.imgur.com/1JIIGgL.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/zdfneohd/browser-dash/zdfneohd.mpd"
@@ -1066,14 +1004,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "de"
+    "website": "",
+    "country": "de"
   },
   "fuegotv": {
-    "nombre": "Fuego TV",
+    "name": "Fuego TV",
     "logo": "https://i.imgur.com/T9vWjeB.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://video.misistemareseller.com/Fuegotv/Fuegotv/playlist.m3u8"
@@ -1083,14 +1020,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "music",
-    "país": "do"
+    "website": "",
+    "country": "do"
   },
   "globaltv": {
-    "nombre": "Global TV SD",
+    "name": "Global TV SD",
     "logo": "https://i.imgur.com/1rQaROm.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://stmv4.voxtvhd.com.br/globaltv/globaltv/playlist.m3u8"
@@ -1100,14 +1036,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "do"
+    "website": "",
+    "country": "do"
   },
   "cbc": {
-    "nombre": "CBC SD",
+    "name": "CBC SD",
     "logo": "https://i.imgur.com/8apNaLP.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://fl1002.bozztv.com/ga-cbc/index.m3u8"
@@ -1117,14 +1052,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "eg"
+    "website": "",
+    "country": "eg"
   },
   "cbcdrama": {
-    "nombre": "CBC Drama SD",
+    "name": "CBC Drama SD",
     "logo": "https://i.imgur.com/I8YdakH.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://fl1002.bozztv.com/ga-cbcdrama/index.m3u8"
@@ -1134,14 +1068,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "series",
-    "país": "eg"
+    "website": "",
+    "country": "eg"
   },
   "cbcsofra": {
-    "nombre": "CBC Sofra",
+    "name": "CBC Sofra",
     "logo": "https://i.imgur.com/YAdk2WR.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://bcovlive-a.akamaihd.net/753a1f2c951b4fb3914f30e1deb147d8/us-west-2/6057955906001/playlist.m3u8"
@@ -1151,14 +1084,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "lifestyle",
-    "país": "eg"
+    "website": "",
+    "country": "eg"
   },
   "24horas": {
-    "nombre": "24 Horas",
+    "name": "24 Horas",
     "logo": "https://i.imgur.com/IUVRm5L.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://d32rw80ytx9uxs.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-vlldndmow4yre/24HES.m3u8"
@@ -1168,14 +1100,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news;public",
-    "país": "es"
+    "website": "",
+    "country": "es"
   },
   "antena3": {
-    "nombre": "Antena 3",
+    "name": "Antena 3",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/3/39/Antena_3_2022_logo.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://atres-live.atresmedia.com/33ff422b6b87a1e42e72f9fb87d94dba93b6861f_ES_1757721625_1757750365/hlsts/live/antena3_usp/antena3_usp.isml/antena3_usp-audio_spa=128000-video=2700000.m3u8"
@@ -1185,14 +1116,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.antena3.com/",
-    "categoría": "general",
-    "país": "es"
+    "website": "https://www.antena3.com/",
+    "country": "es"
   },
   "clan": {
-    "nombre": "Clan",
+    "name": "Clan",
     "logo": "https://i.imgur.com/03jFV68.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://dum8zv1rbdjj2.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-x6uutpgph4tpt/ClanES.m3u8"
@@ -1202,14 +1132,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "kids;public",
-    "país": "es"
+    "website": "",
+    "country": "es"
   },
   "estutele": {
-    "nombre": "EsTuTele",
+    "name": "EsTuTele",
     "logo": "https://i.imgur.com/bsAbcmC.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cloud.streamingconnect.tv/hls/estutele/estutele.m3u8"
@@ -1219,14 +1148,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "es"
+    "website": "",
+    "country": "es"
   },
   "la-sexta": {
-    "nombre": "La Sexta",
+    "name": "La Sexta",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/2/27/LaSexta_Logo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://atres-live.atresmedia.com/cecad2262ebea7a1e85e08e21eb29759b3217dac_ES_1757723088_1757751828/hlsts/live/lasexta_usp/lasexta_usp.isml/playlist.m3u8"
@@ -1236,14 +1164,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.lasexta.com/",
-    "categoría": "general",
-    "país": "es"
+    "website": "https://www.lasexta.com/",
+    "country": "es"
   },
   "la1": {
-    "nombre": "La 1",
+    "name": "La 1",
     "logo": "https://i.imgur.com/1jDS9UC.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://ztnr.rtve.es/ztnr/1688877.m3u8"
@@ -1253,14 +1180,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general;public",
-    "país": "es"
+    "website": "",
+    "country": "es"
   },
   "la1canarias": {
-    "nombre": "La 1 Canarias",
+    "name": "La 1 Canarias",
     "logo": "https://i.imgur.com/RqUJ4oj.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://ztnr.rtve.es/ztnr/5190066.m3u8"
@@ -1270,14 +1196,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general;public",
-    "país": "es"
+    "website": "",
+    "country": "es"
   },
   "la2": {
-    "nombre": "La 2",
+    "name": "La 2",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/5/5e/La_2_Logo.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://rtvelivestream.rtve.es/rtvesec/la2/la2_main_dvr_720.m3u8"
@@ -1287,14 +1212,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.rtve.es/",
-    "categoría": "general",
-    "país": "es"
+    "website": "https://www.rtve.es/",
+    "country": "es"
   },
   "liratv": {
-    "nombre": "LiraTV",
+    "name": "LiraTV",
     "logo": "https://i.imgur.com/hBswXYZ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cloud2.streaminglivehd.com:1936/liratv/liratv/playlist.m3u8"
@@ -1304,14 +1228,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "music",
-    "país": "es"
+    "website": "",
+    "country": "es"
   },
   "mega-es": {
-    "nombre": "Mega (Atresmedia)",
+    "name": "Mega (Atresmedia)",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Mega_logo.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://atres-live.atresmedia.com/5d6ea961951b7c3dbb1df5a44e3d32298cf66e0d_ES_1757723305_1757752045/hlsts/live/mega_usp/mega_usp.isml/mega_usp-audio_spa=128000-video=2700000.m3u8"
@@ -1321,14 +1244,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.atresplayer.com/",
-    "categoría": "entertainment",
-    "país": "es"
+    "website": "https://www.atresplayer.com/",
+    "country": "es"
   },
   "neox": {
-    "nombre": "Neox",
+    "name": "Neox",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Neox_logo.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://atres-live.atresmedia.com/b9dc6653569523d4377933c49f9c30f43232340e_ES_1757723215_1757751955/hlsts/live/neox_usp/neox_usp.isml/neox_usp-audio_spa=128000-video=2700000.m3u8"
@@ -1338,14 +1260,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.atresplayer.com/",
-    "categoría": "entertainment",
-    "país": "es"
+    "website": "https://www.atresplayer.com/",
+    "country": "es"
   },
   "nova": {
-    "nombre": "Nova",
+    "name": "Nova",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/1/11/Nova_logo.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://atres-live.atresmedia.com/cc09bbee5aeac3497fd4272bf539eb28eb040a50_ES_1757723278_1757752018/hlsts/live/nova_usp/nova_usp.isml/nova_usp-audio_spa=128000-video=2700000.m3u8"
@@ -1355,14 +1276,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "https://www.atresplayer.com/",
-    "categoría": "entertainment",
-    "país": "es"
+    "website": "https://www.atresplayer.com/",
+    "country": "es"
   },
   "teledeporte": {
-    "nombre": "Teledeporte",
+    "name": "Teledeporte",
     "logo": "https://i.imgur.com/b0H5f62.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://d1cctoeg0n48w5.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-mnixw9wn5ugmv/TeledeporteES.m3u8"
@@ -1372,14 +1292,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "es"
+    "website": "",
+    "country": "es"
   },
   "iskelmatv": {
-    "nombre": "IskelmaTV",
+    "name": "IskelmaTV",
     "logo": "https://i.imgur.com/dum5KJj.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://mobiili.livetv.fi/memfs/f1819b9e-90da-408a-9a71-5c54e0cb5c33.m3u8"
@@ -1389,14 +1308,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "fi"
+    "website": "",
+    "country": "fi"
   },
   "20minutestv": {
-    "nombre": "20 Minutes TV",
+    "name": "20 Minutes TV",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/20_Minutes_TV_IDF_logo_%282023%29.png/320px-20_Minutes_TV_IDF_logo_%282023%29.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live-20minutestv.digiteka.com/1961167769/index.m3u8"
@@ -1406,14 +1324,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
   "bfmtv": {
-    "nombre": "BFM TV SD",
+    "name": "BFM TV SD",
     "logo": "https://i.imgur.com/YJCcczD.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/bfmtv/browser-HLS8/bfmtv.m3u8"
@@ -1423,14 +1340,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
-  "c news": {
-    "nombre": "C news",
+  "cnews": {
+    "name": "C news",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/9/91/Canal_News_logo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://raw.githubusercontent.com/LeBazarDeBryan/XTVZ_/main/Stream/Live/CNews.m3u8"
@@ -1440,14 +1356,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
   "france2": {
-    "nombre": "France 2",
+    "name": "France 2",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/France_2_2018.svg/512px-France_2_2018.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://69.64.57.208/france2/mono.m3u8"
@@ -1457,14 +1372,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
   "france24": {
-    "nombre": "France 24 French",
+    "name": "France 24 French",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c1/France_24_logo_%282013%29.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/france24/browser-HLS8/france24.m3u8"
@@ -1474,14 +1388,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
   "france3": {
-    "nombre": "France 3",
+    "name": "France 3",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/0/09/France_3_-_logo_2018.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/francetv/france3.m3u8"
@@ -1491,14 +1404,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
   "france4": {
-    "nombre": "France 4",
+    "name": "France 4",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/France_4_2018.svg/512px-France_4_2018.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/francetv/france4.m3u8"
@@ -1508,14 +1420,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "kids",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
   "m6": {
-    "nombre": "M6 SD",
+    "name": "M6 SD",
     "logo": "https://i.imgur.com/7GVp3fW.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/m6hd/browser-dash/m6hd.mpd"
@@ -1525,14 +1436,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
   "tf1": {
-    "nombre": "TF1 HD",
+    "name": "TF1 HD",
     "logo": "https://i.imgur.com/QxHt9NC.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/tf1hd/browser-dash/tf1hd.mpd"
@@ -1542,14 +1452,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
   "tf1seriesfilms": {
-    "nombre": "TF1 Series Films SD",
+    "name": "TF1 Series Films SD",
     "logo": "https://i.imgur.com/4CJIDKQ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/hd1/browser-dash/hd1.mpd"
@@ -1559,14 +1468,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "movies",
-    "país": "fr"
+    "website": "",
+    "country": "fr"
   },
-  "bbc drama (es)": {
-    "nombre": "BBC drama",
+  "bbc_drama_es": {
+    "name": "BBC drama",
     "logo": "https://wiki2023.mundoplus.tv/_media/logos/bbcdrama.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv/playlist.m3u8"
@@ -1576,14 +1484,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "gb"
+    "website": "",
+    "country": "gb"
   },
-  "bbc one": {
-    "nombre": "BBC 1",
+  "bbc_one": {
+    "name": "BBC 1",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/BBC_One_logo_2021.svg/330px-BBC_One_logo_2021.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://trn09.bozztv.com/gin-bbcone/index.m3u8"
@@ -1593,14 +1500,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "gb"
+    "website": "",
+    "country": "gb"
   },
-  "bbc two": {
-    "nombre": "BBC 2",
+  "bbc_two": {
+    "name": "BBC 2",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/BBC_Two_logo.png/330px-BBC_Two_logo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/bbc2/browser-HLS8/bbc2.m3u8"
@@ -1610,14 +1516,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "gb"
+    "website": "",
+    "country": "gb"
   },
   "bbcnews": {
-    "nombre": "BBC News NorthAmerica",
+    "name": "BBC News NorthAmerica",
     "logo": "https://i.imgur.com/vSz2WEp.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65d92a8c8b24c80008e285c0/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c26f5a2-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=9f1a48db-9022-43d1-bb25-ba665285192f"
@@ -1627,14 +1532,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "gb"
+    "website": "",
+    "country": "gb"
   },
   "cnbceurope": {
-    "nombre": "CNBC Europe HD",
+    "name": "CNBC Europe HD",
     "logo": "https://i.imgur.com/B6sfpDa.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/cnbc/browser-HLS8/cnbc.m3u8"
@@ -1644,14 +1548,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "business",
-    "país": "gb"
+    "website": "",
+    "country": "gb"
   },
   "iranefardatv": {
-    "nombre": "IraneFarda TV",
+    "name": "IraneFarda TV",
     "logo": "https://i.imgur.com/ixgcgZY.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://hls.iranfarda.live/hls/stream.m3u8"
@@ -1661,14 +1564,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "gb"
+    "website": "",
+    "country": "gb"
   },
   "art": {
-    "nombre": "ART",
+    "name": "ART",
     "logo": "https://i.imgur.com/mNeLu04.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://hugh.cdn.rumble.cloud/live/k5e12sb4/slot-82/fdd0-tbln/chunklist_DVR.m3u8"
@@ -1678,14 +1580,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "culture",
-    "país": "gr"
+    "website": "",
+    "country": "gr"
   },
   "ng": {
-    "nombre": "NG",
+    "name": "NG",
     "logo": "https://i.imgur.com/IcgbJKF.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live.streams.ovh/NGradio/NGradio/playlist.m3u8"
@@ -1695,14 +1596,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "music",
-    "país": "gr"
+    "website": "",
+    "country": "gr"
   },
   "ort": {
-    "nombre": "ORT",
+    "name": "ORT",
     "logo": "https://i.imgur.com/RotckUS.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://eu1.vectromdigital.com:1936/ort/ort/playlist.m3u8"
@@ -1712,14 +1612,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "gr"
+    "website": "",
+    "country": "gr"
   },
   "trt": {
-    "nombre": "TRT",
+    "name": "TRT",
     "logo": "https://i.imgur.com/g0jPOcC.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://www.hellasnet.tv/rest2.live.hn/u2r.trt/playlist.m3u8"
@@ -1729,14 +1628,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "gr"
+    "website": "",
+    "country": "gr"
   },
   "espiritusantoyfuegotv": {
-    "nombre": "Espiritu Santo Y Fuego TV",
+    "name": "Espiritu Santo Y Fuego TV",
     "logo": "https://i.imgur.com/8mdSWO4.jpg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://inliveserver.com:1936/8392/8392/playlist.m3u8"
@@ -1746,14 +1644,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "religious",
-    "país": "gt"
+    "website": "",
+    "country": "gt"
   },
   "gardeniastv": {
-    "nombre": "Gardenias TV",
+    "name": "Gardenias TV",
     "logo": "https://i.ibb.co/YfVmfwV/83ff2da28cae14bc47bb07e976bef578.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://stream.oursnetworktv.com/latin/gardeniasTv/playlist.m3u8"
@@ -1763,14 +1660,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "gt"
+    "website": "",
+    "country": "gt"
   },
   "guatv": {
-    "nombre": "GuaTV",
+    "name": "GuaTV",
     "logo": "https://i.imgur.com/YxBrM4u.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cdn.streamhispanatv.net:3352/live/guatvlive.m3u8"
@@ -1780,14 +1676,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "legislative",
-    "país": "gt"
+    "website": "",
+    "country": "gt"
   },
   "rtl2": {
-    "nombre": "RTL 2 SD",
+    "name": "RTL 2 SD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/RTL_2_Logo.svg/512px-RTL_2_Logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://bpcdnmanprod.nexttv.ht.hr/bpk-tv/RTL2/default/index.mpd"
@@ -1797,14 +1692,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "hr"
+    "website": "",
+    "country": "hr"
   },
   "sbtv": {
-    "nombre": "SBTV",
+    "name": "SBTV",
     "logo": "https://i.imgur.com/MIampxZ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live.leveex.hr/hls/live.m3u8"
@@ -1814,14 +1708,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "hr"
+    "website": "",
+    "country": "hr"
   },
   "atvspirit": {
-    "nombre": "ATV Spirit",
+    "name": "ATV Spirit",
     "logo": "https://i.imgur.com/JINE5xS.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://146.59.85.40:89/atvspirit/index.m3u8"
@@ -1831,14 +1724,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "hu"
+    "website": "",
+    "country": "hu"
   },
   "rtlketto": {
-    "nombre": "RTL Ketto",
+    "name": "RTL Ketto",
     "logo": "https://i.imgur.com/IVv0qrI.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://194.76.186.33:8000/play/a01z/index.m3u8"
@@ -1848,14 +1740,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "hu"
+    "website": "",
+    "country": "hu"
   },
   "cnbcindonesia": {
-    "nombre": "CNBC Indonesia",
+    "name": "CNBC Indonesia",
     "logo": "https://i.imgur.com/bUfeG7Y.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live.cnbcindonesia.com/livecnbc/smil:cnbctv.smil/master.m3u8"
@@ -1865,14 +1756,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "business",
-    "país": "id"
+    "website": "",
+    "country": "id"
   },
   "tatv": {
-    "nombre": "TATV",
+    "name": "TATV",
     "logo": "https://i.imgur.com/1f0EC7t.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://v2.siar.us/tatv/live.sdp/playlist.m3u8"
@@ -1882,14 +1772,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "id"
+    "website": "",
+    "country": "id"
   },
   "aajtak": {
-    "nombre": "Aaj Tak",
+    "name": "Aaj Tak",
     "logo": "https://i.imgur.com/RpIdCB3.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8"
@@ -1899,14 +1788,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "cnbctv18": {
-    "nombre": "CNBC TV18 SD",
+    "name": "CNBC TV18 SD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d5/CNBC_TV18.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/cnbc-tv18/master.m3u8"
@@ -1916,14 +1804,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "business",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "e24": {
-    "nombre": "E 24",
+    "name": "E 24",
     "logo": "https://i.imgur.com/vCaPNTe.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live-e24.dailyhunt.in/eternowsa/live/amlst:E24_,b256,b512,b1024,b1824,.smil/playlist.m3u8"
@@ -1933,14 +1820,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "filamchibhojpuri": {
-    "nombre": "Filamchi Bhojpuri SD",
+    "name": "Filamchi Bhojpuri SD",
     "logo": "https://pbs.twimg.com/profile_images/1356516689601564672/g3Umyo2t_400x400.jpg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://epiconvh.akamaized.net/live/filamchi/master.m3u8"
@@ -1950,14 +1836,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "movies",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "nickelodeonsonic": {
-    "nombre": "Nickelodeon Sonic",
+    "name": "Nickelodeon Sonic",
     "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Nickelodeon_Sonic_logo.png/512px-Nickelodeon_Sonic_logo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://prod-sports-north-gm.jiocinema.com/bpk-tv/Sonic_Nickelodeon_voot_MOB/Fallback/index.m3u8"
@@ -1967,14 +1852,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "kids",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "ptcnews": {
-    "nombre": "PTC News",
+    "name": "PTC News",
     "logo": "https://i.imgur.com/8BHV6Gr.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://streaming.ptcplay.com/PTCNEWSINONE/smil:Live.smil/playlist.m3u8"
@@ -1984,14 +1868,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "starsports1": {
-    "nombre": "Star Sports 1 HD",
+    "name": "Star Sports 1 HD",
     "logo": "https://i.imgur.com/E5jjKHI.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://41.205.93.154/STARSPORTS1/index.m3u8"
@@ -2001,14 +1884,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "tv9bharatvarsh": {
-    "nombre": "TV9 Bharatvarsh",
+    "name": "TV9 Bharatvarsh",
     "logo": "https://i.imgur.com/GEqUslW.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9hinjzgtpe/liveabr/playlist.m3u8"
@@ -2018,14 +1900,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "vbcnews": {
-    "nombre": "VBC News",
+    "name": "VBC News",
     "logo": "https://i.imgur.com/SvXCjha.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://5a1178b42cc03.streamlock.net/8200/8200/playlist.m3u8"
@@ -2035,14 +1916,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "in"
+    "website": "",
+    "country": "in"
   },
   "farmodatv": {
-    "nombre": "FarmodaTV",
+    "name": "FarmodaTV",
     "logo": "https://i.imgur.com/x4KCQlH.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://avr.host247.net/live/FarmodaTV/playlist.m3u8"
@@ -2052,14 +1932,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "religious",
-    "país": "iq"
+    "website": "",
+    "country": "iq"
   },
   "carinatv": {
-    "nombre": "CarinaTV SD",
+    "name": "CarinaTV SD",
     "logo": "https://i.imgur.com/ANGD7gv.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://samson.streamerr.co:8081/carinatv/tracks-v1a1/playlist.m3u8"
@@ -2069,14 +1948,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "grpveratv": {
-    "nombre": "GRP VERATV",
+    "name": "GRP VERATV",
     "logo": "https://i.imgur.com/jasSHXJ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://5cbd3bc28341f.streamlock.net:444/grp/live/playlist.m3u8"
@@ -2086,14 +1964,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "italia1": {
-    "nombre": "Italia 1",
+    "name": "Italia 1",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Italia_1_logo.svg/512px-Italia_1_logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/italia1/browser-dash/italia1.mpd"
@@ -2103,14 +1980,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "italia2": {
-    "nombre": "Italia 2",
+    "name": "Italia 2",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Logo_Italia2.svg/512px-Logo_Italia2.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://59d7d6f47d7fc.streamlock.net/italia2/italia2/playlist.m3u8"
@@ -2120,14 +1996,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "lacnews24": {
-    "nombre": "LaC News 24",
+    "name": "LaC News 24",
     "logo": "https://www.omnys.com/media/news/lac-news24-icona.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://f5842579ff984c1c98d63b8d789673eb.msvdn.net/live/S27391994/HVvPMzy/playlist.m3u8"
@@ -2137,14 +2012,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "lombardiatv": {
-    "nombre": "Lombardia TV",
+    "name": "Lombardia TV",
     "logo": "https://i.imgur.com/frVhm9q.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://5db313b643fd8.streamlock.net/LOMBARDIATV/LOMBARDIATV/playlist.m3u8"
@@ -2154,14 +2028,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "mediterraniatv": {
-    "nombre": "MediterraniaTV",
+    "name": "MediterraniaTV",
     "logo": "https://i.imgur.com/PJbXCoe.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://59bb40cf810aa.streamlock.net:4443/streamingvincente/streamingvincente/playlist.m3u8"
@@ -2171,14 +2044,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "radioiglesiassardegna": {
-    "nombre": "Radio Iglesias Sardegna",
+    "name": "Radio Iglesias Sardegna",
     "logo": "https://i.imgur.com/KDtVpLl.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://59d7d6f47d7fc.streamlock.net/visualradio/visualradio/playlist.m3u8"
@@ -2188,14 +2060,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "rai1": {
-    "nombre": "Rai 1",
+    "name": "Rai 1",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Rai_1_-_Logo_2016.svg/512px-Rai_1_-_Logo_2016.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://dash2.antik.sk/live/test_rai_uno_tizen/playlist.m3u8"
@@ -2205,14 +2076,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "rai2": {
-    "nombre": "Rai 2 HD",
+    "name": "Rai 2 HD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Rai_2_-_Logo_2016.svg/512px-Rai_2_-_Logo_2016.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://m3u.iranvids.com/rai02/output.m3u8"
@@ -2222,14 +2092,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "rai3": {
-    "nombre": "Rai 3 HD",
+    "name": "Rai 3 HD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Rai_3_-_Logo_2016.svg/512px-Rai_3_-_Logo_2016.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/rai3/browser-dash/rai3.mpd"
@@ -2239,14 +2108,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "rete4": {
-    "nombre": "Rete 4",
+    "name": "Rete 4",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Rete_4_-_Logo_2018.svg/500px-Rete_4_-_Logo_2018.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(r4)/index.m3u8"
@@ -2256,14 +2124,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "rtl1025best": {
-    "nombre": "RTL 102.5 Best",
+    "name": "RTL 102.5 Best",
     "logo": "https://i.imgur.com/ahWJwvT.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S76960628/OEPHRUIctA0M/playlist_video.m3u8"
@@ -2273,14 +2140,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "rtl1025brosis": {
-    "nombre": "RTL 102.5 Bro&Sis",
+    "name": "RTL 102.5 Bro&Sis",
     "logo": "https://i.imgur.com/1ZutMTJ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S75007890/MUGHuxc9dQ3b/playlist_video.m3u8"
@@ -2290,14 +2156,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "rtl1025napule": {
-    "nombre": "RTL 102.5 Napule",
+    "name": "RTL 102.5 Napule",
     "logo": "https://i.imgur.com/jFD0oOD.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S27134503/0f9AhuwKlhnZ/playlist_video.m3u8"
@@ -2307,14 +2172,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "rtl1025tv": {
-    "nombre": "RTL 102.5 TV",
+    "name": "RTL 102.5 TV",
     "logo": "https://i.imgur.com/75qUdR7.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S97044836/tbbP8T1ZRPBL/playlist_video.m3u8"
@@ -2324,14 +2188,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "sardegnauno": {
-    "nombre": "Sardegna Uno",
+    "name": "Sardegna Uno",
     "logo": "https://i.imgur.com/gv2pLIp.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://raw.githubusercontent.com/azgaresncf/strm2hls/main/streams/Sardegna1.m3u8"
@@ -2341,14 +2204,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "sportitalia24": {
-    "nombre": "Sportitalia 24",
+    "name": "Sportitalia 24",
     "logo": "https://i.imgur.com/RSwnoLn.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://di-yx2saj20.vo.lswcdn.net/sportitalia/smil:silive24.smil/playlist.m3u8"
@@ -2358,14 +2220,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "telecolorlombardia": {
-    "nombre": "Telecolor Lombardia",
+    "name": "Telecolor Lombardia",
     "logo": "https://i.imgur.com/QfJqBno.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://1aadf145546f475282c5b4e658c0ac4b.msvdn.net/live/324149/hlbAWtl/playlist.m3u8"
@@ -2375,14 +2236,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "videolinasardegna": {
-    "nombre": "Videolina Sardegna",
+    "name": "Videolina Sardegna",
     "logo": "https://i.imgur.com/nQwXaef.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://livestreaming.videolina.it/live/Videolina/playlist.m3u8"
@@ -2392,14 +2252,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "it"
+    "website": "",
+    "country": "it"
   },
   "sport": {
-    "nombre": "Sport",
+    "name": "Sport",
     "logo": "https://i.imgur.com/ORCu0w0.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://st2.mediabay.tv/KG_KTRK-Sport/index.m3u8"
@@ -2409,14 +2268,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "kg"
+    "website": "",
+    "country": "kg"
   },
   "eacnewstv": {
-    "nombre": "EAC News TV SD",
+    "name": "EAC News TV SD",
     "logo": "https://i.imgur.com/EuYhS9Z.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live-evg17.tv360.metfone.com.kh/LiveApp/streams/eacnews.m3u8"
@@ -2426,14 +2284,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "kh"
+    "website": "",
+    "country": "kh"
   },
   "arirangradio": {
-    "nombre": "Arirang Radio",
+    "name": "Arirang Radio",
     "logo": "https://i.imgur.com/dtfiG9k.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://amdlive-ch01.ctnd.com.edgesuite.net/arirang_3ch/smil:arirang_3ch.smil/playlist.m3u8"
@@ -2443,14 +2300,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "kr"
+    "website": "",
+    "country": "kr"
   },
   "arirangtv": {
-    "nombre": "Arirang TV",
+    "name": "Arirang TV",
     "logo": "https://i.imgur.com/Asu5pE9.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cdn-01.bonus-tv.ru/arirang_edge/playlist.m3u8"
@@ -2460,14 +2316,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general;news",
-    "país": "kr"
+    "website": "",
+    "country": "kr"
   },
   "arirangun": {
-    "nombre": "Arirang UN",
+    "name": "Arirang UN",
     "logo": "https://i.imgur.com/Jdy3WNm.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amdlive-ch02-ctnd-com.akamaized.net/arirang_2ch/smil:arirang_2ch.smil/playlist.m3u8"
@@ -2477,14 +2332,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "kr"
+    "website": "",
+    "country": "kr"
   },
   "ebs1tv": {
-    "nombre": "EBS 1TV",
+    "name": "EBS 1TV",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/EBS_1TV_Logo.svg/512px-EBS_1TV_Logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://ebsonair.ebs.co.kr/ebs1familypc/familypc1m/playlist.m3u8"
@@ -2494,14 +2348,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "education",
-    "país": "kr"
+    "website": "",
+    "country": "kr"
   },
   "kbs1tv": {
-    "nombre": "KBS 1TV",
+    "name": "KBS 1TV",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/KBS_1_logo.svg/512px-KBS_1_logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://mytv.dothome.co.kr/ch/public/1.php"
@@ -2511,14 +2364,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "kr"
+    "website": "",
+    "country": "kr"
   },
   "rtl9": {
-    "nombre": "RTL9 SD",
+    "name": "RTL9 SD",
     "logo": "https://i.imgur.com/nFqjVNW.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/rtl9/browser-dash/rtl9.mpd"
@@ -2528,14 +2380,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "lu"
+    "website": "",
+    "country": "lu"
   },
   "rtlteleletzebuerg": {
-    "nombre": "RTL Tele Letzebuerg",
+    "name": "RTL Tele Letzebuerg",
     "logo": "https://i.imgur.com/fkW5Gbl.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live-edge.rtl.lu/channel1/smil:channel1/playlist.m3u8"
@@ -2545,14 +2396,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "lu"
+    "website": "",
+    "country": "lu"
   },
   "rtlwebradiotv": {
-    "nombre": "RTL Web Radio TV",
+    "name": "RTL Web Radio TV",
     "logo": "https://i.imgur.com/qyc8LsE.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://rtlradio-streaming.rtl.lu/rtlradiowebtv/smil:rtlradiowebtv/playlist.m3u8"
@@ -2562,14 +2412,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "lu"
+    "website": "",
+    "country": "lu"
   },
   "rtlzwee": {
-    "nombre": "RTL Zwee",
+    "name": "RTL Zwee",
     "logo": "https://i.imgur.com/7SmCtyy.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live-edge.rtl.lu/channel2/smil:channel2/playlist.m3u8"
@@ -2579,14 +2428,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "lu"
+    "website": "",
+    "country": "lu"
   },
   "medi1tvafrique": {
-    "nombre": "Medi1TV Afrique",
+    "name": "Medi1TV Afrique",
     "logo": "https://i.imgur.com/OioFepy.jpeg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://streaming1.medi1tv.com/live/smil:medi1fr.smil/playlist.m3u8"
@@ -2596,14 +2444,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "ma"
+    "website": "",
+    "country": "ma"
   },
   "medi1tvarabic": {
-    "nombre": "Medi1TV Arabic",
+    "name": "Medi1TV Arabic",
     "logo": "https://i.imgur.com/jWKH922.jpeg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://streaming1.medi1tv.com/live/smil:medi1ar.smil/playlist.m3u8"
@@ -2613,14 +2460,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "ma"
+    "website": "",
+    "country": "ma"
   },
   "medi1tvmaghreb": {
-    "nombre": "Medi1TV Maghreb",
+    "name": "Medi1TV Maghreb",
     "logo": "https://i.imgur.com/LbeChWy.jpeg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://streaming1.medi1tv.com/live/smil:medi1tv.smil/playlist.m3u8"
@@ -2630,14 +2476,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "ma"
+    "website": "",
+    "country": "ma"
   },
   "monacoinfo": {
-    "nombre": "Monaco Info",
+    "name": "Monaco Info",
     "logo": "https://i.imgur.com/FPyPaL1.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://webtv.monacoinfo.com/live/prod/index.m3u8"
@@ -2647,14 +2492,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "mc"
+    "website": "",
+    "country": "mc"
   },
   "tvmonaco": {
-    "nombre": "TV Monaco SD",
+    "name": "TV Monaco SD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/a/af/Logo_de_la_cha%C3%AEne_TV_Monaco.jpg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://production-fast-mcrtv.content.okast.tv/channels/2116dc08-1959-465d-857f-3619daefb66b/b702b2b9-aebd-436c-be69-2118f56f3d86/master.m3u8"
@@ -2664,14 +2508,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "mc"
+    "website": "",
+    "country": "mc"
   },
   "viaatv": {
-    "nombre": "ViaATV",
+    "name": "ViaATV",
     "logo": "https://i.imgur.com/Ua6rOXo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://streamer01.myvideoplace.tv/streamer02/hls/ATV_DIRECT_EV_111018.m3u8"
@@ -2681,14 +2524,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "mq"
+    "website": "",
+    "country": "mq"
   },
   "one": {
-    "nombre": "One",
+    "name": "One",
     "logo": "https://i.imgur.com/UPlfzFx.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://80.79.6.221:25461/smash/public/21"
@@ -2698,14 +2540,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "mt"
+    "website": "",
+    "country": "mt"
   },
   "aztecainternacional": {
-    "nombre": "Azteca Internacional",
+    "name": "Azteca Internacional",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Azteca_Internacional_logo_2023.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://azt-mun.otteravision.com/azt/mun/mun.m3u8"
@@ -2715,14 +2556,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "mx"
+    "website": "",
+    "country": "mx"
   },
   "lasestrellas": {
-    "nombre": "Las Estrellas",
+    "name": "Las Estrellas",
     "logo": "https://i.imgur.com/g5ShxZ7.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://channel01-onlymex.akamaized.net/hls/live/2022749/event01/index.m3u8"
@@ -2732,14 +2572,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "mx"
+    "website": "",
+    "country": "mx"
   },
   "tv2": {
-    "nombre": "TV2",
+    "name": "TV2",
     "logo": "https://i.imgur.com/LGEdeyJ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd"
@@ -2749,14 +2588,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "my"
+    "website": "",
+    "country": "my"
   },
   "tvcnews": {
-    "nombre": "TVC News",
+    "name": "TVC News",
     "logo": "https://i.imgur.com/jaSq18B.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://69.64.57.208/tvcnews/playlist.m3u8"
@@ -2766,14 +2604,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "ng"
+    "website": "",
+    "country": "ng"
   },
   "nh": {
-    "nombre": "NH",
+    "name": "NH",
     "logo": "https://i.imgur.com/SPkK4md.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://takeoff.jetstre.am/?account=nhnieuws&file=live&output=playlist.m3u8&protocol=https&service=wowza&type=live"
@@ -2783,14 +2620,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "nl"
+    "website": "",
+    "country": "nl"
   },
   "omroephoekschewaard": {
-    "nombre": "Omroep Hoeksche Waard",
+    "name": "Omroep Hoeksche Waard",
     "logo": "https://i.imgur.com/pgMwNGV.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://ms2.mx-cd.net/tv/272-2641704/Hoeksche_Waard_TV.smil/playlist.m3u8"
@@ -2800,14 +2636,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "nl"
+    "website": "",
+    "country": "nl"
   },
   "omroeplingewaard": {
-    "nombre": "Omroep Lingewaard",
+    "name": "Omroep Lingewaard",
     "logo": "https://i.imgur.com/FqyTFVN.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://58c04fb1d143f.streamlock.net/omroeplingewaard_1/omroeplingewaard_1/playlist.m3u8"
@@ -2817,14 +2652,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "nl"
+    "website": "",
+    "country": "nl"
   },
   "omroepsudwest": {
-    "nombre": "Omroep Sudwest",
+    "name": "Omroep Sudwest",
     "logo": "https://i.imgur.com/XtKLmQS.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://d2ecwd3cgy6wo0.cloudfront.net/nlpo/clr-nlpo/omroepsudwest/index.m3u8"
@@ -2834,14 +2668,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "nl"
+    "website": "",
+    "country": "nl"
   },
   "atvplus": {
-    "nombre": "ATV+",
+    "name": "ATV+",
     "logo": "https://i.imgur.com/fY9256H.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://alba-pe-atv-atvmas.stream.mediatiquestream.com/index.m3u8"
@@ -2851,14 +2684,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "pe"
+    "website": "",
+    "country": "pe"
   },
   "atvsur": {
-    "nombre": "ATV Sur",
+    "name": "ATV Sur",
     "logo": "https://i.imgur.com/LnyVa5H.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://alba-pe-atv-atvsur.stream.mediatiquestream.com/index.m3u8"
@@ -2868,14 +2700,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "pe"
+    "website": "",
+    "country": "pe"
   },
   "rselvatv": {
-    "nombre": "RSelvaTV",
+    "name": "RSelvaTV",
     "logo": "https://i.imgur.com/DAK5ZnD.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live.obslivestream.com/selvatv/index.m3u8"
@@ -2885,14 +2716,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "pe"
+    "website": "",
+    "country": "pe"
   },
   "vamisatv": {
-    "nombre": "VamisaTV",
+    "name": "VamisaTV",
     "logo": "https://i.imgur.com/qaR3aqn.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://inliveserver.com:1936/10044/10044/playlist.m3u8"
@@ -2902,14 +2732,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "pe"
+    "website": "",
+    "country": "pe"
   },
   "euronews": {
-    "nombre": "Euronews",
+    "name": "Euronews",
     "logo": "https://images-2.rakuten.tv/storage/global-live-channel/translation/artwork/bc84c3b7-6008-4ee3-8f6a-e4bb4365f082-width200-quality90.jpeg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://euronews-live-pol-pl.fast.rakuten.tv/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6769/bitok/eyJzdGlkIjoiNDgyYjMzYzEtYmYwYi00NTIzLThlMGMtZGZmY2ZkNjYyMGU1IiwibWt0IjoicGwiLCJjaCI6Njc2OSwicHRmIjo1fQ==/26235/euronews-pl.m3u8"
@@ -2919,14 +2748,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "pl"
+    "website": "",
+    "country": "pl"
   },
   "hardknocksfightingchampionship": {
-    "nombre": "Hard Knocks Fighting Championship",
+    "name": "Hard Knocks Fighting Championship",
     "logo": "https://images-1.rakuten.tv/storage/global-live-channel/translation/artwork/13b0a6c7-4307-4c8d-9fc4-df2a4f8e8b38-hard-knocks-fighting-1602077398-width200-quality90.jpeg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://d39g1vxj2ef6in.cloudfront.net/v1/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/2ee2b8d4-acc4-4296-9dc8-66f1ffd0fff8/5.m3u8"
@@ -2936,14 +2764,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "pl"
+    "website": "",
+    "country": "pl"
   },
   "worldbilliards": {
-    "nombre": "World Billiards",
+    "name": "World Billiards",
     "logo": "https://images-3.rakuten.tv/storage/global-live-channel/translation/artwork/80af06f2-a12e-4406-bd13-b932fd69fffe-width200-quality90.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://9a81dd4ee3884d0dbcacafaf0d81327a.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/RakutenTV-eu_BilliardsTV/playlist.m3u8"
@@ -2953,14 +2780,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "pl"
+    "website": "",
+    "country": "pl"
   },
   "catv": {
-    "nombre": "CAtv",
+    "name": "CAtv",
     "logo": "https://caribbeanadvantage.com/images/CAtv-logo-512.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://video2.getstreamhosting.com:19360/8216/8216.m3u8"
@@ -2970,14 +2796,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "pr"
+    "website": "",
+    "country": "pr"
   },
   "wdwldt1": {
-    "nombre": "WDWL-DT1",
+    "name": "WDWL-DT1",
     "logo": "https://i.imgur.com/B7lqYZe.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://5cb1ee4d59ac0.streamlock.net/enlacepr1/enlacepr1/playlist.m3u8"
@@ -2987,14 +2812,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "religious",
-    "país": "pr"
+    "website": "",
+    "country": "pr"
   },
   "famatv": {
-    "nombre": "Famatv",
+    "name": "Famatv",
     "logo": "https://i.ibb.co/tMmRp18/Fama-TV-cor-whitebg-hotizontal.jpg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://tv2.fastcast4u.com:3310/live/famatvlive.m3u8"
@@ -3004,14 +2828,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "music",
-    "país": "pt"
+    "website": "",
+    "country": "pt"
   },
   "gotv": {
-    "nombre": "GO TV",
+    "name": "GO TV",
     "logo": "https://i.ibb.co/jkvYVyz/Captura.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://rds3.desdeparaguay.net/gotv/gotv/playlist.m3u8"
@@ -3021,14 +2844,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment;music",
-    "país": "py"
+    "website": "",
+    "country": "py"
   },
   "aljazeera": {
-    "nombre": "Al Jazeera English",
+    "name": "Al Jazeera English",
     "logo": "https://i.imgur.com/7bRVpnu.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://d1cy85syyhvqz5.cloudfront.net/v1/master/7b67fbda7ab859400a821e9aa0deda20ab7ca3d2/aljazeeraLive/AJE/index.m3u8"
@@ -3038,14 +2860,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "qa"
+    "website": "",
+    "country": "qa"
   },
   "aljazeeradocumentary": {
-    "nombre": "Al Jazeera Documentary",
+    "name": "Al Jazeera Documentary",
     "logo": "https://i.imgur.com/5dNJlLo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live-hls-apps-ajd-fa.getaj.net/AJD/index.m3u8"
@@ -3055,14 +2876,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "qa"
+    "website": "",
+    "country": "qa"
   },
   "aljazeeramubasher": {
-    "nombre": "Al Jazeera Mubasher",
+    "name": "Al Jazeera Mubasher",
     "logo": "https://yt3.googleusercontent.com/h0_bBdVgCAXIPJFnQ4hZtE87cDY_qO7rkDAue8qXdmOFxZ5NaO3AFD1uCUcst-EsBcGJ8zl8EQ=s160-c-k-c0x00ffffff-no-rj",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live-hls-apps-ajm-fa.getaj.net/AJM/index.m3u8"
@@ -3072,14 +2892,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "qa"
+    "website": "",
+    "country": "qa"
   },
   "ardealtv": {
-    "nombre": "Ardeal TV",
+    "name": "Ardeal TV",
     "logo": "https://i.imgur.com/5XwtFKd.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://frn.rtsp.me/wzhx8pmNF7-kstp_J0AdjA/1695647213/hls/yZ9ED27Q.m3u8"
@@ -3089,14 +2908,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "ro"
+    "website": "",
+    "country": "ro"
   },
   "sperantatv": {
-    "nombre": "SperantaTV",
+    "name": "SperantaTV",
     "logo": "https://i.imgur.com/KUyqQCX.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://customer-x8zydurm357k8j9p.cloudflarestream.com/0dd00c080ff4cbe839a12c923610a55c/manifest/video.m3u8"
@@ -3106,14 +2924,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "religious",
-    "país": "ro"
+    "website": "",
+    "country": "ro"
   },
   "etv": {
-    "nombre": "E TV",
+    "name": "E TV",
     "logo": "https://i.imgur.com/FbPFS8u.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cdn-01.bonus-tv.ru/gsl/playlist.m3u8"
@@ -3123,14 +2940,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "ru"
+    "website": "",
+    "country": "ru"
   },
   "rt": {
-    "nombre": "RT",
+    "name": "RT",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/512px-Russia-today-logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cloud.odysee.live/content/fdd11cb3ab75f95efb7b3bc2d726aa13ac915b66/master.m3u8"
@@ -3140,14 +2956,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "ru"
+    "website": "",
+    "country": "ru"
   },
   "u": {
-    "nombre": "U",
+    "name": "U",
     "logo": "https://i.imgur.com/KDZvt0Q.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://zabava-htlive.cdn.ngenix.net/hls/CH_U/variant.m3u8"
@@ -3157,14 +2972,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "ru"
+    "website": "",
+    "country": "ru"
   },
   "axnasia": {
-    "nombre": "AXN Asia Vietnam",
+    "name": "AXN Asia Vietnam",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/512px-AXN_logo_%282015%29.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://tv.ddns.vn/tv/axnhd/index.m3u8"
@@ -3174,14 +2988,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "movies",
-    "país": "sg"
+    "website": "",
+    "country": "sg"
   },
   "sbttv": {
-    "nombre": "SBT TV SD",
+    "name": "SBT TV SD",
     "logo": "https://i.imgur.com/rmNDylW.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://122.155.12.107:1935/live/sbt_tv_aac_300/playlist.m3u8"
@@ -3191,14 +3004,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "th"
+    "website": "",
+    "country": "th"
   },
   "thaipbs": {
-    "nombre": "Thai PBS",
+    "name": "Thai PBS",
     "logo": "https://i.imgur.com/CwalZjr.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://thaipbs-live.cdn.byteark.com/live/playlist.m3u8"
@@ -3208,14 +3020,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "th"
+    "website": "",
+    "country": "th"
   },
   "atvalanya": {
-    "nombre": "ATV Alanya",
+    "name": "ATV Alanya",
     "logo": "https://i.imgur.com/bUwarR0.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://stream2.taksimbilisim.com:1935/alanyatv/alanyatv.smil/playlist.m3u8"
@@ -3225,14 +3036,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "tr"
+    "website": "",
+    "country": "tr"
   },
   "atvavrupa": {
-    "nombre": "ATV Avrupa",
+    "name": "ATV Avrupa",
     "logo": "https://i.tmgrup.com.tr/aav/site/v1/i/atv-avrupa-logo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://185.234.111.229:8000/play/a018"
@@ -3242,14 +3052,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "tr"
+    "website": "",
+    "country": "tr"
   },
   "dersim62tv": {
-    "nombre": "Dersim62 TV",
+    "name": "Dersim62 TV",
     "logo": "https://i.imgur.com/wFTl8aQ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://live.arkumedia.com:1935/dersim62tv/dersim62tv/playlist.m3u8"
@@ -3259,14 +3068,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "tr"
+    "website": "",
+    "country": "tr"
   },
   "kardelentv": {
-    "nombre": "Kardelen TV",
+    "name": "Kardelen TV",
     "logo": "https://i.imgur.com/0RATxcN.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://edge1.socialsmart.tv/kardelentv/bant1/playlist.m3u8"
@@ -3276,14 +3084,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "tr"
+    "website": "",
+    "country": "tr"
   },
   "trtworld": {
-    "nombre": "TRT World",
+    "name": "TRT World",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TRT_World.svg/512px-TRT_World.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://92.114.85.72:8000/play/a02v"
@@ -3293,14 +3100,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "tr"
+    "website": "",
+    "country": "tr"
   },
-  "bbc drama (en)": {
-    "nombre": "BBC drama",
+  "bbc_drama_en": {
+    "name": "BBC drama",
     "logo": "https://wiki2023.mundoplus.tv/_media/logos/bbcdrama.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/60dafb9a0df1ba000758d37b/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&serverSideAds=false&studio_id=viacom&tags=ROKU_CONTENT_TAGS"
@@ -3310,14 +3116,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "tv"
+    "website": "",
+    "country": "tv"
   },
   "ebcnews": {
-    "nombre": "EBC News",
+    "name": "EBC News",
     "logo": "https://i.imgur.com/QFZs80p.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://seb.sason.top/sc/dsxw_fhd.m3u8"
@@ -3327,14 +3132,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "tw"
+    "website": "",
+    "country": "tw"
   },
   "inter": {
-    "nombre": "Inter",
+    "name": "Inter",
     "logo": "https://i.imgur.com/FHRagMx.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://edge1.iptv.macc.com.ua/img/inter_3/index.m3u8"
@@ -3344,14 +3148,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "ua"
+    "website": "",
+    "country": "ua"
   },
   "z": {
-    "nombre": "Z",
+    "name": "Z",
     "logo": "https://i.imgur.com/E5aV5aa.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://stream.ztv.zp.ua/hls/live.m3u8"
@@ -3361,14 +3164,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "ua"
+    "website": "",
+    "country": "ua"
   },
   "abc": {
-    "nombre": "ABC",
+    "name": "ABC",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/2/27/WWAY_logo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://41.205.93.154/ABC/index.m3u8"
@@ -3378,14 +3180,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "amcenespanol": {
-    "nombre": "AMC en Espanol",
+    "name": "AMC en Espanol",
     "logo": "https://i.imgur.com/L1h6W5Q.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/62fa81ccd1a7e90007c1ada0/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c268073-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=c6f5fd68-d238-461a-85d9-c326f4f63ae9"
@@ -3395,14 +3196,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "atvsat": {
-    "nombre": "ATVSat",
+    "name": "ATVSat",
     "logo": "https://i.imgur.com/pwM5txv.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://stream.atvsat.com/atvsatlive/smil:atvsatlive.smil/playlist.m3u8"
@@ -3412,14 +3212,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "religious",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "auroratv": {
-    "nombre": "AuroraTV",
+    "name": "AuroraTV",
     "logo": "https://i.imgur.com/g8Q1ASR.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://reflect-aurora.cablecast.tv/live-8/live/live.m3u8"
@@ -3429,14 +3228,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "batv": {
-    "nombre": "BATV",
+    "name": "BATV",
     "logo": "https://i.imgur.com/nTeE4xu.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://reflect-batv.cablecast.tv/live-5/live/live.m3u8"
@@ -3446,14 +3244,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "bbchomegarden": {
-    "nombre": "BBC Home & Garden",
+    "name": "BBC Home & Garden",
     "logo": "https://i.imgur.com/rC0pi1D.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5fb5836fe745b600070fc743/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c26f5a1-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=844b6663-bad2-462b-9aef-d0f33d5dfaa0"
@@ -3463,14 +3260,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "lifestyle",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "beachtvmyrtlebeachthegrandstrand": {
-    "nombre": "Beach TV",
+    "name": "Beach TV",
     "logo": "https://i.imgur.com/aLYz7Bv.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://media4.tripsmarter.com:1935/LiveTV/MTVHD/playlist.m3u8"
@@ -3480,14 +3276,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "travel",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "beinsportsusa": {
-    "nombre": "beIN Sports USA",
+    "name": "beIN Sports USA",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Bein_Sports_Logo.svg/512px-Bein_Sports_Logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://fl3.moveonjoy.com/BEIN_SPORTS/index.m3u8"
@@ -3497,14 +3292,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "beinsportsxtra": {
-    "nombre": "beIN SPORTS XTRA",
+    "name": "beIN SPORTS XTRA",
     "logo": "https://i.imgur.com/uJosqHh.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/60492fdd9989d30007ccd30a/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c26f5a5-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=5f89b39e-273a-43e4-8664-6b0d3d3b0fef"
@@ -3514,14 +3308,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "billiardtv": {
-    "nombre": "Billiard TV SD",
+    "name": "Billiard TV SD",
     "logo": "https://i.imgur.com/BZijfKh.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65df0cff66eec8000897b3a4/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=1b1cc775-4b81-11ef-a8ac-e146e4e7be02&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=36e4c683-680e-486f-91f0-ce1f0f88c4b6"
@@ -3531,14 +3324,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "brevardgovernmentaccesstv": {
-    "nombre": "Brevard Government Access TV",
+    "name": "Brevard Government Access TV",
     "logo": "https://i.imgur.com/eUTDIQ2.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cdn3.wowza.com/5/cXdyRHF0Z3kxN0k2/brevardfl/G2111_002/playlist.m3u8"
@@ -3548,14 +3340,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "legislative",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "cbsnews247": {
-    "nombre": "CBS News 24/7",
+    "name": "CBS News 24/7",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/560px-CBS_News_247_logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5a6b92f6e22a617379789618/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c276ad5-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=36903a12-54e9-4279-a247-c026f64396a8"
@@ -3565,14 +3356,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "cnbc": {
-    "nombre": "CNBC",
+    "name": "CNBC",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/CNBC_logo.svg/512px-CNBC_logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://fl3.moveonjoy.com/CNBC/index.m3u8"
@@ -3582,14 +3372,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "business",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "cnbcworld": {
-    "nombre": "CNBC World",
+    "name": "CNBC World",
     "logo": "https://zap2it.tmsimg.com/h3/NowShowing/26849/s26849_ll_h15_ab.png?w=512",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://fl3.moveonjoy.com/CNBC_World/index.m3u8"
@@ -3599,14 +3388,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "business",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "creatvchannel15": {
-    "nombre": "CreaTV Channel 15",
+    "name": "CreaTV Channel 15",
     "logo": "https://i.imgur.com/Lwzio0H.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://reflect-creatv.cablecast.tv/live-13/live/live.m3u8"
@@ -3616,14 +3404,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "creatvchannel27": {
-    "nombre": "CreaTV Channel 27",
+    "name": "CreaTV Channel 27",
     "logo": "https://i.imgur.com/IYuv0RF.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://reflect-creatv.cablecast.tv/live-19/live/live.m3u8"
@@ -3633,14 +3420,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "creatvchannel28": {
-    "nombre": "CreaTV Channel 28",
+    "name": "CreaTV Channel 28",
     "logo": "https://i.imgur.com/rvQdzL1.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://reflect-creatv.cablecast.tv/live-14/live/live.m3u8"
@@ -3650,14 +3436,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "education",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "creatvchannel30": {
-    "nombre": "CreaTV Channel 30",
+    "name": "CreaTV Channel 30",
     "logo": "https://i.imgur.com/O5GXlmE.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://reflect-creatv.cablecast.tv/live-16/live/live.m3u8"
@@ -3667,14 +3452,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "daretodreamnetwork": {
-    "nombre": "Dare To Dream Network",
+    "name": "Dare To Dream Network",
     "logo": "https://i.imgur.com/JwCLwQ2.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://3abn.bozztv.com/3abn2/d2d_live/smil:d2d_live.smil/playlist.m3u8"
@@ -3684,14 +3468,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "religious",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "disneyxd": {
-    "nombre": "Disney XD East",
+    "name": "Disney XD East",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a8/2015_Disney_XD_logo.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://fl3.moveonjoy.com/DISNEY_XD/index.m3u8"
@@ -3701,14 +3484,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "kids",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "foxnewschannel": {
-    "nombre": "Fox News Channel",
+    "name": "Fox News Channel",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/512px-Fox_News_Channel_logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://23.237.104.106:8080/USA_FOX_NEWS/index.m3u8"
@@ -3718,14 +3500,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "foxnewsradio": {
-    "nombre": "Fox News Radio",
+    "name": "Fox News Radio",
     "logo": "https://radio.foxnews.com/wp-content/uploads/2017/10/default_logo-150x150.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://radiovid.foxnews.com/hls/live/661547/RADIOVID/index.m3u8"
@@ -3735,14 +3516,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "foxsports2": {
-    "nombre": "Fox Sports 2 HD",
+    "name": "Fox Sports 2 HD",
     "logo": "https://i.imgur.com/LHtxKI8.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://23.237.104.106:8080/USA_FS2/index.m3u8"
@@ -3752,14 +3532,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "sports",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "heartland": {
-    "nombre": "Heartland Web",
+    "name": "Heartland Web",
     "logo": "https://i.imgur.com/djCq2Z5.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/61f07513227feb00073ee6bc/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c291888-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=4c0b4f02-0b37-467a-87a8-5f605cce8cba"
@@ -3769,14 +3548,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "latv": {
-    "nombre": "LATV",
+    "name": "LATV",
     "logo": "https://i.imgur.com/fJxySUg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amg00779-latv-amg00779c1-cineverse-us-1746.playouts.now.amagi.tv/playlist/amg00779-latvnetworkllc-latv-cineverseus/playlist.m3u8"
@@ -3786,14 +3564,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "militaryhistory": {
-    "nombre": "Military History",
+    "name": "Military History",
     "logo": "https://i.imgur.com/S1SnpoA.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://fl3.moveonjoy.com/Military_History/index.m3u8"
@@ -3803,14 +3580,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "documentary",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "msnbc": {
-    "nombre": "MSNBC",
+    "name": "MSNBC",
     "logo": "https://i.imgur.com/kGUR6NE.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://41.205.93.154/MSNBC/index.m3u8"
@@ -3820,14 +3596,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "nbc": {
-    "nombre": "NBC",
+    "name": "NBC",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/NBC_logo_2022_%28vertical%29.svg/512px-NBC_logo_2022_%28vertical%29.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://cors-proxy.cooks.fyi/https://streamer2.nexgen.bz/NBC/index.m3u8"
@@ -3837,14 +3612,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "nbcnewsnow": {
-    "nombre": "NBC News NOW",
+    "name": "NBC News NOW",
     "logo": "https://i.imgur.com/JZt2qh5.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5df97894467dfa00091c873c/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2a5101-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=f97284ae-c6d0-447a-b3ee-5be284830e0b"
@@ -3854,14 +3628,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "pbs": {
-    "nombre": "PBS East",
+    "name": "PBS East",
     "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/NJ_PBS_logo.png/512px-NJ_PBS_logo.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://pbs.lls.cdn.pbs.org/est/index.m3u8"
@@ -3871,14 +3644,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "education",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "pbsantiquesroadshow": {
-    "nombre": "PBS Antiques Roadshow",
+    "name": "PBS Antiques Roadshow",
     "logo": "https://i.imgur.com/U9CYaok.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/636c2b3c55d2e700074105c4/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2a9f22-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=45ec09d8-36de-4581-9848-35cbe70a0eb0"
@@ -3888,14 +3660,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "series",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "pbskidseasterncentral": {
-    "nombre": "PBS Kids Eastern/Central",
+    "name": "PBS Kids Eastern/Central",
     "logo": "https://i.imgur.com/ambc9le.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8"
@@ -3905,14 +3676,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "education;kids",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "pbsnature": {
-    "nombre": "PBS Nature",
+    "name": "PBS Nature",
     "logo": "https://i.imgur.com/Brry7cZ.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/640a64bd73e013000893d4e0/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2a9f23-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=c1a2f62c-0e00-4ba7-b555-34d14d59fee4"
@@ -3922,14 +3692,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "series",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "portlandia": {
-    "nombre": "Portlandia",
+    "name": "Portlandia",
     "logo": "https://i.imgur.com/I4KDvu9.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://amc-portlandia-1-us.xumo.wurl.tv/playlist.m3u8"
@@ -3939,14 +3708,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "radiofardatv": {
-    "nombre": "Radio Farda TV SD",
+    "name": "Radio Farda TV SD",
     "logo": "https://i.imgur.com/t3MpSaP.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live20.bozztv.com/gin-36bay3/gp-radiofarda/tracks-v1a1/mono.m3u8"
@@ -3956,14 +3724,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "samuelgoldwynclassics": {
-    "nombre": "Samuel Goldwyn Classics",
+    "name": "Samuel Goldwyn Classics",
     "logo": "https://i.imgur.com/XC30JAF.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://samuelgoldwyn-classics-1-us.roku.wurl.tv/playlist.m3u8"
@@ -3973,14 +3740,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "classic",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "sbtn": {
-    "nombre": "SBTN SD",
+    "name": "SBTN SD",
     "logo": "https://i.imgur.com/Jatzg3J.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://live20.bozztv.com/dvrfl05/gin-netviet/index.m3u8"
@@ -3990,14 +3756,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "storiesbyamc": {
-    "nombre": "Stories by AMC",
+    "name": "Stories by AMC",
     "logo": "https://i.imgur.com/QJtwJoS.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5e8254118601b80007b4b7ae/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2bd7a7-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=376bc851-10a1-4952-ada7-86e9d28d5845"
@@ -4007,14 +3772,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "entertainment",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "totallyturtles": {
-    "nombre": "Totally Turtles",
+    "name": "Totally Turtles",
     "logo": "https://i.imgur.com/1gIpagY.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5d0c16d686454ead733d08f8/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2c73e9-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=3441abd1-12dc-4351-b79d-3b4eb58dc339"
@@ -4024,14 +3788,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "kids",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "vicetv": {
-    "nombre": "VICE TV",
+    "name": "VICE TV",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Vice_TV_logo.svg/512px-Vice_TV_logo.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://vicetv-vicefast1-firetv.amagi.tv/playlist.m3u8"
@@ -4041,14 +3804,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "visionglobaltv": {
-    "nombre": "Vision Global TV SD",
+    "name": "Vision Global TV SD",
     "logo": "https://i.imgur.com/3FaNbYD.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://vdopanel.jlahozconsulting.com:3407/hybrid/play.m3u8"
@@ -4058,14 +3820,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "general",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "wptvdt1": {
-    "nombre": "WPTV-DT1",
+    "name": "WPTV-DT1",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/NBC_logo_2022_%28vertical%29.svg/512px-NBC_logo_2022_%28vertical%29.svg.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://apollo.production-public.tubi.io/live/ac-wptv2.m3u8"
@@ -4075,14 +3836,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "",
-    "país": "us"
+    "website": "",
+    "country": "us"
   },
   "kandelatv": {
-    "nombre": "KandelaTV",
+    "name": "KandelaTV",
     "logo": "https://i.imgur.com/cCFxyIp.jpg",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://streamtv.intervenhosting.net:3718/live/kandelamedioslive.m3u8"
@@ -4092,14 +3852,13 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "music",
-    "país": "ve"
+    "website": "",
+    "country": "ve"
   },
   "sabcnews": {
-    "nombre": "SABC News",
+    "name": "SABC News",
     "logo": "https://i.imgur.com/liLta8j.png",
-    "señales": {
+    "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://sabconetanw.cdn.mangomolo.com/news/smil:news.stream.smil/master.m3u8"
@@ -4109,8 +3868,7 @@
       "yt_playlist": "",
       "twitch_id": ""
     },
-    "sitio_oficial": "",
-    "categoría": "news",
-    "país": "za"
+    "website": "",
+    "country": "za"
   }
 }
