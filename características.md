@@ -1,61 +1,59 @@
 # Características
 
 - [X] Diseño
-  - [X] Responsivo
-  - [X] Accesibilidad
+    - [X] Responsivo
+    - [X] Accesibilidad
 - [X] PWA
-  - [X] Favicon
-    - [X] Favicon maskable
-  - [X] Manifest
-  - [X] Service worker
+    - [X] Favicon
+        - [X] Favicon maskable
+    - [X] Manifest
+    - [X] Service worker
 - [X] Funcionalidades
-  - [X] Reloj hora Chile independiente de reloj dispositivo
-  - [X] Botones compartir
-    - [X] Usar navigator.share en telefonos
-    - [X] botón copiado automático url
-  - [X] Canales
-    - [X] Añadir canales
-    - [X] Filtro canales
-      - [X] Autofocus en PC 
-    - [X] Overlay con nombre canal y enlace a sitio fuente
-    - [X] `QUIZAS` Categorías (nav)
-      - [X] Pais
-      - [ ] Tipo (Canal, Radio, Cámara, Música)
-      - [ ] Activos/desactivados
-    - [X] `QUIZAS` Botón ordenar canales a-z
-      - [ ] Recordar con localStorage
-    - [X] Botón limpiar todo canal activo
-    - [X] Bandera acorde a país
-    - [X] Capacidad de mover canales dentro de grid
-      - [X] Recordar con localStorage
-  - [X] Habilidad de borrar localStorage
-  - [ ] `IMPROBABLE` Verificar si canal esta online
-  - [ ] `QUIZAS` Overlay en canales Youtube para alternar a instancia invidious
+    - [X] Reloj hora Chile independiente de reloj dispositivo
+    - [X] Botones compartir
+        - [X] Usar navigator.share en telefonos
+        - [X] botón copiado automático url
+    - [X] Canales
+        - [X] Añadir canales
+        - [X] Filtro canales
+            - [X] Autofocus en PC
+        - [X] Overlay con nombre canal y enlace a sitio fuente
+        - [X] `QUIZAS` Categorías (nav)
+            - [X] Pais
+            - [ ] Tipo (Canal, Radio, Cámara, Música)
+            - [ ] Activos/desactivados
+        - [X] `QUIZAS` Botón ordenar canales a-z
+            - [ ] Recordar con localStorage
+        - [X] Botón limpiar todo canal activo
+        - [X] Bandera acorde a país
+        - [X] Capacidad de mover canales dentro de grid
+            - [X] Recordar con localStorage
+    - [X] Habilidad de borrar localStorage
+    - [ ] `IMPROBABLE` Verificar si canal esta online
+    - [ ] `QUIZAS` Overlay en canales Youtube para alternar a instancia invidious
 - [X] Personalizaciones
-  - [X] Interruptor navbar
-    - [X] Recordar con localStorage
-  - [X] Interruptor overlay
-    - [X] Recordar con localStorage 
-  - [X] Interruptor branding fondo
-    - [X] Recordar con localStorage
-  - [X] Slider tamaño
-    - [X] Recordar con localStorage
-  - [X] Selector número transmisiones por fila
-    - [X] Recordar con localStorage
-  - [X] Ocultar modal descargo de responsabilidad tras cargar
-    - [X] Recordar con localStorage
-  - [X] `IMPROBABLE` Interruptor cambiar tema
-    - [X] Tema claro
-    - [ ] `QUIZAS` Tema sepia
-    - [X] Tema oscuro
-    - [ ] `QUIZAS` Tema oled
-    - [X] Recordar con localStorage
-  - [X] Interruptor pantalla completa
-  - [X] Interruptor listado canales en modal/sidebar
-  - [ ] `QUIZAS` Cambiar posición navbar
-    - [ ] Recordar con localStorage
+    - [X] Interruptor navbar
+        - [X] Recordar con localStorage
+    - [X] Interruptor overlay
+        - [X] Recordar con localStorage
+    - [X] Interruptor branding fondo
+        - [X] Recordar con localStorage
+    - [X] Slider tamaño
+        - [X] Recordar con localStorage
+    - [X] Selector número transmisiones por fila
+        - [X] Recordar con localStorage
+    - [X] Ocultar modal descargo de responsabilidad tras cargar
+        - [X] Recordar con localStorage
+    - [X] `IMPROBABLE` Interruptor cambiar tema
+        - [X] Tema claro
+        - [X] Tema oscuro
+        - [X] Recordar con localStorage
+    - [X] Interruptor pantalla completa
+    - [X] Interruptor listado canales en modal/sidebar
+    - [ ] `QUIZAS` Cambiar posición navbar
+        - [ ] Recordar con localStorage
 - [X] Formato
-  - [X] `IMPROBABLE` Canales en formato JSON
-  - [ ] `IMPROBABLE` Unificar múltiples canales en 1 objeto
-  - [ ] `IMPROBABLE` Carga canales desde lista m3u automáticamente (conflicto con descargo de responsabilidad)
+    - [X] `IMPROBABLE` Canales en formato JSON
+    - [ ] `IMPROBABLE` Unificar múltiples canales en 1 objeto
+    - [ ] `IMPROBABLE` Carga canales desde lista m3u automáticamente (conflicto con descargo de responsabilidad)
 - [X] Licencia
