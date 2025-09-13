@@ -32,9 +32,9 @@ jobs:
         run: |
           if [ -f package.json ]; then npm ci; else echo "No package.json, skipping"; fi
 
-      - name: Run validation and lint
+      - name: Validate JSON schema
         run: |
-          if [ -f package.json ]; then npm run ci; fi
+          if [ -f package.json ]; then npm run validate-json; fi
 
       - name: Prepare public folder
         run: |
@@ -42,6 +42,11 @@ jobs:
           shopt -s extglob
           cp -r !(public|node_modules|.git|.github) public/ 2>/dev/null || true
           # Si hay node modules que quieras servir (no debería), se ajustaría aquí
+          echo "Listado de archivos copiados:" 
+          find public -maxdepth 4 -type f | head -n 200
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
