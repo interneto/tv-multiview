@@ -2,7 +2,7 @@ import { URL_JSON_CANALES_PRINCIPAL, URL_M3U_CANALES_IPTV } from "./constants/in
 import { sonNombresSimilares, M3U_A_JSON } from "./helpers/index.js";
 
 // Gestión de backup y fetch de canales
-// Lista de 9 canales predeterminados (ids existentes en json-teles/tv-channels.json)
+// Lista de 9 canales predeterminados (ids existentes en json-tv/tv-channels.json)
 export const ARRAY_CANALES_PREDETERMINADOS = [
     'nbc',
     'abc',

@@ -13,6 +13,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "business",
     "country": "ae"
   },
   "1tv": {
@@ -29,6 +30,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "af"
   },
   "amc": {
@@ -45,6 +47,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "music",
     "country": "af"
   },
   "news24": {
@@ -61,6 +64,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "al"
   },
   "alternatv": {
@@ -77,6 +81,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "culture;documentary;entertainment;general;movies;music",
     "country": "ar"
   },
   "rtn": {
@@ -93,6 +98,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "ar"
   },
   "sicarditv": {
@@ -109,6 +115,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "ar"
   },
   "atv": {
@@ -125,6 +132,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "at"
   },
   "atv2": {
@@ -141,6 +149,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "at"
   },
   "redbulltv": {
@@ -157,6 +166,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "at"
   },
   "rtv": {
@@ -173,6 +183,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "at"
   },
   "abcnews": {
@@ -189,6 +200,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "au"
   },
   "arubatvplus": {
@@ -205,6 +217,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "aw"
   },
   "cbcsport": {
@@ -221,6 +234,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "az"
   },
   "aljazeerabalkans": {
@@ -237,6 +251,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "ba"
   },
   "cbctv8": {
@@ -253,6 +268,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "bb"
   },
   "belrtl": {
@@ -269,6 +285,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "music",
     "country": "be"
   },
   "ctv": {
@@ -285,6 +302,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "bo"
   },
   "catve2": {
@@ -301,6 +319,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "br"
   },
   "catvefm": {
@@ -317,6 +336,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "br"
   },
   "catvemastertv": {
@@ -333,6 +353,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "br"
   },
   "rbatv": {
@@ -349,6 +370,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "br"
   },
   "sbtinterior": {
@@ -365,6 +387,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "br"
   },
   "tvmon": {
@@ -381,6 +404,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "br"
   },
   "guardiantalkradio": {
@@ -397,6 +421,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "bs"
   },
   "cbcnewsnetwork": {
@@ -413,6 +438,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "ca"
   },
   "cbctdt": {
@@ -429,6 +455,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "ca"
   },
   "hamdardtv": {
@@ -445,6 +472,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "ca"
   },
   "hardknocks": {
@@ -461,6 +489,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "ca"
   },
   "pardesitv": {
@@ -477,6 +506,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "culture",
     "country": "ca"
   },
   "sardaritv": {
@@ -493,6 +523,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "ca"
   },
   "tsn1": {
@@ -509,6 +540,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "ca"
   },
   "cbctv": {
@@ -525,6 +557,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "cd"
   },
   "rtnc": {
@@ -541,6 +574,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "cd"
   },
   "rtnc3": {
@@ -557,6 +591,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "cd"
   },
   "rsila1": {
@@ -573,6 +608,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "ch"
   },
   "13c": {
@@ -589,6 +625,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "cl"
   },
   "uatv": {
@@ -605,6 +642,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "cl"
   },
   "cctvbilliards": {
@@ -621,6 +659,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "cn"
   },
   "cctvplus1": {
@@ -637,6 +676,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "cn"
   },
   "cctvplus2": {
@@ -653,6 +693,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "cn"
   },
   "cgtn": {
@@ -669,6 +710,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "cn"
   },
   "cgtnarabic": {
@@ -685,6 +727,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "cn"
   },
   "cgtndocumentary": {
@@ -701,6 +744,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "documentary",
     "country": "cn"
   },
   "cgtnfrench": {
@@ -717,6 +761,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "cn"
   },
   "cgtnrussian": {
@@ -733,6 +778,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "cn"
   },
   "cgtnspanish": {
@@ -749,6 +795,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "cn"
   },
   "caracoltv": {
@@ -765,6 +812,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "co"
   },
   "nicoyatv": {
@@ -781,6 +829,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "cr"
   },
   "nationalgeographic": {
@@ -797,6 +846,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "documentary",
     "country": "cz"
   },
   "ardalpha": {
@@ -813,6 +863,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "education",
     "country": "de"
   },
   "disneychannel": {
@@ -829,6 +880,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "kids",
     "country": "de"
   },
   "dw": {
@@ -845,6 +897,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "de"
   },
   "kabeleins": {
@@ -861,6 +914,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "de"
   },
   "ltv": {
@@ -877,6 +931,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "de"
   },
   "nickelodeon": {
@@ -893,6 +948,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "kids",
     "country": "de"
   },
   "oktvludwigshafen": {
@@ -909,6 +965,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "de"
   },
   "rtl": {
@@ -925,6 +982,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "de"
   },
   "rtlsuper": {
@@ -941,6 +999,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "de"
   },
   "rtlzwei": {
@@ -957,6 +1016,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "de"
   },
   "zdf": {
@@ -973,6 +1033,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "de"
   },
   "zdfinfo": {
@@ -989,6 +1050,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "de"
   },
   "zdfneo": {
@@ -1005,6 +1067,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "de"
   },
   "fuegotv": {
@@ -1021,6 +1084,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "music",
     "country": "do"
   },
   "globaltv": {
@@ -1037,6 +1101,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "do"
   },
   "cbc": {
@@ -1053,6 +1118,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "eg"
   },
   "cbcdrama": {
@@ -1069,6 +1135,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "series",
     "country": "eg"
   },
   "cbcsofra": {
@@ -1085,6 +1152,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "lifestyle",
     "country": "eg"
   },
   "24horas": {
@@ -1101,6 +1169,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news;public",
     "country": "es"
   },
   "antena3": {
@@ -1117,6 +1186,7 @@
       "twitch_id": ""
     },
     "website": "https://www.antena3.com/",
+    "category": "general",
     "country": "es"
   },
   "clan": {
@@ -1133,6 +1203,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "kids;public",
     "country": "es"
   },
   "estutele": {
@@ -1149,6 +1220,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "es"
   },
   "la-sexta": {
@@ -1165,6 +1237,7 @@
       "twitch_id": ""
     },
     "website": "https://www.lasexta.com/",
+    "category": "general",
     "country": "es"
   },
   "la1": {
@@ -1181,6 +1254,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general;public",
     "country": "es"
   },
   "la1canarias": {
@@ -1197,6 +1271,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general;public",
     "country": "es"
   },
   "la2": {
@@ -1213,6 +1288,7 @@
       "twitch_id": ""
     },
     "website": "https://www.rtve.es/",
+    "category": "general",
     "country": "es"
   },
   "liratv": {
@@ -1229,6 +1305,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "music",
     "country": "es"
   },
   "mega-es": {
@@ -1245,6 +1322,7 @@
       "twitch_id": ""
     },
     "website": "https://www.atresplayer.com/",
+    "category": "entertainment",
     "country": "es"
   },
   "neox": {
@@ -1261,6 +1339,7 @@
       "twitch_id": ""
     },
     "website": "https://www.atresplayer.com/",
+    "category": "entertainment",
     "country": "es"
   },
   "nova": {
@@ -1277,6 +1356,7 @@
       "twitch_id": ""
     },
     "website": "https://www.atresplayer.com/",
+    "category": "entertainment",
     "country": "es"
   },
   "teledeporte": {
@@ -1293,6 +1373,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "es"
   },
   "iskelmatv": {
@@ -1309,6 +1390,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "fi"
   },
   "20minutestv": {
@@ -1325,6 +1407,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "fr"
   },
   "bfmtv": {
@@ -1341,6 +1424,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "fr"
   },
   "cnews": {
@@ -1357,6 +1441,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "fr"
   },
   "france2": {
@@ -1373,6 +1458,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "fr"
   },
   "france24": {
@@ -1389,6 +1475,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "fr"
   },
   "france3": {
@@ -1405,6 +1492,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "fr"
   },
   "france4": {
@@ -1421,6 +1509,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "kids",
     "country": "fr"
   },
   "m6": {
@@ -1437,6 +1526,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "fr"
   },
   "tf1": {
@@ -1453,6 +1543,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "fr"
   },
   "tf1seriesfilms": {
@@ -1469,9 +1560,10 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "movies",
     "country": "fr"
   },
-  "bbc_drama_es": {
+  "bbcdramaes": {
     "name": "BBC drama",
     "logo": "https://wiki2023.mundoplus.tv/_media/logos/bbcdrama.png",
     "signals": {
@@ -1485,9 +1577,10 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "gb"
   },
-  "bbc_one": {
+  "bbcone": {
     "name": "BBC 1",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/BBC_One_logo_2021.svg/330px-BBC_One_logo_2021.svg.png",
     "signals": {
@@ -1501,9 +1594,10 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "gb"
   },
-  "bbc_two": {
+  "bbctwo": {
     "name": "BBC 2",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/BBC_Two_logo.png/330px-BBC_Two_logo.png",
     "signals": {
@@ -1517,6 +1611,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "gb"
   },
   "bbcnews": {
@@ -1533,6 +1628,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "gb"
   },
   "cnbceurope": {
@@ -1549,6 +1645,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "business",
     "country": "gb"
   },
   "iranefardatv": {
@@ -1565,6 +1662,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "gb"
   },
   "art": {
@@ -1581,6 +1679,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "culture",
     "country": "gr"
   },
   "ng": {
@@ -1597,6 +1696,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "music",
     "country": "gr"
   },
   "ort": {
@@ -1613,6 +1713,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "gr"
   },
   "trt": {
@@ -1629,6 +1730,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "gr"
   },
   "espiritusantoyfuegotv": {
@@ -1645,6 +1747,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "religious",
     "country": "gt"
   },
   "gardeniastv": {
@@ -1661,6 +1764,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "gt"
   },
   "guatv": {
@@ -1677,6 +1781,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "legislative",
     "country": "gt"
   },
   "rtl2": {
@@ -1693,6 +1798,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "hr"
   },
   "sbtv": {
@@ -1709,6 +1815,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "hr"
   },
   "atvspirit": {
@@ -1725,6 +1832,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "hu"
   },
   "rtlketto": {
@@ -1741,6 +1849,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "hu"
   },
   "cnbcindonesia": {
@@ -1757,6 +1866,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "business",
     "country": "id"
   },
   "tatv": {
@@ -1773,6 +1883,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "id"
   },
   "aajtak": {
@@ -1789,6 +1900,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "in"
   },
   "cnbctv18": {
@@ -1805,6 +1917,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "business",
     "country": "in"
   },
   "e24": {
@@ -1821,6 +1934,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "in"
   },
   "filamchibhojpuri": {
@@ -1837,6 +1951,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "movies",
     "country": "in"
   },
   "nickelodeonsonic": {
@@ -1853,6 +1968,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "kids",
     "country": "in"
   },
   "ptcnews": {
@@ -1869,6 +1985,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "in"
   },
   "starsports1": {
@@ -1885,6 +2002,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "in"
   },
   "tv9bharatvarsh": {
@@ -1901,6 +2019,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "in"
   },
   "vbcnews": {
@@ -1917,6 +2036,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "in"
   },
   "farmodatv": {
@@ -1933,6 +2053,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "religious",
     "country": "iq"
   },
   "carinatv": {
@@ -1949,6 +2070,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "grpveratv": {
@@ -1965,6 +2087,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "it"
   },
   "italia1": {
@@ -1981,6 +2104,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "it"
   },
   "italia2": {
@@ -1997,6 +2121,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "it"
   },
   "lacnews24": {
@@ -2013,6 +2138,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "it"
   },
   "lombardiatv": {
@@ -2029,6 +2155,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "it"
   },
   "mediterraniatv": {
@@ -2045,6 +2172,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "it"
   },
   "radioiglesiassardegna": {
@@ -2061,6 +2189,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "rai1": {
@@ -2077,6 +2206,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "rai2": {
@@ -2093,6 +2223,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "rai3": {
@@ -2109,6 +2240,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "rete4": {
@@ -2125,6 +2257,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "rtl1025best": {
@@ -2141,6 +2274,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "rtl1025brosis": {
@@ -2157,6 +2291,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "rtl1025napule": {
@@ -2173,6 +2308,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "rtl1025tv": {
@@ -2189,6 +2325,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "sardegnauno": {
@@ -2205,6 +2342,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "sportitalia24": {
@@ -2221,6 +2359,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "it"
   },
   "telecolorlombardia": {
@@ -2237,6 +2376,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "videolinasardegna": {
@@ -2253,6 +2393,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "it"
   },
   "sport": {
@@ -2269,6 +2410,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "kg"
   },
   "eacnewstv": {
@@ -2285,6 +2427,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "kh"
   },
   "arirangradio": {
@@ -2301,6 +2444,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "kr"
   },
   "arirangtv": {
@@ -2317,6 +2461,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general;news",
     "country": "kr"
   },
   "arirangun": {
@@ -2333,6 +2478,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "kr"
   },
   "ebs1tv": {
@@ -2349,6 +2495,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "education",
     "country": "kr"
   },
   "kbs1tv": {
@@ -2365,6 +2512,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "kr"
   },
   "rtl9": {
@@ -2381,6 +2529,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "lu"
   },
   "rtlteleletzebuerg": {
@@ -2397,6 +2546,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "lu"
   },
   "rtlwebradiotv": {
@@ -2413,6 +2563,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "lu"
   },
   "rtlzwee": {
@@ -2429,6 +2580,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "lu"
   },
   "medi1tvafrique": {
@@ -2445,6 +2597,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "ma"
   },
   "medi1tvarabic": {
@@ -2461,6 +2614,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "ma"
   },
   "medi1tvmaghreb": {
@@ -2477,6 +2631,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "ma"
   },
   "monacoinfo": {
@@ -2493,6 +2648,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "mc"
   },
   "tvmonaco": {
@@ -2509,6 +2665,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "mc"
   },
   "viaatv": {
@@ -2525,6 +2682,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "mq"
   },
   "one": {
@@ -2541,6 +2699,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "mt"
   },
   "aztecainternacional": {
@@ -2557,6 +2716,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "mx"
   },
   "lasestrellas": {
@@ -2573,6 +2733,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "mx"
   },
   "tv2": {
@@ -2589,6 +2750,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "my"
   },
   "tvcnews": {
@@ -2605,6 +2767,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "ng"
   },
   "nh": {
@@ -2621,6 +2784,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "nl"
   },
   "omroephoekschewaard": {
@@ -2637,6 +2801,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "nl"
   },
   "omroeplingewaard": {
@@ -2653,6 +2818,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "nl"
   },
   "omroepsudwest": {
@@ -2669,6 +2835,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "nl"
   },
   "atvplus": {
@@ -2685,6 +2852,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "pe"
   },
   "atvsur": {
@@ -2701,6 +2869,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "pe"
   },
   "rselvatv": {
@@ -2717,6 +2886,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "pe"
   },
   "vamisatv": {
@@ -2733,6 +2903,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "pe"
   },
   "euronews": {
@@ -2749,6 +2920,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "pl"
   },
   "hardknocksfightingchampionship": {
@@ -2765,6 +2937,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "pl"
   },
   "worldbilliards": {
@@ -2781,6 +2954,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "pl"
   },
   "catv": {
@@ -2797,6 +2971,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "pr"
   },
   "wdwldt1": {
@@ -2813,6 +2988,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "religious",
     "country": "pr"
   },
   "famatv": {
@@ -2829,6 +3005,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "music",
     "country": "pt"
   },
   "gotv": {
@@ -2845,6 +3022,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment;music",
     "country": "py"
   },
   "aljazeera": {
@@ -2861,6 +3039,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "qa"
   },
   "aljazeeradocumentary": {
@@ -2877,6 +3056,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "qa"
   },
   "aljazeeramubasher": {
@@ -2893,6 +3073,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "qa"
   },
   "ardealtv": {
@@ -2909,6 +3090,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "ro"
   },
   "sperantatv": {
@@ -2925,6 +3107,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "religious",
     "country": "ro"
   },
   "etv": {
@@ -2941,6 +3124,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "ru"
   },
   "rt": {
@@ -2957,6 +3141,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "ru"
   },
   "u": {
@@ -2973,6 +3158,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "ru"
   },
   "axnasia": {
@@ -2989,6 +3175,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "movies",
     "country": "sg"
   },
   "sbttv": {
@@ -3005,6 +3192,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "th"
   },
   "thaipbs": {
@@ -3021,6 +3209,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "th"
   },
   "atvalanya": {
@@ -3037,6 +3226,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "tr"
   },
   "atvavrupa": {
@@ -3053,6 +3243,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "tr"
   },
   "dersim62tv": {
@@ -3069,6 +3260,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "tr"
   },
   "kardelentv": {
@@ -3085,6 +3277,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "tr"
   },
   "trtworld": {
@@ -3101,9 +3294,10 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "tr"
   },
-  "bbc_drama_en": {
+  "bbcdrama": {
     "name": "BBC drama",
     "logo": "https://wiki2023.mundoplus.tv/_media/logos/bbcdrama.png",
     "signals": {
@@ -3117,6 +3311,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "tv"
   },
   "ebcnews": {
@@ -3133,6 +3328,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "tw"
   },
   "inter": {
@@ -3149,6 +3345,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "ua"
   },
   "z": {
@@ -3165,6 +3362,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "ua"
   },
   "abc": {
@@ -3181,6 +3379,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "us"
   },
   "amcenespanol": {
@@ -3197,6 +3396,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "us"
   },
   "atvsat": {
@@ -3213,6 +3413,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "religious",
     "country": "us"
   },
   "auroratv": {
@@ -3229,6 +3430,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "us"
   },
   "batv": {
@@ -3245,6 +3447,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "us"
   },
   "bbchomegarden": {
@@ -3261,6 +3464,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "lifestyle",
     "country": "us"
   },
   "beachtvmyrtlebeachthegrandstrand": {
@@ -3277,6 +3481,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "travel",
     "country": "us"
   },
   "beinsportsusa": {
@@ -3293,6 +3498,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "us"
   },
   "beinsportsxtra": {
@@ -3309,6 +3515,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "us"
   },
   "billiardtv": {
@@ -3325,6 +3532,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "us"
   },
   "brevardgovernmentaccesstv": {
@@ -3341,6 +3549,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "legislative",
     "country": "us"
   },
   "cbsnews247": {
@@ -3357,6 +3566,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "us"
   },
   "cnbc": {
@@ -3373,6 +3583,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "business",
     "country": "us"
   },
   "cnbcworld": {
@@ -3389,6 +3600,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "business",
     "country": "us"
   },
   "creatvchannel15": {
@@ -3405,6 +3617,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "us"
   },
   "creatvchannel27": {
@@ -3421,6 +3634,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "us"
   },
   "creatvchannel28": {
@@ -3437,6 +3651,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "education",
     "country": "us"
   },
   "creatvchannel30": {
@@ -3453,6 +3668,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "us"
   },
   "daretodreamnetwork": {
@@ -3469,6 +3685,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "religious",
     "country": "us"
   },
   "disneyxd": {
@@ -3485,6 +3702,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "kids",
     "country": "us"
   },
   "foxnewschannel": {
@@ -3501,6 +3719,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "us"
   },
   "foxnewsradio": {
@@ -3517,6 +3736,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "us"
   },
   "foxsports2": {
@@ -3533,6 +3753,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "sports",
     "country": "us"
   },
   "heartland": {
@@ -3549,6 +3770,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "us"
   },
   "latv": {
@@ -3565,6 +3787,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "us"
   },
   "militaryhistory": {
@@ -3581,6 +3804,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "documentary",
     "country": "us"
   },
   "msnbc": {
@@ -3597,6 +3821,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "us"
   },
   "nbc": {
@@ -3613,6 +3838,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "us"
   },
   "nbcnewsnow": {
@@ -3629,6 +3855,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "us"
   },
   "pbs": {
@@ -3645,6 +3872,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "education",
     "country": "us"
   },
   "pbsantiquesroadshow": {
@@ -3661,6 +3889,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "series",
     "country": "us"
   },
   "pbskidseasterncentral": {
@@ -3677,6 +3906,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "education;kids",
     "country": "us"
   },
   "pbsnature": {
@@ -3693,6 +3923,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "series",
     "country": "us"
   },
   "portlandia": {
@@ -3709,6 +3940,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "us"
   },
   "radiofardatv": {
@@ -3725,6 +3957,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "us"
   },
   "samuelgoldwynclassics": {
@@ -3741,6 +3974,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "classic",
     "country": "us"
   },
   "sbtn": {
@@ -3757,6 +3991,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "us"
   },
   "storiesbyamc": {
@@ -3773,6 +4008,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "entertainment",
     "country": "us"
   },
   "totallyturtles": {
@@ -3789,6 +4025,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "kids",
     "country": "us"
   },
   "vicetv": {
@@ -3805,6 +4042,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "us"
   },
   "visionglobaltv": {
@@ -3821,6 +4059,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "general",
     "country": "us"
   },
   "wptvdt1": {
@@ -3837,6 +4076,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "",
     "country": "us"
   },
   "kandelatv": {
@@ -3853,6 +4093,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "music",
     "country": "ve"
   },
   "sabcnews": {
@@ -3869,6 +4110,7 @@
       "twitch_id": ""
     },
     "website": "",
+    "category": "news",
     "country": "za"
   }
 }

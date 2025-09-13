@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Paths
-const jsonFilePath = path.join(__dirname, '..', 'json-teles', 'tv-channels.json');
+const jsonFilePath = path.join(__dirname, '..', 'json-tv', 'tv-channels.json');
 const nombrePaisesPath = path.join(__dirname, '..', 'assets', 'js', 'constants', 'nombrePaises.js');
 
 function extractObjectLiteral(jsText, varName) {

@@ -69,6 +69,10 @@
         "type": "string",
         "minLength": 0
       },
+      "category": {
+        "type": "string",
+        "minLength": 0
+      },
       "country": {
         "type": "string",
         "minLength": 2,
