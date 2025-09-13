@@ -16,8 +16,8 @@
     "display": "standalone",
     "orientation": "any",
 
-    "start_url": "/teles/",
-    "id": "/teles/",
+    "start_url": "./",
+    "id": "./",
     
     "icons": [
         {
