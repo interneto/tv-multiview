@@ -433,8 +433,8 @@ pwa-update {
 .vision-unica-grid-reordenado {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns:  7rem 7fr minmax(300px, 2fr);
-  grid-template-columns:  7fr minmax(300px, 2fr);
+  -ms-grid-columns: 7rem 7fr minmax(300px, 2fr);
+  grid-template-columns: 7fr minmax(300px, 2fr);
   padding: 1rem 1rem 4rem 1rem;
   gap: 1rem;
 }
@@ -464,6 +464,7 @@ pwa-update {
   gap: 0.375rem;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
+
 #modal-collapse-btn-group .container-btn-group,
 #offcanvas-collapse-btn-group .container-btn-group,
 #modal-cambiar-canal-collapse-btn-group .container-btn-group {
