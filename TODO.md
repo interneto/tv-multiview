@@ -1,3 +1,3 @@
 # To Do
 
-- Añadir países faltantes a listado de países y al listado de canales.
+- Mejorar el listado de [tv-channels](./json-teles/tv-channels.json)

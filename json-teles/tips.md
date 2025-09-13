@@ -1,6 +1,6 @@
 # Tips
 
-> Primero generar JSON y luego usar el conversor para convertir a m3u
+> Primero generar JSON y luego usar el [conversor](./index.html) para convertir a m3u
 
 Enlaces [iframe] rudo video se puede añadir al final ?autoplay
     Ejemplo: <https://rudo.video/live/CANAL?autoplay>
