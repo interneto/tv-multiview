@@ -1,3 +1,3 @@
 # To Do
 
-- [] Mejorar el listado de TV-channels.m3u
+- Añadir países faltantes a listado de países y al listado de canales.
