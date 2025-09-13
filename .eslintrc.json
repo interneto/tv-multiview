@@ -12,21 +12,21 @@
   "rules": {
     "no-unused-vars": ["warn"],
     "no-console": "off"
-  }
-}
-{
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
   },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-  "rules": {
-    "no-unused-vars": ["warn"],
-    "no-console": "off"
+  "globals": {
+    "videojs": "readonly",
+    "bootstrap": "readonly",
+    "Sortable": "readonly",
+    "isMobile": "readonly",
+    "activarTooltipsBootstrap": "readonly",
+    "mostrarToast": "readonly",
+    "BOTON_ACTIVAR_VISION_UNICA": "readonly",
+    "BOTON_ACTIVAR_VISION_GRID": "readonly",
+    "CHECKBOX_PERSONALIZAR_USO_100VH_CANALES": "readonly",
+    "SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES": "readonly",
+    "BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA": "readonly",
+    "SPAN_VALOR_TRANSMISIONES_POR_FILA": "readonly",
+    "CONTAINER_VIDEO_VISION_UNICA": "readonly",
+    "ICONO_SIN_SEÑAL_ACTIVA_VISION_UNICA": "readonly"
   }
 }

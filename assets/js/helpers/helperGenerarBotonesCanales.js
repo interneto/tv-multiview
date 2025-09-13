@@ -56,7 +56,7 @@ export function crearBotonesParaCanales() {
 
         for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
             guardarOrdenOriginal(`${PREFIJO}-body-botones-canales`);
-        };
+        }
 
     } catch (error) {
         console.error(`Error durante creación botones para canales. Error: ${error}`);

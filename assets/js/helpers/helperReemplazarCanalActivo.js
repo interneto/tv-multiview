@@ -11,7 +11,7 @@ export function reemplazarCanalActivo(canalIdBotonPulsadoEnModal, canalIdExisten
             // evitar duplicados si canal que va a quedar de reemplazo ya existe en grid
             if (document.querySelector(`div[data-canal="${canalIdBotonPulsadoEnModal}"]`) && divPadreACambiar !== document.querySelector(`div[data-canal="${canalIdBotonPulsadoEnModal}"]`)) {
                 tele.remove(canalIdBotonPulsadoEnModal);
-            };
+            }
 
             divExistenteACambiar.remove();
             barraOverlayDeCanalACambiar.remove();

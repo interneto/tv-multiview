@@ -24,4 +24,4 @@ export function quitarTodoCanalActivo() {
         `, 'danger', false);
         return
     }
-};
+}

@@ -46,31 +46,25 @@ export function leerBackupCanales() {
 }
 
 export async function fetchCargarCanales() {
+    if (esBackupValido()) {
+        console.info('Cargando canales desde backup localStorage');
+        listaCanales = leerBackupCanales();
+        if (listaCanales) return;
+    }
+    console.info('Probando carga archivo principal con canales');
+    const response = await fetch(URL_JSON_CANALES_PRINCIPAL);
     try {
+        listaCanales = await response.json();
+        listaCanales = normalizarListaCanales(listaCanales);
+        guardarBackupCanales(listaCanales);
+    } catch (parseError) {
+        console.error('Error al parsear JSON principal:', parseError);
         if (esBackupValido()) {
-            console.info('Cargando canales desde backup localStorage');
+            console.warn('Usando backup localStorage por error de parseo');
             listaCanales = leerBackupCanales();
             if (listaCanales) return;
         }
-        console.info('Probando carga archivo principal con canales');
-        const response = await fetch(URL_JSON_CANALES_PRINCIPAL);
-        try {
-            listaCanales = await response.json();
-            // Normalizar posibles claves en inglés a las claves en español usadas por la UI
-            listaCanales = normalizarListaCanales(listaCanales);
-            guardarBackupCanales(listaCanales);
-        } catch (parseError) {
-            console.error('Error al parsear JSON principal:', parseError);
-            // Intentar cargar backup si existe
-            if (esBackupValido()) {
-                console.warn('Usando backup localStorage por error de parseo');
-                listaCanales = leerBackupCanales();
-                if (listaCanales) return;
-            }
-            throw parseError;
-        }
-    } catch (error) {
-        throw error;
+        throw parseError;
     }
 }
 

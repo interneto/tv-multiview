@@ -20,14 +20,14 @@ export function actualizarBotonesPersonalizarOverlay() {
                     botonIndividual.checked = true;
                     spanValorBoton.innerHTML = "[visible]";
                     document.body.classList.remove(`d-none__barras-overlay__${datasetBoton}`);
-                };
+                }
             } else {
                 botonIndividual.checked = false;
                 botonIndividual.disabled = true;
                 spanValorBoton.innerHTML = "[oculto]";
                 document.body.classList.add('d-none__barras-overlay');
                 setCheckboxState(CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY, SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY, 'overlay-display', false);
-            };
+            }
     
             hideTextoBotonesOverlay(); // siempre al final. Evalúa si botones overlay están haciendo desbordamiento
         });

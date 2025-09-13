@@ -30,13 +30,13 @@ export function activarVisionUnica() {
         });
 
         const CANALES_ACTIVOS_EN_DOM = CONTAINER_VISION_CUADRICULA.querySelectorAll('div[data-canal]');
-        if (CANALES_ACTIVOS_EN_DOM.length > 0) {
+    if (CANALES_ACTIVOS_EN_DOM.length > 0) {
             CANALES_ACTIVOS_EN_DOM.forEach(divCanal => {
                 divCanal.innerHTML = ''; // limpia html en vez de remover para evitar activar observer
                 divCanal.dataset.respaldo = divCanal.dataset.canal;
                 divCanal.dataset.canal = `no-${divCanal.dataset.canal}`;
             });
-        };
+        }
 
         CONTAINER_VISION_CUADRICULA.classList.add('d-none');
         CONTAINER_VISION_UNICA.classList.remove('d-none');
@@ -63,7 +63,7 @@ export function activarVisionUnica() {
 
         if (CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]')) tele.remove(CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]').dataset.canal);
 
-        if (Object.keys(lsCanales).length > 0) {
+    if (Object.keys(lsCanales).length > 0) {
             try {
                 if (listaCanales[Object.keys(lsCanales)[0]]) {
                     tele.add(Object.keys(lsCanales)[0]);
@@ -71,7 +71,7 @@ export function activarVisionUnica() {
             } catch (error) {
                 return console.error(`Error durante carga canales para modo vision unica. Error: ${error}`);
             }
-        };
+        }
 
         document.querySelector('#boton-personalizar-boton-mover-overlay').classList.add('clase-vacia'); // esto es solo para mediaquery en css
     } catch (error) {

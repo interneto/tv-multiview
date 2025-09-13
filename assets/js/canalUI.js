@@ -8,7 +8,6 @@ import {
     TWITCH_PARENT
 } from './constants/index.js';
 import { mostrarToast, playAudioSinDelay, hideTextoBotonesOverlay } from './helpers/index.js';
-import { insertarDivError } from './helpers/helperInsertarDivError.js';
 
 // Funciones de UI de canales extraídas de main.js
 function guardarSeñalPreferida(canalId, señalUtilizar = '', indexSeñalUtilizar = 0) {
