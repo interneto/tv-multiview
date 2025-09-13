@@ -26,7 +26,7 @@ export function borraPreferenciaSeñalInvalida() {
                         localStorage.setItem('preferencia-señal-canales', JSON.stringify(lsPreferenciasSeñalCanales));
                     }
                 }
-            };
+            }
         }
     }
 }

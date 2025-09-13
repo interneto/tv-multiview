@@ -274,7 +274,7 @@ export let tele = {
                 <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
                 return
             }
-        };
+    }
     }
 };
 
@@ -514,7 +514,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     document.querySelector(`#${PREFIJO}-body-botones-canales`).classList.add('border', 'border-warning', 'rounded-3')
                     document.querySelector(`#${PREFIJO}-body-botones-canales`).innerHTML = '';
                     document.querySelector(`#${PREFIJO}-collapse-botones-listado-filtro-countries`).innerHTML = '';
-                };
+                }
                 quitarTodoCanalActivo()
                 crearBotonesParaCanales();
                 crearBotonesPaises();

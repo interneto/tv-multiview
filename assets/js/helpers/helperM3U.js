@@ -15,7 +15,7 @@ export async function M3U_A_JSON(m3u) {
             const NOMBRE_CANAL = lines[i].match(/,([^,(]+)/)[1]?.trim() ?? 'Nombre canal no encontrado'; // no añade lo que este luego del primer "("
 
             const LOGO_IMG = attributes['tvg-logo'] ?? "";
-            const GROUP_TITLE_ID = attributes['group-title']?.toLowerCase() ?? "";
+            // group-title omitido por no usarse actualmente
 
             const TVG_ID = attributes['tvg-id'] ?? `canal-m3u8-${i}.`;
             const [NOMBRE_CANAL_PARA_ID, COUNTRY_ID = ""] = TVG_ID.toLowerCase().split('.');

@@ -13,6 +13,6 @@ export function obtenerNumeroCanalesFila() { // el numero, no el valor clase 'co
         seleccionTransmisionesFila = 6;
     } else if (lsTransmisionesFila === '1') {
         seleccionTransmisionesFila = 12;
-    };
+    }
     return seleccionTransmisionesFila
 }
