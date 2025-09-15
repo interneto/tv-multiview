@@ -10,6 +10,9 @@
     - [ ] Add other live streams from other channels: NASA, music, cars, gaming,
 - [ ] Check if channels are active
 
+- [ ] Improve [main.js](./assets/js/main.js)
+- [ ] Improve [index.html](./index.html)
+
 ----
 
 ## Improvements

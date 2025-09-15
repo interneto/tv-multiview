@@ -1,31 +1,31 @@
 import {
-  BOTON_MODAL_QUITAR_TODO_ACTIVO,
-  BOTON_OFFCANVAS_QUITAR_TODO_ACTIVO,
-  BOTON_MODAL_CANALES_PREDETERMINADOS,
-  BOTON_OFFCANVAS_CANALES_PREDETERMINADOS
-} from '../botones.js'
+  ACTIVE_CHANNEL_REMOVE_ALL_BUTTON,
+  BUTTON_REMOVE_ACTIVE_CHANNEL,
+  DEFAULT_CHANNEL_LOAD_BUTTON,
+  BUTTON_LOAD_DEFAULT_CHANNELS
+} from '../buttons.js'
 
-const hideBotonesQuitarTodaSeñal = () => {
-  BOTON_MODAL_QUITAR_TODO_ACTIVO?.classList.add("d-none");
-  BOTON_OFFCANVAS_QUITAR_TODO_ACTIVO?.classList.add("d-none");
+const hideRemoveAllSignalButtons = () => {
+  ACTIVE_CHANNEL_REMOVE_ALL_BUTTON?.classList.add("d-none");
+  BUTTON_REMOVE_ACTIVE_CHANNEL?.classList.add("d-none");
 
-  BOTON_MODAL_CANALES_PREDETERMINADOS?.classList.remove("d-none");
-  BOTON_OFFCANVAS_CANALES_PREDETERMINADOS?.classList.remove("d-none");
+  DEFAULT_CHANNEL_LOAD_BUTTON?.classList.remove("d-none");
+  BUTTON_LOAD_DEFAULT_CHANNELS?.classList.remove("d-none");
 }
 
-const showBotonesQuitarTodaSeñal = () => {
-  BOTON_MODAL_QUITAR_TODO_ACTIVO?.classList.remove("d-none");
-  BOTON_OFFCANVAS_QUITAR_TODO_ACTIVO?.classList.remove("d-none");
+const displayRemoveAllSignalButtons = () => {
+  ACTIVE_CHANNEL_REMOVE_ALL_BUTTON?.classList.remove("d-none");
+  BUTTON_REMOVE_ACTIVE_CHANNEL?.classList.remove("d-none");
 
-  BOTON_MODAL_CANALES_PREDETERMINADOS?.classList.add("d-none");
-  BOTON_OFFCANVAS_CANALES_PREDETERMINADOS?.classList.add("d-none");
+  DEFAULT_CHANNEL_LOAD_BUTTON?.classList.add("d-none");
+  BUTTON_LOAD_DEFAULT_CHANNELS?.classList.add("d-none");
 }
 
-export const ajustarVisibilidadBotonesQuitarTodaSeñal = () => {
+export const toggleVisibilityOfRemoveSignalButtons = () => {
   const canales = document.querySelectorAll('div[data-canal]');
   if (canales.length === 0) {
-    hideBotonesQuitarTodaSeñal();
+    hideRemoveAllSignalButtons();
   } else {
-    showBotonesQuitarTodaSeñal();
+    displayRemoveAllSignalButtons();
   }
 }

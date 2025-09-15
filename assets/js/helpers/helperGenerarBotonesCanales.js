@@ -1,5 +1,5 @@
-import { listaCanales } from "../canalesData.js";
-import { CLASE_CSS_BOTON_SECUNDARIO, COUNTRY_CODES, CATEGORY_ICONS, PREFIJOS_ID_CONTENEDORES_CANALES } from "../constants/index.js";
+import { listChannels } from "../channelsData.js";
+import { CSS_CLASS_SECONDARY_BUTTON, COUNTRY_CODES, CATEGORY_ICONS, CHANNEL_CONTAINER_ID_PREFIXES } from "../constants/index.js";
 import { CONTAINER_VIDEO_VISION_UNICA, tele } from "../main.js";
 import { mostrarToast, revisarSeñalesVacias, guardarOrdenOriginal } from "./index.js";
 import { insertarDivError } from './helperInsertarDivError.js';
@@ -7,8 +7,8 @@ import { insertarDivError } from './helperInsertarDivError.js';
 export function crearBotonesParaCanales() {
     try {
         const FRAGMENT_BOTONES_CANALES = document.createDocumentFragment();
-        for (const canal of Object.keys(listaCanales)) {
-            let { name, /* logo, */ country, category } = listaCanales[canal];
+        for (const canal of Object.keys(listChannels)) {
+            let { name, /* logo, */ country, category } = listChannels[canal];
             category = typeof category === 'string' ? category.toLowerCase() : '';
             let iconoCategoria = category && (category in CATEGORY_ICONS) ? CATEGORY_ICONS[category] : '<i class="bi bi-tv"></i>';
             let namePais = country && typeof country === 'string' && COUNTRY_CODES[country.toLowerCase()] ? COUNTRY_CODES[country.toLowerCase()] : 'Desconocido';
@@ -16,7 +16,7 @@ export function crearBotonesParaCanales() {
             let botonCanal = document.createElement('button');
             botonCanal.setAttribute('data-canal', canal);
             botonCanal.setAttribute('data-country', `${namePais}`);
-            botonCanal.classList.add('btn', CLASE_CSS_BOTON_SECUNDARIO, 'd-flex', 'justify-content-between', 'align-items-center', 'gap-2', 'text-start', 'rounded-3');
+            botonCanal.classList.add('btn', CSS_CLASS_SECONDARY_BUTTON, 'd-flex', 'justify-content-between', 'align-items-center', 'gap-2', 'text-start', 'rounded-3');
             if (revisarSeñalesVacias(canal)) botonCanal.classList.add('d-none');
             botonCanal.innerHTML =
                 `<span class="flex-grow-1">${name}</span>
@@ -34,7 +34,7 @@ export function crearBotonesParaCanales() {
         // Asignar eventos después de que los botones estén en el DOM
         document.querySelectorAll('#modal-canales-body-botones-canales button, #offcanvas-canales-body-botones-canales button').forEach(botonCanalEnDOM => {
             botonCanalEnDOM.addEventListener('click', () => {
-                let accionBoton = botonCanalEnDOM.classList.contains(CLASE_CSS_BOTON_SECUNDARIO) ? 'add' : 'remove';
+                let accionBoton = botonCanalEnDOM.classList.contains(CSS_CLASS_SECONDARY_BUTTON) ? 'add' : 'remove';
                 tele[accionBoton](botonCanalEnDOM.dataset.canal);
             });
         });
@@ -49,12 +49,12 @@ export function crearBotonesParaCanales() {
                     tele.remove(CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]').dataset.canal)
                 }
 
-                let accionBoton = botonCanalEnDOM.classList.contains(CLASE_CSS_BOTON_SECUNDARIO) ? 'add' : 'remove';
+                let accionBoton = botonCanalEnDOM.classList.contains(CSS_CLASS_SECONDARY_BUTTON) ? 'add' : 'remove';
                 tele[accionBoton](botonCanalEnDOM.dataset.canal);
             });
         });
 
-        for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
+        for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
             guardarOrdenOriginal(`${PREFIJO}-body-botones-canales`);
         }
 
@@ -68,7 +68,7 @@ export function crearBotonesParaCanales() {
         Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Personalización" o borrando la caché del navegador.
         <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false);
 
-        for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
+        for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
             document.querySelector(`#${PREFIJO}-body-botones-canales`).insertAdjacentElement('afterend', insertarDivError(error, 'Ha ocurrido un error durante la creación de botones para los canales'));
         }
     }

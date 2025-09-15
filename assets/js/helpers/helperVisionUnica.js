@@ -1,10 +1,16 @@
-import { crearFragmentCanal } from "../canalUI.js";
+import { createChannelFragment } from "../channelUI.js";
 import {
     CONTAINER_VISION_CUADRICULA,
     CONTAINER_VISION_UNICA,
     tele,
     INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA,
-    SPAN_VALOR_INPUT_RANGE
+    SPAN_VALOR_INPUT_RANGE,
+    BOTON_ACTIVAR_VISION_UNICA,
+    BOTON_ACTIVAR_VISION_GRID,
+    BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA,
+    SPAN_VALOR_TRANSMISIONES_POR_FILA,
+    CHECKBOX_PERSONALIZAR_USO_100VH_CANALES,
+    SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES
 } from "../main.js";
 import {
     actualizarValorSlider,
@@ -16,8 +22,8 @@ import {
     hideTextoBotonesOverlay,
     adjustChannelColumnCount
 } from "../helpers/index.js";
-import { CLASE_CSS_BOTON_PRIMARIO, CLASE_CSS_BOTON_SECUNDARIO } from "../constants/index.js";
-import { listaCanales } from "../canalesData.js";
+import { CSS_CLASS_PRIMARY_BUTTON, CSS_CLASS_SECONDARY_BUTTON } from "../constants/index.js";
+import { listChannels } from "../channelsData.js";
 
 export function activarVisionUnica() {
     try {
@@ -26,7 +32,7 @@ export function activarVisionUnica() {
         BOTON_ACTIVAR_VISION_GRID.classList.replace('btn-indigo', 'btn-light-subtle');
 
         document.querySelectorAll('#vision-unica-body-botones-canales button, #modal-cambiar-canal-body-botones-canales button').forEach(botonCanalEnDOM => {
-            botonCanalEnDOM.classList.replace(CLASE_CSS_BOTON_PRIMARIO, CLASE_CSS_BOTON_SECUNDARIO);
+            botonCanalEnDOM.classList.replace(CSS_CLASS_PRIMARY_BUTTON, CSS_CLASS_SECONDARY_BUTTON);
         });
 
         const CANALES_ACTIVOS_EN_DOM = CONTAINER_VISION_CUADRICULA.querySelectorAll('div[data-canal]');
@@ -65,7 +71,7 @@ export function activarVisionUnica() {
 
     if (Object.keys(lsCanales).length > 0) {
             try {
-                if (listaCanales[Object.keys(lsCanales)[0]]) {
+                if (listChannels[Object.keys(lsCanales)[0]]) {
                     tele.add(Object.keys(lsCanales)[0]);
                 }
             } catch (error) {
@@ -102,7 +108,7 @@ export function desactivarVisionUnica() {
         if (CANALES_ACTIVOS_EN_DOM.length > 0) {
             CANALES_ACTIVOS_EN_DOM.forEach(divCanal => {
                 divCanal.dataset.canal = divCanal.dataset.respaldo;
-                divCanal.append(crearFragmentCanal(divCanal.dataset.canal));
+                divCanal.append(createChannelFragment(divCanal.dataset.canal));
                 ajustarClaseBotonCanal(divCanal.dataset.canal, true);
                 activarTooltipsBootstrap();
                 hideTextoBotonesOverlay();

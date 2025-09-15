@@ -5,12 +5,12 @@
 */
 
 // MARK: import
-import { fetchCargarCanales, fetchCargarCanalesIPTV, listaCanales } from './canalesData.js';
-import { crearFragmentCanal } from './canalUI.js';
+import { loadChannelData, fetchIptvChannelsData, listChannels } from './channelsData.js';
+import { createChannelFragment } from './channelUI.js';
 import {
-    PREFIJOS_ID_CONTENEDORES_CANALES,
-    VALOR_COL_FIJO_ESCRITORIO,
-    VALOR_COL_FIJO_TELEFONO,
+    CHANNEL_CONTAINER_ID_PREFIXES,
+    FIXED_COLUMN_VALUE_DESKTOP,
+    FIXED_PHONE_COLUMN_VALUE,
     initializeVideojsTranslations,
     AUDIO_FAIL
 } from './constants/index.js';
@@ -35,7 +35,7 @@ import {
     actualizarValorSlider,
     actualizarBotonesPersonalizarOverlay,
     crearBotonesParaCanales,
-    ajustarVisibilidadBotonesQuitarTodaSeñal,
+    toggleVisibilityOfRemoveSignalButtons,
     adjustChannelColumnCount,
     filtrarCanalesPorInput,
     ajustarClaseColTransmisionesPorFila,
@@ -60,8 +60,8 @@ export const CONTAINER_VISION_UNICA = document.querySelector('#container-vision-
 export const CONTAINER_VIDEO_VISION_UNICA = document.querySelector('#container-video-vision-unica');
 const ICONO_SIN_SEÑAL_ACTIVA_VISION_UNICA = document.querySelector('#icono-sin-señal-vision-unica');
 
-const BOTON_ACTIVAR_VISION_UNICA = document.querySelector('#boton-activar-diseño-vision-unica');
-const BOTON_ACTIVAR_VISION_GRID = document.querySelector('#boton-activar-diseño-vision-grid');
+export const BOTON_ACTIVAR_VISION_UNICA = document.querySelector('#boton-activar-diseño-vision-unica');
+export const BOTON_ACTIVAR_VISION_GRID = document.querySelector('#boton-activar-diseño-vision-grid');
 
 export const MODAL_CAMBIAR_CANAL = document.querySelector('#modal-cambiar-canal');
 export const LABEL_MODAL_CAMBIAR_CANAL = document.querySelector('#label-para-name-canal-cambiar');
@@ -117,8 +117,8 @@ INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA.addEventListener('input', 
 });
 
 // alternar altura canales
-const CHECKBOX_PERSONALIZAR_USO_100VH_CANALES = document.querySelector('#checkbox-personalizar-altura-canales');
-const SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES = document.querySelector('#span-valor-altura-canales');
+export const CHECKBOX_PERSONALIZAR_USO_100VH_CANALES = document.querySelector('#checkbox-personalizar-altura-canales');
+export const SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES = document.querySelector('#span-valor-altura-canales');
 const ICONO_PERSONALIZAR_USO_100VH_CANALES = document.querySelector('#icono-personalizar-altura-canales');
 
 CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.addEventListener('click', () => {
@@ -135,7 +135,7 @@ CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.addEventListener('click', () => {
 });
 
 // Canales por fila
-const SPAN_VALOR_TRANSMISIONES_POR_FILA = document.querySelector('#span-valor-transmisiones-por-fila')
+export const SPAN_VALOR_TRANSMISIONES_POR_FILA = document.querySelector('#span-valor-transmisiones-por-fila')
 export const BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA = document.querySelectorAll('#container-botones-personalizar-transmisiones-por-fila button');
 
 BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach(boton => {
@@ -183,17 +183,17 @@ initializeVideojsTranslations();
 export let tele = {
     add: (canal) => {
         try {
-            if (!canal || !listaCanales?.[canal]) return console.error(`El canal "${canal}" proporcionado no es válido para ser añadido.`);
+            if (!canal || !listChannels?.[canal]) return console.error(`El canal "${canal}" proporcionado no es válido para ser añadido.`);
             const DIV_CANAL = document.createElement('div');
             DIV_CANAL.setAttribute('data-canal', canal);
             if (localStorage.getItem('diseño-seleccionado') === 'vision-unica') {
                 DIV_CANAL.classList.add('position-relative', 'shadow', 'h-100', 'w-100');
-                DIV_CANAL.append(crearFragmentCanal(canal));
+                DIV_CANAL.append(createChannelFragment(canal));
                 CONTAINER_VIDEO_VISION_UNICA.append(DIV_CANAL);
                 ICONO_SIN_SEÑAL_ACTIVA_VISION_UNICA.classList.add('d-none');
             } else {
                 DIV_CANAL.classList.add('position-relative', 'shadow');
-                DIV_CANAL.append(crearFragmentCanal(canal));
+                DIV_CANAL.append(createChannelFragment(canal));
                 CONTAINER_VISION_CUADRICULA.append(DIV_CANAL);
                 saveActiveChannelsToStorage();
             }
@@ -394,7 +394,9 @@ window.addEventListener('DOMContentLoaded', () => {
         TARJETA_LOGO_BACKGROUND.style.setProperty('--mouse-y', `${y}px`);
     };
 
-    if (lsModal !== 'hide') new bootstrap.Modal(document.querySelector('#modal-bienvenida')).show();
+    // Ensure modal is always considered as 'accepted'
+    localStorage.setItem('modal-status', 'hide');
+    // Modal welcome disabled - no longer showing
 
     // Navbar
     lsNavbar !== 'hide'
@@ -458,17 +460,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
     async function cargaInicial() {
         try {
-            await fetchCargarCanales();
-            if (listaCanales) {
+            await loadChannelData();
+            if (listChannels) {
                 crearBotonesParaCanales();
                 crearBotonesPaises();
                 borraPreferenciaSeñalInvalida();
                 lsEstiloVision === 'vision-unica' ? activarVisionUnica() : tele.cargaCanalesPredeterminados();
                 actualizarBotonesPersonalizarOverlay()
-                ajustarClaseColTransmisionesPorFila(localStorage.getItem('numero-class-columnas-por-fila') ?? (isMobile.any ? VALOR_COL_FIJO_TELEFONO : VALOR_COL_FIJO_ESCRITORIO))
+                ajustarClaseColTransmisionesPorFila(localStorage.getItem('numero-class-columnas-por-fila') ?? (isMobile.any ? FIXED_PHONE_COLUMN_VALUE : FIXED_COLUMN_VALUE_DESKTOP))
                 hideTextoBotonesOverlay()
                 activarTooltipsBootstrap();
-                ajustarVisibilidadBotonesQuitarTodaSeñal();
+                toggleVisibilityOfRemoveSignalButtons();
             }
         } catch (error) {
             console.error(`Error durante carga inicial. Error: ${error}`);
@@ -486,7 +488,7 @@ window.addEventListener('DOMContentLoaded', () => {
     cargarOrdenVisionUnica();
 
     // Ordenar botones canales
-    for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
+    for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
         addSortEventListener(`${PREFIJO}-boton-orden-ascendente`, `${PREFIJO}-body-botones-canales`, ordenarBotonesCanalesAscendente);
         addSortEventListener(`${PREFIJO}-boton-orden-descendente`, `${PREFIJO}-body-botones-canales`, ordenarBotonesCanalesDescendente);
         addSortEventListener(`${PREFIJO}-boton-orden-original`, `${PREFIJO}-body-botones-canales`, restaurarOrdenOriginalBotonesCanales);
@@ -508,9 +510,9 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             if (localStorage.getItem('modo-experimental') !== 'activo') {
                 BOTON_EXPERIMENTAL.querySelector('span').textContent = 'Cargando...'
-                await fetchCargarCanalesIPTV();
+                await fetchIptvChannelsData();
                 localStorage.setItem('modo-experimental', 'activo');
-                for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
+                for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
                     document.querySelector(`#${PREFIJO}-body-botones-canales`).classList.add('border', 'border-warning', 'rounded-3')
                     document.querySelector(`#${PREFIJO}-body-botones-canales`).innerHTML = '';
                     document.querySelector(`#${PREFIJO}-collapse-botones-listado-filtro-countries`).innerHTML = '';

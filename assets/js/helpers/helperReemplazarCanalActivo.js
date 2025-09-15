@@ -1,4 +1,4 @@
-import { crearFragmentCanal } from "../canalUI.js";
+import { createChannelFragment } from "../channelUI.js";
 import { tele } from "../main.js";
 import { mostrarToast, ajustarClaseBotonCanal, saveActiveChannelsToStorage } from "./index.js";
 
@@ -16,7 +16,7 @@ export function reemplazarCanalActivo(canalIdBotonPulsadoEnModal, canalIdExisten
             divExistenteACambiar.remove();
             barraOverlayDeCanalACambiar.remove();
 
-            divPadreACambiar.append(crearFragmentCanal(canalIdBotonPulsadoEnModal));
+            divPadreACambiar.append(createChannelFragment(canalIdBotonPulsadoEnModal));
             divPadreACambiar.setAttribute('data-canal', canalIdBotonPulsadoEnModal); // deja atributo con el canal que se deja activo tras cambio
             ajustarClaseBotonCanal(canalIdExistente, false);
             ajustarClaseBotonCanal(canalIdBotonPulsadoEnModal, true);

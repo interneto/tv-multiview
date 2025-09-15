@@ -1,34 +1,34 @@
 // Funciones para crear overlays y fragmentos de canal
-import { listaCanales } from './canalesData.js';
+import { listChannels } from './channelsData.js';
 import { LABEL_MODAL_CAMBIAR_CANAL, MODAL_CAMBIAR_CANAL, tele } from './main.js';
 import {
     COUNTRY_CODES,
     CATEGORY_ICONS,
     AUDIO_POP,
-    TWITCH_PARENT
+    TWITCH_BASE_URL
 } from './constants/index.js';
 import { mostrarToast, playAudioSinDelay, hideTextoBotonesOverlay } from './helpers/index.js';
 
 // Funciones de UI de canales extraídas de main.js
-function guardarSeñalPreferida(canalId, señalUtilizar = '', indexSeñalUtilizar = 0) {
+function savePreferredSignal(canalId, señalUtilizar = '', indexSeñalUtilizar = 0) {
     let lsPreferenciasSeñalCanales = JSON.parse(localStorage.getItem('preferencia-señal-canales')) || {};
     lsPreferenciasSeñalCanales[canalId] = { [señalUtilizar]: indexSeñalUtilizar };
     localStorage.setItem('preferencia-señal-canales', JSON.stringify(lsPreferenciasSeñalCanales));
 }
 
-export function crearIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
+export function generateStreamIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
     valorIndex = Number(valorIndex)
     const DIV_ELEMENT = document.createElement('div');
     DIV_ELEMENT.classList.add('ratio', 'ratio-16x9', 'h-100');
     DIV_ELEMENT.setAttribute('data-canal-cambio', canalId);
-    const { name, signals } = listaCanales[canalId];
+    const { name, signals } = listChannels[canalId];
 
     const URL_POR_TIPO_SEÑAL = {
         'iframe_url': signals.iframe_url && signals.iframe_url[valorIndex],
         'yt_id': signals.yt_id && `https://www.youtube-nocookie.com/embed/live_stream?channel=${signals.yt_id}&autoplay=1&mute=1&modestbranding=1&vq=medium&showinfo=0`,
         'yt_embed': signals.yt_embed && `https://www.youtube-nocookie.com/embed/${signals.yt_embed}?autoplay=1&mute=1&modestbranding=1&showinfo=0`,
         'yt_playlist': signals.yt_playlist && `https://www.youtube-nocookie.com/embed/videoseries?list=${signals.yt_playlist}&autoplay=0&mute=0&modestbranding=1&showinfo=0`,
-        'twitch_id': signals.twitch_id && `https://player.twitch.tv/?channel=${signals.twitch_id}&parent=${TWITCH_PARENT}`
+        'twitch_id': signals.twitch_id && `https://player.twitch.tv/?channel=${signals.twitch_id}&parent=${TWITCH_BASE_URL}`
     };
 
     const IFRAME_ELEMENT = document.createElement('iframe');
@@ -44,7 +44,7 @@ export function crearIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
 }
 
 
-export function crearVideoJs(canalId, urlCarga) {
+export function createVideoPlayer(canalId, urlCarga) {
     const DIV_ELEMENT = document.createElement('div');
     DIV_ELEMENT.setAttribute('data-canal-cambio', canalId);
     DIV_ELEMENT.classList.add('ratio', 'ratio-16x9', 'h-100');
@@ -61,9 +61,9 @@ export function crearVideoJs(canalId, urlCarga) {
     return DIV_ELEMENT;
 }
 
-export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
+export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
     try {
-    let { name = 'Nombre Canal', signals, website, country, category } = listaCanales[canalId];
+    let { name = 'Nombre Canal', signals, website, country, category } = listChannels[canalId];
 
     valorIndex = Number(valorIndex);
     category = typeof category === 'string' ? category.toLowerCase() : '';
@@ -111,8 +111,8 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
                             item.classList.remove('bg-indigo', 'fw-bold');
                         });
                         listItem.classList.add('bg-indigo', 'fw-bold');
-                        guardarSeñalPreferida(canalId, key.toString(), Number(index));
-                        cambiarSoloSeñalActiva(canalId);
+                        savePreferredSignal(canalId, key.toString(), Number(index));
+                        updateActiveSignal(canalId);
                     });
                     DROPDOWN_MENU_SELECCIONAR_SEÑAL_CANAL.append(listItem);
                 });
@@ -126,48 +126,48 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
                         item.classList.remove('bg-indigo', 'fw-bold');
                     });
                     listItem.classList.add('bg-indigo', 'fw-bold');
-                    guardarSeñalPreferida(canalId, key.toString());
-                    cambiarSoloSeñalActiva(canalId);
+                    savePreferredSignal(canalId, key.toString());
+                    updateActiveSignal(canalId);
                 });
                 DROPDOWN_MENU_SELECCIONAR_SEÑAL_CANAL.append(listItem);
             }
         }
 
-        const BOTON_MOVER_CANAL = document.createElement('button');
-        BOTON_MOVER_CANAL.id = 'overlay-boton-mover';
-        BOTON_MOVER_CANAL.setAttribute('type', 'button');
-        BOTON_MOVER_CANAL.setAttribute('title', 'Arrastrar y mover este canal');
-        BOTON_MOVER_CANAL.setAttribute('data-bs-toggle', 'tooltip');
-        BOTON_MOVER_CANAL.setAttribute('data-bs-title', 'Arrastrar y mover este canal');
-        BOTON_MOVER_CANAL.innerHTML = '<span>Mover</span><i class="bi bi-arrows-move"></i>';
-        BOTON_MOVER_CANAL.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3', 'clase-para-mover');
+        const MOVE_CHANNEL_BUTTON = document.createElement('button');
+        MOVE_CHANNEL_BUTTON.id = 'overlay-boton-mover';
+        MOVE_CHANNEL_BUTTON.setAttribute('type', 'button');
+        MOVE_CHANNEL_BUTTON.setAttribute('title', 'Arrastrar y mover este canal');
+        MOVE_CHANNEL_BUTTON.setAttribute('data-bs-toggle', 'tooltip');
+        MOVE_CHANNEL_BUTTON.setAttribute('data-bs-title', 'Arrastrar y mover este canal');
+        MOVE_CHANNEL_BUTTON.innerHTML = '<span>Mover</span><i class="bi bi-arrows-move"></i>';
+        MOVE_CHANNEL_BUTTON.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3', 'clase-para-mover');
 
-        const BOTON_CAMBIAR_CANAL = document.createElement('button');
-        BOTON_CAMBIAR_CANAL.id = 'overlay-boton-cambiar';
-        BOTON_CAMBIAR_CANAL.setAttribute('type', 'button');
-        BOTON_CAMBIAR_CANAL.setAttribute('title', 'Cambiar este canal');
-        BOTON_CAMBIAR_CANAL.setAttribute('data-bs-toggle', 'tooltip');
-        BOTON_CAMBIAR_CANAL.setAttribute('data-bs-title', 'Cambiar este canal');
-        BOTON_CAMBIAR_CANAL.setAttribute('data-button-cambio', canalId);
-        BOTON_CAMBIAR_CANAL.innerHTML = '<span>Cambiar</span><i class="bi bi-arrow-repeat"></i>';
-        BOTON_CAMBIAR_CANAL.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3');
-        BOTON_CAMBIAR_CANAL.addEventListener('click', () => {
+        const CHANGE_CHANNEL_BUTTON = document.createElement('button');
+        CHANGE_CHANNEL_BUTTON.id = 'overlay-boton-cambiar';
+        CHANGE_CHANNEL_BUTTON.setAttribute('type', 'button');
+        CHANGE_CHANNEL_BUTTON.setAttribute('title', 'Cambiar este canal');
+        CHANGE_CHANNEL_BUTTON.setAttribute('data-bs-toggle', 'tooltip');
+        CHANGE_CHANNEL_BUTTON.setAttribute('data-bs-title', 'Cambiar este canal');
+        CHANGE_CHANNEL_BUTTON.setAttribute('data-button-cambio', canalId);
+        CHANGE_CHANNEL_BUTTON.innerHTML = '<span>Cambiar</span><i class="bi bi-arrow-repeat"></i>';
+        CHANGE_CHANNEL_BUTTON.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3');
+        CHANGE_CHANNEL_BUTTON.addEventListener('click', () => {
             LABEL_MODAL_CAMBIAR_CANAL.textContent = name;
             LABEL_MODAL_CAMBIAR_CANAL.setAttribute('id-canal-cambio', canalId);
             new bootstrap.Modal(MODAL_CAMBIAR_CANAL).show();
         });
 
-        const BOTON_SITIO_OFICIAL_CANAL = document.createElement('a');
-        BOTON_SITIO_OFICIAL_CANAL.id = 'overlay-boton-pagina-oficial';
-        BOTON_SITIO_OFICIAL_CANAL.title = 'Ir a la página oficial de esta transmisión';
+        const OFFICIAL_CHANNEL_LINK = document.createElement('a');
+        OFFICIAL_CHANNEL_LINK.id = 'overlay-boton-pagina-oficial';
+        OFFICIAL_CHANNEL_LINK.title = 'Ir a la página oficial de esta transmisión';
         if (tipoSeñalCargada === 'yt_id') website = `https://www.youtube.com/channel/${signals.yt_id}`;
         if (tipoSeñalCargada === 'twitch_id') website = `https://www.twitch.tv/${signals.twitch_id}`;
-        BOTON_SITIO_OFICIAL_CANAL.href = website !== '' ? website : `https://www.qwant.com/?q=${name}+en+vivo`;
-        BOTON_SITIO_OFICIAL_CANAL.setAttribute('role', 'button');
-        BOTON_SITIO_OFICIAL_CANAL.setAttribute('data-bs-toggle', 'tooltip');
-        BOTON_SITIO_OFICIAL_CANAL.setAttribute('data-bs-title', 'Ir a la página oficial de esta transmisión');
-        BOTON_SITIO_OFICIAL_CANAL.rel = 'noopener nofollow noreferrer';
-        BOTON_SITIO_OFICIAL_CANAL.innerHTML = `<span>
+        OFFICIAL_CHANNEL_LINK.href = website !== '' ? website : `https://www.qwant.com/?q=${name}+en+vivo`;
+        OFFICIAL_CHANNEL_LINK.setAttribute('role', 'button');
+        OFFICIAL_CHANNEL_LINK.setAttribute('data-bs-toggle', 'tooltip');
+        OFFICIAL_CHANNEL_LINK.setAttribute('data-bs-title', 'Ir a la página oficial de esta transmisión');
+        OFFICIAL_CHANNEL_LINK.rel = 'noopener nofollow noreferrer';
+        OFFICIAL_CHANNEL_LINK.innerHTML = `<span>
                 ${name}
                 ${country && typeof country === 'string' && COUNTRY_CODES[country]
                 ? ` <img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${COUNTRY_CODES[country]}" title="${COUNTRY_CODES[country]}" class="svg-bandera">`
@@ -176,28 +176,28 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
                 ? ` ${iconoCategoria}`
                 : ''}
                 </span> <i class="bi bi-box-arrow-up-right"></i>`;
-        BOTON_SITIO_OFICIAL_CANAL.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3', 'text-nowrap');
+        OFFICIAL_CHANNEL_LINK.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3', 'text-nowrap');
 
-        const BOTON_QUITAR_CANAL = document.createElement('button');
-        BOTON_QUITAR_CANAL.id = 'overlay-boton-quitar';
-        BOTON_QUITAR_CANAL.setAttribute('aria-label', 'Close');
-        BOTON_QUITAR_CANAL.setAttribute('type', 'button');
-        BOTON_QUITAR_CANAL.setAttribute('title', 'Quitar canal');
-        BOTON_QUITAR_CANAL.setAttribute('data-bs-toggle', 'tooltip');
-        BOTON_QUITAR_CANAL.setAttribute('data-bs-title', 'Quitar canal');
-        BOTON_QUITAR_CANAL.innerHTML = '<span>Quitar</span><i class="bi bi-x-circle"></i>';
-        BOTON_QUITAR_CANAL.classList.add('btn', 'btn-sm', 'btn-danger', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3');
-        BOTON_QUITAR_CANAL.addEventListener('click', () => {
+        const REMOVE_CHANNEL_BUTTON = document.createElement('button');
+        REMOVE_CHANNEL_BUTTON.id = 'overlay-boton-quitar';
+        REMOVE_CHANNEL_BUTTON.setAttribute('aria-label', 'Close');
+        REMOVE_CHANNEL_BUTTON.setAttribute('type', 'button');
+        REMOVE_CHANNEL_BUTTON.setAttribute('title', 'Quitar canal');
+        REMOVE_CHANNEL_BUTTON.setAttribute('data-bs-toggle', 'tooltip');
+        REMOVE_CHANNEL_BUTTON.setAttribute('data-bs-title', 'Quitar canal');
+        REMOVE_CHANNEL_BUTTON.innerHTML = '<span>Quitar</span><i class="bi bi-x-circle"></i>';
+        REMOVE_CHANNEL_BUTTON.classList.add('btn', 'btn-sm', 'btn-danger', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3');
+        REMOVE_CHANNEL_BUTTON.addEventListener('click', () => {
             tele.remove(canalId);
             playAudioSinDelay(AUDIO_POP);
         });
 
         DIV_ELEMENT.append(BOTON_SELECCIONAR_SEÑAL_CANAL);
         DIV_ELEMENT.append(DROPDOWN_MENU_SELECCIONAR_SEÑAL_CANAL);
-        DIV_ELEMENT.append(BOTON_MOVER_CANAL);
-        DIV_ELEMENT.append(BOTON_CAMBIAR_CANAL);
-        DIV_ELEMENT.append(BOTON_SITIO_OFICIAL_CANAL);
-        DIV_ELEMENT.append(BOTON_QUITAR_CANAL);
+        DIV_ELEMENT.append(MOVE_CHANNEL_BUTTON);
+        DIV_ELEMENT.append(CHANGE_CHANNEL_BUTTON);
+        DIV_ELEMENT.append(OFFICIAL_CHANNEL_LINK);
+        DIV_ELEMENT.append(REMOVE_CHANNEL_BUTTON);
         FRAGMENT_OVERLAY.append(DIV_ELEMENT);
         return FRAGMENT_OVERLAY;
     } catch (error) {
@@ -213,9 +213,9 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
     }
 }
 
-export function crearFragmentCanal(canalId) {
-    if (listaCanales[canalId]?.signals) {
-        let { iframe_url = [], m3u8_url = [], yt_id = '', yt_embed = '', yt_playlist = '', twitch_id = '' } = listaCanales[canalId].signals;
+export function createChannelFragment(canalId) {
+    if (listChannels[canalId]?.signals) {
+        let { iframe_url = [], m3u8_url = [], yt_id = '', yt_embed = '', yt_playlist = '', twitch_id = '' } = listChannels[canalId].signals;
         let lsPreferenciasSeñalCanales = JSON.parse(localStorage.getItem('preferencia-señal-canales')) || {};
 
         let señalUtilizar;
@@ -243,14 +243,14 @@ export function crearFragmentCanal(canalId) {
         const FRAGMENT_CANAL = document.createDocumentFragment();
         if (señalUtilizar === 'm3u8_url') {
             FRAGMENT_CANAL.append(
-                crearVideoJs(canalId, m3u8_url[valorIndexArraySeñal]),
-                crearOverlay(canalId, 'm3u8_url', valorIndexArraySeñal)
+                createVideoPlayer(canalId, m3u8_url[valorIndexArraySeñal]),
+                createChannelOverlay(canalId, 'm3u8_url', valorIndexArraySeñal)
             );
             return FRAGMENT_CANAL;
         } else {
             FRAGMENT_CANAL.append(
-                crearIframe(canalId, señalUtilizar, valorIndexArraySeñal),
-                crearOverlay(canalId, señalUtilizar, valorIndexArraySeñal)
+                generateStreamIframe(canalId, señalUtilizar, valorIndexArraySeñal),
+                createChannelOverlay(canalId, señalUtilizar, valorIndexArraySeñal)
             );
             return FRAGMENT_CANAL;
         }
@@ -264,7 +264,7 @@ export function crearFragmentCanal(canalId) {
     }
 }
 
-export function cambiarSoloSeñalActiva(canalId) {
+export function updateActiveSignal(canalId) {
     try {
         if (!canalId) return console.error(`El canal "${canalId}" proporcionado no es válido para cambio señal.`);
 
@@ -275,7 +275,7 @@ export function cambiarSoloSeñalActiva(canalId) {
         divExistenteACambiar.remove();
         barraOverlayDeCanalACambiar.remove();
 
-        divPadreACambiar.append(crearFragmentCanal(canalId));
+        divPadreACambiar.append(createChannelFragment(canalId));
 
         if (typeof activarTooltipsBootstrap === 'function') activarTooltipsBootstrap();
         if (typeof hideTextoBotonesOverlay === 'function') hideTextoBotonesOverlay();
