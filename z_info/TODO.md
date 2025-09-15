@@ -1,46 +1,38 @@
 # To Do
 
-## Nuevas opciones
+## New options
 
-- [ ] Ampliar el listado [tv-channels](./json-tv/tv-channels.json)
-- [ ] Añadir filtrado de canales por temática
-- [ ] Comprobar si los canales están activos
+- [ ] Improve [tv-channels](./json-tv/tv-channels.json) list
+    - [ ] List countries in English and original language
+    - [ ] Add World section with international channels.
+    - [ ] Add Russian channels
+    - [ ] Add right settings in mobile navbar panel.
+    - [ ] Add other live streams from other channels: NASA, music, cars, gaming,
+- [ ] Check if channels are active
 
 ----
 
-## Mejoras
+## Improvements
 
-Aquí tienes un **resumen priorizado** de las mejoras:
+### Medium
 
-### Alta prioridad
+- [ ] **Lint and formatting** → Code uniformity.
+- [ ] **State in URL** → Allow sharing/restoring views.
+- [ ] **IndexedDB** → More robust persistence than localStorage.
+- [ ] **PWA / Service Worker** → Improve cache and offline performance.
+- [ ] **Accessibility (a11y)** → ARIA roles, focus, contrast, Lighthouse.
 
-- [x] **README inicial** → Explicar propósito, estructura, instrucciones y validaciones.
-- [x] **package.json + scripts** → Centralizar comandos (`start`, `lint`, `format`, `test`, `check-json`).
-- [x] **Validación JSON con schema** → Evitar datos malformados.
+### Medium-Low
 
-### Media-Alta
+- [ ] **Test helpers** → Validate transformations and avoid regressions.
+- [ ] **Errors and retries in fetch** → Better tolerance to network failures.
 
-- [x] **CI (GitHub Actions)** → Automatizar lint, validación, tests.
+### Low
 
-### Media
+- [ ] **API and helper documentation** → JSDoc and basic docs.
+- [ ] **Image optimization** → WebP, compression, srcset.
+- [ ] **UX in “Load defaults”** → Confirmations and customization.
 
-- [ ] **Lint y formateo** → Uniformidad de código.
-- [ ] **Estado en URL** → Permitir compartir/restaurar vistas.
-- [ ] **IndexedDB** → Persistencia más robusta que localStorage.
-- [ ] **PWA / Service Worker** → Mejorar cache y rendimiento offline.
-- [ ] **Accesibilidad (a11y)** → Roles ARIA, foco, contraste, Lighthouse.
+### Optional
 
-### Media-Baja
-
-- [ ] **Tests helpers** → Validar transformaciones y evitar regresiones.
-- [ ] **Errores y reintentos en fetch** → Mejor tolerancia a fallas de red.
-
-### Baja
-
-- [ ] **Documentación API y helpers** → JSDoc y docs básicos.
-- [ ] **Optimización de imágenes** → WebP, compresión, srcset.
-- [ ] **UX en “Cargar predeterminados”** → Confirmaciones y personalización.
-
-### Opcional
-
-- [ ] **Migración parcial a TypeScript** → Más robustez y tipado progresivo.
+- [ ] **Partial migration to TypeScript** → More robustness and progressive typing.

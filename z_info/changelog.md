@@ -1,895 +1,299 @@
 # Changelog
 
-Todos los cambios notables de este proyecto se documentarán en este archivo.
-
-Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
-
 ## [v0.19]
 
-### Changed
+- Changed
+    - Updated README.md and NOTICE.md files to improve readability and link formatting.
+    - Functions moved to modules for better organization.
+    - Applied functions to check for the existence of elements and methods before operating on them in multiple JS files to avoid runtime errors.
 
-- Actualizaron los archivos README.md y NOTICE.md para mejorar la legibilidad y el formato de enlaces.
-- Se pasan funciones a módulos para mejor organización.
-- Aplican funciones de comprobación de existencia de elementos y métodos antes de operar sobre ellos en múltiples archivos JS para evitar errores en tiempo de ejecución.
+- Added
+    - Added checks for the existence of elements and methods before operating on them in multiple JS files to avoid runtime errors.
+    - Improved compatibility and robustness in DOM manipulation, events, and local storage.
+    - lite-youtube-embed for YouTube loading for yt_embed and yt_playlist cases.
 
-### Added
-
-- Agregaron comprobaciones de existencia de elementos y métodos antes de operar sobre ellos en múltiples archivos JS para evitar errores en tiempo de ejecución.
-- Se mejoró la compatibilidad y robustez en la manipulación del DOM, eventos y almacenamiento local.
-- lite-youtube-embed para carga YouTube para casos de yt_embed y yt_playlist.
-
-### Fixed
-
-- Overflow de botones countries en modales cambiar canal activo.
-- Suspensión de signals m3u8 cargadas con VideoJS de forma correcta, de manera que no sigan en segundo plano tras eliminar elemento del DOM.
+- Fixed
+    - Overflow of countries buttons in modals to change active channel.
+    - Suspension of m3u8 signals loaded with VideoJS correctly, so that they do not continue in the background after removing the element from the DOM.
 
 ## [v0.18]
 
-### Changed
+- Changed
+    - Refactored JS code.
+    - Combined signals for the same channel into a single button.
+    - Preview images
 
-- Refactorizado código JS.
-- Combinan signals mismo canal en un solo botón.
-- Imágenes previews
-
-### Added
-
-- Opción de modificar señal de canal activo, junto a guardar en almacenamiento local opción seleccionada para futuras cargas.
-- Mayor número de comprobaciones para carga canales para evitar errores que dejen inutilizable sitio.
-- Opción experimental carga canales IPTV desde <https://github.com/iptv-org/iptv> (por problemas de rendimiento deja como activado manual en offcanvas personalizaciones).
-- Más canales, signals, logos a canales (opcional desde código).
-- Opción alternar entre vista "cuadricula" y "única", junto a recordar opción seleccionada.
-- Opción alternar uso 100% de la altura pantalla en vista "cuadricula"
+- Added
+    - Option to modify active channel signal, along with saving the selected option to local storage for future loads.
+    - Increased number of checks for channel loading to avoid errors that render the site unusable.
+    - Experimental option to load IPTV channels from [https://github.com/iptv-org/iptv](https://github.com/iptv-org/iptv) (due to performance issues, leave it manually enabled in offcanvas customizations).
+    - More channels, signals, logos for channels (optional from code).
+    - Option to switch between "grid" and "single" view, along with remembering the selected option.
+    - Option to switch to 100% screen height in "grid" view.
 
 ## [v0.17]
 
-### Changed
+- Changed
+    - Rewrote channel filter to take into account if the filter by country is pressed so that the user input is within that active country.
+    - F_ordenBotones rewritten to include dynamic modal for changing active signal, saving the original order of buttons before sorting in ascending/descending order.
+    - Active channel container div now uses 100vh.
+    - Global redesign
+    - PWA manifesto images and repository preview (thanks to [https://shots.so/](https://shots.so/), [https://pixlr.com/es/express/,](https://pixlr.com/es/express/) and [https://progressier.com/pwa-screenshots-generator](https://progressier.com/pwa-screenshots-generator))
+    - JS structure by modules
 
-- filtroCanales reescrito para tomar en cuenta si se pulsa filtro por country de modo de que el input usuario sea dentro de dicho country activo.
-- F_ordenBotones reescrito para abarcar modal dinámico de opción cambiar señal activa, guardando orden original de botones previo a ordenar de forma ascendente/descendente
-- div contenedor canales activos utiliza ahora el 100vh
-- Rediseño global
-- Imágenes manifesto PWA y Preview repositorio (gracias a <https://shots.so/>, <https://pixlr.com/es/express/> y <https://progressier.com/pwa-screenshots-generator>)
-- Estructura JS por módulos
+- Added
+    - PWA install button using [https://github.com/khmyznikov/pwa-install](https://github.com/khmyznikov/pwa-install)
+    - Alert when internet connection is lost
+    - Hide overlay button text according to general div size to avoid overflow in small sizes
+    - Buttons for loading default channels
+    - Sound effect for default channel load buttons [CRT turn on notification by Coolshows101sound](https://freesound.org/people/Coolshows101sound/sounds/709461/)
+    - Icons for buttons to remove all active channels, navbar items, credits, and disclaimer
+    - Ability to move floating buttons
+    - Ability to individually hide channel overlay buttons
+    - Observer for cases where there are only 2 or 1 active channels, adjust column size accordingly to cover the entire width
 
-### Added
+- Removed
+    - js/json file with channels (created &lt;<https://github.com/Alplox/json-tv>&gt; to fetch, leaving the last file that existed in the repository as a backup)
 
-- Botón instalar PWA usando <https://github.com/khmyznikov/pwa-install>
-- Alerta ante perdida de conexión internet
-- Ocultar texto botones overlay acorde a tamaño div general para evitar overflow en tamaños pequeños
-- Botones para carga canales predeterminados
-- Efecto de sonido a botones de carga canales predeterminados [CRT turn on notification por Coolshows101sound](https://freesound.org/people/Coolshows101sound/sounds/709461/)
-- Iconos a botones de quitar todo canal activo, item navbar créditos y descargo de responsabilidad
-- Habilidad de mover botones flotantes
-- Habilidad ocultar individualmente botones de overlay canales
-- Observer para casos donde solo existan 2 o 1 canal activo se ajuste tamaño columna acorde para abarcar todo el width
-
-### Removed
-
-- archivo js/json con canales (se creo <https://github.com/Alplox/json-tv> para hacer fetch, dejando como respaldo ultimo archivo que existió en repositorio)
-
-### Fixed
-
-- Opción de entrar a pantalla completa (bug <https://github.com/Alplox/teles/issues/1> de si se ingresa con icono ampliar desde algún navegador permanece, pero problema no es único a sitio por lo que se deja ya que globalmente (por lo que vi) no tiene solución) con tecla F11 funcionamiento acorde al esperado.
+- Fixed
+    - Option to enter full screen (bug <<https://github.com/Alplox/teles/issues/1>&gt; if entered with the enlarge icon from a browser, it remains, but the problem is not unique to the site, so it is left as it is because globally (from what I saw) there is no solution) with the F11 key working as expected.
 
 ## [v0.16]
 
-### Changed
+- Changed
+    - CSS: &lt;a&gt;:focus and &lt;a&gt;:hover
+    - PWA manifest
+    - CSS: .barra-overlay because its content was not properly centered
+    - .barra-overlay adds tabindex=0 so that it can be focused using the TAB key
+    - Text: from "Disable" to "Remove" in the channels modal (to match the remove button on the signals)
+    - Separate share buttons from copy link bar (so that modal shows copy link to people with ad blockers)
+    - Rewritten "NOTICE.md" file
+    - Alert after localStorage deletion
+    - SVG social media logos replaced with Bootstrap icons
+    - Example images on README.md, index.html, and site.webmanifest according to new version
 
-- CSS: <a>:focus y <a>:hover
-- manifesto PWA
-- CSS: .barra-overlay debido a que no estaba bien centrado su contenido
-- .barra-overlay se añade tabindex=0 para poder hacer focus con tecla TAB
-- Texto: de "Desactivar" a "Quitar" en modal canales (para que sea igual a botón quitar que tienen las signals)
-- Separados botones share de barra copiar enlace (para que modal muestre copiar enlace a personas con bloqueadores de publicidad)
-- Reescrito archivo "NOTICE.md"
-- Alerta tras borrado localStorage
-- SVG's logos redes sociales por iconos Bootstrap
-- Imágenes ejemplo sitio en README.md, index.html y site.webmanifest acorde a version nueva
+- Added
+    - Icon to external links within active signal &lt;iframe&gt; for better communication that clicking will leave the site &lt;i class="bi bi-box-arrow-up-right"&gt;&lt;/i&gt;
+    - Contributors section in "README.md"
+    - Ability to reorder channels with plugin from [SortableJS](https://github.com/SortableJS/Sortable) grid
+    - Icon for contributions in modal credits and README.md with [contributors-img](https://github.com/lacolaco/contributors-img)
+    - Sound effects for link copy alert in share modal: [button-pressed by Pixabay](https://pixabay.com/sound-effects/button-pressed-38129/), [Cancel/miss chime by Raclure](https://freesound.org/people/Raclure/sounds/405548/)
+    - Sound effect for buttons to remove all active [TV](https://freesound.org/people/MATRIXXX_/sounds/523553/) channels[, Shutdown.wav by MATRIXXX_](https://freesound.org/people/MATRIXXX_/sounds/523553/)
+    - Background sound effect for alert after deleting localStorage [DefectLineTransformer by blaukreuz](https://freesound.org/people/blaukreuz/sounds/440128/)
+    - Sound effect for buttons to remove channel [User Interface Clicks and Buttons 1 by original_sound](https://freesound.org/people/original_sound/sounds/493551/)
+    - Stale variation[https://alienxproject.github.io/X/](https://alienxproject.github.io/X/)
+    - "Variation" [https://navezjt.github.io/JCN-TV/](https://navezjt.github.io/JCN-TV/)
+    - Complementary link Suicide Prevention Hotline
+    - Flicker effect for background after deleting localStorage [https://codepen.io/frbarbre/pen/BaObOXL](https://codepen.io/frbarbre/pen/BaObOXL)
+    - Flicker effect for text after localStorage deletion [https://codepen.io/patrickhlauke/pen/YaoBop](https://codepen.io/patrickhlauke/pen/YaoBop)
+    - Dark/light theme, SVG backgrounds themes generated with [https://wickedbackgrounds.com/app](https://wickedbackgrounds.com/app) transformed to css with [https://yoksel.github.io/url-encoder/](https://yoksel.github.io/url-encoder/)
+    - Option to change/replace channel from grid
+    - Ability to remember channel number selection per row with localStorage
+    - Alert if channel search returns no results
+    - Option to reorder channel buttons in ascending or descending order
+    - Screenshots for PWA, made with Progressier [https://progressier.com](https://progressier.com)
+    - isMobile library [https://github.com/kaimallea/isMobile](https://github.com/kaimallea/isMobile)
 
-#### 📺 Canales
-
-Chile
-
-- [Canal 13](https://www.13.cl/en-vivo)
-
-### Added
-
-- Icono a enlaces externos dentro de señal activa <iframe> para mejor comunicación de que al pulsar abandonará el sitio <i class="bi bi-box-arrow-up-right"></i>
-- Sección agradecimientos contribuciones en "README.md"
-- Capacidad de reordenar canales con plugin desde grid [SortableJS](https://github.com/SortableJS/Sortable)
-- Icono para contribuciones en modal créditos y README.md con [contributors-img](https://github.com/lacolaco/contributors-img)
-- Efectos de sonido para alerta de copiado enlace en modal compartir: [button-pressed por Pixabay](https://pixabay.com/sound-effects/button-pressed-38129/), [Cancel/miss chime por Raclure](https://freesound.org/people/Raclure/sounds/405548/)
-- Efecto de sonido a botones de quitar todos los canales activos [TV, Shutdown.wav por MATRIXXX_](https://freesound.org/people/MATRIXXX_/sounds/523553/)
-- Efecto sonido de fondo a alerta tras borrado localStorage [DefectLineTransformer por blaukreuz](https://freesound.org/people/blaukreuz/sounds/440128/)
-- Efecto de sonido a botones de quitar canal [User Interface Clicks and Buttons 1 por original_sound](https://freesound.org/people/original_sound/sounds/493551/)
-- Variación rancia <https://alienxproject.github.io/X/>
-- "Variación" <https://navezjt.github.io/JCN-TV/>
-- Enlace complementario Línea Prevención del Suicidio
-- Efecto flicker para fondo tras borrado localStorage <https://codepen.io/frbarbre/pen/BaObOXL>
-- Efecto flicker para texto tras borrado localStorage <https://codepen.io/patrickhlauke/pen/YaoBop>
-- Tema oscuro/claro, fondos SVG temas generados con <https://wickedbackgrounds.com/app> transformados a css con <https://yoksel.github.io/url-encoder/>
-- Opción cambiar/reemplazar canal desde grid
-- Habilidad recordar selección de número de canales por fila con localStorage
-- Alerta en caso de que búsqueda canales no arroje resultados
-- Opción para reordenar botones canales de forma ascendente o descendente
-- screenshots para PWA, hechas con Progressier <https://progressier.com>
-- Librería isMobile <https://github.com/kaimallea/isMobile>
-
-#### 📺 Canales
-
-Chile
-
-- [Meganoticias 3](https://www.meganoticias.cl/senal-en-vivo/meganoticias/) - [x](https://github.com/HERBERTM3/iptv/blob/f55200534fdab9a503f04b0482ce7307c2767469/hd.m3u)
-- [Meganoticias 4](https://www.meganoticias.cl/senal-en-vivo/meganoticias/) - [x](https://github.com/HERBERTM3/iptv/blob/f55200534fdab9a503f04b0482ce7307c2767469/hd.m3u)
-- [Canal 13](https://www.13.cl/en-vivo) - [x](https://github.com/HERBERTM3/iptv/blob/f55200534fdab9a503f04b0482ce7307c2767469/hd.m3u)
-- [Canal 13 3](https://www.13.cl/en-vivo) - [x](https://github.com/HERBERTM3/iptv/blob/f55200534fdab9a503f04b0482ce7307c2767469/hd.m3u)
-- [La Red 2](https://www.lared.cl/senal-online) - [x](https://github.com/HERBERTM3/iptv/blob/f55200534fdab9a503f04b0482ce7307c2767469/hd.m3u)
-
-#### Radios 📻
-
-Chile
-
-- [Radio El Conquistador FM](https://www.elconquistadorfm.net/) - [x](https://github.com/Alplox/teles/pull/3)
-- [Radio El Conquistador FM 2](https://www.elconquistadorfm.net/) - [x](https://github.com/Alplox/teles/pull/3)
-- [Radio El Conquistador FM 3](https://www.twitch.tv/elconquistadortv)
-
-### Removed
-
-- Archivo bloquean.txt
-- Archivo emergencia.html
-- Archivo archivo.html
-- SVG's logos redes sociales
-- Imágenes ejemplo sitio v0.07
-
-#### 📺 Canales
-
-Chile
-
-- [CHV 2](https://www.chilevision.cl/senal-online)
+- Removed
+    - Blocked.txt file
+    - emergencia.html file
+    - Archivo archivo.html file
+    - SVG social media logos
+    - Example images site v0.07
+    - [CHV 2](https://www.chilevision.cl/senal-online)
 
 ## [v0.15]
 
-### Changed
+- Changed
+    - Link &lt;<https://ssd.eff.org/es/playlist/%C2%BFactivista-o-manifestante>&gt; replaced with &lt;<https://ssd.eff.org/es/module/asistir-una-protesta>&gt; due to 404 error
 
-- Enlace <https://ssd.eff.org/es/playlist/%C2%BFactivista-o-manifestante> por <https://ssd.eff.org/es/module/asistir-una-protesta> debido a error 404
+- Added
+    - Icon to external links to better communicate that clicking will leave the site &lt;i class="bi bi-box-arrow-up-right"&gt;&lt;/i&gt;
 
-#### 📺 Canales
-
-- Enlace Radio Infinita
-- Enlace Radio Carolina TV
-- Enlace Radio Romántica TV
-- Enlace Radio Radio Genial 100.5 FM
-- Enlace Radio El Sembrador
-- Enlace Radio Radio Ñuble
-- Enlace Radio Alternativa FM
-- Enlace canal M3U8 Stgo TV
-- Enlace canal M3U8 La Voz De Los Que Sobran
-- Enlace canal M3U8 Canal 21
-- Enlace canal M3U8 Ñublevision
-- Enlace canal M3U8 Ñuble RVT
-- Enlace canal M3U8 Canal 33
-- Enlace canal M3U8 Contivision
-- Enlace canal M3U8 Osorno TV
-- Enlace canal IFRAME TV Salud
-- Enlace canal YT-ID Canal 26
-- Enlace canal M3U8 Cámara de Diputados
-
-### Added
-
-- Icono a enlaces externos para mejor comunicación de que al pulsar abandonará el sitio <i class="bi bi-box-arrow-up-right"></i>
-
-### Removed
-
-- Modal Registros Manifestaciones desarrolladas en Chile
-- Modal Denunciar violación DDHH
-- Enlaces relacionados COVID-19 junto a "pacomap.live" de Modal Enlaces Complementario
-- Sección Proyectos GitHub de Modal Enlaces Complementario
-- Sitios:
-    Capucha Informativa (no carga)
-    ChileOkulto (borro contenido)
-    En Punto (última actualización 2021)
-    Megáfono Popular (no carga)
-    Piensa Prensa (sitio redirige a publicidad)
-    Primera Línea Revolucionaria Chile (última actualización 2022)
-    Revista ChileLibre (no carga)
-    Verdad Ahora (última actualización 2023)
-    Radio 19 de abril Cobertura colectiva  (no carga)
-    Radio Manque (no carga)
-    RadioTV-Liberación (no carga)
-- Información útil incendios (canal y modal)
-- Enlace Variación por u/sebastianrw <https://whywelove.news/love/country/chile/envivo>
-
-#### 📺 Canales
-
-Chile
-
-- [24 Horas 2](https://www.24horas.cl/envivo/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [24 Horas 3](https://www.24horas.cl/envivo/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [24 Horas s2](https://www.24horas.cl/envivo/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [24 Horas s2 2](https://www.24horas.cl/envivo/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [Mega](https://www.mega.cl/) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [T13 3](https://www.t13.cl/)
-- [Canal 13](https://www.youtube.com/channel/UCd4D3LfXC_9MY2zSv_3gMgw)
-- [Canal 13 2](https://www.13.cl/en-vivo) - [x](https://github.com/AINMcl/AINMcl.github.io/blob/master/MonitorTV/Senal/WEB/Se%C3%B1alCANAL13_IFRAME.html)
-- [CHV Noticias 2](https://www.chvnoticias.cl/) - [x](https://pluto.tv/es/live-tv/chilevision-noticias)
-- [CHV 2](https://www.chilevision.cl/senal-online) - [x](https://chvv--hofece7009.repl.co/)
-- [CHV 3](https://www.chilevision.cl/senal-online) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [Prensa Presidencia](https://prensa.presidencia.cl/streaming.aspx)
-- [DerechoFacil](https://www.twitch.tv/derechofacil)
-- [Nicolas Copano](https://www.youtube.com/channel/UCVTL17ftpqx3lQ_IaGUNgSg)
-- [Nicolas Copano 2](https://www.twitch.tv/copano)
-- [ARABTV](https://www.arabtv.cl/)
-- [ARABTV 2](https://www.arabtv.cl/) - [x](https://github.com/iptv-org/iptv/blob/master/streams/cl.m3u)
-- [Arica TV](https://arica.tv/envivo/)
-- [Estaciontv](https://www.estaciontv.cl/site/) - [x](https://www.chileiptv.cl/)
-- [Estaciontv 2](https://www.estaciontv.cl/site/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [UCV TV 2](https://pucvmultimedios.cl/senal-online-tv.php) - [x](https://github.com/WJS1978/IPTV/blob/56dbbc76e3f1167966459f0d708b514bb792ae9c/iptv.m3u)
-- [Contivision 2](http://w.contivision.cl/cvn/envivo.php) - [x](https://m3u.cl/lista-iptv-chile.php)
-- [Teletón TV](https://teletontv.cl/)
-- [Teletón TV 2](https://teletontv.cl/) - [x](https://www.chileiptv.cl/)
-- [Cámara de Diputados 2](http://webtv.camara.cl/)
-- [Cámara de Diputados 3](http://webtv.camara.cl/)
-- [Convención Constitucional](https://www.convencion.tv/)
-- [Convención Constitucional 2](https://www.convencion.tv/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [Convención Constitucional 3](https://www.youtube.com/channel/UCRlIWVAxQdAnCl4D4UR9r3Q)
-- [Convención Constitucional YT 01](https://youtube.com/channel/UCc3koBbWMyvSyzRbG5eTgvQ)
-- [Convención Constitucional YT 02](https://youtube.com/channel/UCKmKUwcjv6HJP7-z9Nnpp2w)
-- [Convención Constitucional YT 03](https://youtube.com/channel/UCeIlCkkBplhU0SrWM9B7u7Q)
-- [Convención Constitucional YT 04](https://youtube.com/channel/UCkMWMYCPUGzf3UPAxcIaVqA)
-- [Convención Constitucional YT 05](https://youtube.com/channel/UChNeKfZ0-wwuOCyUSu6BlcA)
-- [Convención Constitucional YT 06](https://youtube.com/channel/UC-HPc8CLoGRSG0dgbzZbDWA)
-- [Convención Constitucional YT 07](https://youtube.com/channel/UC9p2Hsom7SXdro9FhN4K59w)
-- [Convención Constitucional YT 08](https://youtube.com/channel/UCFkkF0LKUOUOcQEwG4nTrHw)
-- [Convención Constitucional YT 09](https://youtube.com/channel/UCEK7dK0jllE0uXMhEQTV6og)
-- [Convención Constitucional YT 10](https://youtube.com/channel/UC1qhPKBTpfhjVcTMzmM8mGw)
-- [Convención Constitucional YT 11](https://youtube.com/channel/UCRVinYIynLNcn18wHjmI5Vg)
-- [Convención Constitucional YT 12](https://youtube.com/channel/UCJerNR157sjR83jMChSocPQ)
-- [Convención Constitucional YT 13](https://youtube.com/channel/UCxI0u9BUvXbGHrv200cgFZg)
-- [Convención Constitucional YT 14](https://youtube.com/channel/UCxAECnUReRnEwkFThbjtH2Q)
-- [Convención Constitucional YT 15](https://youtube.com/channel/UCTGMQgIdFvz3qlD9mKb8v9w)
-- [Tribunal Constitucional de Chile](https://www.youtube.com/channel/UCZaI-1N1oaGb-U8K2VNztjg)
-- [TV Educa Chile](https://www.tvn.cl/envivo/tveducachile/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [PuntajeNacional Chile](https://www.youtube.com/channel/UCCY6xIXHmGBGZUgUYxtfKSg)
-- [Gobierno de Chile](https://www.gob.cl/)
-- [COVID-19 Chile](https://bing.com/covid/local/chile)
-
-Internacionales 🌍
-Argentina
-
-- [América TV](https://www.youtube.com/channel/UC6NVDkuzY2exMOVFw4i9oHw)
-- [El Siete TV](https://www.youtube.com/channel/UC64ZNqX0FQHabP8iIkmnR3A)
-- [A24](https://www.youtube.com/channel/UCR9120YBAqMfntqgRTKmkjQ)
-- [Información Periodistica](https://ip.digital/vivo) - [x](https://github.com/iptv-org/iptv/blob/master/streams/ar.m3u)
-- [IP Noticias](https://www.youtube.com/channel/UC1bBjOZieJWHbsFA0LwjjJA)
-
-Colombia
-
-- [Noticias Caracol](https://www.youtube.com/channel/UC2Xq2PK-got3Rtz9ZJ32hLQ)
-- [RED MÁS Noticias](https://www.youtube.com/channel/UCpcvsK0UAI3MIHsjjj3CgMg)
-
-Perú
-
-- [Nacional TV](https://ntvperu.pe/senal-en-vivo/)
-- [UCI](https://uci.pe/envivo)
-- [Nativa](https://www.youtube.com/channel/UCdl1ygFwPa6lUdNYPLjoAGg)
-- [Cable Visión Perú](https://www.cablevisionperu.pe/?page_id=1938)
-- [ATV](https://www.atv.pe/envivo-atv)
-- [ATV Más](https://www.atv.pe/envivo-atvmas)
-- [Congreso República del Perú](https://www.youtube.com/channel/UCsKiP5cZCYh9YhPGrI6GrkQ)
-- [Justicia TV](https://www.youtube.com/channel/UCwsURxTXqGqijgu98ndod3A)
-
-Venezuela
-
-- [teleSUR tv](https://www.youtube.com/channel/UCbHFKMtqLYkIBRiPHJwxu_w)
-- [VPItv](https://www.youtube.com/channel/UCVFiIRuxJ2GmJLUkHmlmj4w)
-
-México
-
-- [MILENIO](https://www.youtube.com/channel/UCFxHplbcoJK9m70c4VyTIxg)
-
-España
-
-- [CNN en Español](https://www.youtube.com/channel/UC_lEiu6917IJz03TnntWUaQ)
-
-Brasil
-
-- [CNN Brasil](https://www.youtube.com/channel/UCvdwhh_fDyWccR42-rReZLw)
-
-Estados Unidos
-
-- [ABC7](https://www.youtube.com/channel/UCVxBA3Cbu3pm8w8gEIoMEog)
-- [CNN US](https://us.cnn.com/) - [x](https://github.com/iptv-org/iptv/blob/master/streams/us.m3u)
-- [CNBC EU](https://www.cnbc.com/live-tv/) - [x](https://vidgrid.tk.gg/)
-- [C-SPAN 1](https://www.c-span.org/networks/?channel=c-span) - [x](https://vidgrid.tk.gg/)
-- [C-SPAN 2](https://www.c-span.org/networks/?channel=c-span) - [x](https://vidgrid.tk.gg/)
-- [C-SPAN 3](https://www.c-span.org/networks/?channel=c-span) - [x](https://vidgrid.tk.gg/)
-- [Fox Business](https://www.youtube.com/channel/UCCXoCcu9Rp7NPbTzIvogpZg)
-- [LiveNOW from FOX](https://www.youtube.com/channel/UCJg9wBPyKMNA5sRDnvzmkdg)
-- [NBCLA](https://www.youtube.com/channel/UCSWoppsVL0TLxFQ2qP_DLqQ)
-- [NBC Now (Live Event)](https://www.nbcnews.com/now)
-- [NBC Now](https://www.nbcnews.com/now)
-- [PBS America](https://www.pbsamerica.co.uk/) - [x](https://vidgrid.tk.gg/)
-- [Record News](https://www.youtube.com/channel/UCuiLR4p6wQ3xLEm15pEn1Xw)
-- [Sky News](https://www.youtube.com/channel/UCoMdktPbSTixAyNGwb-UYkQ)
-- [The Sun](https://www.youtube.com/channel/UCIzXayRP7-P0ANpq-nD-h5g)
-
-Francia
-
-- [euronews (in English) 2](https://www.euronews.com/live) - [x](https://github.com/Free-IPTV/Countries/blob/master/UK01_UNITED_KINGDOM.m3u)
-- [FRANCE 24 French](https://www.france24.com/fr/direct) - [x](https://github.com/iptv-org/iptv/blob/master/streams/fr.m3u)
-- [LCI](https://www.tf1info.fr/direct/) - [x](https://github.com/iptv-org/iptv/blob/master/streams/fr.m3u)
-
-Alemania
-
-- [DW Español](https://www.youtube.com/channel/UCT4Jg8h03dD0iN3Pb5L0PMA)
-- [DW Deutsch](https://www.youtube.com/channel/UCMIgOXM2JEQ2Pv2d0_PVfcg)
-
-Rusia
-
-- [5 канал](https://www.youtube.com/channel/UCkyrSWEcjZKpIwMxiPfOcgg)
-- [Москва 24](https://www.youtube.com/channel/UCIme7og-uTpdRXRgm0zzA2A)
-- [Россия 24](https://ok.ru/videoembed/3574052691599?nochat=1&autoplay=1) - [x](https://xn--b1agj9af.xn--80aswg/video/rossija-24/)
-- [РБК](https://www.youtube.com/channel/UCWAK-dRtTEjnQnD96L6UMsQ)
-- [RT America](https://www.youtube.com/channel/UCczrL-2b-gYK3l4yDld4XlQ)
-- [RT Arabic](https://www.youtube.com/channel/UCsP3Clx2qtH2mNZ6KolVoZQ)
-- [RT Español](https://www.youtube.com/channel/UC2mtXUpAYLYJIZ2deSPhlqw)
-- [RT en vivo](https://www.youtube.com/channel/UCEIhICHOQOonjE6V0SLdrHQ)
-- [RT France](https://www.youtube.com/channel/UCqEVwTnDzlzKOGYNFemqnYA)
-- [RT News](https://www.youtube.com/channel/UCpwvZwUam-URkxB7g4USKpg)
-- [RT UK](https://www.youtube.com/channel/UC_ab7FFA2ACk2yTHgNan8lQ)
-- [Телеканал Дождь](https://www.youtube.com/channel/UCdubelOloxR3wzwJG9x8YqQ)
-- [Україна 24](https://www.youtube.com/channel/UCMp5Buw-6LpbbV9r9Sl_5yg)
-
-Ucrania
-
-- [34 телеканал](https://www.youtube.com/channel/UCAxGITqXFNmV7PNCU82D_MA)
-- [Апостроф TV](https://www.youtube.com/channel/UC0lnIB2qcArjFJPtq79WGZA)
-
-China
-
-- [民視直播 FTVN Live 53](https://www.youtube.com/channel/UClIfopQZlkkSpM1VgCFLRJA)
-- [三立LIVE新聞](https://www.youtube.com/channel/UC2TuODJhC03pLgd6MpWP0iw)
-- [中天電視](https://www.youtube.com/channel/UC5l1Yto5oOIgRXlI4p4VKbw)
-- [CGTN Europe](https://www.youtube.com/channel/UCj0TppyxzQWm9JbMg3CP8Rg)
-
-Hong Kong
-
-- [蘋果動新聞 HK Apple Daily](https://www.youtube.com/channel/UCeqUUXaM75wrK5Aalo6UorQ)
-
-Japón
-
-- [ANNnewsCH](https://www.youtube.com/channel/UCGCZAYq5Xxojl_tSXcVJhiQ)
-- [NHK WORLD-JAPAN](https://www.youtube.com/channel/UCSPEjw8F2nQDtmUKPFNF7_A)
-
-Corea del Sur
-
-- [MBCNEWS](https://www.youtube.com/channel/UCF4Wxdo3inmxP-Y59wXDsFw)
-
-Nigeria
-
-- [TVC News Nigeria](https://www.youtube.com/channel/UCgp4A6I8LCWrhUzn-5SbKvA)
-
-India
-
-- [IndiaTV](https://www.youtube.com/channel/UCttspZesZIDEwwpVIgoZtWQ)
-- [Republic World](https://www.youtube.com/channel/UCwqusr8YDwM-3mEYTDeJHzw)
-
-Reino Unido
-
-- [GBNews](https://www.youtube.com/channel/UC0vn8ISa4LKMunLbzaXLnOQ)
-
-Radios 📻
-Chile
-
-- [Biobio TV 2](https://www.biobiochile.cl/biobiotv/) - [x](https://m3u.cl/lista-iptv-chile.php)
-- [ADN 3](http://tv.adnradio.cl/) - [x](https://github.com/iptv-org/iptv/blob/master/streams/cl.m3u)
-- [ADN 4](http://tv.adnradio.cl/) - [x](https://github.com/iptv-org/iptv/blob/master/streams/cl.m3u)
-- [ADN 5](http://tv.adnradio.cl/) - [x](https://m3u.cl/lista-iptv-chile.php)
-- [Carolina TV 2](https://www.carolina.cl/tv/) - [x](https://www.chileiptv.cl/)
-- [Carolina TV 3](https://www.carolina.cl/tv/) - [x](https://github.com/iptv-org/iptv/blob/master/streams/cl.m3u)
-- [FM Tiempo](https://www.fmtiempo.cl/)
-- [FM Tiempo 2](https://www.fmtiempo.cl/) - [x](https://www.chileiptv.cl/)
-- [Alegría TV](https://www.alegriafm.cl/) - [x](https://www.chileiptv.cl/)
-- [Alegría TV 2](https://www.alegriafm.cl/) - [x](https://github.com/iptv-org/iptv/blob/master/streams/cl.m3u)
-- [Romántica TV 2](https://www.romantica.cl/romantica-tv/) - [x](https://www.chileiptv.cl/)
-- [Mi Radio es Más](https://www.youtube.com/channel/UCflUbt1g29kPG-H9SV5QIyw)
-- [Radio María Chile](https://www.youtube.com/channel/UClMwb2kCYemWyDIZ2dYttKA)
-
-Perú
-
-- [PBO](https://www.youtube.com/channel/UCgR0st4ZLABi-LQcWNu3wnQ)
-- [Radio Santa Rosa](https://www.youtube.com/channel/UCIGV0oiNkdK2-tnf10DNp2A)
-
-Música 🎵
-
-- [IMUC Chile](https://www.youtube.com/channel/UCIIDtZoaK9UZi4FaGMmL_hw)
-- [naxos japan](https://www.youtube.com/channel/UCwP6-81HmoDyC3nfBAyGPXQ)
-- [the bootleg boy](https://www.youtube.com/channel/UC0fiLCwTmAukotCXYnqfj0A)
-- [the bootleg boy 2](https://www.youtube.com/channel/UCwkTfp14Sj7o6q9_8ADJpnA)
-- [Abao en Tokio](https://www.youtube.com/channel/UC84whx2xxsiA1gXHXXqKGOA)
-
-Cámaras 📷
-
-- [Providencia, Ledrium](https://www.youtube.com/channel/UCTDewuGhfwGv6JRNnqa-yXw)
-- [glaseado.cl, Huayquique](https://www.glaseado.cl/surf-cams/huayquique/)
-- [glaseado.cl,Las Urracas](https://www.glaseado.cl/surf-cams/las-urracas/)
-- [glaseado.cl, La Punta](https://www.glaseado.cl/surf-cams/la-punta/)
-- [Av Angamos](https://www.youtube.com/channel/UCP9nvEUj8EN-wuOQajPQbAw)
-- [Av La Marina](https://www.youtube.com/channel/UCP9nvEUj8EN-wuOQajPQbAw)
-- [Washington DC LIVE Cam & US Capitol](https://www.youtube.com/channel/UCRj7u6fmW8RYQl98hcwbwng)
-- [Las Vegas, Treasure Island](https://www.youtube.com/channel/UCRj7u6fmW8RYQl98hcwbwng)
-- [San Diego, Down Town + Airport](https://www.youtube.com/channel/UCRj7u6fmW8RYQl98hcwbwng)
-- [Paris, EIFFEL Tower](https://www.youtube.com/channel/UCRj7u6fmW8RYQl98hcwbwng)
-- [Steadycamline, Jerusalem](https://www.youtube.com/channel/UC1byT4dOeBAZwVqQ309iAuA)
-
-Espacio 🔭
-
-- [NASA ISS Live Stream](https://www.youtube.com/watch?v=EEIk7gwjgIM)
-- [Space Videos](https://www.youtube.com/channel/UCakgsb0w7QB0VHdnCc-OVEA)
-- [NASASpaceflight](https://www.youtube.com/channel/UCSUu1lih2RifWkKtDOJdsBA)
-- [NASASpaceflight](https://www.youtube.com/channel/UCSUu1lih2RifWkKtDOJdsBA)
-- [Earth view from ISS](https://www.youtube.com/watch?v=XBPjVzSoepo)
-- [LabPadre](https://www.youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ)
-- [Multi-cam Ucrania, Zabby](https://www.youtube.com/channel/UCxc2Kkmuc8-BXVEQ82ChVow)
-- [Multi-cam Ucrania, Sloth On Meth](https://www.youtube.com/channel/UCkO2xL-Fx_tYXXxuuAv_j6A)
-
-Varios
-
-- [COVID-19 Dashboard](https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
-- [COVID-19 Live](https://www.youtube.com/channel/UCDGiCfCZIV5phsoGiPwIcyQ)
+- Removed
+    - Modal Records of protests in Chile
+    - Modal Report human rights violations
+    - Related links COVID-19 alongside Modal's "pacomap.live" Complementary links
+    - Modal GitHub Projects section Complementary Links
+    - Sites: Capucha Informativa (does not load) ChileOkulto (content deleted) En Punto (last updated 2021) Megáfono Popular (does not load) Piensa Prensa (site redirects to advertising) Primera Línea Revolucionaria Chile (last updated 2022) Revista ChileLibre (does not load) Verdad Ahora (last updated 2023) Radio 19 de abril Cobertura colectiva (does not load) Radio Manque (does not load) RadioTV-Liberación (does not load)
+    - Useful information on fires (channel and modal)
+    - Link Variation by u/sebastianrw [https://whywelove.news/love/country/chile/envivo](https://whywelove.news/love/country/chile/envivo)
 
 ## [v0.14]
 
-### Changed
-
-- Código JavaScript reducido con el socio ChatGPT-3.5
-
-### Added
-
-#### 📺 Canales
-
-Chile
-
-- [CHV 4](https://www.chilevision.cl/senal-online) - [x](https://www.viendotele.cl/assets-tele/chv.html)
-
-### Changed
-
-#### 📺 Canales
-
-Chile
-
-- [CHV 2](https://www.chilevision.cl/senal-online) - [x](https://chvv--hofece7009.repl.co/)
+- Changed
+    - JavaScript code reduced with ChatGPT-3.5 partner
 
 ## [v0.13]
 
-### Changed
+- Changed
+    - Link to Pottersys website; [http://pslabs.cl/tele.html](http://pslabs.cl/tele.html) -&gt; [https://www.viendotele.cl/](https://www.viendotele.cl/)
+    - Default signals
 
-- Enlace a sitio de Pottersys; <http://pslabs.cl/tele.html> -> <https://www.viendotele.cl/>
-- Señales por defecto
-
-### Added
-
-#### 📺 Canales
-
-Chile
-
-- [Meganoticias 3](https://www.meganoticias.cl/senal-en-vivo/meganoticias/) - [x](https://github.com/AINMcl/MonitorTV/)
-- [CHV Noticias 3](https://www.chvnoticias.cl/senal-online/)
-- [CHV Noticias 4](https://www.chvnoticias.cl/senal-online/)
-- [T13 4](https://www.t13.cl/)
+- Added
 
 ## [v0.12]
 
-### Changed
+- Changed
+    - Changed Bootstrap Icons version from 1.9.0 to 1.10.4
+    - Slight redesign, focus on using external Bootstrap Icons library icons rather than emojis for better compatibility
 
-- Cambio versión Bootstrap Icons de 1.9.0 a 1.10.4
-- Rediseño leve, enfoque en usar iconos externos librería Bootstrap Icons y no emojis para mejor compatibilidad
-
-#### 📺 Canales
-
-Chile
-
-- 24 Horas s3 paso a ser tvn 2
-
-### Removed
-
-- Carpeta svg icons
+- Removed
+    - SVG icons folder
 
 ## [v0.11]
 
-### Changed
+- Changed
+    - Semantic changes in naming conventions for functions and channel listing features (basically camelCase)
 
-- Cambios semanticos en temas de nombrado funciones y caracteristicas listado canales (camelCase basicamente)
-
-### Added
-
-- Filtro canales por bandera country dentro de modal.
-
-#### 📺 Canales
-
-Chile
-
-- [TVN 2](https://www.tvn.cl/) - [x](https://github.com/AINMcl/MonitorTV/)
-- [CHV Noticias 2](https://www.chvnoticias.cl/) - [x](https://pluto.tv/es/live-tv/chilevision-noticias)
-- [Mega 2](https://www.mega.cl/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [La Red](https://www.lared.cl/senal-online) - [x](https://www.m3u.cl/iptv-chile.php)
-- [Canal 13 3](https://www.13.cl/en-vivo) - [x](https://github.com/AINMcl/MonitorTV/)
-
-### Removed
-
-#### 📺 Canales
-
-Chile
-
-- [TVN 2](https://www.tvn.cl/) - [x](https://github.com/AINMcl/MonitorTV/blob/master/IPTV/AINM.m3u)
-- [TVN 3](https://ok.ru/videoembed/3440915652202?nochat=1&autoplay=1) - [x](https://www.chilenotas.com/tvn-en-vivo/)
-- [Mega 2](https://ok.ru/videoembed/3440906608234?nochat=1&autoplay=1) - [x](https://www.chilemetros.com/mega-en-vivo/)
-- [CHV 4](https://ok.ru/videoembed/3440896777834?nochat=1&autoplay=1) - [x](https://www.chilemetros.com/chilevision-en-vivo/)
-- [La Red](https://www.lared.cl/senal-online) - [x](https://www.cxtvlive.com/live-tv/la-red)
-- [La Red 2](https://www.lared.cl/senal-online) - [x](https://github.com/AINMcl/MonitorTV/blob/master/IPTV/AINM.m3u)
-- [Canal 13 3](https://ok.ru/videoembed/3440918732394?nochat=1&autoplay=1) - [x](https://www.chilemetros.com/canal-13-en-vivo/)
-
-Ucrania
-
-- [Типичный Киев](https://www.youtube.com/channel/UC26WRsO361Xd0nSPni4wQhg)
-- [Ukraine News](https://www.youtube.com/channel/UC0qYC_KgtfIEgpmJTSOimGw)
-- [Obolonsky District Kiev Kyiv](https://www.youtube.com/channel/UCNrGOnduIS9BXIRmDcHasZA)
-- [kаховка.het](https://www.youtube.com/channel/UCpY5H5S7P8t7EWHtsTXQhjQ)
-- [Politischios.gr](https://www.youtube.com/channel/UClEiTusa-SX5NmpsWIRgCDQ)
-- [Multi-cam Ucrania, Livestream Events](https://www.youtube.com/channel/UCrjyygMS1KNuL10AT5AIcBQ)
-- [Multi-cam Ucrania, VBM](https://www.youtube.com/channel/UCPCnfZNOj8925ID963Bn9Tg)
-- [Multi-cam Ucrania, BLVKRVFT](https://www.youtube.com/channel/UC9Gy7ZpwAFgB1BIVniUmrYA)
+- Added
+    - Channel filter by country flag within modal.
 
 ## [v0.10]
 
-### Changed
-
-- Migrado repositorio "tele" a "teles" debido a DMCA (<https://github.com/github/dmca/blob/master/2022/06/2022-06-06-corus.md> gracias GitHub por no tomar en cuenta mi respuesta a pesar de haber hecho los pasos que solicitaban, fue una buena y grata experiencia 10/10)
+- Changed
+    - Migrated repository from "tele" to "teles" due to DMCA ([https://github.com/github/dmca/blob/master/2022/06/2022-06-06-corus.md](https://github.com/github/dmca/blob/master/2022/06/2022-06-06-corus.md) thanks GitHub for ignoring my response despite having followed the steps you requested, it was a good and pleasant experience 10/10)
 
 ## [v0.09]
 
-### Added
+- Added
+    - Mention of [https://flagpedia.net/](https://flagpedia.net/) in NOTICE.md file
+    - Button to switch to full screen
+    - Button to remove signal from grid
 
-- Mención a <https://flagpedia.net/> en archivo NOTICE.md
-- Botón para alternar a pantalla completa
-- Botón para quitar señal desde grid
+- Changed
+    - Country flags now come dynamically from [https://flagcdn.com](https://flagcdn.com) (Thanks to digging into the projects of @martinsantibanez/tele-react and @AINMcl/MonitorTV)
+    - UCI 2 -&gt; Native
 
-#### 📺 Canales
-
-Chile
-
-- [TVN 3](https://ok.ru/videoembed/3440915652202?nochat=1&autoplay=1) - [x](https://www.chilenotas.com/tvn-en-vivo/) [Revivio sitio offline por DMCA]
-- [Mega 2](https://ok.ru/videoembed/3440906608234?nochat=1&autoplay=1) - [x](https://www.chilemetros.com/mega-en-vivo/)
-- [Canal 13 3](https://ok.ru/videoembed/3440918732394?nochat=1&autoplay=1) - [x](https://www.chilemetros.com/canal-13-en-vivo/) [Revivio sitio offline por DMCA]
-- [CHV 4](https://ok.ru/videoembed/3440896777834?nochat=1&autoplay=1) - [x](https://www.chilemetros.com/chilevision-en-vivo/)
-- [Gobierno de Chile](https://www.gob.cl/)
-- [Contivision](http://w.contivision.cl/cvn/envivo.php)
-
-Argentina
-
-- [Canal 26](https://www.diario26.com/canal26_en_vivo)
-
-Peru
-
-- [Onda Digital TV 2](https://ondadigitaltv.com) - [x](https://raw.githubusercontent.com/iptv-org/iptv/master/streams/pe.m3u)
-
-Canadá
-
-- [Global News](https://globalnews.ca/live/national/) - [x](https://vidgrid.tk.gg/)
-
-Estados Unidos
-
-- [Bloomberg US](https://www.bloomberg.com/) - [x](https://vidgrid.tk.gg/)
-- [Bloomberg Europe](https://www.bloomberg.com/europe) - [x](https://vidgrid.tk.gg/)
-- [Bloomberg QuickTake](https://www.bloomberg.com/) - [x](https://vidgrid.tk.gg/)
-- [Cheddar](https://cheddar.com/live) - [x](https://vidgrid.tk.gg/)
-- [CBSN](https://www.cbsnews.com/live/) - [x](https://vidgrid.tk.gg/)
-- [CNBC EU](https://www.cnbc.com/live-tv/) - [x](https://vidgrid.tk.gg/)
-- [C-SPAN 1](https://www.c-span.org/networks/?channel=c-span) - [x](https://vidgrid.tk.gg/)
-- [C-SPAN 2](https://www.c-span.org/networks/?channel=c-span) - [x](https://vidgrid.tk.gg/)
-- [C-SPAN 3](https://www.c-span.org/networks/?channel=c-span) - [x](https://vidgrid.tk.gg/)
-- [Fox News Now](https://video.foxnews.com/v/6174103160001)
-- [NBC Now (Live Event)](https://www.nbcnews.com/now)
-- [NBC Now](https://www.nbcnews.com/now)
-- [PBS America](https://www.pbsamerica.co.uk/) - [x](https://vidgrid.tk.gg/)
-
-Francia
-
-- [euronews (in English) 2](https://www.euronews.com/live) - [x](https://github.com/Free-IPTV/Countries/blob/master/UK01_UNITED_KINGDOM.m3u)
-
-China
-
-- [CGTN](https://www.cgtn.com/) - [x](https://vidgrid.tk.gg/)
-
-Japón
-
-- [NHK WORLD-JAPAN](https://www.youtube.com/channel/UCSPEjw8F2nQDtmUKPFNF7_A)
-- [NHK World](https://www3.nhk.or.jp/nhkworld/en/live/) - [x](https://vidgrid.tk.gg/)
-
-Catar
-
-- [Al Jazeera English 2](https://www.aljazeera.com/live/) - [x](https://vidgrid.tk.gg/)
-
-Música
-
-- [College Music](https://www.youtube.com/channel/UCWzZ5TIGoZ6o-KtbGCyhnhg)
-- [Naciones Unidas](https://www.youtube.com/channel/UC5O114-PQNYkurlTg6hekZw)
-
-### Changed
-
-- Banderas countries ahora provienen dinámicamente desde <https://flagcdn.com> (Gracias a sapear los proyectos de @martinsantibanez/tele-react y @AINMcl/MonitorTV)
-- UCI 2 -> Nativa
-
-### Removed
-
-- Carpeta archivos SVG de banderas countries
-- Licencia "CSS Range Slider – with Fill"
-
-#### 📺 Canales
-
-Chile
-
-- [24 Horas 7](https://www.twitch.tv/24horas_tvn) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [Mega](https://www.mega.cl/) - [x](https://www.m3u.cl/iptv-chile.php)
-- [T13 4](https://www.t13.cl/) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [Canal 13 3](https://www.13.cl/en-vivo) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [La Red](https://www.lared.cl/senal-online)
-- [La Red 2](https://www.lared.cl/senal-online) - [x](https://raw.githubusercontent.com/Televito/TDT-Mundo/main/IPTV)
-- [La Red 4](https://www.lared.cl/senal-online) - [x](https://m3u.cl/lista-iptv-chile.php)
-- [La Red 6](https://www.lared.cl/senal-online) - [x](https://github.com/WJS1978/IPTV/blob/56dbbc76e3f1167966459f0d708b514bb792ae9c/iptv.m3u)
-- [La Red 7](https://www.lared.cl/senal-online) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [La Red 8](https://www.lared.cl/senal-online) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [TV+ s2](https://www.chilevision.cl/senal-online) - [x](https://m3u.cl/lista-iptv-chile.php)
-
-Ucrania
-
-- [Multi-cam Ucrania, Think UnBoxing](https://www.youtube.com/channel/UC9gZNwBbScfFKHipRhlkjmA)
-- [Multi-cam Ucrania, JnMadness](https://www.youtube.com/channel/UCa4j52YYLqhmhxwG_ryhFwg)
-- [Multi-cam Ucrania, Planet Viral](https://www.youtube.com/channel/UCs0rWQqjVIfsLHgZxt-Oduw)
-- [Multi-cam Ucrania, Live Moments](https://www.youtube.com/channel/UCe5k7sBfXZ5rHpJXUi9BA9A)
+- Removed
+    - SVG files folder for country flags
+    - License "CSS Range Slider – with Fill"
 
 ## Fixed
 
-- Código dejaba de ejecutarse correctamente al intentar cargar canales desde localStorage que ya no se encontraban en listado activo
+- Code stopped executing correctly when attempting to load channels from localStorage that were no longer in the active list
 
 ## [v0.08]
 
-### Added
+- Added
+    - Added pwabuilder and pwa-update licenses to "NOTICE.md"
+    - Added github project [https://github.com/marcosins/convencion-chile](https://github.com/marcosins/convencion-chile) to list of complementary links
+    - Created "features.md" file
+    - Created file "changelog.md"
 
-- Añadidas licencias pwabuilder y pwa-update a "NOTICE.md"
-- Añadido proyecto github <https://github.com/marcosins/convencion-chile> a listado enlaces complementarios
-- Creado archivo "características.md"
-- Creado archivo "changelog.md"
+- Changed
+    - Fixed channel button effect after click (":focus" inherited from Bootstrap became part of "pulsate-2" animation)
+    - Less distracting channel button animation ("pulsate-3")
+    - Replaced "|" in manifesto with "-" for title compatibility with Windows
+    - Customizations are now also accessible via the navbar
+    - PWA-update alert position moved above floating button, not behind
+    - Changed script syntax from snake_case to camelCase
+    - Renamed variables to be more descriptive
+    - TVN 3 => TVN 2
+    - Channel 13 4 => Channel 13 3
 
-#### 📺 Canales
-
-- [La Red 6](https://www.lared.cl/senal-online) - [x](https://github.com/WJS1978/IPTV/blob/56dbbc76e3f1167966459f0d708b514bb792ae9c/iptv.m3u)
-- [UCV TV 2](https://pucvmultimedios.cl/senal-online-tv.php) - [x](https://github.com/WJS1978/IPTV/blob/56dbbc76e3f1167966459f0d708b514bb792ae9c/iptv.m3u)
-- [La Red 7](https://www.lared.cl/senal-online) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [La Red 8](https://www.lared.cl/senal-online) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [Antofagasta TV 3](https://www.antofagasta.tv/) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [ARABTV](https://www.arabtv.cl/)
-- [ARABTV 2](https://www.arabtv.cl/) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [Arica TV](https://arica.tv/envivo/)
-- [Atacama TV](http://atacamatelevision.com/)
-- [Atacama TV 2](http://atacamatelevision.com/) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [Convención Constitucional 3](https://www.youtube.com/channel/UCRlIWVAxQdAnCl4D4UR9r3Q)
-- [Convención Constitucional YT 01](https://youtube.com/channel/UCc3koBbWMyvSyzRbG5eTgvQ)
-- [Convención Constitucional YT 02](https://youtube.com/channel/UCKmKUwcjv6HJP7-z9Nnpp2w)
-- [Convención Constitucional YT 03](https://youtube.com/channel/UCeIlCkkBplhU0SrWM9B7u7Q)
-- [Convención Constitucional YT 04](https://youtube.com/channel/UCkMWMYCPUGzf3UPAxcIaVqA)
-- [Convención Constitucional YT 05](https://youtube.com/channel/UChNeKfZ0-wwuOCyUSu6BlcA)
-- [Convención Constitucional YT 06](https://youtube.com/channel/UC-HPc8CLoGRSG0dgbzZbDWA)
-- [Convención Constitucional YT 07](https://youtube.com/channel/UC9p2Hsom7SXdro9FhN4K59w)
-- [Convención Constitucional YT 08](https://youtube.com/channel/UCFkkF0LKUOUOcQEwG4nTrHw)
-- [Convención Constitucional YT 09](https://youtube.com/channel/UCEK7dK0jllE0uXMhEQTV6og)
-- [Convención Constitucional YT 10](https://youtube.com/channel/UC1qhPKBTpfhjVcTMzmM8mGw)
-- [Convención Constitucional YT 11](https://youtube.com/channel/UCRVinYIynLNcn18wHjmI5Vg)
-- [Convención Constitucional YT 12](https://youtube.com/channel/UCJerNR157sjR83jMChSocPQ)
-- [Convención Constitucional YT 13](https://youtube.com/channel/UCxI0u9BUvXbGHrv200cgFZg)
-- [Convención Constitucional YT 14](https://youtube.com/channel/UCxAECnUReRnEwkFThbjtH2Q)
-- [Convención Constitucional YT 15](https://youtube.com/channel/UCTGMQgIdFvz3qlD9mKb8v9w)
-
-#### 📻 Radios
-
-- [Alegría TV 2](https://www.alegriafm.cl/) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [Alternativa FM](https://www.alternativafm.cl/p/alternativa-tv.html) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-
-### Changed
-
-- Arreglado efecto boton canales tras clic (":focus" heredado de Bootstrap pasaba a formar parte de animación "pulsate-2")
-- Animación botón canales menos distractora ("pulsate-3")
-- Reemplazado "|" de manifesto por "-" para compatibilidad titulo con windows
-- Personalizaciones ahora son accesibles mediante navbar igualmente
-- Posición alerta pwa-update movida sobre botón flotante no detrás
-- Cambio sintaxis scripts de snake_case a camelCase
-- Renombradas variables para que sean más descriptivas
-- TVN 3 => TVN 2
-- Canal 13 4 => Canal 13 3
-
-### Removed
-
-- Quitado mensaje (provisorio) de sugerencia ante css no actualizándose
-
-#### 📺 Canales
-
-- [Canal 13 3](https://ok.ru/videoembed/3076941553258?nochat=1&autoplay=1) - [x](https://www.chilemetros.com/canal-13-en-vivo/) [sitio offline por DMCA, transmitian señal tntsport]
-- [TVN 2](https://ok.ru/videoembed/3076940701290?nochat=1&autoplay=1) - [x](https://www.chilenotas.com/tvn-en-vivo/) [sitio offline por DMCA, transmitian señal tntsport]
+- Removed
+    - Removed (temporary) message suggesting css not updating
 
 ## [v0.07]
 
-### Added
+- Added
+    - Added Workbox library (site now works as PWA) and fixed loading issue present in first launch. #5
+    - Added button to clear all active channels
 
-- Añadida librería Workbox (sitio ahora funciona como PWA) y solucionado problema de carga presente en primer lanzamiento #5
-- Añadido botón limpiar todos los canales activos
+- Changed
+    - Legal notice modal now disabled with localStorage, eliminating the need to create a cookie
+    - Using localStorage, active channels now persist after reloading the site
+    - Changed colors to improve contrast
+    - Redesigned customization panel (side panel)
+    - Disclaimer rewritten to better adapt in case of forking the repository
+    - SVG files extracted from HTML code, now used as images
+    - Link mentioning first favicon now refers to original commit
+    - Deprecated
+    - Bootstrap and videojs libraries removed from project files, reloaded via CDN
 
-#### 📺 Canales
-
-- [La Red 5](https://www.lared.cl/senal-online) - [x](https://github.com/AINMcl/MonitorTV/blob/master/IPTV/AINM.m3u)
-- [TVN 3](https://www.tvn.cl/) - [x](https://github.com/AINMcl/MonitorTV/blob/master/IPTV/AINM.m3u)
-- [Mega 2](https://www.mega.cl/) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [CHV 3](https://www.chilevision.cl/senal-online) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [Canal 13 4](https://www.13.cl/en-vivo) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [T13 4](https://www.t13.cl/) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [24 Horas 7](https://www.twitch.tv/24horas_tvn) - [x](https://github.com/AINMcl/MonitorTV/blob/05188eeaea9622e986b338f63a46fb189898184f/IPTV/AINM.m3u)
-- [TV+](https://www.chilevision.cl/senal-online) - [x](https://m3u.cl/lista-iptv-chile.php)
-- [TV+ s2](https://www.chilevision.cl/senal-online) - [x](https://m3u.cl/lista-iptv-chile.php)
-- [Osorno TV](https://www.osornotv.cl/envivo.html) - [x](https://m3u.cl/lista-iptv-chile.php)
-- [LCI](https://www.tf1info.fr/direct/) - [x](https://raw.githubusercontent.com/iptv-org/iptv/master/channels/fr.m3u)
-- [FRANCE 24 French](https://www.france24.com/fr/direct) - [x](https://raw.githubusercontent.com/iptv-org/iptv/master/channels/fr.m3u)
-- [Euronews (magyarul)](https://www.youtube.com/channel/UUC4Ct8gIf9f0n4mdyGsFiZRA)
-- [Información Periodistica](https://ip.digital/vivo) - [x](https://raw.githubusercontent.com/iptv-org/iptv/master/channels/ar.m3u)
-- [IP Noticias](https://www.youtube.com/channel/UC1bBjOZieJWHbsFA0LwjjJA) (suele deshabilitar visualización en sitios externos a youtube)
-- [ABC News](https://abcnews.go.com/Live) - [x](https://raw.githubusercontent.com/eviltizzy/TizTV/master/Tiz_M3U)
-- [ABC NEWS AU](https://www.abc.net.au/news/) - [x](https://raw.githubusercontent.com/eviltizzy/TizTV/master/Tiz_M3U)
-- [Carolina TV 3](https://www.carolina.cl/tv/) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-- [TV+ 2](https://www.chilevision.cl/senal-online)
-- [Municipalidad Osorno](https://www.youtube.com/channel/UCD7sqegDNyZxmdnCj6xqH6g)
-- [glaseado.cl, Huayquique](https://www.glaseado.cl/surf-cams/huayquique/)
-- [glaseado.cl,Las Urracas](https://www.glaseado.cl/surf-cams/las-urracas/)
-- [glaseado.cl, La Punta](https://www.glaseado.cl/surf-cams/la-punta/)
-- [Washington DC LIVE Cam & US Capitol](https://www.youtube.com/channel/UCRj7u6fmW8RYQl98hcwbwng)
-- [Las Vegas, Treasure Island](https://www.youtube.com/channel/UCRj7u6fmW8RYQl98hcwbwng)
-- [San Diego, Down Town + Airport](https://www.youtube.com/channel/UCRj7u6fmW8RYQl98hcwbwng)
-- [Paris, EIFFEL Tower](https://www.youtube.com/channel/UCRj7u6fmW8RYQl98hcwbwng)
-
-### Changed
-
-- Modal aviso legal ahora se desactiva con localStorage, eliminada la necesidad de crear cookie
-- Mediante localStorage ahora canales activos persisten tras recargar el sitio
-- Cambio colores para mejorar contrastes
-- Rediseñado panel personalización (sidepanel)
-- Reescrito descargo de responsabilidad para adaptarse mejor en caso de hacer fork al repositorio
-- Archivos svg extraídos de código html, ahora se utilizan como imágenes
-- Enlace mención primer favicon paso a hacer referencia a commit original
-
-### Deprecated
-
-- Librerías bootstrap y videojs eliminadas de archivos proyecto, vuelven a cargan mediante CDN
-
-### Removed
-
-- Primer favicon
-- Archivo todo.txt
-- Archivo html de tips votaciones
+- Removed
+    - First favicon
+    - All.txt file
+    - Voting tips html file
 
 ## [v0.06]
 
-### Added
+- Added
 
-#### 📺 Canales
+- Changed
+    - Reduced channels.js code
+    - Reduced styles.css code
+    - Rewritten channel creation code (increases readability)
+    - Rewritten disclaimer to define project scope
+    - Renamed scripts.js -> main.js
+    - Renamed images folder -&gt; img
+    - Channel button design
+    - Added link to the repository that inspired the project ([https://github.com/PotterSys/canales-tele](https://github.com/PotterSys/canales-tele)) to the readme file (along with giving it its well-deserved star, my apologies "PotterSys," I didn't realize you had the page in the same repository)
+    - Added stackoverflow links that have been used to make the code easier to understand
+    - The "&lt; a &gt;" tag defaults to "rel=noopener," so it was removed ([https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener)).
+    - Renamed ChilledCow -> Lofi Girl
+    - Renamed Chamber of Deputies YouTube Channel → Chamber of Deputies YT
+    - Devised a way to warn about possible CSS loading errors in case the site is updated but the CSS file is not (as happened to me).
+    - Channel buttons are now generated with a grid so that they are all the same size
+    - Rewrote code for channel buttons
 
-- [T13 3](https://www.t13.cl/)
-- [Ñuble RTV](https://canalrtv.cl/)
-
-### Changed
-
-- Reducido código canales.js
-- Reducido código styles.css
-- Reescrito código creación canales (aumenta legibilidad igual)
-- Reescrito descargo de responsabilidad a modo de definir alcance proyecto
-- Renombrado scripts.js -> main.js
-- Renombrada carpeta images -> img
-- Diseño botones canales
-- Añadido enlace repositorio en el cual esta inspirado el proyecto (<https://github.com/PotterSys/canales-tele>) a archivo readme (junto a ir a dar su debida estrellita, se me disculpa "PotterSys" no había cachao que tenias la página en un repositorio igual)
-- Añadidos enlaces stackoverflow que se han utilizado para que sea más fácil comprender código
-- Tag "< a >" traen por defecto "rel=noopener" por lo que fue eliminado (<https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener>)
-- Renombrado ChilledCow -> Lofi Girl
-- Renombrado Cámara de Diputados Señal Youtube -> Cámara de Diputados YT
-- Ideada manera de avisar sobre posibles errores de carga de CSS en caso de que sitio se actualice pero el archivo CSS no (ya que me paso)
-- Botones canales ahora se generan con grid para que tenga un tamaño igualitario
-- Reescrito código para interior botones canales
-
-### Removed
-
-#### 📺 Canales
-
-- [31 minutos - Todos los episodios](https://www.youtube.com/playlist?list=PLVI9tQggdGtFXgCwpjTM_d2pdH6ABeRFL)
-- [Diego y Glot - Temporada 1](https://www.youtube.com/watch?v=J3cLcZ1QhFE&list=PLnDONcPxnlq2s8zwIuJt8_JI4Tf3amd6u)
-- [Los Pulentos - Temporada 1](https://www.youtube.com/playlist?list=PLnDONcPxnlq2gZlH-OAXCnIeyPwMpQuUb)
-- [Villa Dulce - Temporada 1](https://www.youtube.com/playlist?list=PLnDONcPxnlq1V8zLL54a6luAy4Wp6ldK3)
-    - [Ya no se permitía visualización fuera de Youtube]
+- Removed
 
 ## [v0.05]
 
-### Added
+- Changed
+    - Bootstrap V4.6.0 > 5.1.3
+    - Created sidebar with site configuration options (I've recently accessed the page from my phone and I think it's better if they are accessible without obstructing the content you're trying to adjust)
+    - I converted some scripts to vanilla JS to start phasing out jQuery (there are two left that I didn't know how to translate ¯_(ツ)_/¯).
+    - General design changes
+    - We have a filter! (gg jQuery)
+    - The broadcast on/off button works great now
+    - Preview images updated
+    - CSS rewritten using nesting and separated (a little better) by sections
+    - Deprecated
+    - Popper library (built into the Bootstrap library)
+    - jQuery library
 
-#### 📺 Canales
-
-- [Canal 13 3](https://ok.ru/videoembed/3076941553258?nochat=1&autoplay=1) - [x](https://www.chilemetros.com/canal-13-en-vivo/)
-
-#### 📻 Radios
-
-- [Carolina TV 3](https://www.carolina.cl/tv/) - [x](https://github.com/iptv-org/iptv/blob/master/channels/cl.m3u)
-
-### Changed
-
-- Bootstrap V4.6.0 > 5.1.3
-- Creado sidebar con opciones de configuración del sitio (últimamente he accedido a la pagina desde el teléfono y creo que queda mejor que sean accesibles sin obstruir el contenido que se intenta ajustar)
-- Pasados algunos scripts a vanilla js para comenzar a desechar jQuery (quedaron 2 que no supe como traducir ¯_(ツ)_/¯)
-- Cambios diseño generales
-- Habemus filtro! (gg jQuery)
-- Botón name transmisiones on/off funciona de pana ahora
-- Imágenes previews actualizadas
-- CSS reescrito bajo uso de nesting y separado (un poco mejor) por secciones
-
-### Deprecated
-
-- Librería Popper (viene incorporado dentro de librería Bootstrap)
-- Librería jQuery
-
-### Removed
-
-- Eliminadas imágenes de versiones anteriores
+- Removed
+    - Images from previous versions removed
 
 ## [v0.04]
 
-### Added
+- Added
+    - Variation by martinsantibanez ([https://github.com/martinsantibanez/tele-react](https://github.com/martinsantibanez/tele-react))
 
-- Variación por martinsantibanez (<https://github.com/martinsantibanez/tele-react>)
-
-#### 📺 Canales
-
-- [CHV Noticias](https://www.youtube.com/channel/UCRsUoZYC1ULUspipMRnMhwg)
-- [Puranoticia TV](https://puranoticia.pnt.cl/)
-- [Ñublevision](https://nublevision.cl/)
-
-### Changed
-
-- Cambio sintaxis scripts para mejor legibilidad
-- Nuevas imágenes de ejemplo
-- Incorporado "sistema" de versiones
-- Medios de prensa "alternativos" en orden alfabético (hasta cierto punto)
+- Changed
+    - Changed script syntax for better readability
+    - New example images
+    - Incorporated versioning "system"
+    - Alternative media outlets listed in alphabetical order (to a certain extent)
 
 ## [v0.03]
 
-### Added
+- Added
+    - Peru variation added by SanguiNET [https://github.com/SanguiNET/tele](https://github.com/SanguiNET/tele)
+    - Spanish language to videojs
 
-- Añadida variación Perú por SanguiNET <https://github.com/SanguiNET/tele>
-- Lenguaje español a videojs
+- Changed
+    - Channel list format change (for my sanity) for easier editing [https://gist.github.com/joyrexus/16041f2426450e73f5df9391f7f7ae5f](https://gist.github.com/joyrexus/16041f2426450e73f5df9391f7f7ae5f)
+    - Updated README channel list
+    - Updated variation link by AINMcl [https://github.com/AINMcl/MonitorTV](https://github.com/AINMcl/MonitorTV) (changed "monitors" to "MonitorTV")
+    - Table of versions created separately from links found unrelated to the project
+    - JS channels reduced by a couple of lines
+    - Finally took the time to automate the creation of videojs players for m3u8 channels
+    - Changed variable syntax (var => let) and renamed some of them as well
+    - Reorganized project file structure
+    - Separated channels from the rest of the scripts
+    - Bootstrap library (CSS only) now inside project files
+    - External libraries (main ones, since iframes are not) are now called from within the repository and not externally from other servers
+    - Minor change in modal credits
+    - Channels have an SVG of their flags according to the country where the transmission originates (not all)
+    - Updated href tag (+nofollow noreferrer)
+    - Improvement in responsive size with the use of "clamp" (deleting media queries)
+    - Search filter fixed. Now allows accents and the letter ñ.
+    - Changed "name-bar" position (it bothered me when I wanted to read the news in the smaller bar)
+    - Great, great
 
-### Changed
-
-- Listado canales cambio de formato (por mi sanidad mental) para una más fácil edición
-<https://gist.github.com/joyrexus/16041f2426450e73f5df9391f7f7ae5f>
-- Actualizado README listado canales
-- Actualizado enlace variación por AINMcl <https://github.com/AINMcl/MonitorTV> (cambio "monitores" a "MonitorTV")
-- Tabla versiones creadas separada de enlaces encontrados sin relacion al proyecto
-- JS canales reducido en un par de líneas
-- Al fin me di el tiempo de automatizar la creación de reproductores videojs para los canales m3u8
-- Cambio sintaxis variables (var => let) y renombradas algunas igualmente
-- Re-organizada estructura archivos proyecto
-- Separado canales del resto de scripts
-- Biblioteca bootstrap (solo css) ahora dentro de archivos proyecto
-- Librerías externas (principales ya que los iframe no) ahora son llamadas desde dentro del repositorio y no de manera externa a otros servidores
-- Cambio menor en modal créditos
-- Canales tienen un svg de sus banderitas acorde al country donde se origina la transmisión (no todos)
-- Actualizado tag href (+nofollow noreferrer)
-- Mejora en cuanto a tamaño responsivo con el uso de "clamp" (borrando media queries)
-- Solucionado filtro de búsqueda. Ahora permite tildes y letra ñ.
-- Cambio posición "name-barra" (me molestaba cuando quería leer las noticias que ponen en la barrita más pequeña)
-- wena wena
-
-### Removed
-
-- Quitado Font Awesome para iconos, reemplazado con SVG's puros
+- Removed
+    - Removed Font Awesome for icons, replaced with pure SVG's

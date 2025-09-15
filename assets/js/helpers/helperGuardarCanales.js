@@ -2,7 +2,7 @@ import { listaCanales } from "../canalesData.js";
 import { CONTAINER_VISION_CUADRICULA } from "../main.js";
 import { mostrarToast } from "../helpers/index.js";
 
-export function guardarCanalesEnLocalStorage() {
+export function saveActiveChannelsToStorage() {
     try {
         const CANALES_ACTIVOS_EN_DOM = CONTAINER_VISION_CUADRICULA.querySelectorAll('div[data-canal]');
         localStorage.removeItem('canales-vision-cuadricula');

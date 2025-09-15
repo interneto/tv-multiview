@@ -1,4 +1,4 @@
-export const ICONOS_PARA_CATEGORIAS = {
+export const CATEGORY_ICONS = {
     // Formato de https://github.com/iptv-org/iptv?tab=readme-ov-file#grouped-by-category
     'animation': '<i class="bi bi-emoji-laughing-fill" title="Icono dibujos animados"></i>',
     'auto': '<i class="bi bi-car-front" title="Icono auto"></i>',

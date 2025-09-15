@@ -3,7 +3,7 @@ import {
     aplicarTema,
     mostrarToast,
     playAudioSinDelay,
-    quitarTodoCanalActivo,
+    removeAllActiveChannels,
     obtenerCanalesPredeterminados
 } from './helpers/index.js'
 import {
@@ -97,14 +97,14 @@ BOTON_OFFCANVAS_CANALES_PREDETERMINADOS?.addEventListener('click', cargarCanales
 export const BOTON_MODAL_QUITAR_TODO_ACTIVO = document.querySelector('#boton-modal-quitar-todo-canal-activo');
 export const BOTON_OFFCANVAS_QUITAR_TODO_ACTIVO = document.querySelector('#boton-offcanvas-quitar-todo-canal-activo');
 
-BOTON_MODAL_QUITAR_TODO_ACTIVO?.addEventListener('click', quitarTodoCanalActivo);
-BOTON_OFFCANVAS_QUITAR_TODO_ACTIVO?.addEventListener('click', quitarTodoCanalActivo);
+BOTON_MODAL_QUITAR_TODO_ACTIVO?.addEventListener('click', removeAllActiveChannels);
+BOTON_OFFCANVAS_QUITAR_TODO_ACTIVO?.addEventListener('click', removeAllActiveChannels);
 
 // MARK: Botón borrar localstorage
 const BOTON_BORRAR_LOCALSTORAGE = document.querySelector('#boton-borrar-localstorage');
 BOTON_BORRAR_LOCALSTORAGE?.addEventListener('click', () => {
     try {
-        quitarTodoCanalActivo();
+        removeAllActiveChannels();
         localStorage.clear();
         AUDIO_ESTATICA.volume = 0.8;
         AUDIO_ESTATICA.loop = true;

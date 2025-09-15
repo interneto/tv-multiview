@@ -1,21 +1,21 @@
-import { guardarCanalesEnLocalStorage, ajustarVisibilidadBotonesQuitarTodaSeñal, ajustarNumeroDivisionesClaseCol} from './helpers/index.js';
-import { CONTAINER_VISION_CUADRICULA } from "./main.js";
+import { saveActiveChannelsToStorage as saveChannelsToLocalStorage, updateVisibilityOfRemoveSignalButtons, adjustChannelColumnCount} from './helpers/index.js';
+import { CONTAINER_VISION_CUADRICULA as TV_MULTIVIEW_CONTAINER } from "./main.js";
 
 const OBSERVER = new MutationObserver(() => {
     try {
-        ajustarNumeroDivisionesClaseCol?.();
+        adjustChannelColumnCount?.();
     } catch (e) {
-        console.error('Error en ajustarNumeroDivisionesClaseCol:', e);
+        console.error('Error en adjustChannelColumnCount:', e);
     }
     try {
-        ajustarVisibilidadBotonesQuitarTodaSeñal?.();
+        updateVisibilityOfRemoveSignalButtons?.();
     } catch (e) {
-        console.error('Error en ajustarVisibilidadBotonesQuitarTodaSeñal:', e);
+        console.error('Error en updateVisibilityOfRemoveSignalButtons:', e);
     }
     try {
-        guardarCanalesEnLocalStorage?.();
+        saveChannelsToLocalStorage?.();
     } catch (e) {
-        console.error('Error en guardarCanalesEnLocalStorage:', e);
+        console.error('Error en saveChannelsToLocalStorage:', e);
     }
     console.info('observer ejecutado');
 });
@@ -27,6 +27,6 @@ const OBSERVER_CONFIG = {
     characterData: false
 };
 
-if (CONTAINER_VISION_CUADRICULA) {
-    OBSERVER.observe(CONTAINER_VISION_CUADRICULA, OBSERVER_CONFIG);
+if (TV_MULTIVIEW_CONTAINER) {
+    OBSERVER.observe(TV_MULTIVIEW_CONTAINER, OBSERVER_CONFIG);
 }

@@ -14,7 +14,7 @@ import {
     obtenerNumeroCanalesFila,
     actualizarBotonesPersonalizarOverlay,
     hideTextoBotonesOverlay,
-    ajustarNumeroDivisionesClaseCol
+    adjustChannelColumnCount
 } from "../helpers/index.js";
 import { CLASE_CSS_BOTON_PRIMARIO, CLASE_CSS_BOTON_SECUNDARIO } from "../constants/index.js";
 import { listaCanales } from "../canalesData.js";
@@ -133,7 +133,7 @@ export function desactivarVisionUnica() {
         BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach(boton => { boton.disabled = false });
         SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = `${obtenerNumeroCanalesFila()}`;
 
-        ajustarNumeroDivisionesClaseCol();
+        adjustChannelColumnCount();
 
         document.querySelector('#boton-personalizar-boton-mover-overlay').classList.remove('clase-vacia');
     } catch (error) {

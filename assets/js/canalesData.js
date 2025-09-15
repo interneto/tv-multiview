@@ -1,4 +1,4 @@
-import { URL_JSON_CANALES_PRINCIPAL, URL_M3U_CANALES_IPTV } from "./constants/index.js";
+import { URL_TV_CHANNELS_JSON, URL_IPTV_CHANNELS_M3U } from "./constants/index.js";
 import { sonNombresSimilares, M3U_A_JSON } from "./helpers/index.js";
 
 // Gestión de backup y fetch de canales
@@ -13,6 +13,7 @@ export const ARRAY_CANALES_PREDETERMINADOS = [
     'redbulltv',
     'ctv',
     'rtv'
+    // TODO: add more channels if needed
 ];
 // No añadimos extras para asegurar que se carguen exactamente 9 canales
 export const ARRAY_CANALES_PREDETERMINADOS_EXTRAS = [];
@@ -52,7 +53,7 @@ export async function fetchCargarCanales() {
         if (listaCanales) return;
     }
     console.info('Probando carga archivo principal con canales');
-    const response = await fetch(URL_JSON_CANALES_PRINCIPAL);
+    const response = await fetch(URL_TV_CHANNELS_JSON);
     try {
         listaCanales = await response.json();
         listaCanales = normalizarListaCanales(listaCanales);
@@ -98,7 +99,7 @@ function normalizarListaCanales(obj) {
 
 export async function fetchCargarCanalesIPTV() {
     console.info('Probando carga archivo m3u');
-    const m3uResponse = await fetch(URL_M3U_CANALES_IPTV);
+    const m3uResponse = await fetch(URL_IPTV_CHANNELS_M3U);
     const m3uData = await m3uResponse.text();
     const parseM3u = await M3U_A_JSON(m3uData);
 
