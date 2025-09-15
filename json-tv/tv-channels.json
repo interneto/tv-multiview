@@ -3467,7 +3467,7 @@
     "category": "lifestyle",
     "country": "us"
   },
-  "beachtvmyrtlebeachthegrandstrand": {
+  "beachtv": {
     "name": "Beach TV",
     "logo": "https://i.imgur.com/aLYz7Bv.png",
     "signals": {
@@ -3484,30 +3484,13 @@
     "category": "travel",
     "country": "us"
   },
-  "beinsportsusa": {
-    "name": "beIN Sports USA",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Bein_Sports_Logo.svg/512px-Bein_Sports_Logo.svg.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://fl3.moveonjoy.com/BEIN_SPORTS/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "sports",
-    "country": "us"
-  },
   "beinsportsxtra": {
     "name": "beIN SPORTS XTRA",
     "logo": "https://i.imgur.com/uJosqHh.png",
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/60492fdd9989d30007ccd30a/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c26f5a5-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=5f89b39e-273a-43e4-8664-6b0d3d3b0fef"
+        "https://bein-xtra-xumo.amagi.tv/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3533,23 +3516,6 @@
     },
     "website": "",
     "category": "sports",
-    "country": "us"
-  },
-  "brevardgovernmentaccesstv": {
-    "name": "Brevard Government Access TV",
-    "logo": "https://i.imgur.com/eUTDIQ2.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://cdn3.wowza.com/5/cXdyRHF0Z3kxN0k2/brevardfl/G2111_002/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "legislative",
     "country": "us"
   },
   "cbsnews247": {
@@ -3586,91 +3552,6 @@
     "category": "business",
     "country": "us"
   },
-  "cnbcworld": {
-    "name": "CNBC World",
-    "logo": "https://zap2it.tmsimg.com/h3/NowShowing/26849/s26849_ll_h15_ab.png?w=512",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://fl3.moveonjoy.com/CNBC_World/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "business",
-    "country": "us"
-  },
-  "creatvchannel15": {
-    "name": "CreaTV Channel 15",
-    "logo": "https://i.imgur.com/Lwzio0H.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://reflect-creatv.cablecast.tv/live-13/live/live.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "us"
-  },
-  "creatvchannel27": {
-    "name": "CreaTV Channel 27",
-    "logo": "https://i.imgur.com/IYuv0RF.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://reflect-creatv.cablecast.tv/live-19/live/live.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "us"
-  },
-  "creatvchannel28": {
-    "name": "CreaTV Channel 28",
-    "logo": "https://i.imgur.com/rvQdzL1.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://reflect-creatv.cablecast.tv/live-14/live/live.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "education",
-    "country": "us"
-  },
-  "creatvchannel30": {
-    "name": "CreaTV Channel 30",
-    "logo": "https://i.imgur.com/O5GXlmE.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://reflect-creatv.cablecast.tv/live-16/live/live.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "us"
-  },
   "daretodreamnetwork": {
     "name": "Dare To Dream Network",
     "logo": "https://i.imgur.com/JwCLwQ2.png",
@@ -3686,23 +3567,6 @@
     },
     "website": "",
     "category": "religious",
-    "country": "us"
-  },
-  "disneyxd": {
-    "name": "Disney XD East",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a8/2015_Disney_XD_logo.svg",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://fl3.moveonjoy.com/DISNEY_XD/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "kids",
     "country": "us"
   },
   "foxnewschannel": {
@@ -3736,7 +3600,7 @@
       "twitch_id": ""
     },
     "website": "",
-    "category": "news",
+    "category": "radio",
     "country": "us"
   },
   "foxsports2": {
@@ -3771,40 +3635,6 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "us"
-  },
-  "latv": {
-    "name": "LATV",
-    "logo": "https://i.imgur.com/fJxySUg.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://amg00779-latv-amg00779c1-cineverse-us-1746.playouts.now.amagi.tv/playlist/amg00779-latvnetworkllc-latv-cineverseus/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "entertainment",
-    "country": "us"
-  },
-  "militaryhistory": {
-    "name": "Military History",
-    "logo": "https://i.imgur.com/S1SnpoA.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://fl3.moveonjoy.com/Military_History/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "documentary",
     "country": "us"
   },
   "msnbc": {
@@ -3943,23 +3773,6 @@
     "category": "",
     "country": "us"
   },
-  "radiofardatv": {
-    "name": "Radio Farda TV SD",
-    "logo": "https://i.imgur.com/t3MpSaP.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://live20.bozztv.com/gin-36bay3/gp-radiofarda/tracks-v1a1/mono.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "news",
-    "country": "us"
-  },
   "samuelgoldwynclassics": {
     "name": "Samuel Goldwyn Classics",
     "logo": "https://i.imgur.com/XC30JAF.png",
@@ -3975,23 +3788,6 @@
     },
     "website": "",
     "category": "classic",
-    "country": "us"
-  },
-  "sbtn": {
-    "name": "SBTN SD",
-    "logo": "https://i.imgur.com/Jatzg3J.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://live20.bozztv.com/dvrfl05/gin-netviet/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "",
     "country": "us"
   },
   "storiesbyamc": {
@@ -4060,23 +3856,6 @@
     },
     "website": "",
     "category": "general",
-    "country": "us"
-  },
-  "wptvdt1": {
-    "name": "WPTV-DT1",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/NBC_logo_2022_%28vertical%29.svg/512px-NBC_logo_2022_%28vertical%29.svg.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://apollo.production-public.tubi.io/live/ac-wptv2.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "",
     "country": "us"
   },
   "kandelatv": {

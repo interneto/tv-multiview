@@ -1,4 +1,4 @@
-import { CHECKBOX_PERSONALIZAR_TEMA } from '../botones.js'
+import { CHECKBOX_PERSONALIZAR_TEMA } from '../buttons.js'
 
 const SPAN_VALOR_TEMA_ACTIVO = document.querySelector('#span-valor-tema');
 const ICONO_PERSONALIZAR_TEMA = document.querySelector('#icono-personalizar-tema')

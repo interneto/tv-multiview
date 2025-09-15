@@ -1,4 +1,4 @@
-export const AUDIO_ESTATICA = new Audio('assets/sounds/DefectLineTransformer-por-blaukreuz.wav');
+export const AUDIO_STATIC_EFFECT = new Audio('assets/sounds/DefectLineTransformer-por-blaukreuz.wav');
 export const AUDIO_FAIL = new Audio('assets/sounds/Cancel-miss-chime-by-Raclure.wav');
 export const AUDIO_SUCCESS = new Audio('assets/sounds/button-pressed-by-Pixabay.mp3');
 export const AUDIO_TV_SHUTDOWN = new Audio('assets/sounds/TV-Shutdown-por-MATRIXXX_.mp3');

@@ -3,7 +3,7 @@ const path = require('path');
 
 // Paths
 const jsonFilePath = path.join(__dirname, '..', 'json-tv', 'tv-channels.json');
-const nombrePaisesPath = path.join(__dirname, '..', 'assets', 'js', 'constants', 'nombrePaises.js');
+const countriesConstantsPath = path.join(__dirname, '..', 'assets', 'js', 'constants', 'countryNames.js');
 
 function extractObjectLiteral(jsText, varName) {
   const idx = jsText.indexOf(varName);
@@ -25,18 +25,18 @@ function extractObjectLiteral(jsText, varName) {
   return null;
 }
 
-// Read nombrePaises.js and build ordered country-code list
+// Read countryNames.js and build ordered country-code list
 let orderedCodes = [];
 try {
-  const text = fs.readFileSync(nombrePaisesPath, 'utf8');
-  const objText = extractObjectLiteral(text, 'CODIGOS_PAISES');
-  if (!objText) throw new Error('No CODIGOS_PAISES object found');
+  const text = fs.readFileSync(countriesConstantsPath, 'utf8');
+  const objText = extractObjectLiteral(text, 'COUNTRY_CODES');
+  if (!objText) throw new Error('No COUNTRY_CODES object found');
   // Evaluate the object literal safely using Function
   const mapping = (new Function('return ' + objText))();
   orderedCodes = Object.keys(mapping);
-  console.log('Loaded', orderedCodes.length, 'country codes from nombrePaises.js');
+  console.log('Loaded', orderedCodes.length, 'country codes from countryNames.js');
 } catch (err) {
-  console.error('Error loading nombrePaises.js:', err);
+  console.error('Error loading countryNames.js:', err);
 }
 
 const indexOfCode = (code) => {
@@ -44,7 +44,7 @@ const indexOfCode = (code) => {
   return idx === -1 ? Number.MAX_SAFE_INTEGER : idx;
 };
 
-// Read the channels file and sort by the index of the country code in nombrePaises
+// Read the channels file and sort by the index of the country code in countryNames
 try {
   const data = fs.readFileSync(jsonFilePath, 'utf8');
   const channels = JSON.parse(data);

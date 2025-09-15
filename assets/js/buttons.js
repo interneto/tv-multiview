@@ -7,17 +7,18 @@ import {
     obtenerCanalesPredeterminados
 } from './helpers/index.js'
 import {
-    AUDIO_ESTATICA,
+    AUDIO_STATIC_EFFECT as AUDIO_NOTIFICATION,
     AUDIO_FAIL,
     AUDIO_SUCCESS,
     AUDIO_TURN_ON,
 } from './constants/index.js';
 
-// MARK: Botón entendido modal descargo de responsabilidad
-const BOTON_ENTENDIDO = document.querySelector('#boton-entendido');
-BOTON_ENTENDIDO?.addEventListener('click', () => {
-    localStorage.setItem('modal-status', 'hide');
-});
+// MARK: Botón entendido modal descargo de responsabilidad - Disabled
+// Modal is now always hidden and localStorage is set in main.js initialization
+// const BOTON_ENTENDIDO = document.querySelector('#boton-entendido');
+// BOTON_ENTENDIDO?.addEventListener('click', () => {
+//     localStorage.setItem('modal-status', 'hide');
+// });
 
 // MARK: Botón PWA Install
 let containerPwaInstall = document.querySelector('#pwa-install');
@@ -87,18 +88,18 @@ const cargarCanalesPredeterminados = () => {
     }
 };
 
-export const BOTON_MODAL_CANALES_PREDETERMINADOS = document.querySelector('#boton-modal-cargar-canales-por-defecto');
-export const BOTON_OFFCANVAS_CANALES_PREDETERMINADOS = document.querySelector('#boton-offcanvas-cargar-canales-por-defecto');
+export const DEFAULT_CHANNEL_LOAD_BUTTON = document.querySelector('#boton-modal-cargar-canales-por-defecto');
+export const BUTTON_LOAD_DEFAULT_CHANNELS = document.querySelector('#boton-offcanvas-cargar-canales-por-defecto');
 
-BOTON_MODAL_CANALES_PREDETERMINADOS?.addEventListener('click', cargarCanalesPredeterminados);
-BOTON_OFFCANVAS_CANALES_PREDETERMINADOS?.addEventListener('click', cargarCanalesPredeterminados);
+DEFAULT_CHANNEL_LOAD_BUTTON?.addEventListener('click', cargarCanalesPredeterminados);
+BUTTON_LOAD_DEFAULT_CHANNELS?.addEventListener('click', cargarCanalesPredeterminados);
 
 // MARK: Botones quitar
-export const BOTON_MODAL_QUITAR_TODO_ACTIVO = document.querySelector('#boton-modal-quitar-todo-canal-activo');
-export const BOTON_OFFCANVAS_QUITAR_TODO_ACTIVO = document.querySelector('#boton-offcanvas-quitar-todo-canal-activo');
+export const ACTIVE_CHANNEL_REMOVE_ALL_BUTTON = document.querySelector('#boton-modal-quitar-todo-canal-activo');
+export const BUTTON_REMOVE_ACTIVE_CHANNEL = document.querySelector('#boton-offcanvas-quitar-todo-canal-activo');
 
-BOTON_MODAL_QUITAR_TODO_ACTIVO?.addEventListener('click', removeAllActiveChannels);
-BOTON_OFFCANVAS_QUITAR_TODO_ACTIVO?.addEventListener('click', removeAllActiveChannels);
+ACTIVE_CHANNEL_REMOVE_ALL_BUTTON?.addEventListener('click', removeAllActiveChannels);
+BUTTON_REMOVE_ACTIVE_CHANNEL?.addEventListener('click', removeAllActiveChannels);
 
 // MARK: Botón borrar localstorage
 const BOTON_BORRAR_LOCALSTORAGE = document.querySelector('#boton-borrar-localstorage');
@@ -106,9 +107,9 @@ BOTON_BORRAR_LOCALSTORAGE?.addEventListener('click', () => {
     try {
         removeAllActiveChannels();
         localStorage.clear();
-        AUDIO_ESTATICA.volume = 0.8;
-        AUDIO_ESTATICA.loop = true;
-        AUDIO_ESTATICA.play();
+        AUDIO_NOTIFICATION.volume = 0.8;
+        AUDIO_NOTIFICATION.loop = true;
+        AUDIO_NOTIFICATION.play();
         document.querySelector('#alerta-borrado-localstorage')?.classList.remove('d-none');
     } catch (error) {
         console.error('Error al intentar eliminar almacenamiento local sitio: ', error);
@@ -227,17 +228,17 @@ document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 
 
 // MARK: Botón copiar enlace
-const BOTON_COPIAR_ENLACE_COMPARTIR = document.querySelector('#boton-copiar-enlace-compartir');
+const SHARE_LINK_BUTTON = document.querySelector('#boton-copiar-enlace-compartir');
 const INPUT_ENLACE_COMPARTIR = document.querySelector('#input-enlace-compartir');
 
-BOTON_COPIAR_ENLACE_COMPARTIR?.addEventListener('click', async () => {
+SHARE_LINK_BUTTON?.addEventListener('click', async () => {
     try {
         INPUT_ENLACE_COMPARTIR?.select?.();
         if (navigator.clipboard && INPUT_ENLACE_COMPARTIR) {
             await navigator.clipboard.writeText(INPUT_ENLACE_COMPARTIR.value);
             playAudioSinDelay(AUDIO_SUCCESS);
-            BOTON_COPIAR_ENLACE_COMPARTIR.innerHTML = 'Copiado exitoso! <i class="bi bi-clipboard-check"></i>';
-            BOTON_COPIAR_ENLACE_COMPARTIR.classList.add('bg-success');
+            SHARE_LINK_BUTTON.innerHTML = 'Copiado exitoso! <i class="bi bi-clipboard-check"></i>';
+            SHARE_LINK_BUTTON.classList.add('bg-success');
         } else {
             throw new Error('Clipboard API no soportada o input no encontrado');
         }
@@ -246,20 +247,20 @@ BOTON_COPIAR_ENLACE_COMPARTIR?.addEventListener('click', async () => {
         try {
             document.execCommand('copy', false, INPUT_ENLACE_COMPARTIR?.value ?? '');
             playAudioSinDelay(AUDIO_SUCCESS);
-            BOTON_COPIAR_ENLACE_COMPARTIR.innerHTML = 'Copiado exitoso! <i class="bi bi-clipboard-check"></i>';
-            BOTON_COPIAR_ENLACE_COMPARTIR.classList.add('bg-success');
+            SHARE_LINK_BUTTON.innerHTML = 'Copiado exitoso! <i class="bi bi-clipboard-check"></i>';
+            SHARE_LINK_BUTTON.classList.add('bg-success');
         } catch (execError) {
             console.error('Error al copiar el enlace usando execCommand: ', execError);
             playAudioSinDelay(AUDIO_FAIL);
-            BOTON_COPIAR_ENLACE_COMPARTIR.innerHTML = 'Copiado fallido! <i class="bi bi-clipboard-x"></i>';
-            BOTON_COPIAR_ENLACE_COMPARTIR.classList.add('bg-danger');
+            SHARE_LINK_BUTTON.innerHTML = 'Copiado fallido! <i class="bi bi-clipboard-x"></i>';
+            SHARE_LINK_BUTTON.classList.add('bg-danger');
             return;
         }
     } finally {
         setTimeout(() => {
-            if (BOTON_COPIAR_ENLACE_COMPARTIR) {
-                BOTON_COPIAR_ENLACE_COMPARTIR.innerHTML = 'Copiar enlace <i class="bi bi-clipboard"></i>';
-                BOTON_COPIAR_ENLACE_COMPARTIR.classList.remove('bg-success', 'bg-danger');
+            if (SHARE_LINK_BUTTON) {
+                SHARE_LINK_BUTTON.innerHTML = 'Copiar enlace <i class="bi bi-clipboard"></i>';
+                SHARE_LINK_BUTTON.classList.remove('bg-success', 'bg-danger');
             }
         }, 2000);
     }

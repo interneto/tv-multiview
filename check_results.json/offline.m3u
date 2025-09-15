@@ -1,0 +1,213 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="cnbcarabiya" tvg-country="ae" ,CNBC Arabiya (FFMPEG Undefined Error)
+https://cnbc-live.akamaized.net/cnbc/master.m3u8
+#EXTINF:-1 tvg-id="1tv" tvg-country="af" ,1TV SD (HTTP 403 Forbidden)
+https://live20.bozztv.com/dvrfl05/gin-1tvafg/index.m3u8
+#EXTINF:-1 tvg-id="atv2" tvg-country="at" ,ATV2 HD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/atv/browser-dash/atv.mpd
+#EXTINF:-1 tvg-id="abcnews" tvg-country="au" ,ABC News (FFMPEG Undefined Error)
+https://c.mjh.nz/abc-news.m3u8
+#EXTINF:-1 tvg-id="arubatvplus" tvg-country="aw" ,ArubaTV + (HTTP 500 Internal Server Error)
+https://livertmptwo.com:19360/atvplusrelay/atvplusrelay.m3u8
+#EXTINF:-1 tvg-id="cbcsport" tvg-country="az" ,CBC Sport (HTTP 403 Forbidden)
+https://mn-nl.mncdn.com/cbcsports_live/cbcsports/playlist.m3u8
+#EXTINF:-1 tvg-id="sbtinterior" tvg-country="br" ,SBT Interior (HTTP 403 Forbidden)
+https://cdn.jmvstream.com/w/LVW-10801/LVW10801_Xvg4R0u57n/playlist.m3u8
+#EXTINF:-1 tvg-id="tvmon" tvg-country="br" ,TV Mon (HTTP Connection Reset)
+https://srv1.zcast.com.br/tvmon/tvmon/playlist.m3u8
+#EXTINF:-1 tvg-id="cbctdt" tvg-country="ca" ,CBCT-DT (HTTP 403 Forbidden)
+https://cbcrclinear-tor.akamaized.net/hls/live/2042756/CBCRCLINEAR_TOR_2/master5.m3u8
+#EXTINF:-1 tvg-id="tsn1" tvg-country="ca" ,TSN1 (HTTP 404 Not Found)
+https://fl5.moveonjoy.com/TSN_1/index.m3u8
+#EXTINF:-1 tvg-id="rtnc" tvg-country="cd" ,RTNC (HTTP 404 Not Found)
+http://69.64.57.208/rtnc/playlist.m3u8
+#EXTINF:-1 tvg-id="rtnc3" tvg-country="cd" ,RTNC 3 SD (HTTP 408 Request Timeout)
+http://51.254.199.122:8080/e-cableRTNC3/index.m3u8
+#EXTINF:-1 tvg-id="rsila1" tvg-country="ch" ,RSI La 1 SD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/rsila1hd/browser-dash/rsila1hd.mpd
+#EXTINF:-1 tvg-id="13c" tvg-country="cl" ,13C (FFMPEG Undefined Error)
+https://origin.dpsgo.com/ssai/event/GI-9cp_bT8KcerLpZwkuhw/master.m3u8
+#EXTINF:-1 tvg-id="cctvbilliards" tvg-country="cn" ,CCTV-Billiards (HTTP 408 Request Timeout)
+http://117.161.133.51:81/gitv_live/G_TAIQIU-CQ/G_TAIQIU-CQ.m3u8?p=GITV
+#EXTINF:-1 tvg-id="caracoltv" tvg-country="co" ,Caracol TV SD (HTTP 500 Internal Server Error)
+http://138.121.15.230:8000/play/CARACOL/index.m3u8
+#EXTINF:-1 tvg-id="nationalgeographic" tvg-country="cz" ,National Geographic (HTTP 404 Not Found)
+http://78.130.250.2:8023/play/a02e/index.m3u8
+#EXTINF:-1 tvg-id="oktvludwigshafen" tvg-country="de" ,OK-TV Ludwigshafen (HTTP 403 Forbidden)
+https://s.ok54.de/oklu/livestream/playlist.m3u8
+#EXTINF:-1 tvg-id="rtlsuper" tvg-country="de" ,RTL Super SD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/superrtl/browser-dash/superrtl.mpd
+#EXTINF:-1 tvg-id="rtlzwei" tvg-country="de" ,RTL Zwei HD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/rtl2/browser-dash/rtl2.mpd
+#EXTINF:-1 tvg-id="zdf" tvg-country="de" ,ZDF HD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/zdfhd/browser-dash/zdfhd.mpd
+#EXTINF:-1 tvg-id="zdfinfo" tvg-country="de" ,ZDFinfo HD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/zdfinfohd/browser-dash/zdfinfohd.mpd
+#EXTINF:-1 tvg-id="zdfneo" tvg-country="de" ,ZDFneo HD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/zdfneohd/browser-dash/zdfneohd.mpd
+#EXTINF:-1 tvg-id="cbc" tvg-country="eg" ,CBC SD (HTTP 404 Not Found)
+https://fl1002.bozztv.com/ga-cbc/index.m3u8
+#EXTINF:-1 tvg-id="cbcdrama" tvg-country="eg" ,CBC Drama SD (HTTP 404 Not Found)
+https://fl1002.bozztv.com/ga-cbcdrama/index.m3u8
+#EXTINF:-1 tvg-id="antena3" tvg-country="es" ,Antena 3
+https://atres-live.atresmedia.com/33ff422b6b87a1e42e72f9fb87d94dba93b6861f_ES_1757721625_1757750365/hlsts/live/antena3_usp/antena3_usp.isml/antena3_usp-audio_spa=128000-video=2700000.m3u8
+#EXTINF:-1 tvg-id="la-sexta" tvg-country="es" ,La Sexta
+https://atres-live.atresmedia.com/cecad2262ebea7a1e85e08e21eb29759b3217dac_ES_1757723088_1757751828/hlsts/live/lasexta_usp/lasexta_usp.isml/playlist.m3u8
+#EXTINF:-1 tvg-id="mega-es" tvg-country="es" ,Mega (Atresmedia)
+https://atres-live.atresmedia.com/5d6ea961951b7c3dbb1df5a44e3d32298cf66e0d_ES_1757723305_1757752045/hlsts/live/mega_usp/mega_usp.isml/mega_usp-audio_spa=128000-video=2700000.m3u8
+#EXTINF:-1 tvg-id="neox" tvg-country="es" ,Neox
+https://atres-live.atresmedia.com/b9dc6653569523d4377933c49f9c30f43232340e_ES_1757723215_1757751955/hlsts/live/neox_usp/neox_usp.isml/neox_usp-audio_spa=128000-video=2700000.m3u8
+#EXTINF:-1 tvg-id="nova" tvg-country="es" ,Nova
+https://atres-live.atresmedia.com/cc09bbee5aeac3497fd4272bf539eb28eb040a50_ES_1757723278_1757752018/hlsts/live/nova_usp/nova_usp.isml/nova_usp-audio_spa=128000-video=2700000.m3u8
+#EXTINF:-1 tvg-id="iskelmatv" tvg-country="fi" ,IskelmaTV (HTTP Undefined Error)
+https://mobiili.livetv.fi/memfs/f1819b9e-90da-408a-9a71-5c54e0cb5c33.m3u8
+#EXTINF:-1 tvg-id="bfmtv" tvg-country="fr" ,BFM TV SD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/bfmtv/browser-HLS8/bfmtv.m3u8
+#EXTINF:-1 tvg-id="france3" tvg-country="fr" ,France 3 (HTTP 404 Not Found)
+https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/francetv/france3.m3u8
+#EXTINF:-1 tvg-id="france4" tvg-country="fr" ,France 4 (HTTP 404 Not Found)
+https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/francetv/france4.m3u8
+#EXTINF:-1 tvg-id="m6" tvg-country="fr" ,M6 SD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/m6hd/browser-dash/m6hd.mpd
+#EXTINF:-1 tvg-id="tf1" tvg-country="fr" ,TF1 HD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/tf1hd/browser-dash/tf1hd.mpd
+#EXTINF:-1 tvg-id="tf1seriesfilms" tvg-country="fr" ,TF1 Series Films SD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/hd1/browser-dash/hd1.mpd
+#EXTINF:-1 tvg-id="bbcone" tvg-country="gb" ,BBC 1 (HTTP 403 Forbidden)
+https://trn09.bozztv.com/gin-bbcone/index.m3u8
+#EXTINF:-1 tvg-id="art" tvg-country="gr" ,ART (HTTP 404 Not Found)
+https://hugh.cdn.rumble.cloud/live/k5e12sb4/slot-82/fdd0-tbln/chunklist_DVR.m3u8
+#EXTINF:-1 tvg-id="ng" tvg-country="gr" ,NG (HTTP 404 Not Found)
+https://live.streams.ovh/NGradio/NGradio/playlist.m3u8
+#EXTINF:-1 tvg-id="ort" tvg-country="gr" ,ORT (HTTP 404 Not Found)
+https://eu1.vectromdigital.com:1936/ort/ort/playlist.m3u8
+#EXTINF:-1 tvg-id="trt" tvg-country="gr" ,TRT (HTTP 502 Bad Gateway)
+https://www.hellasnet.tv/rest2.live.hn/u2r.trt/playlist.m3u8
+#EXTINF:-1 tvg-id="gardeniastv" tvg-country="gt" ,Gardenias TV (HTTP 404 Not Found)
+https://stream.oursnetworktv.com/latin/gardeniasTv/playlist.m3u8
+#EXTINF:-1 tvg-id="guatv" tvg-country="gt" ,GuaTV (HTTP 500 Internal Server Error)
+https://cdn.streamhispanatv.net:3352/live/guatvlive.m3u8
+#EXTINF:-1 tvg-id="rtl2" tvg-country="hr" ,RTL 2 SD (FFMPEG Undefined Error)
+https://bpcdnmanprod.nexttv.ht.hr/bpk-tv/RTL2/default/index.mpd
+#EXTINF:-1 tvg-id="atvspirit" tvg-country="hu" ,ATV Spirit (HTTP 500 Internal Server Error)
+http://146.59.85.40:89/atvspirit/index.m3u8
+#EXTINF:-1 tvg-id="rtlketto" tvg-country="hu" ,RTL Ketto (HTTP 408 Request Timeout)
+http://194.76.186.33:8000/play/a01z/index.m3u8
+#EXTINF:-1 tvg-id="aajtak" tvg-country="in" ,Aaj Tak (FFMPEG Undefined Error)
+https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8
+#EXTINF:-1 tvg-id="cnbctv18" tvg-country="in" ,CNBC TV18 SD (FFMPEG Undefined Error)
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/cnbc-tv18/master.m3u8
+#EXTINF:-1 tvg-id="filamchibhojpuri" tvg-country="in" ,Filamchi Bhojpuri SD (FFMPEG Undefined Error)
+https://epiconvh.akamaized.net/live/filamchi/master.m3u8
+#EXTINF:-1 tvg-id="nickelodeonsonic" tvg-country="in" ,Nickelodeon Sonic (HTTP 403 Forbidden)
+https://prod-sports-north-gm.jiocinema.com/bpk-tv/Sonic_Nickelodeon_voot_MOB/Fallback/index.m3u8
+#EXTINF:-1 tvg-id="ptcnews" tvg-country="in" ,PTC News (HTTP 404 Not Found)
+https://streaming.ptcplay.com/PTCNEWSINONE/smil:Live.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="grpveratv" tvg-country="it" ,GRP VERATV (HTTP 404 Not Found)
+https://5cbd3bc28341f.streamlock.net:444/grp/live/playlist.m3u8
+#EXTINF:-1 tvg-id="italia1" tvg-country="it" ,Italia 1 (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/italia1/browser-dash/italia1.mpd
+#EXTINF:-1 tvg-id="lombardiatv" tvg-country="it" ,Lombardia TV (HTTP 404 Not Found)
+https://5db313b643fd8.streamlock.net/LOMBARDIATV/LOMBARDIATV/playlist.m3u8
+#EXTINF:-1 tvg-id="mediterraniatv" tvg-country="it" ,MediterraniaTV (HTTP 408 Request Timeout)
+https://59bb40cf810aa.streamlock.net:4443/streamingvincente/streamingvincente/playlist.m3u8
+#EXTINF:-1 tvg-id="rai2" tvg-country="it" ,Rai 2 HD (HTTP 404 Not Found)
+https://m3u.iranvids.com/rai02/output.m3u8
+#EXTINF:-1 tvg-id="rai3" tvg-country="it" ,Rai 3 HD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/rai3/browser-dash/rai3.mpd
+#EXTINF:-1 tvg-id="rete4" tvg-country="it" ,Rete 4 (HTTP 404 Not Found)
+https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(r4)/index.m3u8
+#EXTINF:-1 tvg-id="sardegnauno" tvg-country="it" ,Sardegna Uno (HTTP 404 Not Found)
+https://raw.githubusercontent.com/azgaresncf/strm2hls/main/streams/Sardegna1.m3u8
+#EXTINF:-1 tvg-id="sportitalia24" tvg-country="it" ,Sportitalia 24 (HTTP 404 Not Found)
+https://di-yx2saj20.vo.lswcdn.net/sportitalia/smil:silive24.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="videolinasardegna" tvg-country="it" ,Videolina Sardegna (HTTP 500 Internal Server Error)
+http://livestreaming.videolina.it/live/Videolina/playlist.m3u8
+#EXTINF:-1 tvg-id="sport" tvg-country="kg" ,Sport (HTTP 403 Forbidden)
+https://st2.mediabay.tv/KG_KTRK-Sport/index.m3u8
+#EXTINF:-1 tvg-id="eacnewstv" tvg-country="kh" ,EAC News TV SD (HTTP 404 Not Found)
+https://live-evg17.tv360.metfone.com.kh/LiveApp/streams/eacnews.m3u8
+#EXTINF:-1 tvg-id="arirangradio" tvg-country="kr" ,Arirang Radio (FFMPEG Undefined Error)
+http://amdlive-ch01.ctnd.com.edgesuite.net/arirang_3ch/smil:arirang_3ch.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="arirangtv" tvg-country="kr" ,Arirang TV (FFMPEG Undefined Error)
+https://cdn-01.bonus-tv.ru/arirang_edge/playlist.m3u8
+#EXTINF:-1 tvg-id="arirangun" tvg-country="kr" ,Arirang UN (FFMPEG Undefined Error)
+https://amdlive-ch02-ctnd-com.akamaized.net/arirang_2ch/smil:arirang_2ch.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="rtl9" tvg-country="lu" ,RTL9 SD (FFMPEG Undefined Error)
+https://viamotionhsi.netplus.ch/live/eds/rtl9/browser-dash/rtl9.mpd
+#EXTINF:-1 tvg-id="viaatv" tvg-country="mq" ,ViaATV (HTTP 502 Bad Gateway)
+https://streamer01.myvideoplace.tv/streamer02/hls/ATV_DIRECT_EV_111018.m3u8
+#EXTINF:-1 tvg-id="one" tvg-country="mt" ,One (HTTP 401 Unauthorized)
+http://80.79.6.221:25461/smash/public/21
+#EXTINF:-1 tvg-id="lasestrellas" tvg-country="mx" ,Las Estrellas (FFMPEG Undefined Error)
+https://channel01-onlymex.akamaized.net/hls/live/2022749/event01/index.m3u8
+#EXTINF:-1 tvg-id="omroeplingewaard" tvg-country="nl" ,Omroep Lingewaard (FFMPEG Undefined Error)
+https://58c04fb1d143f.streamlock.net/omroeplingewaard_1/omroeplingewaard_1/playlist.m3u8
+#EXTINF:-1 tvg-id="vamisatv" tvg-country="pe" ,VamisaTV (HTTP 404 Not Found)
+https://inliveserver.com:1936/10044/10044/playlist.m3u8
+#EXTINF:-1 tvg-id="hardknocksfightingchampionship" tvg-country="pl" ,Hard Knocks Fighting Championship (FFMPEG Undefined Error)
+https://d39g1vxj2ef6in.cloudfront.net/v1/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/2ee2b8d4-acc4-4296-9dc8-66f1ffd0fff8/5.m3u8
+#EXTINF:-1 tvg-id="catv" tvg-country="pr" ,CAtv (FFMPEG Undefined Error)
+https://video2.getstreamhosting.com:19360/8216/8216.m3u8
+#EXTINF:-1 tvg-id="aljazeeradocumentary" tvg-country="qa" ,Al Jazeera Documentary (FFMPEG Undefined Error)
+https://live-hls-apps-ajd-fa.getaj.net/AJD/index.m3u8
+#EXTINF:-1 tvg-id="ardealtv" tvg-country="ro" ,Ardeal TV (FFMPEG Undefined Error)
+https://frn.rtsp.me/wzhx8pmNF7-kstp_J0AdjA/1695647213/hls/yZ9ED27Q.m3u8
+#EXTINF:-1 tvg-id="sperantatv" tvg-country="ro" ,SperantaTV (FFMPEG Undefined Error)
+https://customer-x8zydurm357k8j9p.cloudflarestream.com/0dd00c080ff4cbe839a12c923610a55c/manifest/video.m3u8
+#EXTINF:-1 tvg-id="etv" tvg-country="ru" ,E TV (HTTP 403 Forbidden)
+https://cdn-01.bonus-tv.ru/gsl/playlist.m3u8
+#EXTINF:-1 tvg-id="rt" tvg-country="ru" ,RT (HTTP 502 Bad Gateway)
+https://cloud.odysee.live/content/fdd11cb3ab75f95efb7b3bc2d726aa13ac915b66/master.m3u8
+#EXTINF:-1 tvg-id="axnasia" tvg-country="sg" ,AXN Asia Vietnam (FFMPEG Undefined Error)
+https://tv.ddns.vn/tv/axnhd/index.m3u8
+#EXTINF:-1 tvg-id="atvalanya" tvg-country="tr" ,ATV Alanya (HTTP 408 Request Timeout)
+http://stream2.taksimbilisim.com:1935/alanyatv/alanyatv.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="atvavrupa" tvg-country="tr" ,ATV Avrupa (HTTP 403 Forbidden)
+http://185.234.111.229:8000/play/a018
+#EXTINF:-1 tvg-id="dersim62tv" tvg-country="tr" ,Dersim62 TV (HTTP 404 Not Found)
+http://live.arkumedia.com:1935/dersim62tv/dersim62tv/playlist.m3u8
+#EXTINF:-1 tvg-id="trtworld" tvg-country="tr" ,TRT World (HTTP 403 Forbidden)
+http://92.114.85.72:8000/play/a02v
+#EXTINF:-1 tvg-id="ebcnews" tvg-country="tw" ,EBC News (HTTP 404 Not Found)
+http://seb.sason.top/sc/dsxw_fhd.m3u8
+#EXTINF:-1 tvg-id="inter" tvg-country="ua" ,Inter (HTTP 408 Request Timeout)
+https://edge1.iptv.macc.com.ua/img/inter_3/index.m3u8
+#EXTINF:-1 tvg-id="amcenespanol" tvg-country="us" ,AMC en Espanol (HTTP 404 Not Found)
+http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/62fa81ccd1a7e90007c1ada0/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c268073-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=c6f5fd68-d238-461a-85d9-c326f4f63ae9
+#EXTINF:-1 tvg-id="batv" tvg-country="us" ,BATV (HTTP 403 Forbidden)
+https://reflect-batv.cablecast.tv/live-5/live/live.m3u8
+#EXTINF:-1 tvg-id="beinsportsusa" tvg-country="us" ,beIN Sports USA (HTTP 404 Not Found)
+http://fl3.moveonjoy.com/BEIN_SPORTS/index.m3u8
+#EXTINF:-1 tvg-id="beinsportsxtra" tvg-country="us" ,beIN SPORTS XTRA (HTTP 404 Not Found)
+http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/60492fdd9989d30007ccd30a/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c26f5a5-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=5f89b39e-273a-43e4-8664-6b0d3d3b0fef
+#EXTINF:-1 tvg-id="cnbc" tvg-country="us" ,CNBC (HTTP 404 Not Found)
+https://fl3.moveonjoy.com/CNBC/index.m3u8
+#EXTINF:-1 tvg-id="cnbcworld" tvg-country="us" ,CNBC World (HTTP 404 Not Found)
+https://fl3.moveonjoy.com/CNBC_World/index.m3u8
+#EXTINF:-1 tvg-id="creatvchannel15" tvg-country="us" ,CreaTV Channel 15 (HTTP 403 Forbidden)
+https://reflect-creatv.cablecast.tv/live-13/live/live.m3u8
+#EXTINF:-1 tvg-id="creatvchannel27" tvg-country="us" ,CreaTV Channel 27 (HTTP 403 Forbidden)
+https://reflect-creatv.cablecast.tv/live-19/live/live.m3u8
+#EXTINF:-1 tvg-id="creatvchannel28" tvg-country="us" ,CreaTV Channel 28 (HTTP 403 Forbidden)
+https://reflect-creatv.cablecast.tv/live-14/live/live.m3u8
+#EXTINF:-1 tvg-id="creatvchannel30" tvg-country="us" ,CreaTV Channel 30 (HTTP 403 Forbidden)
+https://reflect-creatv.cablecast.tv/live-16/live/live.m3u8
+#EXTINF:-1 tvg-id="disneyxd" tvg-country="us" ,Disney XD East (HTTP 404 Not Found)
+http://fl3.moveonjoy.com/DISNEY_XD/index.m3u8
+#EXTINF:-1 tvg-id="latv" tvg-country="us" ,LATV (HTTP 403 Forbidden)
+https://amg00779-latv-amg00779c1-cineverse-us-1746.playouts.now.amagi.tv/playlist/amg00779-latvnetworkllc-latv-cineverseus/playlist.m3u8
+#EXTINF:-1 tvg-id="militaryhistory" tvg-country="us" ,Military History (HTTP 404 Not Found)
+https://fl3.moveonjoy.com/Military_History/index.m3u8
+#EXTINF:-1 tvg-id="nbc" tvg-country="us" ,NBC (HTTP 408 Request Timeout)
+https://cors-proxy.cooks.fyi/https://streamer2.nexgen.bz/NBC/index.m3u8
+#EXTINF:-1 tvg-id="pbs" tvg-country="us" ,PBS East (HTTP 403 Forbidden)
+https://pbs.lls.cdn.pbs.org/est/index.m3u8
+#EXTINF:-1 tvg-id="radiofardatv" tvg-country="us" ,Radio Farda TV SD (HTTP 403 Forbidden)
+https://live20.bozztv.com/gin-36bay3/gp-radiofarda/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="sbtn" tvg-country="us" ,SBTN SD (HTTP 403 Forbidden)
+https://live20.bozztv.com/dvrfl05/gin-netviet/index.m3u8
+#EXTINF:-1 tvg-id="wptvdt1" tvg-country="us" ,WPTV-DT1 (HTTP 404 Not Found)
+https://apollo.production-public.tubi.io/live/ac-wptv2.m3u8
+#EXTINF:-1 tvg-id="sabcnews" tvg-country="za" ,SABC News (FFMPEG Undefined Error)
+https://sabconetanw.cdn.mangomolo.com/news/smil:news.stream.smil/master.m3u8

@@ -1,4 +1,4 @@
-import { listaCanales } from "../canalesData.js";
+import { listChannels } from "../channelsData.js";
 import { CONTAINER_VISION_CUADRICULA } from "../main.js";
 import { mostrarToast } from "../helpers/index.js";
 
@@ -8,7 +8,7 @@ export function saveActiveChannelsToStorage() {
         localStorage.removeItem('canales-vision-cuadricula');
         let lsCanales = JSON.parse(localStorage.getItem('canales-vision-cuadricula')) || {};
         CANALES_ACTIVOS_EN_DOM.forEach(divCanal => {
-            lsCanales[divCanal.dataset.canal] = listaCanales[divCanal.dataset.canal].name;
+            lsCanales[divCanal.dataset.canal] = listChannels[divCanal.dataset.canal].name;
         });
         localStorage.setItem('canales-vision-cuadricula', JSON.stringify(lsCanales));
 

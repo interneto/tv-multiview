@@ -1,4 +1,4 @@
-import { PREFIJOS_ID_CONTENEDORES_CANALES } from "../constants/index.js";
+import { CHANNEL_CONTAINER_ID_PREFIXES } from "../constants/index.js";
 
 // Almacenar el orden original de los botones como identificadores únicos
 const ordenOriginal = {
@@ -12,7 +12,7 @@ export function guardarOrdenOriginal(containerBotones) {
     try {
         const BOTONES_EN_CONTENEDOR = Array.from(document.querySelectorAll(`#${containerBotones} button`));
         const ids = BOTONES_EN_CONTENEDOR.map(btn => btn.getAttribute('data-canal'));
-        for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
+        for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
             if (containerBotones.startsWith(PREFIJO)) {
                 ordenOriginal[PREFIJO] = ids;
             }
@@ -64,7 +64,7 @@ export function restaurarOrdenOriginalBotonesCanales(containerBotones) {
         const BODY_CONTENEDOR_BOTONES = document.querySelector(`#${containerBotones}`);
         if (!BODY_CONTENEDOR_BOTONES) return;
         let idsOriginales;
-        for (const PREFIJO of PREFIJOS_ID_CONTENEDORES_CANALES) {
+        for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
             if (containerBotones.startsWith(PREFIJO)) {
                 idsOriginales = ordenOriginal[PREFIJO];
                 break;

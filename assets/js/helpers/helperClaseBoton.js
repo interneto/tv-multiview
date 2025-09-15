@@ -1,8 +1,8 @@
-import { CLASE_CSS_BOTON_PRIMARIO, CLASE_CSS_BOTON_SECUNDARIO } from "../constants/index.js";
+import { CSS_CLASS_PRIMARY_BUTTON, CSS_CLASS_SECONDARY_BUTTON } from "../constants/index.js";
 
 export function ajustarClaseBotonCanal(canal, esActivo) {
-    let botones = document.querySelectorAll(`button[data-canal="${canal}"]`);
-    botones.forEach(boton => {
-        esActivo ? boton.classList.replace(CLASE_CSS_BOTON_SECUNDARIO, CLASE_CSS_BOTON_PRIMARIO) : boton.classList.replace(CLASE_CSS_BOTON_PRIMARIO, CLASE_CSS_BOTON_SECUNDARIO);
+    let buttons = document.querySelectorAll(`button[data-canal="${canal}"]`);
+    buttons.forEach(boton => {
+        esActivo ? boton.classList.replace(CSS_CLASS_SECONDARY_BUTTON, CSS_CLASS_PRIMARY_BUTTON) : boton.classList.replace(CSS_CLASS_PRIMARY_BUTTON, CSS_CLASS_SECONDARY_BUTTON);
     });
 }

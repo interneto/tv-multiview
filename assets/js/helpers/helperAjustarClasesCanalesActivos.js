@@ -1,4 +1,4 @@
-import { CLASE_CSS_BOTON_PRIMARIO } from "../constants/index.js";
+import { CSS_CLASS_PRIMARY_BUTTON } from "../constants/index.js";
 import { mostrarToast, obtenerNumeroCanalesFila } from "./index.js";
 
 import { 
@@ -84,9 +84,9 @@ export function ajustarClaseColTransmisionesPorFila(columnaValue) {
     const botonDejarActivo = document.querySelector(`#container-botones-personalizar-transmisiones-por-fila button[value='${columnaValue}']`);
     if (!botonDejarActivo) return;
     BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach(boton => {
-        boton.classList.replace(CLASE_CSS_BOTON_PRIMARIO, 'btn-light-subtle');
+        boton.classList.replace(CSS_CLASS_PRIMARY_BUTTON, 'btn-light-subtle');
     });
-    botonDejarActivo.classList.replace('btn-light-subtle', CLASE_CSS_BOTON_PRIMARIO);
+    botonDejarActivo.classList.replace('btn-light-subtle', CSS_CLASS_PRIMARY_BUTTON);
     localStorage.setItem('numero-class-columnas-por-fila', columnaValue);
     adjustChannelColumnCount();
 }

@@ -1,9 +1,9 @@
 import { URL_TV_CHANNELS_JSON, URL_IPTV_CHANNELS_M3U } from "./constants/index.js";
-import { sonNombresSimilares, M3U_A_JSON } from "./helpers/index.js";
+import { areSimilarNames, M3U_A_JSON } from "./helpers/index.js";
 
 // Gestión de backup y fetch de canales
 // Lista de 9 canales predeterminados (ids existentes en json-tv/tv-channels.json)
-export const ARRAY_CANALES_PREDETERMINADOS = [
+export const DEFAULT_CHANNELS_ARRAY = [
     'nbc',
     'abc',
     'zdf',
@@ -16,14 +16,14 @@ export const ARRAY_CANALES_PREDETERMINADOS = [
     // TODO: add more channels if needed
 ];
 // No añadimos extras para asegurar que se carguen exactamente 9 canales
-export const ARRAY_CANALES_PREDETERMINADOS_EXTRAS = [];
+export const DEFAULT_CHANNEL_LIST_EXTRAS = [];
 
-export let listaCanales;
+export let listChannels;
 const LS_KEY_CANALES = 'backup-json-canales';
 const LS_KEY_CANALES_FECHA = 'backup-json-canales-fecha';
 const BACKUP_EXPIRACION_HORAS = 24;
 
-export function esBackupValido() {
+export function isBackupValid() {
     const fechaStr = localStorage.getItem(LS_KEY_CANALES_FECHA);
     if (!fechaStr) return false;
     const fecha = new Date(fechaStr);
@@ -32,44 +32,44 @@ export function esBackupValido() {
     return diffHoras < BACKUP_EXPIRACION_HORAS;
 }
 
-export function guardarBackupCanales(json) {
+export function saveChannelBackup(json) {
     localStorage.setItem(LS_KEY_CANALES, JSON.stringify(json));
     localStorage.setItem(LS_KEY_CANALES_FECHA, new Date().toISOString());
 }
 
-export function leerBackupCanales() {
+export function fetchBackupChannels() {
     try {
         const raw = JSON.parse(localStorage.getItem(LS_KEY_CANALES));
-        return normalizarListaCanales(raw);
+        return normalizeChannelList(raw);
     } catch {
         return null;
     }
 }
 
-export async function fetchCargarCanales() {
-    if (esBackupValido()) {
+export async function loadChannelData() {
+    if (isBackupValid()) {
         console.info('Cargando canales desde backup localStorage');
-        listaCanales = leerBackupCanales();
-        if (listaCanales) return;
+        listChannels = fetchBackupChannels();
+        if (listChannels) return;
     }
     console.info('Probando carga archivo principal con canales');
     const response = await fetch(URL_TV_CHANNELS_JSON);
     try {
-        listaCanales = await response.json();
-        listaCanales = normalizarListaCanales(listaCanales);
-        guardarBackupCanales(listaCanales);
+        listChannels = await response.json();
+        listChannels = normalizeChannelList(listChannels);
+        saveChannelBackup(listChannels);
     } catch (parseError) {
         console.error('Error al parsear JSON principal:', parseError);
-        if (esBackupValido()) {
+        if (isBackupValid()) {
             console.warn('Usando backup localStorage por error de parseo');
-            listaCanales = leerBackupCanales();
-            if (listaCanales) return;
+            listChannels = fetchBackupChannels();
+            if (listChannels) return;
         }
         throw parseError;
     }
 }
 
-function normalizarListaCanales(obj) {
+function normalizeChannelList(obj) {
     if (!obj || typeof obj !== 'object') return obj;
     const out = {};
     for (const key of Object.keys(obj)) {
@@ -97,7 +97,7 @@ function normalizarListaCanales(obj) {
     return out;
 }
 
-export async function fetchCargarCanalesIPTV() {
+export async function fetchIptvChannelsData() {
     console.info('Probando carga archivo m3u');
     const m3uResponse = await fetch(URL_IPTV_CHANNELS_M3U);
     const m3uData = await m3uResponse.text();
@@ -105,22 +105,22 @@ export async function fetchCargarCanalesIPTV() {
 
     // Crear un mapa para indexar los canales por name
     const mapCanales = {};
-    if (listaCanales) {
-        for (const canal of Object.keys(listaCanales)) {
-            const nameLista = listaCanales[canal].name ?? 'Canal sin name';
-            mapCanales[nameLista] = listaCanales[canal];
+    if (listChannels) {
+        for (const canal of Object.keys(listChannels)) {
+            const nameLista = listChannels[canal].name ?? 'Canal sin name';
+            mapCanales[nameLista] = listChannels[canal];
         }
 
-        // Combinar los canales de parseM3u con los de listaCanales
+        // Combinar los canales de parseM3u con los de listChannels
         for (const nameCanal in parseM3u) {
             const nameParseM3u = parseM3u[nameCanal].name ?? 'Canal sin name';
             const existingChannel = mapCanales[nameParseM3u];
 
-            if (existingChannel && sonNombresSimilares(existingChannel.name, nameParseM3u)) {
+            if (existingChannel && areSimilarNames(existingChannel.name, nameParseM3u)) {
                 const newUrls = parseM3u[nameCanal].signals.m3u8_url.filter(url => !existingChannel.signals.m3u8_url.includes(url));
                 existingChannel.signals.m3u8_url.push(...newUrls);
             } else {
-                listaCanales[nameCanal] = parseM3u[nameCanal];
+                listChannels[nameCanal] = parseM3u[nameCanal];
             }
         }
     }
