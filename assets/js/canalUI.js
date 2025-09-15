@@ -2,8 +2,8 @@
 import { listaCanales } from './canalesData.js';
 import { LABEL_MODAL_CAMBIAR_CANAL, MODAL_CAMBIAR_CANAL, tele } from './main.js';
 import {
-    CODIGOS_PAISES,
-    ICONOS_PARA_CATEGORIAS,
+    COUNTRY_CODES,
+    CATEGORY_ICONS,
     AUDIO_POP,
     TWITCH_PARENT
 } from './constants/index.js';
@@ -67,7 +67,7 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
 
     valorIndex = Number(valorIndex);
     category = typeof category === 'string' ? category.toLowerCase() : '';
-    let iconoCategoria = (typeof category === 'string' && category in ICONOS_PARA_CATEGORIAS) ? ICONOS_PARA_CATEGORIAS[category] : '<i class="bi bi-tv"></i>';
+    let iconoCategoria = (typeof category === 'string' && category in CATEGORY_ICONS) ? CATEGORY_ICONS[category] : '<i class="bi bi-tv"></i>';
 
         const FRAGMENT_OVERLAY = document.createDocumentFragment();
         const DIV_ELEMENT = document.createElement('div');
@@ -169,8 +169,8 @@ export function crearOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
         BOTON_SITIO_OFICIAL_CANAL.rel = 'noopener nofollow noreferrer';
         BOTON_SITIO_OFICIAL_CANAL.innerHTML = `<span>
                 ${name}
-                ${country && typeof country === 'string' && CODIGOS_PAISES[country]
-                ? ` <img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${CODIGOS_PAISES[country]}" title="${CODIGOS_PAISES[country]}" class="svg-bandera">`
+                ${country && typeof country === 'string' && COUNTRY_CODES[country]
+                ? ` <img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${COUNTRY_CODES[country]}" title="${COUNTRY_CODES[country]}" class="svg-bandera">`
                 : ''}
                 ${iconoCategoria
                 ? ` ${iconoCategoria}`

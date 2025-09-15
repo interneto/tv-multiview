@@ -13,7 +13,7 @@ function AsignarClaseColumna(transmisionPorModifica, clasesPorAñadir) {
     transmisionPorModifica.classList.add(...clasesPorAñadir);
 }
 
-export function ajustarNumeroDivisionesClaseCol() {
+export function adjustChannelColumnCount() {
     try {
         if (typeof isMobile === 'undefined' || !CONTAINER_VISION_CUADRICULA) return;
         const transmisionesEnGrid = CONTAINER_VISION_CUADRICULA.querySelectorAll('div[data-canal]');
@@ -88,5 +88,5 @@ export function ajustarClaseColTransmisionesPorFila(columnaValue) {
     });
     botonDejarActivo.classList.replace('btn-light-subtle', CLASE_CSS_BOTON_PRIMARIO);
     localStorage.setItem('numero-class-columnas-por-fila', columnaValue);
-    ajustarNumeroDivisionesClaseCol();
+    adjustChannelColumnCount();
 }

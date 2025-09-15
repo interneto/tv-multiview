@@ -1,5 +1,5 @@
 import { listaCanales } from "../canalesData.js";
-import { CLASE_CSS_BOTON_SECUNDARIO, CODIGOS_PAISES, ICONOS_PARA_CATEGORIAS, PREFIJOS_ID_CONTENEDORES_CANALES } from "../constants/index.js";
+import { CLASE_CSS_BOTON_SECUNDARIO, COUNTRY_CODES, CATEGORY_ICONS, PREFIJOS_ID_CONTENEDORES_CANALES } from "../constants/index.js";
 import { CONTAINER_VIDEO_VISION_UNICA, tele } from "../main.js";
 import { mostrarToast, revisarSeñalesVacias, guardarOrdenOriginal } from "./index.js";
 import { insertarDivError } from './helperInsertarDivError.js';
@@ -10,8 +10,8 @@ export function crearBotonesParaCanales() {
         for (const canal of Object.keys(listaCanales)) {
             let { name, /* logo, */ country, category } = listaCanales[canal];
             category = typeof category === 'string' ? category.toLowerCase() : '';
-            let iconoCategoria = category && (category in ICONOS_PARA_CATEGORIAS) ? ICONOS_PARA_CATEGORIAS[category] : '<i class="bi bi-tv"></i>';
-            let namePais = country && typeof country === 'string' && CODIGOS_PAISES[country.toLowerCase()] ? CODIGOS_PAISES[country.toLowerCase()] : 'Desconocido';
+            let iconoCategoria = category && (category in CATEGORY_ICONS) ? CATEGORY_ICONS[category] : '<i class="bi bi-tv"></i>';
+            let namePais = country && typeof country === 'string' && COUNTRY_CODES[country.toLowerCase()] ? COUNTRY_CODES[country.toLowerCase()] : 'Desconocido';
 
             let botonCanal = document.createElement('button');
             botonCanal.setAttribute('data-canal', canal);
@@ -20,7 +20,7 @@ export function crearBotonesParaCanales() {
             if (revisarSeñalesVacias(canal)) botonCanal.classList.add('d-none');
             botonCanal.innerHTML =
                 `<span class="flex-grow-1">${name}</span>
-                    ${country && typeof country === 'string' && CODIGOS_PAISES[country.toLowerCase()] ? `<img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${namePais}" title="${namePais}" class="svg-bandera rounded-1">` : ''}
+                    ${country && typeof country === 'string' && COUNTRY_CODES[country.toLowerCase()] ? `<img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${namePais}" title="${namePais}" class="svg-bandera rounded-1">` : ''}
                     ${iconoCategoria ? `${iconoCategoria}` : ''}`;
                     // ${logo ? `<img src="${logo}" alt="logo ${name}" title="logo ${name}" class="img-logos rounded-1">` : ''}
             FRAGMENT_BOTONES_CANALES.append(botonCanal);

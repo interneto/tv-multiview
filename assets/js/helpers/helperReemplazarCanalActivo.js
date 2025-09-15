@@ -1,6 +1,6 @@
 import { crearFragmentCanal } from "../canalUI.js";
 import { tele } from "../main.js";
-import { mostrarToast, ajustarClaseBotonCanal, guardarCanalesEnLocalStorage } from "./index.js";
+import { mostrarToast, ajustarClaseBotonCanal, saveActiveChannelsToStorage } from "./index.js";
 
 export function reemplazarCanalActivo(canalIdBotonPulsadoEnModal, canalIdExistente) {
     try {
@@ -20,7 +20,7 @@ export function reemplazarCanalActivo(canalIdBotonPulsadoEnModal, canalIdExisten
             divPadreACambiar.setAttribute('data-canal', canalIdBotonPulsadoEnModal); // deja atributo con el canal que se deja activo tras cambio
             ajustarClaseBotonCanal(canalIdExistente, false);
             ajustarClaseBotonCanal(canalIdBotonPulsadoEnModal, true);
-            if (localStorage.getItem('diseño-seleccionado') !== 'vision-unica') guardarCanalesEnLocalStorage();
+            if (localStorage.getItem('diseño-seleccionado') !== 'vision-unica') saveActiveChannelsToStorage();
         }
     } catch (error) {
         console.error(`Error intentar cambiar canal con id: ${canalIdExistente} por canal: ${canalIdBotonPulsadoEnModal}. Error: ${error}`);

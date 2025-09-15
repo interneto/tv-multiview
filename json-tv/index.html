@@ -1,514 +1,275 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Convierte listas JSON de canales en archivos .M3U fácilmente.">
-  <title>Convertidor JSON a .M3U</title>
+  <meta name="description" content="Easily convert JSON channel lists into .M3U files.">
+  <title>JSON to .M3U Converter</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script>
-    try {
-      if (localStorage.getItem('darkmode') === 'true') {
-        document.documentElement.classList.add('darkmode-preload');
-      }
-    } catch(e) {}
-  </script>
+  <link href="../assets/css/style.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
-      min-height: 100vh;
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      transition: background 0.3s;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      transition: background 0.3s, color 0.3s;
     }
-    body.darkmode, .darkmode-preload body {
-      background: linear-gradient(135deg, #18181b 0%, #312e81 100%);
-    }
-    .deluxe-card {
-      background: #fff;
-      border-radius: 2rem;
-      box-shadow: 0 8px 32px rgba(60, 60, 120, 0.12);
-      padding: 2.5rem 2rem;
-      max-width: 650px;
-      margin: 2rem auto;
-      transition: box-shadow 0.3s, background 0.3s;
-    }
-    .darkmode-preload .deluxe-card {
-      background: #23233a;
-      box-shadow: 0 8px 32px rgba(30, 30, 60, 0.22);
-    }
-    body.darkmode .deluxe-card {
-      background: #23233a;
-      box-shadow: 0 8px 32px rgba(30, 30, 60, 0.22);
-    }
-    .deluxe-title {
-      font-weight: 800;
-      font-size: 2.3rem;
-      letter-spacing: -1px;
-      color: #3b3b5c;
-      margin-bottom: 0.5rem;
-      transition: color 0.3s;
-    }
-    .darkmode-preload .deluxe-title {
-      color: #f3f4f6;
-    }
-    body.darkmode .deluxe-title {
-      color: #f3f4f6;
-    }
-    .deluxe-desc {
-      font-size: 1.1rem;
-      color: #6b7280;
-      margin-bottom: 2rem;
-      transition: color 0.3s;
-    }
-    .darkmode-preload .deluxe-desc {
-      color: #a5b4fc;
-    }
-    body.darkmode .deluxe-desc {
-      color: #a5b4fc;
-    }
-    .deluxe-btn {
-      font-size: 1.1rem;
-      border-radius: 1.5rem;
-      padding: 0.75rem 2rem;
-      box-shadow: 0 2px 8px rgba(60,60,120,0.08);
-      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      border: none;
-    }
-    .deluxe-btn:active {
-      transform: scale(0.98);
-    }
-    .btn-primary.deluxe-btn {
-      background: linear-gradient(90deg, #4f46e5 0%, #6366f1 100%);
-      color: #fff;
-      border: none;
-      text-shadow: 0 1px 2px rgba(60,60,120,0.18);
-    }
-    .btn-primary.deluxe-btn:hover {
-      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
-      color: #fff;
-    }
-    .btn-success.deluxe-btn {
-      background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
-      color: #fff;
-      border: none;
-      text-shadow: 0 1px 2px rgba(60,60,120,0.18);
-    }
-    .btn-success.deluxe-btn:hover {
-      background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
-      color: #fff;
-    }
-    .btn-warning.deluxe-btn {
-      background: linear-gradient(90deg, #fbbf24 0%, #f59e42 100%);
-      color: #3b3b5c;
-      border: none;
-      text-shadow: none;
-      font-weight: 700;
-    }
-    .btn-warning.deluxe-btn:hover {
-      background: linear-gradient(90deg, #f59e42 0%, #fbbf24 100%);
-      color: #23233a;
-    }
-    .btn-outline-primary.deluxe-btn, .btn-outline-primary {
-      background: #fff;
-      color: #6366f1;
-      border: 2px solid #6366f1;
-      font-weight: 700;
-      text-shadow: none;
-    }
-    .btn-outline-primary.deluxe-btn:hover, .btn-outline-primary:hover {
-      background: #6366f1;
-      color: #fff;
-    }
-    .deluxe-textarea {
-      border-radius: 1.2rem;
-      font-size: 1rem;
-      background: #f3f4f6;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 1px 4px rgba(60,60,120,0.04);
-      transition: box-shadow 0.2s, background 0.3s, color 0.3s, border 0.3s;
-      color: #23233a;
-    }
-    .deluxe-textarea:focus {
-      box-shadow: 0 2px 8px rgba(60,60,120,0.10);
-      border-color: #6366f1;
-      background: #eef2ff;
-    }
-    .darkmode-preload .deluxe-textarea {
-      background: #23233a;
-      color: #f3f4f6;
-      border: 1px solid #6366f1;
-    }
-    body.darkmode .deluxe-textarea {
-      background: #23233a;
-      color: #f3f4f6;
-      border: 1px solid #6366f1;
-    }
-    #output.deluxe-textarea {
-      background: #fdf6e3;
-      border: 1px solid #fbbf24;
-      color: #3b3b5c;
-      font-weight: 500;
-    }
-    .darkmode-preload #output.deluxe-textarea {
-      background: #312e81;
-      border: 1px solid #818cf8;
-      color: #f3f4f6;
-    }
-    body.darkmode #output.deluxe-textarea {
-      background: #312e81;
-      border: 1px solid #818cf8;
-      color: #f3f4f6;
-    }
-    #spinner {
-      animation: fadeIn 0.5s;
-      display: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .deluxe-label {
-      font-weight: 600;
-      color: #6366f1;
-      margin-bottom: 0.3rem;
-      transition: color 0.3s;
-    }
-    .darkmode-preload .deluxe-label {
-      color: #a5b4fc;
-    }
-    body.darkmode .deluxe-label {
-      color: #a5b4fc;
-    }
-    .deluxe-section {
-      margin-bottom: 1.5rem;
-    }
-    .darkmode-toggle {
-      position: absolute;
-      top: 32px;
-      right: 32px;
-      z-index: 10;
-      background: #fff;
-      border-radius: 2rem;
-      box-shadow: 0 2px 8px rgba(60,60,120,0.10);
-      padding: 0.4rem 1.2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #6366f1;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .darkmode-toggle:hover {
-      background: #6366f1;
-      color: #fff;
-    }
-    .darkmode-preload .darkmode-toggle {
-      background: #23233a;
-      color: #a5b4fc;
-    }
-    .darkmode-preload .darkmode-toggle:hover {
-      background: #818cf8;
-      color: #23233a;
-    }
-    body.darkmode .darkmode-toggle {
-      background: #23233a;
-      color: #a5b4fc;
-    }
-    body.darkmode .darkmode-toggle:hover {
-      background: #818cf8;
-      color: #23233a;
-    }
-    body.darkmode ::placeholder,
-    .darkmode-preload ::placeholder {
-      color: #a5b4fc !important;
-      opacity: 1;
-    }
-    #opcionesAvanzadas {
-      animation: fadeIn 0.4s;
-    }
-    #toggleOpcionesBtn {
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 1.2rem;
-      box-shadow: 0 1px 4px rgba(60,60,120,0.04);
-      transition: background 0.2s, color 0.2s;
-    }
-    #toggleOpcionesBtn:focus {
-      outline: 2px solid #6366f1;
-    }
-    body.darkmode #toggleOpcionesBtn {
-      background: #23233a;
-      color: #a5b4fc;
-      border: 1px solid #6366f1;
-    }
-    body.darkmode #toggleOpcionesBtn:hover {
-      background: #818cf8;
-      color: #23233a;
+    /* Use the main theme rules in ../assets/css/style.css via html[data-bs-theme]
+       Keep a few small local helpers */
+    .fixed-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
     }
   </style>
 </head>
 <body class="bg-light">
-  <main>
-    <div class="deluxe-card">
-      <header>
-        <h1 class="deluxe-title text-center">🧾 Convertidor .JSON a .M3U</h1>
-        <p class="deluxe-desc text-center">
-          Este sitio solo funciona con archivos JSON que sigan el formato del repositorio <a href="https://github.com/Alplox/json-tv" target="_blank" rel="noopener">json-tv</a> y/o variaciones compatibles. Si tu archivo no sigue ese formato, la conversión puede fallar.
+  <main class="container py-5">
+    <div class="card shadow-lg p-4 mx-auto" style="max-width: 720px;">
+      <header class="text-center mb-4">
+        <h1 class="fw-bold text-primary mb-2">🧾 JSON to .M3U Converter</h1>
+        <p class="text-muted">
+          Works with JSON files that follow the 
+          <a href="https://github.com/Alplox/json-teles" target="_blank" rel="noopener" class="link-primary">json-tv</a> 
+          format or compatible variations. If your file does not follow that format, conversion may fail.
         </p>
       </header>
-      <section aria-label="Cargar lista por defecto" class="deluxe-section">
-        <button class="btn btn-secondary deluxe-btn w-100" id="cargarPorDefectoBtn">📂 Cargar lista por defecto</button>
+
+      <!-- Default list -->
+      <section class="mb-3">
+        <button id="loadDefaultBtn" class="btn btn-secondary w-100">
+          📂 Load Default List
+        </button>
       </section>
-      <button class="btn btn-outline-primary w-100 mb-3" id="toggleOpcionesBtn" type="button">Opciones avanzadas ▼</button>
-      <div id="opcionesAvanzadas" style="display:none;">
-        <section aria-label="Entrada desde URL" class="deluxe-section">
-          <label for="urlInput" class="deluxe-label">🌐 Pegar URL de JSON (opcional):</label>
-          <input type="text" class="form-control deluxe-textarea" id="urlInput" placeholder="https://raw.githubusercontent.com/.../canales.json">
-          <button class="btn btn-primary deluxe-btn mt-2 w-100" id="cargarDesdeURLBtn">Cargar desde URL</button>
-        </section>
-        <section aria-label="Carga desde archivo" class="deluxe-section">
-          <label for="fileInput" class="deluxe-label">📁 Subir archivo JSON:</label>
-          <input type="file" class="form-control deluxe-textarea" id="fileInput" accept=".json">
-        </section>
-        <section aria-label="Pegar JSON" class="deluxe-section">
-          <label for="jsonInput" class="deluxe-label">📝 O pega tu JSON aquí:</label>
-          <textarea class="form-control deluxe-textarea" id="jsonInput" rows="10" placeholder="{ ... }"></textarea>
-          <div id="jsonStatus" class="mt-2"></div>
-        </section>
+
+      <!-- Advanced options -->
+      <button id="toggleOptionsBtn" type="button" class="btn btn-outline-primary w-100 mb-3">
+        Advanced Options ▼
+      </button>
+      <div id="advancedOptions" class="d-none">
+        <!-- From URL -->
+        <div class="mb-3">
+          <label for="urlInput" class="form-label fw-semibold">🌐 Paste JSON URL (optional):</label>
+          <input type="text" id="urlInput" class="form-control" placeholder="https://raw.githubusercontent.com/.../channels.json">
+          <button id="loadFromUrlBtn" class="btn btn-primary mt-2 w-100">Load from URL</button>
+        </div>
+
+        <!-- From file -->
+        <div class="mb-3">
+          <label for="fileInput" class="form-label fw-semibold">📁 Upload JSON File:</label>
+          <input type="file" id="fileInput" class="form-control" accept=".json">
+        </div>
+
+        <!-- Paste JSON -->
+        <div class="mb-3">
+          <label for="jsonInput" class="form-label fw-semibold">📝 Or paste your JSON here:</label>
+          <textarea id="jsonInput" rows="8" class="form-control" placeholder="{ ... }"></textarea>
+          <div id="jsonStatus" class="mt-2 small"></div>
+        </div>
       </div>
-      <nav aria-label="Botones de acción" class="d-flex flex-column gap-2 mb-2">
-        <button class="btn btn-primary deluxe-btn w-100 mb-2" id="convertirBtn">Transformar a .M3U</button>
+
+      <!-- Action buttons -->
+      <div class="d-grid gap-2 mb-3">
+        <button id="convertBtn" class="btn btn-primary">Convert to .M3U</button>
         <div class="d-flex gap-2">
-          <button class="btn btn-success deluxe-btn d-none flex-fill" id="copiarBtn">📋 Copiar Resultado</button>
-          <a class="btn btn-warning deluxe-btn d-none flex-fill" id="descargarBtn" download="lista.m3u">⬇️ Descargar Resultado</a>
+          <button id="copyBtn" class="btn btn-success d-none flex-fill">📋 Copy Result</button>
+          <a id="downloadBtn" download="list.m3u" class="btn btn-warning d-none flex-fill text-dark fw-bold">⬇️ Download Result</a>
         </div>
-      </nav>
-      <section aria-live="polite" id="estadoCanales" class="mb-4 text-success fw-semibold"></section>
-      <section>
-        <label for="output" class="deluxe-label">📄 Resultado:</label>
-        <textarea class="form-control deluxe-textarea" id="output" rows="10" readonly></textarea>
-      </section>
-      <div id="spinner" class="text-center my-3" style="display:none;">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Cargando...</span>
-        </div>
-        <div class="text-muted mt-2">Cargando archivo JSON...</div>
       </div>
-      <button class="darkmode-toggle" id="darkmodeToggle" title="Cambiar modo claro/oscuro">🌙 Modo oscuro</button>
+
+      <!-- Channel status -->
+      <section id="channelStatus" class="mb-3 fw-semibold text-success"></section>
+
+      <!-- Output -->
+      <div class="mb-3">
+        <label for="output" class="form-label fw-semibold">📄 Result:</label>
+        <textarea id="output" rows="8" readonly class="form-control"></textarea>
+      </div>
+
+      <!-- Spinner -->
+      <div id="spinner" class="text-center my-3 d-none">
+        <div class="spinner-border text-primary" role="status"></div>
+        <div class="text-muted mt-2">Loading JSON file...</div>
+      </div>
     </div>
+
+    <!-- Dark mode toggle -->
+    <button id="darkmodeToggle" class="btn btn-outline-primary fixed-toggle">🌙 Dark Mode</button>
   </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const defaultURL = "https://raw.githubusercontent.com/Alplox/json-tv/refs/heads/main/canales.json";
+      // Original: https://raw.githubusercontent.com/Alplox/json-teles/refs/heads/main/canales.json
+      // Updated: https://raw.githubusercontent.com/interneto/tv-multiview/refs/heads/main/json-tv/tv-channels.json
+      const defaultURL = "https://raw.githubusercontent.com/interneto/tv-multiview/refs/heads/main/json-tv/tv-channels.json";
       const fileInput = document.getElementById('fileInput');
-      const cargarPorDefectoBtn = document.getElementById('cargarPorDefectoBtn');
-      const cargarDesdeURLBtn = document.getElementById('cargarDesdeURLBtn');
-      const convertirBtn = document.getElementById('convertirBtn');
-      const copiarBtn = document.getElementById('copiarBtn');
-      const descargarBtn = document.getElementById('descargarBtn');
+      const loadDefaultBtn = document.getElementById('loadDefaultBtn');
+      const loadFromUrlBtn = document.getElementById('loadFromUrlBtn');
+      const convertBtn = document.getElementById('convertBtn');
+      const copyBtn = document.getElementById('copyBtn');
+      const downloadBtn = document.getElementById('downloadBtn');
       const urlInput = document.getElementById('urlInput');
       const jsonInput = document.getElementById('jsonInput');
       const jsonStatus = document.getElementById('jsonStatus');
       const spinner = document.getElementById('spinner');
-      const estadoCanales = document.getElementById('estadoCanales');
+      const channelStatus = document.getElementById('channelStatus');
       const output = document.getElementById('output');
       const darkmodeToggle = document.getElementById('darkmodeToggle');
-      const toggleOpcionesBtn = document.getElementById('toggleOpcionesBtn');
-      const opcionesAvanzadas = document.getElementById('opcionesAvanzadas');
+      const toggleOptionsBtn = document.getElementById('toggleOptionsBtn');
+      const advancedOptions = document.getElementById('advancedOptions');
 
-      fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
+      // File input
+      fileInput?.addEventListener('change', e => {
+        const file = e.target.files[0];
         if (!file) return;
         const reader = new FileReader();
-        reader.onload = (e) => {
-          jsonInput.value = e.target.result;
+        reader.onload = ev => {
+          jsonInput.value = ev.target.result;
+          // Validate immediately after loading file
+          validateJson();
         };
         reader.readAsText(file);
       });
 
-      cargarPorDefectoBtn.addEventListener('click', () => {
-        cargarJSONDesde(defaultURL, true);
-      });
+      // Load default JSON
+      loadDefaultBtn?.addEventListener('click', () => loadJSONFrom(defaultURL, true));
 
-      cargarDesdeURLBtn.addEventListener('click', () => {
+      // Load from URL
+      loadFromUrlBtn?.addEventListener('click', () => {
         const url = urlInput.value.trim();
-        if (!url) return alert("⚠️ Ingresa una URL válida.");
-        cargarJSONDesde(url);
+        if (!url) return alert("⚠️ Please enter a valid URL.");
+        loadJSONFrom(url);
       });
 
-      copiarBtn.addEventListener('click', async () => {
+      // Copy output
+      copyBtn?.addEventListener('click', async () => {
         try {
           await navigator.clipboard.writeText(output.value);
-          alert('📋 ¡Copiado al portapapeles!');
-        } catch (err) {
-          // Fallback para navegadores que no soportan navigator.clipboard
-          try {
-            output.removeAttribute('readonly');
-            output.select();
-            document.execCommand('copy');
-            output.setAttribute('readonly', '');
-            alert('📋 ¡Copiado al portapapeles!');
-          } catch (e) {
-            alert('❌ Error al copiar al portapapeles.');
-          }
+          alert('📋 Copied to clipboard!');
+        } catch {
+          output.removeAttribute('readonly');
+          output.select();
+          document.execCommand('copy');
+          output.setAttribute('readonly', '');
+          alert('📋 Copied to clipboard!');
         }
       });
 
-      convertirBtn.addEventListener('click', () => {
-        convertir();
-      });
+      // Convert JSON to M3U
+      convertBtn?.addEventListener('click', () => convert());
 
-      // Validación visual de JSON en tiempo real
-      jsonInput.addEventListener('input', () => {
+      // JSON validation
+      function validateJson() {
+        if (!jsonInput) return;
         try {
           JSON.parse(jsonInput.value);
-          jsonStatus.textContent = '✅ JSON válido';
-          jsonStatus.className = 'text-success';
+          jsonStatus.textContent = '✅ Valid JSON';
+          jsonStatus.className = 'text-success small';
+          return true;
         } catch {
-          jsonStatus.textContent = '❌ JSON inválido';
-          jsonStatus.className = 'text-danger';
+          jsonStatus.textContent = '❌ Invalid JSON';
+          jsonStatus.className = 'text-danger small';
+          return false;
         }
-      });
-
-      // Darkmode persistente
-      function setDarkMode(enabled) {
-        document.body.classList.toggle('darkmode', enabled);
-        document.documentElement.classList.toggle('darkmode-preload', enabled);
-        darkmodeToggle.textContent = enabled ? '☀️ Modo claro' : '🌙 Modo oscuro';
       }
-      // Leer preferencia
-      const darkPref = localStorage.getItem('darkmode') === 'true';
-      setDarkMode(darkPref);
-      darkmodeToggle.addEventListener('click', () => {
-        const isDark = !document.body.classList.contains('darkmode');
+
+      jsonInput?.addEventListener('input', validateJson);
+
+      // Dark mode toggle
+      function setDarkMode(enabled) {
+        document.documentElement.setAttribute('data-bs-theme', enabled ? 'dark' : 'light');
+        darkmodeToggle.textContent = enabled ? '☀️ Light Mode' : '🌙 Dark Mode';
+      }
+      // Initialize from localStorage, default to light
+      setDarkMode(localStorage.getItem('darkmode') === 'true');
+      darkmodeToggle?.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-bs-theme') !== 'dark';
         setDarkMode(isDark);
         localStorage.setItem('darkmode', isDark);
       });
 
-      let opcionesVisibles = false;
-      toggleOpcionesBtn.addEventListener('click', () => {
-        opcionesVisibles = !opcionesVisibles;
-        opcionesAvanzadas.style.display = opcionesVisibles ? 'block' : 'none';
-        toggleOpcionesBtn.textContent = opcionesVisibles ? 'Ocultar opciones avanzadas ▲' : 'Opciones avanzadas ▼';
+      // Advanced options toggle
+      toggleOptionsBtn?.addEventListener('click', () => {
+        advancedOptions.classList.toggle('d-none');
+        toggleOptionsBtn.textContent = advancedOptions.classList.contains('d-none')
+          ? 'Advanced Options ▼' : 'Hide Advanced Options ▲';
       });
 
-      async function cargarJSONDesde(url, mostrarAlerta = false) {
-        spinner.style.display = 'block';
+      // Helpers
+      async function loadJSONFrom(url, showAlert = false) {
+        spinner.classList.remove('d-none');
         try {
           const res = await fetch(url);
-          if (!res.ok) throw new Error('Error al descargar el archivo');
+          if (!res.ok) throw new Error();
           const data = await res.text();
+
+
           jsonInput.value = data;
-          jsonInput.dispatchEvent(new Event('input'));
-          if (mostrarAlerta) alert("✅ Lista por defecto cargada correctamente");
-        } catch (e) {
-          alert("❌ No se pudo cargar el JSON desde la URL.");
+          // Validate JSON directly
+          validateJson();
+
+          if (showAlert) alert("✅ Default list loaded successfully");
+        } catch {
+          alert("❌ Could not load JSON from URL.");
         } finally {
-          spinner.style.display = 'none';
+          spinner.classList.add('d-none');
         }
       }
 
-      function convertir() {
-        let canales;
+      function convert() {
+        let channels;
         try {
-          canales = JSON.parse(jsonInput.value);
-        } catch (e) {
-          alert("❌ JSON inválido");
+          channels = JSON.parse(jsonInput.value);
+        } catch {
+          alert("❌ Invalid JSON");
           return;
         }
 
         let m3u = '#EXTM3U\n';
-        let totalCanales = 0;
-        let canalesConM3u8 = 0;
-        let totalEntradas = 0;
-        let canalesDuplicados = 0;
-        let namesDuplicados = [];
+        let totalChannels = 0, channelsWithM3u8 = 0, totalEntries = 0, duplicateChannels = 0, duplicateNames = [];
 
-        for (const key in canales) {
-          const canal = canales[key];
-          totalCanales++;
-
-          const name = canal.name || key;
-          const logo = canal.logo || '';
-          const category = canal.category || 'General';
-          const country = canal.country ? canal.country.toUpperCase() : 'INTL';
-          const urls = canal.signals?.m3u8_url || [];
-
+        for (const key in channels) {
+          const ch = channels[key];
+          totalChannels++;
+          const name = ch.name || key;
+          const logo = ch.logo || '';
+          const category = ch.category || 'General';
+          const country = ch.country ? ch.country.toUpperCase() : 'INTL';
+          const urls = ch.signals?.m3u8_url || [];
           if (urls.length === 0) continue;
-
-          canalesConM3u8++;
-
+          channelsWithM3u8++;
           if (urls.length > 1) {
-            canalesDuplicados++;
-            namesDuplicados.push(name);
+            duplicateChannels++;
+            duplicateNames.push(name);
           }
-
-          urls.forEach((url, idx) => {
-            const numero = urls.length > 1 ? ` (${idx + 1})` : '';
-            const nameVisible = `${name}${numero} [${country}]`;
-
-            m3u += `#EXTINF:-1 tvg-name="${name}" tvg-logo="${logo}" group-title="${category}", ${nameVisible}\n`;
-            m3u += `${url}\n`;
-            totalEntradas++;
+          urls.forEach((url, i) => {
+            const suffix = urls.length > 1 ? ` (${i+1})` : '';
+            const visibleName = `${name}${suffix} [${country}]`;
+            m3u += `#EXTINF:-1 tvg-name="${name}" tvg-logo="${logo}" group-title="${category}", ${visibleName}\n${url}\n`;
+            totalEntries++;
           });
         }
 
-        // Construir mensaje detallado
-        if (totalEntradas === 0) {
-          estadoCanales.innerText = "⚠️ No se encontraron signals m3u8 válidas en el JSON.";
-          estadoCanales.classList.remove('text-success');
-          estadoCanales.classList.add('text-danger');
+        if (totalEntries === 0) {
+          channelStatus.innerText = "⚠️ No valid .m3u8 signals found in the JSON.";
+          channelStatus.className = "text-danger fw-semibold";
         } else {
-          let mensaje = `
-            ✅ El JSON contiene <strong>${totalCanales}</strong> canales.<br>
-            📡 <strong>${canalesConM3u8}</strong> tienen signals <code>.m3u8</code> compatibles.<br>
-            🎬 Se generaron <strong>${totalEntradas}</strong> entradas <code>.m3u8</code> en total.
-          `;
-
-          if (canalesDuplicados > 0) {
-            mensaje += `<br>🔁 <strong>${canalesDuplicados}</strong> canales contenían múltiples signals.`;
-            const lista = namesDuplicados.slice(0, 5).join(', ');
-            mensaje += `<br>📋 Canales con signals <code>.m3u8</code> multiples: <em>${lista}${namesDuplicados.length > 5 ? ', ...' : ''}</em>`;
-            mensaje += `
-              <br><button id="toggleDuplicadosBtn" class="btn btn-sm btn-link p-0 mt-1">Ver lista completa</button>
-              <div id="listaDuplicados" style="display:none; max-height:150px; overflow-y:auto; border:1px solid #ccc; padding:10px; margin-top:5px; background:#f9f9f9;">
-                ${namesDuplicados.map(n => `<div>${n}</div>`).join('')}
-              </div>
-            `;
+          let msg = `✅ JSON contains <strong>${totalChannels}</strong> channels.<br>
+            📡 <strong>${channelsWithM3u8}</strong> have <code>.m3u8</code> signals.<br>
+            🎬 Generated <strong>${totalEntries}</strong> total <code>.m3u8</code> entries.`;
+          if (duplicateChannels > 0) {
+            msg += `<br>🔁 <strong>${duplicateChannels}</strong> channels had multiple signals.`;
+            const preview = duplicateNames.slice(0,5).join(', ');
+            msg += `<br>📋 Multiple-signal channels: <em>${preview}${duplicateNames.length > 5 ? ', ...' : ''}</em>`;
           }
-
-          estadoCanales.innerHTML = mensaje;
-          estadoCanales.classList.remove('text-danger');
-          estadoCanales.classList.add('text-success');
-
-          setTimeout(() => {
-            const toggleBtn = document.getElementById('toggleDuplicadosBtn');
-            const listaDiv = document.getElementById('listaDuplicados');
-            if (toggleBtn && listaDiv) {
-              toggleBtn.addEventListener('click', () => {
-                if (listaDiv.style.display === 'none') {
-                  listaDiv.style.display = 'block';
-                  toggleBtn.textContent = 'Ocultar lista';
-                } else {
-                  listaDiv.style.display = 'none';
-                  toggleBtn.textContent = 'Ver lista completa de canales que contenían múltiples signals m3u8';
-                }
-              });
-            }
-          }, 100);
+          channelStatus.innerHTML = msg;
+          channelStatus.className = "text-success fw-semibold";
         }
 
         output.value = m3u;
-
         const blob = new Blob([m3u], { type: 'audio/x-mpegurl' });
-        const urlBlob = URL.createObjectURL(blob);
-        descargarBtn.href = urlBlob;
-        descargarBtn.classList.remove('d-none');
-        copiarBtn.classList.remove('d-none');
+        downloadBtn.href = URL.createObjectURL(blob);
+        downloadBtn.classList.remove('d-none');
+        copyBtn.classList.remove('d-none');
       }
     });
   </script>

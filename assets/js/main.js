@@ -11,7 +11,7 @@ import {
     PREFIJOS_ID_CONTENEDORES_CANALES,
     VALOR_COL_FIJO_ESCRITORIO,
     VALOR_COL_FIJO_TELEFONO,
-    registrarTraduccionVideojs,
+    initializeVideojsTranslations,
     AUDIO_FAIL
 } from './constants/index.js';
 import {
@@ -23,9 +23,9 @@ import {
     iniciarRevisarConexion,
     mostrarToast,
     playAudioSinDelay,
-    quitarTodoCanalActivo,
+    removeAllActiveChannels as removeAllActiveChannels,
     obtenerCanalesPredeterminados,
-    guardarCanalesEnLocalStorage,
+    saveActiveChannelsToStorage,
     ajustarClaseBotonCanal,
     activarVisionUnica,
     desactivarVisionUnica,
@@ -36,7 +36,7 @@ import {
     actualizarBotonesPersonalizarOverlay,
     crearBotonesParaCanales,
     ajustarVisibilidadBotonesQuitarTodaSeñal,
-    ajustarNumeroDivisionesClaseCol,
+    adjustChannelColumnCount,
     filtrarCanalesPorInput,
     ajustarClaseColTransmisionesPorFila,
     ordenarBotonesCanalesAscendente,
@@ -131,7 +131,7 @@ CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.addEventListener('click', () => {
             localStorage.setItem('uso-100vh', 'inactivo'),
             SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = 'Reducido'
         );
-    ajustarNumeroDivisionesClaseCol()
+    adjustChannelColumnCount()
 });
 
 // Canales por fila
@@ -177,7 +177,7 @@ CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.addEventListener('cl
 
 export const BOTONES_REPOSICIONAR_BOTONES_FLOTANTES = document.querySelectorAll('#grupo-botones-posicion-botones-flotantes .btn-check');
 
-registrarTraduccionVideojs();
+initializeVideojsTranslations();
 
 // MARK: Manejo canales
 export let tele = {
@@ -195,7 +195,7 @@ export let tele = {
                 DIV_CANAL.classList.add('position-relative', 'shadow');
                 DIV_CANAL.append(crearFragmentCanal(canal));
                 CONTAINER_VISION_CUADRICULA.append(DIV_CANAL);
-                guardarCanalesEnLocalStorage();
+                saveActiveChannelsToStorage();
             }
             ajustarClaseBotonCanal(canal, true);
             activarTooltipsBootstrap();
@@ -316,7 +316,7 @@ new Sortable(CONTAINER_VISION_CUADRICULA, {
         DIVS_SOBRE_SEÑALES.forEach(divSobrepuesto => {
             divSobrepuesto.classList.toggle('pe-none'); // para poder hacer clic en iframes o videojs
         });
-        guardarCanalesEnLocalStorage()
+        saveActiveChannelsToStorage()
     }
 });
 
@@ -381,7 +381,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     screen.orientation.addEventListener('change', () => {
-        if (lsEstiloVision !== 'vision-unica') ajustarNumeroDivisionesClaseCol();
+        if (lsEstiloVision !== 'vision-unica') adjustChannelColumnCount();
     });
 
     // Efecto glow en hover a logo del fondo
@@ -515,7 +515,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     document.querySelector(`#${PREFIJO}-body-botones-canales`).innerHTML = '';
                     document.querySelector(`#${PREFIJO}-collapse-botones-listado-filtro-countries`).innerHTML = '';
                 }
-                quitarTodoCanalActivo()
+                removeAllActiveChannels()
                 crearBotonesParaCanales();
                 crearBotonesPaises();
 

@@ -1,12 +1,10 @@
 # Tips
 
-> Primero generar JSON y luego usar el [conversor](./index.html) para convertir a m3u
+> Primero generar JSON y luego usar el [conversor](index-old.html) para convertir a m3u
 
-Enlaces [iframe] rudo video se puede añadir al final ?autoplay
-    Ejemplo: <https://rudo.video/live/CANAL?autoplay>
-
-Enlaces [iframe] dailymotion se puede añadir al final &autoplay=true&volume=0
-    Ejemplo: <https://geo.dailymotion.com/player/x5poh.html?video=CANAL&autoplay=true&volume=0>
-
-Enlaces [iframe] mdstrm se puede añadir al final ?jsapi=true&autostart=true&volume=0 (solo en algunos casos particulares)
-    Ejemplo: <https://mdstrm.com/live-stream/CANAL?jsapi=true&autostart=true&volume=0>
+- Enlaces [iframe] rudo video se puede añadir al final ?autoplay
+    - Ejemplo: <https://rudo.video/live/CANAL?autoplay>
+- Enlaces [iframe] dailymotion se puede añadir al final &autoplay=true&volume=0
+    - Ejemplo: <https://geo.dailymotion.com/player/x5poh.html?video=CANAL&autoplay=true&volume=0>
+- Enlaces [iframe] mdstrm se puede añadir al final ?jsapi=true&autostart=true&volume=0 (solo en algunos casos particulares)
+    - Ejemplo: <https://mdstrm.com/live-stream/CANAL?jsapi=true&autostart=true&volume=0>

@@ -2,7 +2,7 @@ import { AUDIO_TV_SHUTDOWN } from "../constants/index.js";
 import { tele } from "../main.js";
 import { playAudioSinDelay, mostrarToast } from "../helpers/index.js";
 
-export function quitarTodoCanalActivo() {
+export function removeAllActiveChannels() {
     try {
         playAudioSinDelay(AUDIO_TV_SHUTDOWN)
 

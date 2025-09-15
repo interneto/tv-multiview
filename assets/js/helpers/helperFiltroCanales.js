@@ -1,7 +1,7 @@
 import {
   CLASE_CSS_BOTON_PRIMARIO,
   PREFIJOS_ID_CONTENEDORES_CANALES,
-  CODIGOS_PAISES
+  COUNTRY_CODES
 } from '../constants/index.js';
 import { mostrarToast } from './index.js';
 
@@ -30,7 +30,7 @@ export function filtrarCanalesPorInput(valorInput, containerBotonesDeCanales) {
         const botonesFiltroPorPais = document.querySelectorAll(`#${PREFIJO}-collapse-botones-listado-filtro-countries button`);
         botonesFiltroPorPais.forEach(boton => {
           if (boton.classList.contains(CLASE_CSS_BOTON_PRIMARIO)) {
-            filtroPorPaisActivo = CODIGOS_PAISES[boton.dataset.country] ?? boton.dataset.country;
+            filtroPorPaisActivo = COUNTRY_CODES[boton.dataset.country] ?? boton.dataset.country;
           }
         });
         BOTONES_CANALES.forEach(boton => {

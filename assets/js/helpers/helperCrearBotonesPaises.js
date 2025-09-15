@@ -1,7 +1,7 @@
 import { listaCanales } from "../canalesData.js";
 import {
     CLASE_CSS_BOTON_PRIMARIO,
-    CODIGOS_PAISES,
+    COUNTRY_CODES,
     PREFIJOS_ID_CONTENEDORES_CANALES,
 } from "../constants/index.js";
 import { filtrarCanalesPorInput, mostrarToast } from "./index.js";
@@ -20,20 +20,20 @@ export function crearBotonesPaises() {
         const PAISES_SIN_REPETIRSE = [...new Set(NUMERO_CANALES_CON_PAIS)]
 
         const CONTEO_NUMERO_CANALES_POR_PAIS = NUMERO_CANALES_CON_PAIS.reduce((conteo, country) => {
-            conteo[CODIGOS_PAISES[country] ?? 'Desconocido'] = (conteo[CODIGOS_PAISES[country] ?? 'Desconocido'] || 0) + 1;
+            conteo[COUNTRY_CODES[country] ?? 'Desconocido'] = (conteo[COUNTRY_CODES[country] ?? 'Desconocido'] || 0) + 1;
             return conteo;
         }, {});
 
-        const PAISES_ORDENADOS = PAISES_SIN_REPETIRSE.filter(country => CODIGOS_PAISES[country]).sort((a, b) => {
-            const codigoA = CODIGOS_PAISES[a] ? CODIGOS_PAISES[a].toLowerCase() : '';
-            const codigoB = CODIGOS_PAISES[b] ? CODIGOS_PAISES[b].toLowerCase() : '';
+        const PAISES_ORDENADOS = PAISES_SIN_REPETIRSE.filter(country => COUNTRY_CODES[country]).sort((a, b) => {
+            const codigoA = COUNTRY_CODES[a] ? COUNTRY_CODES[a].toLowerCase() : '';
+            const codigoB = COUNTRY_CODES[b] ? COUNTRY_CODES[b].toLowerCase() : '';
             return codigoA.localeCompare(codigoB);
         });
 
         const FRAGMENT_BOTONES_PAISES = document.createDocumentFragment();
         for (const PAIS of PAISES_ORDENADOS) {
-            if (CODIGOS_PAISES[PAIS]) {
-                let namePais = CODIGOS_PAISES[PAIS];
+            if (COUNTRY_CODES[PAIS]) {
+                let namePais = COUNTRY_CODES[PAIS];
                 let cantidadCanales = CONTEO_NUMERO_CANALES_POR_PAIS[namePais] || 0;
                 let botonPais = document.createElement('button');
                 botonPais.setAttribute('type', 'button');
@@ -76,7 +76,7 @@ export function crearBotonesPaises() {
                 botonPaisEnDom.addEventListener('click', () => {
                     try {
                         let country = botonPaisEnDom.dataset.country;
-                        let filtro = CODIGOS_PAISES[country] || (country === 'Desconocido' ? 'Desconocido' : country === 'all' ? '' : '');
+                        let filtro = COUNTRY_CODES[country] || (country === 'Desconocido' ? 'Desconocido' : country === 'all' ? '' : '');
 
                         contenedorBotonesFiltroPaises.querySelectorAll('button').forEach(boton => {
                             boton.classList.replace(CLASE_CSS_BOTON_PRIMARIO, 'btn-outline-secondary');
