@@ -22,7 +22,11 @@
     <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
     <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
     <!-- tv-multiview -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- Preload main stylesheet to reduce flash of unstyled content -->
+    <link rel="preload" href="assets/css/style.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link href="assets/css/style.css" rel="stylesheet">
+    </noscript>
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="tv-multiview">

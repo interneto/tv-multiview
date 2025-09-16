@@ -177,7 +177,13 @@ CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.addEventListener('cl
 
 export const BOTONES_REPOSICIONAR_BOTONES_FLOTANTES = document.querySelectorAll('#grupo-botones-posicion-botones-flotantes .btn-check');
 
-initializeVideojsTranslations();
+try {
+    if (typeof initializeVideojsTranslations === 'function') {
+        initializeVideojsTranslations();
+    }
+} catch (err) {
+    console.error('Failed to initialize video.js translations:', err);
+}
 
 // MARK: Manejo canales
 export let tele = {
