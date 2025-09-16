@@ -26,14 +26,27 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
   ({event}) => event.request.destination === 'script',
-  new workbox.strategies.NetworkFirst({
-    cacheName: JS_CACHE,
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 15,
-      }),
-    ],
-  })
+  // Use NetworkFirst but guard against unexpected Workbox/runtime errors
+  async ({event}) => {
+    const strategy = new workbox.strategies.NetworkFirst({
+      cacheName: JS_CACHE,
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 15,
+        }),
+      ],
+    });
+    try {
+      return await strategy.handle({event});
+    } catch (err) {
+      // If Workbox fails unexpectedly, fallback to direct fetch to avoid blocking the request
+      try {
+        return await fetch(event.request);
+      } catch (fetchErr) {
+        return Response.error();
+      }
+    }
+  }
 );
 
 workbox.routing.registerRoute(

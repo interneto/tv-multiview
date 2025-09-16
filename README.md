@@ -1,87 +1,87 @@
 # tv-multiview (teles)
 
-> Fork de [https://github.com/Alplox/teles](https://github.com/Alplox/teles)
+> Fork of [https://github.com/Alplox/teles](https://github.com/Alplox/teles)
 
-Proyecto PWA open-source para visualizar múltiples transmisiones de TV en una cuadrícula o vista única.
+Open-source PWA project for displaying multiple TV streams in a grid or single view.
 
-## Características
+## Features
 
-- Visualización de múltiples canales simultáneamente en cuadrícula
-- Modo de visión única con panel lateral de canales
-- Soporte para enlaces M3U8, iframes y transmisiones de YouTube
-- Interfaz adaptable (responsive) con temas claro/oscuro
-- Instalable como PWA (Progressive Web App)
-- Herramientas para validar y gestionar canales
+- Display multiple channels simultaneously in a grid
+- Single-view mode with channel sidebar
+- Support for M3U8 links, iframes, and YouTube streams
+- Responsive interface with light/dark themes
+- Installable as a PWA (Progressive Web App)
+- Tools for validating and managing channels
 
-## Estructura del Proyecto
+## Project Structure
 
-- `index.html` – UI principal y punto de entrada
-- `assets/` – Recursos estáticos
-    - `js/` – Lógica de la aplicación y helpers
-    - `css/` – Hojas de estilo
-    - `img/` – Imágenes e iconos
-- `json-tv/` – Datos de canales
-    - `tv-channels.json` – Fichero principal con canales
-    - `tv-channels.m3u` – Lista de reproducción en formato M3U
-- `tools/` – Utilidades para manipulación de datos y validación
+- `index.html` – Main UI and entry point
+- `assets/` – Static resources
+- `js/` – Application logic and helpers
+- `css/` – Stylesheets
+- `img/` – Images and icons
+- `json-tv/` – Channel data
+- `tv-channels.json` – Main channel file
+- `tv-channels.m3u` – M3U playlist
+- `tools/` – Utilities for data manipulation and validation
 
-## Inicio Rápido
+## Quick Start
 
-### Requisitos
+### Requirements
 
-- Node.js (para scripts de `tools/`)
-- Un servidor estático para servir la PWA
+- Node.js (for `tools/` scripts)
+- A static server to serve the PWA
 
-### Instalación y Ejecución
+### Installation and Running
 
-1. Clonar el repositorio
-2. Servir localmente (desde la raíz del repo):
+1. Clone the repository
+2. Serve locally (from the repo root):
 
 ```bash
 npx http-server -c-1 . -p 8080
-# Abrir http://localhost:8080
+# Open http://localhost:8080
 ```
 
-### Comandos Útiles
+### Useful Commands
 
 ```bash
-# Ordenar canales iptv según país
+# Sort IPTV channels by country
 node ./tools/sort_json_by_country.js
 
-# Validación ligera sin dependencias
+# Lightweight validation without dependencies
 node ./tools/validate_json_light.js
 
-# Generar reporte de estado y actualizar lista de canales json
+# Generate a status report and update the JSON channel list
 node ./tools/report_status_channels.js
 node ./tools/update_list_channels.js
 ```
 
-## Gestión de Canales
+## Channel Management
 
-Los canales se encuentran en `json-tv/tv-channels.json`. Cada clave es un ID único y el objeto debe seguir la estructura:
+The channels are located in `json-tv/tv-channels.json`. Each key is a unique ID, and the object must follow the structure:
 
 ```json
 "id": {
-  "name": "Nombre del Canal",
+  "name": "Channel Name",
   "logo": "url_logo",
-  "signals": { 
-    "m3u8_url": ["..."], 
-    "iframe_url": [], 
-    "yt_id": "",
-    "yt_embed": "",
-    "yt_playlist": "",
-    "twitch_id": ""
-  },
-  "website": "",
-  "category": "news",
-  "country": "cl"
+  "signals": {
+  "m3u8_url": ["..."],
+  "iframe_url": [],
+  "yt_id": "",
+  "yt_embed": "",
+  "yt_playlist": "",
+  "twitch_id": ""
+},
+"website": "",
+"category": "news",
+"country": "cl"
 }
 ```
 
-## Buenas Prácticas
+## Best Practices
 
-- Validar el JSON antes de subir cambios con los scripts en `tools/`
-- Mantener las claves únicas y descriptivas
-- Verificar periódicamente el estado de los enlaces M3U8
-- Aumentar el tiempo de espera en los scripts si muchos enlaces aparecen como no disponibles
-- Revisar los enlaces no disponibles y actualizar el JSON cuando sea necesario
+- Validate the JSON before uploading changes with scripts in `tools/`
+- Keep keys unique and descriptive
+- Periodically check the status of M3U8 links
+- Increase the timeout in scripts if many links appear as unavailable
+- Review unavailable links and update the JSON when necessary
