@@ -23,17 +23,48 @@ import {
 // MARK: Botón PWA Install
 let containerPwaInstall = document.querySelector('#pwa-install');
 const BOTON_INSTALAR_PWA = document.querySelector('#boton-instalar-pwa');
+// Save the beforeinstallprompt event so we can trigger it on demand
+let deferredInstallPrompt = null;
 
 // Ocultar botón PWA en Firefox
 if (navigator.userAgent.toLowerCase().includes('firefox')) {
     BOTON_INSTALAR_PWA?.classList.add('d-none');
     if (containerPwaInstall) containerPwaInstall.style.display = 'none';
 } else {
-    BOTON_INSTALAR_PWA?.addEventListener('click', () => {
+    // Prefer native beforeinstallprompt if available
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        deferredInstallPrompt = e;
+        // Make sure the install button is visible
+        BOTON_INSTALAR_PWA?.classList.remove('d-none');
+    });
+
+    BOTON_INSTALAR_PWA?.addEventListener('click', async () => {
         try {
-            containerPwaInstall?.showDialog?.(true); // con valor "true" para forzar aparición
+            if (deferredInstallPrompt) {
+                // Show the native install prompt
+                deferredInstallPrompt.prompt();
+                // Wait for the user's choice
+                const choiceResult = await deferredInstallPrompt.userChoice;
+                // Clear the saved prompt since it can only be used once
+                deferredInstallPrompt = null;
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                } else {
+                    console.log('User dismissed the A2HS prompt');
+                }
+            } else {
+                // Fallback to custom pwa-install element if native prompt not available
+                containerPwaInstall?.showDialog?.(true); // con valor "true" para forzar aparición
+            }
         } catch (error) {
             console.error('Error al mostrar el diálogo de instalación PWA:', error);
+            try {
+                containerPwaInstall?.showDialog?.(true);
+            } catch (err) {
+                console.error('Fallback pwa-install also failed:', err);
+            }
         }
     });
 }
