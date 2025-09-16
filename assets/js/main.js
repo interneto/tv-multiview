@@ -11,7 +11,6 @@ import {
     CHANNEL_CONTAINER_ID_PREFIXES,
     FIXED_COLUMN_VALUE_DESKTOP,
     FIXED_PHONE_COLUMN_VALUE,
-    initializeVideojsTranslations,
     AUDIO_FAIL
 } from './constants/index.js';
 import {
@@ -176,14 +175,6 @@ CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.addEventListener('cl
 });
 
 export const BOTONES_REPOSICIONAR_BOTONES_FLOTANTES = document.querySelectorAll('#grupo-botones-posicion-botones-flotantes .btn-check');
-
-try {
-    if (typeof initializeVideojsTranslations === 'function') {
-        initializeVideojsTranslations();
-    }
-} catch (err) {
-    console.error('Failed to initialize video.js translations:', err);
-}
 
 // MARK: Manejo canales
 export let tele = {
