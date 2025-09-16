@@ -2,7 +2,7 @@ import { listChannels } from "../channelsData.js";
 import { CSS_CLASS_SECONDARY_BUTTON, COUNTRY_CODES, CATEGORY_ICONS, CHANNEL_CONTAINER_ID_PREFIXES } from "../constants/index.js";
 import { CONTAINER_VIDEO_VISION_UNICA, tele } from "../main.js";
 import { mostrarToast, revisarSeñalesVacias, guardarOrdenOriginal } from "./index.js";
-import { insertarDivError } from './helperInsertarDivError.js';
+import { insertarDivError } from './helperInsertDivError.js';
 
 export function crearBotonesParaCanales() {
     try {

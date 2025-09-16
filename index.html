@@ -120,6 +120,31 @@
     <!-- pwa-install -->
     <pwa-install id="pwa-install" manifest-url="site.webmanifest"></pwa-install>
 
+    <!-- Dev helper: unregister SW and clear caches when running on localhost -->
+    <script>
+        (function() {
+            try {
+                const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '';
+                if (!isLocal) return;
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.getRegistrations()
+                        .then(regs => Promise.all(regs.map(r => r.unregister().then(ok => ({ scope: r.scope, unregistered: ok })))) )
+                        .then(results => console.log('Dev: service workers unregistered:', results))
+                        .catch(err => console.warn('Dev: error unregistering service workers', err));
+                }
+                if (window.caches) {
+                    caches.keys()
+                        .then(keys => Promise.all(keys.map(k => caches.delete(k))))
+                        .then(results => console.log('Dev: cache keys deleted:', results))
+                        .catch(err => console.warn('Dev: error clearing caches', err));
+                }
+                console.info('Dev: attempted to unregister SW and clear caches. Please do a hard reload (Ctrl+F5).');
+            } catch (e) {
+                console.warn('Dev: unexpected error in SW/cache cleanup script', e);
+            }
+        })();
+    </script>
+
     <!-- Alerta tras borrado localstorage -->
     <div id="alerta-borrado-localstorage" class="z-9999 position-fixed overflow-hidden vw-100 vh-100 bg-flicker d-none">
         <div class="d-flex flex-column align-items-center justify-content-center bg-dark-subtle p-5 vw-100 vh-100">

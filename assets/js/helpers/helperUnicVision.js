@@ -21,7 +21,7 @@ import {
     actualizarBotonesPersonalizarOverlay,
     hideTextoBotonesOverlay,
     adjustChannelColumnCount
-} from "../helpers/index.js";
+} from "./index.js";
 import { CSS_CLASS_PRIMARY_BUTTON, CSS_CLASS_SECONDARY_BUTTON } from "../constants/index.js";
 import { listChannels } from "../channelsData.js";
 
