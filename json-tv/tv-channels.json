@@ -187,6 +187,23 @@
     "category": "news",
     "country": "au"
   },
+  "skynews": {
+    "name": "Sky News",
+    "logo": "https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1404.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://linear417-gb-hls1-prd-ak.cdn.skycdp.com/100e/Content/HLS_001_1080_30/Live/channel(skynews)/04_1080-30.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "au"
+  },
   "arubatvplus": {
     "name": "ArubaTV +",
     "logo": "https://i.imgur.com/9s6LZJZ.png",
