@@ -1,5 +1,5 @@
 import { listChannels } from "../channelsData.js";
-import { revisarSeñalesVacias, mostrarToast } from "../helpers/index.js";
+import { revisarSeñalesVacias, mostrarToast } from "./index.js";
 
 export function borraPreferenciaSeñalInvalida() {
     let lsPreferenciasSeñalCanales = JSON.parse(localStorage.getItem('preferencia-señal-canales')) || {};

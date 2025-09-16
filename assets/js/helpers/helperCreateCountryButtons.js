@@ -5,7 +5,7 @@ import {
     CHANNEL_CONTAINER_ID_PREFIXES,
 } from "../constants/index.js";
 import { filtrarCanalesPorInput, mostrarToast } from "./index.js";
-import { insertarDivError } from './helperInsertarDivError.js';
+import { insertarDivError } from './helperInsertDivError.js';
 
 export function crearBotonesPaises() {
     try {
