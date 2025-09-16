@@ -4,16 +4,6 @@
 
 Proyecto PWA open-source para visualizar múltiples transmisiones de TV en una cuadrícula o vista única.
 
-## Tabla de Contenidos
-
-- [Características](#características)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Inicio Rápido](#inicio-rápido)
-- [Gestión de Canales](#gestión-de-canales)
-- [Validación de Enlaces M3U8](#validación-de-enlaces-m3u8)
-- [Scripts y Herramientas](#scripts-y-herramientas)
-- [Buenas Prácticas](#buenas-prácticas)
-
 ## Características
 
 - Visualización de múltiples canales simultáneamente en cuadrícula
@@ -52,6 +42,20 @@ npx http-server -c-1 . -p 8080
 # Abrir http://localhost:8080
 ```
 
+### Comandos Útiles
+
+```bash
+# Ordenar canales iptv según país
+node ./tools/sort_json_by_country.js
+
+# Validación ligera sin dependencias
+node ./tools/validate_json_light.js
+
+# Generar reporte de estado y actualizar lista de canales json
+node ./tools/report_status_channels.js
+node ./tools/update_list_channels.js
+```
+
 ## Gestión de Canales
 
 Los canales se encuentran en `json-tv/tv-channels.json`. Cada clave es un ID único y el objeto debe seguir la estructura:
@@ -72,72 +76,6 @@ Los canales se encuentran en `json-tv/tv-channels.json`. Cada clave es un ID ún
   "category": "news",
   "country": "cl"
 }
-```
-
-### Validación Básica
-
-Antes de commitear cambios en `json-tv/tv-channels.json`:
-
-```bash
-node ./tools/validate_json_light.js
-```
-
-## Validación de Enlaces M3U8
-
-El proyecto incluye herramientas para verificar el estado de los enlaces M3U8 en el fichero `json-tv/tv-channels.json`.
-
-### Prerrequisitos para Validación
-
-- Node.js (v12 o superior)
-- npm (viene con Node.js)
-
-### Uso Rápido
-
-#### Para Usuarios de Windows
-
-1. Ejecuta `check_m3u8_links.bat` para verificar todos los enlaces M3U8 sin modificar el JSON.
-2. O ejecuta `update_m3u8_status.bat` para verificar enlaces y actualizar el JSON con información de estado.
-
-#### Para Todos los Usuarios
-
-```bash
-# Verificar enlaces (no modifica el JSON)
-node tools/check_m3u8_links.js
-
-# Verificar enlaces y actualizar el JSON con timestamp
-node tools/update_m3u8_status.js --update-json
-```
-
-### Resultados
-
-La herramienta mostrará:
-
-- Número total de enlaces verificados
-- Número de enlaces en línea (funcionando)
-- Número de enlaces fuera de línea (no funcionando)
-
-Ejemplo de salida:
-
-```text
-Total: 242
-Online: 140
-Offline: 102
-Duplicates: 0
-```
-
-## Scripts y Herramientas
-
-### Comandos Útiles
-
-```bash
-# Ordenar canales según país
-node ./tools/sort_json_by_country.js
-
-# Validación ligera sin dependencias
-node ./tools/validate_json_light.js
-
-# Verificar enlaces M3U8
-node ./tools/check_m3u8_status.js
 ```
 
 ## Buenas Prácticas

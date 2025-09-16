@@ -33,23 +33,6 @@
     "category": "general",
     "country": "af"
   },
-  "amc": {
-    "name": "AMC",
-    "logo": "https://i.imgur.com/yj8RNnG.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://amchls.wns.live/hls/stream.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "music",
-    "country": "af"
-  },
   "news24": {
     "name": "News 24",
     "logo": "https://i.imgur.com/eG33jue.png",
@@ -150,7 +133,8 @@
     },
     "website": "",
     "category": "general",
-    "country": "at"
+    "country": "at",
+    "active": false
   },
   "redbulltv": {
     "name": "Red Bull TV",
@@ -609,7 +593,8 @@
     },
     "website": "",
     "category": "",
-    "country": "ch"
+    "country": "ch",
+    "active": false
   },
   "13c": {
     "name": "13C",
@@ -949,7 +934,8 @@
     },
     "website": "",
     "category": "kids",
-    "country": "de"
+    "country": "de",
+    "active": false
   },
   "oktvludwigshafen": {
     "name": "OK-TV Ludwigshafen",
@@ -1000,7 +986,8 @@
     },
     "website": "",
     "category": "",
-    "country": "de"
+    "country": "de",
+    "active": false
   },
   "rtlzwei": {
     "name": "RTL Zwei HD",
@@ -1017,7 +1004,8 @@
     },
     "website": "",
     "category": "",
-    "country": "de"
+    "country": "de",
+    "active": false
   },
   "zdf": {
     "name": "ZDF HD",
@@ -1034,7 +1022,8 @@
     },
     "website": "",
     "category": "",
-    "country": "de"
+    "country": "de",
+    "active": false
   },
   "zdfinfo": {
     "name": "ZDFinfo HD",
@@ -1051,7 +1040,8 @@
     },
     "website": "",
     "category": "",
-    "country": "de"
+    "country": "de",
+    "active": false
   },
   "zdfneo": {
     "name": "ZDFneo HD",
@@ -1068,7 +1058,8 @@
     },
     "website": "",
     "category": "",
-    "country": "de"
+    "country": "de",
+    "active": false
   },
   "fuegotv": {
     "name": "Fuego TV",
@@ -1527,7 +1518,8 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "fr"
+    "country": "fr",
+    "active": false
   },
   "tf1": {
     "name": "TF1 HD",
@@ -1544,7 +1536,8 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "fr"
+    "country": "fr",
+    "active": false
   },
   "tf1seriesfilms": {
     "name": "TF1 Series Films SD",
@@ -1561,7 +1554,8 @@
     },
     "website": "",
     "category": "movies",
-    "country": "fr"
+    "country": "fr",
+    "active": false
   },
   "bbcdramaes": {
     "name": "BBC drama",
@@ -1799,7 +1793,8 @@
     },
     "website": "",
     "category": "",
-    "country": "hr"
+    "country": "hr",
+    "active": false
   },
   "sbtv": {
     "name": "SBTV",
@@ -2105,7 +2100,8 @@
     },
     "website": "",
     "category": "general",
-    "country": "it"
+    "country": "it",
+    "active": false
   },
   "italia2": {
     "name": "Italia 2",
@@ -2241,7 +2237,8 @@
     },
     "website": "",
     "category": "",
-    "country": "it"
+    "country": "it",
+    "active": false
   },
   "rete4": {
     "name": "Rete 4",
@@ -2513,7 +2510,8 @@
     },
     "website": "",
     "category": "general",
-    "country": "kr"
+    "country": "kr",
+    "active": false
   },
   "rtl9": {
     "name": "RTL9 SD",
@@ -2530,7 +2528,8 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "lu"
+    "country": "lu",
+    "active": false
   },
   "rtlteleletzebuerg": {
     "name": "RTL Tele Letzebuerg",
@@ -2700,7 +2699,8 @@
     },
     "website": "",
     "category": "general",
-    "country": "mt"
+    "country": "mt",
+    "active": false
   },
   "aztecainternacional": {
     "name": "Azteca Internacional",
@@ -2751,7 +2751,8 @@
     },
     "website": "",
     "category": "",
-    "country": "my"
+    "country": "my",
+    "active": false
   },
   "tvcnews": {
     "name": "TVC News",
@@ -2785,7 +2786,8 @@
     },
     "website": "",
     "category": "news",
-    "country": "nl"
+    "country": "nl",
+    "active": false
   },
   "omroephoekschewaard": {
     "name": "Omroep Hoeksche Waard",
@@ -3244,7 +3246,8 @@
     },
     "website": "",
     "category": "",
-    "country": "tr"
+    "country": "tr",
+    "active": false
   },
   "dersim62tv": {
     "name": "Dersim62 TV",
@@ -3286,7 +3289,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://92.114.85.72:8000/play/a02v"
+        "https://tv-trtworld.medya.trt.com.tr/master.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3295,7 +3298,8 @@
     },
     "website": "",
     "category": "news",
-    "country": "tr"
+    "country": "tr",
+    "active": false
   },
   "bbcdrama": {
     "name": "BBC drama",
@@ -3331,23 +3335,6 @@
     "category": "news",
     "country": "tw"
   },
-  "inter": {
-    "name": "Inter",
-    "logo": "https://i.imgur.com/FHRagMx.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://edge1.iptv.macc.com.ua/img/inter_3/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "ua"
-  },
   "z": {
     "name": "Z",
     "logo": "https://i.imgur.com/E5aV5aa.png",
@@ -3382,13 +3369,13 @@
     "category": "general",
     "country": "us"
   },
-  "amcenespanol": {
-    "name": "AMC en Espanol",
+  "amc": {
+    "name": "AMC",
     "logo": "https://i.imgur.com/L1h6W5Q.png",
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/62fa81ccd1a7e90007c1ada0/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c268073-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=c6f5fd68-d238-461a-85d9-c326f4f63ae9"
+        "http://cors.tundracast.com:2000/https://streamer1.nexgen.bz/AMC/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3397,7 +3384,8 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "us"
+    "country": "us",
+    "active": false
   },
   "atvsat": {
     "name": "ATVSat",
@@ -3423,23 +3411,6 @@
       "iframe_url": [],
       "m3u8_url": [
         "https://reflect-aurora.cablecast.tv/live-8/live/live.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "us"
-  },
-  "batv": {
-    "name": "BATV",
-    "logo": "https://i.imgur.com/nTeE4xu.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://reflect-batv.cablecast.tv/live-5/live/live.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3499,7 +3470,8 @@
     },
     "website": "",
     "category": "sports",
-    "country": "us"
+    "country": "us",
+    "active": false
   },
   "billiardtv": {
     "name": "Billiard TV SD",

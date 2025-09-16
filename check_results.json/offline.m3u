@@ -173,7 +173,7 @@ http://92.114.85.72:8000/play/a02v
 http://seb.sason.top/sc/dsxw_fhd.m3u8
 #EXTINF:-1 tvg-id="inter" tvg-country="ua" ,Inter (HTTP 408 Request Timeout)
 https://edge1.iptv.macc.com.ua/img/inter_3/index.m3u8
-#EXTINF:-1 tvg-id="amcenespanol" tvg-country="us" ,AMC en Espanol (HTTP 404 Not Found)
+#EXTINF:-1 tvg-id="amc" tvg-country="us" ,AMC en Espanol (HTTP 404 Not Found)
 http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/62fa81ccd1a7e90007c1ada0/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c268073-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=c6f5fd68-d238-461a-85d9-c326f4f63ae9
 #EXTINF:-1 tvg-id="batv" tvg-country="us" ,BATV (HTTP 403 Forbidden)
 https://reflect-batv.cablecast.tv/live-5/live/live.m3u8
