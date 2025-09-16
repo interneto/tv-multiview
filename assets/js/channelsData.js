@@ -1,20 +1,58 @@
 import { URL_TV_CHANNELS_JSON, URL_IPTV_CHANNELS_M3U } from "./constants/index.js";
 import { areSimilarNames, M3U_A_JSON } from "./helpers/index.js";
 
-// Gestión de backup y fetch de canales
-// Lista de 9 canales predeterminados (ids existentes en json-tv/tv-channels.json)
 export const DEFAULT_CHANNELS_ARRAY = [
-    'nbc',
-    'abc',
-    'zdf',
-    'rai1',
-    'amc',
-    'abcnews',
-    'redbulltv',
-    'ctv',
-    'rtv'
-    // TODO: add more channels if needed
+    // 🇨🇦 Canada
+    'ctv',          // CTV Television Network
+
+    // 🇨🇳 China
+    'cctv',         // China Central Television
+
+    // 🇩🇪 Germany
+    'zdf',          // Zweites Deutsches Fernsehen
+    'tele5',        // Germany entertainment
+    'rtl',          // Germany / Europe
+
+    // 🇪🇸 Spain
+    '24horas',      // TVN 24 Horas
+
+    // 🇬🇧 United Kingdom
+    'bbcone',       // BBC One
+    'skynews',      // Sky News
+    
+    // 🇫🇷 France
+    'france24',     // France 24
+
+    // 🇯🇵 Japan
+    'nhk',          // Japan
+    
+    // 🇮🇹 Italy
+    'rai1',         // Rai 1
+    
+    // 🇵🇹 Portugal
+    //'rtp',          // Rádio e Televisão de Portugal (RTP)
+
+    // 🇷🇺 Russia
+    'rt',           // Russia Today (Russia)
+    
+    // 🇺🇸 United States
+    'abc',          // American Broadcasting Company
+    'abcnews',      // ABC News
+    'nbc',          // National Broadcasting Company
+    'amc',          // AMC (entertainment)
+    // 'cnn',       // Cable News Network (commented out)
+    // 'foxnews',   // Fox News (commented out)
+    // 'cbs',       // CBS (commented out)
+
+    // 🌍 World-International / Multi-region
+    'aljazeera',    // Al Jazeera (Qatar, global coverage)
+    // 'cnnint',       // CNN International
+    'dw',           // Deutsche Welle (Germany, international)
+    'euronews',     // Euronews (multi-language news)
+    'redbulltv',    // Red Bull TV (entertainment, sports)
+    //'skyatlantic',  // UK / Europe
 ];
+
 // No añadimos extras para asegurar que se carguen exactamente 9 canales
 export const DEFAULT_CHANNEL_LIST_EXTRAS = [];
 
