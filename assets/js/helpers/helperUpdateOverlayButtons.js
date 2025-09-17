@@ -38,7 +38,7 @@ export function actualizarBotonesPersonalizarOverlay() {
         <hr>
         <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
         <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Personalización" o borrando la caché del navegador.
+        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
         <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
         return
     } 

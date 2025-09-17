@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.20]
+
+- Changed
+    - Translate to English
+    - Remove extra buttons (time)
+    - Simplify interface
+    - Reduce redundant channels and add more famous
+    - Create new default channels
+    - Simplify convert from json to m3u
+    - Add tools to check, validate and create reports
+
 ## [v0.19]
 
 - Changed

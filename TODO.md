@@ -2,11 +2,9 @@
 
 ## New options
 
-- [ ] Improve [tv-channels](./json-tv/tv-channels.json) list
+- [x] Improve [tv-channels](./json-tv/tv-channels.json) list
     - [x] List countries in English and original language
-    - [ ] Add World section with international channels.
     - [ ] Add right settings in mobile navbar panel.
-    - [ ] Add other live streams from other channels: NASA, music, cars, gaming,
 - [x] Check if channels are active
 
 - [ ] Improve [main.js](./assets/js/main.js)
