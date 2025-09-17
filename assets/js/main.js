@@ -1,10 +1,3 @@
-/* 
-  main v0.19
-  by Alplox 
-  https://github.com/Alplox/teles
-*/
-
-// MARK: import
 import { loadChannelData, fetchIptvChannelsData, listChannels } from './channelsData.js';
 import { createChannelFragment } from './channelUI.js';
 import {
@@ -204,7 +197,7 @@ export let tele = {
             <hr>
             <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
             <hr>
-            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Personalización" o borrando la caché del navegador.
+            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
             <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
             return
         }
@@ -240,7 +233,7 @@ export let tele = {
             <hr>
             <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
             <hr>
-            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Personalización" o borrando la caché del navegador.
+            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
             <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
             return
         }
@@ -267,7 +260,7 @@ export let tele = {
                 <hr>
                 <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
                 <hr>
-                Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Personalización" o borrando la caché del navegador.
+                Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
                 <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
                 return
             }
@@ -476,7 +469,7 @@ window.addEventListener('DOMContentLoaded', () => {
             <hr>
             <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
             <hr>
-            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Personalización" o borrando la caché del navegador.
+            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
             <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
             return
         }
@@ -530,7 +523,7 @@ window.addEventListener('DOMContentLoaded', () => {
             <hr>
             <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
             <hr>
-            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Personalización" o borrando la caché del navegador.
+            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
             <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
             return
         } finally {

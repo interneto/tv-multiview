@@ -289,8 +289,8 @@
     "category": "music",
     "country": "be"
   },
-  "ctv": {
-    "name": "CTV",
+  "ctvbolivia": {
+    "name": "CTV Bolivia",
     "logo": "https://i.imgur.com/ljKb0UX.png",
     "signals": {
       "iframe_url": [],
@@ -457,6 +457,23 @@
     },
     "website": "",
     "category": "general",
+    "country": "ca"
+  },
+  "ctv": {
+    "name": "CTV",
+    "logo": "https://i.imgur.com/pRscvrp.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://pe-fa-lp02a.9c9media.com/live/News1Digi/p/hls/00000201/38ef78f479b07aa0/index/0c6a10a2/live/stream/h264/v1/3500000/manifest.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
     "country": "ca"
   },
   "hamdardtv": {
@@ -960,7 +977,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://195.189.60.31:8003/play/a0dy/index.m3u8"
+        "https://strm.hdtvizlecanli.com/live/rtl.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1324,7 +1341,7 @@
       "m3u8_url": [
         "https://viamotionhsi.netplus.ch/live/eds/france24/browser-HLS8/france24.m3u8"
       ],
-      "yt_id": "",
+      "yt_id": "l8PMl7tUDIE",
       "yt_embed": "",
       "yt_playlist": "",
       "twitch_id": ""
@@ -2945,13 +2962,13 @@
   },
   "abc": {
     "name": "ABC",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/27/WWAY_logo.png",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/ABC_News_Live_logo_2021.svg/512px-ABC_News_Live_logo_2021.svg.png",
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
         "https://livetv-fa.tubi.video/abc-news/index.m3u8"
       ],
-      "yt_id": "",
+      "yt_id": "a6VCmB3P-zc",
       "yt_embed": "",
       "yt_playlist": "",
       "twitch_id": ""
@@ -3223,9 +3240,9 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://cors-proxy.cooks.fyi/https://streamer2.nexgen.bz/NBC/index.m3u8"
+        "https://xumo-drct-nbcnn-ir8ze.fast.nbcuni.com/live/master.m3u8"
       ],
-      "yt_id": "",
+      "yt_id": "TUIPbBZRrR0",
       "yt_embed": "",
       "yt_playlist": "",
       "twitch_id": ""
@@ -3334,6 +3351,23 @@
     },
     "website": "",
     "category": "classic",
+    "country": "us"
+  },
+  "scrippsnews": {
+    "name": "Scripps News",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Scripps_News_logo.svg/473px-Scripps_News_logo.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://livetv-fa.tubi.video/kris/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
     "country": "us"
   },
   "storiesbyamc": {
