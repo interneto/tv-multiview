@@ -1,5 +1,5 @@
 import { saveActiveChannelsToStorage as saveChannelsToLocalStorage, toggleVisibilityOfRemoveSignalButtons, adjustChannelColumnCount} from './helpers/index.js';
-import { CONTAINER_VISION_CUADRICULA as TV_MULTIVIEW_CONTAINER } from "./main.js";
+import { CONTAINER_VISION_CUADRICULA as TV_MULTIVIEW_CONTAINER, syncInterfaceStatus } from "./main.js";
 
 const OBSERVER = new MutationObserver(() => {
     try {
@@ -16,6 +16,11 @@ const OBSERVER = new MutationObserver(() => {
         saveChannelsToLocalStorage?.();
     } catch (e) {
         console.error('Error en saveChannelsToLocalStorage:', e);
+    }
+    try {
+        syncInterfaceStatus?.();
+    } catch (e) {
+        console.error('Error en syncInterfaceStatus:', e);
     }
     console.info('observer ejecutado');
 });

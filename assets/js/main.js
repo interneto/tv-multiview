@@ -44,6 +44,15 @@ import {
     toggleClaseOrdenado,
     reemplazarCanalActivo
 } from './helpers/index.js';
+import {
+    buildErrorToastMessage,
+    initI18n,
+    t,
+    getDisabledLabel,
+    getHeightLabel,
+    getLayoutLabel,
+    getVisibilityLabel
+} from './i18n.js';
 
 // MARK: querySelector Globales
 const MAIN_NAVBAR = document.querySelector('#navbar');
@@ -51,6 +60,40 @@ export const CONTAINER_VISION_CUADRICULA = document.querySelector('#container-vi
 export const CONTAINER_VISION_UNICA = document.querySelector('#container-vision-unica');
 export const CONTAINER_VIDEO_VISION_UNICA = document.querySelector('#container-video-vision-unica');
 const ICONO_SIN_SEÑAL_ACTIVA_VISION_UNICA = document.querySelector('#icono-sin-señal-vision-unica');
+
+export function syncInterfaceStatus() {
+    const activeChannels = CONTAINER_VISION_CUADRICULA?.querySelectorAll('div[data-canal]')?.length ?? 0;
+    const currentLayout = getLayoutLabel(localStorage.getItem('diseño-seleccionado'));
+
+    document.querySelectorAll('[data-ui-active-count]').forEach(node => {
+        node.textContent = `${activeChannels}`;
+    });
+
+    document.querySelectorAll('[data-ui-layout]').forEach(node => {
+        node.textContent = currentLayout;
+    });
+}
+
+function refreshLocalizedUiState() {
+    SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_NAVBAR.textContent = getVisibilityLabel(CHECKBOX_PERSONALIZAR_VISUALIZACION_NAVBAR.checked);
+    SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY.textContent = getVisibilityLabel(CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY.checked);
+    SPAN_VALOR_CHECKBOX_PERSONALIZAR_TEXTO_BOTONES_FLOTANTES.textContent = getVisibilityLabel(CHECKBOX_PERSONALIZAR_TEXTO_BOTONES_FLOTANTES.checked);
+    SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.textContent = getVisibilityLabel(CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.checked);
+
+    if (INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA.disabled) {
+        SPAN_VALOR_INPUT_RANGE.textContent = getDisabledLabel();
+    }
+
+    if (CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.disabled) {
+        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getDisabledLabel();
+    } else {
+        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getHeightLabel(localStorage.getItem('uso-100vh') === 'activo');
+    }
+
+    if (BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA[0]?.disabled) {
+        SPAN_VALOR_TRANSMISIONES_POR_FILA.textContent = getDisabledLabel();
+    }
+}
 
 export const BOTON_ACTIVAR_VISION_UNICA = document.querySelector('#boton-activar-diseño-vision-unica');
 export const BOTON_ACTIVAR_VISION_GRID = document.querySelector('#boton-activar-diseño-vision-grid');
@@ -117,11 +160,11 @@ CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.addEventListener('click', () => {
     CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.checked
         ? (ICONO_PERSONALIZAR_USO_100VH_CANALES.classList.replace('bi-arrows-collapse', 'bi-arrows-vertical'),
             localStorage.setItem('uso-100vh', 'activo'),
-            SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = 'Expandido'
+            SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getHeightLabel(true)
         )
         : (ICONO_PERSONALIZAR_USO_100VH_CANALES.classList.replace('bi-arrows-vertical', 'bi-arrows-collapse'),
             localStorage.setItem('uso-100vh', 'inactivo'),
-            SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = 'Reducido'
+            SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getHeightLabel(false)
         );
     adjustChannelColumnCount()
 });
@@ -190,15 +233,10 @@ export let tele = {
             ajustarClaseBotonCanal(canal, true);
             activarTooltipsBootstrap();
             hideTextoBotonesOverlay();
+            syncInterfaceStatus();
         } catch (error) {
             console.error(`Error durante creación div de canal con id: ${canal}. Error: ${error}`);
-            mostrarToast(`
-            <span class="fw-bold">Ha ocurrido un error durante la creación canal para ser insertado - id: ${canal}.</span>
-            <hr>
-            <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-            <hr>
-            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-            <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+            mostrarToast(buildErrorToastMessage(t('errorCreateChannel', { channel: canal }), error), 'danger', false)
             return
         }
     },
@@ -226,15 +264,10 @@ export let tele = {
 
             ajustarClaseBotonCanal(canal, false);
             activarTooltipsBootstrap();
+            syncInterfaceStatus();
         } catch (error) {
             console.error(`Error durante eliminación div de canal con id: ${canal}. Error: ${error}`);
-            mostrarToast(`
-            <span class="fw-bold">Ha ocurrido un error durante la eliminación canal con id: ${canal}.</span>
-            <hr>
-            <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-            <hr>
-            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-            <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+            mostrarToast(buildErrorToastMessage(t('errorRemoveChannel', { channel: canal }), error), 'danger', false)
             return
         }
     },
@@ -255,13 +288,7 @@ export let tele = {
                 });
             } catch (error) {
                 console.error(`Error durante carga canales predeterminados. Error: ${error}`);
-                mostrarToast(`
-                <span class="fw-bold">Ha ocurrido un error durante la carga de canales predeterminados.</span>
-                <hr>
-                <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-                <hr>
-                Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-                <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+                mostrarToast(buildErrorToastMessage(t('errorLoadChannels'), error), 'danger', false)
                 return
             }
     }
@@ -271,18 +298,20 @@ export let tele = {
 BOTON_ACTIVAR_VISION_UNICA.addEventListener('click', () => {
     if (localStorage.getItem('diseño-seleccionado') !== 'vision-unica') {
         activarVisionUnica();
+        syncInterfaceStatus();
     } else {
         playAudioSinDelay(AUDIO_FAIL);
-        mostrarToast('Ya estas en modo visión única', 'info');
+        mostrarToast(t('alreadySingleView'), 'info');
     }
 })
 
 BOTON_ACTIVAR_VISION_GRID.addEventListener('click', () => {
     if (localStorage.getItem('diseño-seleccionado') === 'vision-unica') {
         desactivarVisionUnica();
+        syncInterfaceStatus();
     } else {
         playAudioSinDelay(AUDIO_FAIL);
-        mostrarToast('Ya estas en modo visión cuadrícula', 'info');
+        mostrarToast(t('alreadyGridView'), 'info');
     }
 })
 
@@ -358,6 +387,8 @@ window.addEventListener('resize', hideTextoBotonesOverlay);
 
 // MARK: DOMContentLoaded
 window.addEventListener('DOMContentLoaded', () => {
+    initI18n();
+    syncInterfaceStatus();
     detectarTemaSistema();
     iniciarRevisarConexion();
     MODAL_CAMBIAR_CANAL.addEventListener('shown.bs.modal', () => {
@@ -430,11 +461,11 @@ window.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('uso-100vh', 'activo'),
             CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.checked = true;
         ICONO_PERSONALIZAR_USO_100VH_CANALES.classList.replace('bi-arrows-collapse', 'bi-arrows-vertical');
-        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = 'Expandido';
+        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getHeightLabel(true);
     } else {
         CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.checked = false;
         ICONO_PERSONALIZAR_USO_100VH_CANALES.classList.replace('bi-arrows-vertical', 'bi-arrows-collapse');
-        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = 'Reducido';
+        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getHeightLabel(false);
     }
 
     // tarjeta fondo
@@ -461,21 +492,17 @@ window.addEventListener('DOMContentLoaded', () => {
                 hideTextoBotonesOverlay()
                 activarTooltipsBootstrap();
                 toggleVisibilityOfRemoveSignalButtons();
+                syncInterfaceStatus();
             }
         } catch (error) {
             console.error(`Error durante carga inicial. Error: ${error}`);
-            mostrarToast(`
-            <span class="fw-bold">Ha ocurrido un error durante la carga inicial.</span>
-            <hr>
-            <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-            <hr>
-            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-            <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+            mostrarToast(buildErrorToastMessage(t('errorInitialLoad'), error), 'danger', false)
             return
         }
     }
     cargaInicial();
     cargarOrdenVisionUnica();
+    syncInterfaceStatus();
 
     // Ordenar botones canales
     for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
@@ -499,7 +526,7 @@ window.addEventListener('DOMContentLoaded', () => {
     BOTON_EXPERIMENTAL.addEventListener('click', async () => {
         try {
             if (localStorage.getItem('modo-experimental') !== 'activo') {
-                BOTON_EXPERIMENTAL.querySelector('span').textContent = 'Cargando...'
+                BOTON_EXPERIMENTAL.querySelector('span').textContent = t('experimentalLoading')
                 await fetchIptvChannelsData();
                 localStorage.setItem('modo-experimental', 'activo');
                 for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
@@ -510,24 +537,26 @@ window.addEventListener('DOMContentLoaded', () => {
                 removeAllActiveChannels()
                 crearBotonesParaCanales();
                 crearBotonesPaises();
+                syncInterfaceStatus();
 
-                mostrarToast('Modo experimental activado. Se han combinado listas de canales y sus signals m3u8.', 'warning')
+                mostrarToast(t('experimentalEnabled'), 'warning')
             } else {
                 playAudioSinDelay(AUDIO_FAIL);
-                mostrarToast('Ya estas en modo experimental. Revisa los canales que se cargaron. Para regresar al modo normal recarga la página. <br> <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>', 'info');
+                mostrarToast(`${t('alreadyExperimental')} <br> <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()">${t('reload')} <i class="bi bi-arrow-clockwise"></i></button>`, 'info');
             }
         } catch (error) {
             console.error(`Error al intentar activar modo experimental. Error: ${error}`);
-            mostrarToast(`
-            <span class="fw-bold">Ha ocurrido un error al intentar activar modo experimental.</span>
-            <hr>
-            <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-            <hr>
-            Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-            <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+            mostrarToast(buildErrorToastMessage(t('errorExperimentalMode'), error), 'danger', false)
             return
         } finally {
-            BOTON_EXPERIMENTAL.querySelector('span').textContent = 'Activar modo experimental canales IPTV'
+            BOTON_EXPERIMENTAL.querySelector('span').textContent = t('experimentalMode')
         }
     });
+
+    window.addEventListener('ui-language-change', () => {
+        syncInterfaceStatus();
+        refreshLocalizedUiState();
+    });
+
+    refreshLocalizedUiState();
 });

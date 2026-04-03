@@ -12,6 +12,27 @@ import {
     AUDIO_SUCCESS,
     AUDIO_TURN_ON,
 } from './constants/index.js';
+import { buildErrorToastMessage, t } from './i18n.js';
+
+function getShareData() {
+    return {
+        title: 'tv-multiview',
+        text: t('shareText'),
+        url: 'https://interneto.github.io/tv-multiview/'
+    };
+}
+
+function renderFullscreenButton(isActive) {
+    return isActive
+        ? `${t('exitFullscreen')} <i class="bi bi-fullscreen-exit ms-auto"></i>`
+        : `${t('enterFullscreen')} <i class="bi bi-arrows-fullscreen ms-auto"></i>`;
+}
+
+function renderCopyButton(state = 'idle') {
+    if (state === 'success') return `${t('copySuccess')} <i class="bi bi-clipboard-check"></i>`;
+    if (state === 'error') return `${t('copyFailed')} <i class="bi bi-clipboard-x"></i>`;
+    return `${t('copyLink')} <i class="bi bi-clipboard"></i>`;
+}
 
 // MARK: Botón entendido modal descargo de responsabilidad
 const BOTON_ENTENDIDO = document.querySelector('#boton-entendido');
@@ -48,19 +69,13 @@ CHECKBOX_PERSONALIZAR_TEMA?.addEventListener('change', () => {
 });
 
 // MARK: Botón compartir
-const DATOS_NAVIGATOR_SHARE = {
-    title: 'teles',
-    text: 'PWA Código Abierto para ver/comparar preseleccionadas transmisiones de noticias provenientes de Chile (y el mundo).',
-    url: 'https://alplox.github.io/teles/'
-};
-
 const BOTON_COMPARTIR = document.querySelector('#boton-compartir');
 const CONTENEDOR_BOTONES_COMPARTIR_RRSS = document.querySelector('#contenedor-botones-compartir');
 
 if (navigator.share && BOTON_COMPARTIR) {
     BOTON_COMPARTIR.addEventListener('click', async () => {
         try {
-            await navigator.share(DATOS_NAVIGATOR_SHARE);
+            await navigator.share(getShareData());
         } catch (err) {
             console.error(`Error: ${err}`);
         }
@@ -80,13 +95,7 @@ const cargarCanalesPredeterminados = () => {
         obtenerCanalesPredeterminados(isMobile?.any).forEach(canal => tele.add(canal));
     } catch (error) {
         console.error(`Error durante carga canales predeterminados. Error: ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error al intentar cargar canales predeterminados.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+        mostrarToast(buildErrorToastMessage(t('errorLoadDefaultChannels'), error), 'danger', false)
         return
     }
 };
@@ -116,14 +125,7 @@ BOTON_BORRAR_LOCALSTORAGE?.addEventListener('click', () => {
         document.querySelector('#alerta-borrado-localstorage')?.classList.remove('d-none');
     } catch (error) {
         console.error('Error al intentar eliminar almacenamiento local sitio: ', error);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error al intentar eliminar el almacenamiento local del sitio.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>
-        `, 'danger', false);
+        mostrarToast(buildErrorToastMessage(t('errorClearLocalStorage'), error, 'cache'), 'danger', false);
         return
     }
 });
@@ -143,14 +145,7 @@ function enterFullscreen() {
         }
     } catch (error) {
         console.error(`Error al solicitar entrar a pantalla completa. Error: ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error al solicitar entrar a pantalla completa.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>
-        `, 'danger', false);
+        mostrarToast(buildErrorToastMessage(t('errorEnterFullscreen'), error, 'cache'), 'danger', false);
         return
     }
 }
@@ -168,14 +163,7 @@ function exitFullscreen() {
         }
     } catch (error) {
         console.error(`Error al solicitar salir de pantalla completa. Error: ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error al solicitar salir de pantalla completa.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>
-        `, 'danger', false);
+        mostrarToast(buildErrorToastMessage(t('errorExitFullscreen'), error, 'cache'), 'danger', false);
         return
     }
 }
@@ -211,8 +199,8 @@ if (!isFullscreenSupported() && BOTON_FULLSCREEN?.parentElement?.parentElement) 
 function handleFullscreenChange() {
     if (!BOTON_FULLSCREEN) return;
     isFullscreen()
-        ? (BOTON_FULLSCREEN.innerHTML = 'Salir pantalla completa <i class="bi bi-fullscreen-exit ms-auto"></i>', BOTON_FULLSCREEN.classList.replace('btn-light-subtle', 'btn-indigo'))
-        : (BOTON_FULLSCREEN.innerHTML = 'Entrar pantalla completa <i class="bi bi-arrows-fullscreen ms-auto"></i>', BOTON_FULLSCREEN.classList.replace('btn-indigo', 'btn-light-subtle'));
+    ? (BOTON_FULLSCREEN.innerHTML = renderFullscreenButton(true), BOTON_FULLSCREEN.classList.replace('btn-light-subtle', 'btn-indigo'))
+    : (BOTON_FULLSCREEN.innerHTML = renderFullscreenButton(false), BOTON_FULLSCREEN.classList.replace('btn-indigo', 'btn-light-subtle'));
 }
 
 /* window.addEventListener('resize', handleFullscreenChange); */
@@ -228,6 +216,8 @@ document.addEventListener('fullscreenchange', handleFullscreenChange);
 document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
 document.addEventListener('mozfullscreenchange', handleFullscreenChange);
 document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+window.addEventListener('ui-language-change', handleFullscreenChange);
+handleFullscreenChange();
 
 
 // MARK: Botón copiar enlace
@@ -240,7 +230,7 @@ SHARE_LINK_BUTTON?.addEventListener('click', async () => {
         if (navigator.clipboard && INPUT_ENLACE_COMPARTIR) {
             await navigator.clipboard.writeText(INPUT_ENLACE_COMPARTIR.value);
             playAudioSinDelay(AUDIO_SUCCESS);
-            SHARE_LINK_BUTTON.innerHTML = 'Copiado exitoso! <i class="bi bi-clipboard-check"></i>';
+            SHARE_LINK_BUTTON.innerHTML = renderCopyButton('success');
             SHARE_LINK_BUTTON.classList.add('bg-success');
         } else {
             throw new Error('Clipboard API no soportada o input no encontrado');
@@ -250,21 +240,32 @@ SHARE_LINK_BUTTON?.addEventListener('click', async () => {
         try {
             document.execCommand('copy', false, INPUT_ENLACE_COMPARTIR?.value ?? '');
             playAudioSinDelay(AUDIO_SUCCESS);
-            SHARE_LINK_BUTTON.innerHTML = 'Copiado exitoso! <i class="bi bi-clipboard-check"></i>';
+            SHARE_LINK_BUTTON.innerHTML = renderCopyButton('success');
             SHARE_LINK_BUTTON.classList.add('bg-success');
         } catch (execError) {
             console.error('Error al copiar el enlace usando execCommand: ', execError);
             playAudioSinDelay(AUDIO_FAIL);
-            SHARE_LINK_BUTTON.innerHTML = 'Copiado fallido! <i class="bi bi-clipboard-x"></i>';
+            SHARE_LINK_BUTTON.innerHTML = renderCopyButton('error');
             SHARE_LINK_BUTTON.classList.add('bg-danger');
             return;
         }
     } finally {
         setTimeout(() => {
             if (SHARE_LINK_BUTTON) {
-                SHARE_LINK_BUTTON.innerHTML = 'Copiar enlace <i class="bi bi-clipboard"></i>';
+                SHARE_LINK_BUTTON.innerHTML = renderCopyButton();
                 SHARE_LINK_BUTTON.classList.remove('bg-success', 'bg-danger');
             }
         }, 2000);
     }
 });
+
+window.addEventListener('ui-language-change', () => {
+    handleFullscreenChange();
+    if (SHARE_LINK_BUTTON) {
+        SHARE_LINK_BUTTON.innerHTML = renderCopyButton();
+    }
+});
+
+if (SHARE_LINK_BUTTON) {
+    SHARE_LINK_BUTTON.innerHTML = renderCopyButton();
+}

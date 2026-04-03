@@ -6,6 +6,7 @@ import {
 } from "../constants/index.js";
 import { filtrarCanalesPorInput, mostrarToast } from "./index.js";
 import { insertarDivError } from './helperInsertDivError.js';
+import { buildErrorToastMessage, t } from '../i18n.js';
 
 export function crearBotonesPaises() {
     try {
@@ -57,7 +58,7 @@ export function crearBotonesPaises() {
             botonDesconocido.setAttribute('data-country', 'Desconocido');
             botonDesconocido.classList.add('btn', 'btn-outline-secondary', 'd-flex', 'justify-content-between', 'align-items-center', 'text-start', 'gap-2', 'w-100', 'm-0', 'rounded-3');
             botonDesconocido.innerHTML =
-                `<span class="flex-grow-1">Desconocido</span><span class="badge bg-secondary">${cantidadDesconocido}</span>`;
+                `<span class="flex-grow-1">${t('unknown')}</span><span class="badge bg-secondary">${cantidadDesconocido}</span>`;
             FRAGMENT_BOTONES_PAISES.prepend(botonDesconocido);
         }
 
@@ -66,7 +67,7 @@ export function crearBotonesPaises() {
             BOTON_MOSTRAR_TODO_PAIS.dataset.country = 'all'
             BOTON_MOSTRAR_TODO_PAIS.classList.add('btn', 'btn-indigo', 'd-flex', 'justify-content-between', 'align-items-center', 'text-start', 'gap-2', 'w-100', 'm-0', 'rounded-3')
             BOTON_MOSTRAR_TODO_PAIS.innerHTML =
-                `<span class="flex-grow-1">Todos</span><span class="badge bg-secondary">${Object.keys(listChannels).length}</span>`;
+                `<span class="flex-grow-1">${t('all')}</span><span class="badge bg-secondary">${Object.keys(listChannels).length}</span>`;
             FRAGMENT_BOTONES_PAISES.prepend(BOTON_MOSTRAR_TODO_PAIS)
 
         for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
@@ -89,13 +90,7 @@ export function crearBotonesPaises() {
                         });
                         contenedorBotonesFiltroPaises.querySelector('button[data-country="all"]').classList.replace('btn-outline-secondary', CSS_CLASS_PRIMARY_BUTTON);
                         console.error(`Error al intentar activar filtro country. ${error}`);
-                        mostrarToast(`
-                        <span class="fw-bold">Ha ocurrido un error al intentar activar filtro country..</span>
-                        <hr>
-                        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-                        <hr>
-                        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-                        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false);
+                        mostrarToast(buildErrorToastMessage(t('errorActivateCountryFilter'), error), 'danger', false);
                         return
                     }
                     
@@ -104,16 +99,10 @@ export function crearBotonesPaises() {
         }
     } catch (error) {
         console.error(`Error durante creación botones para filtros countries. ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error durante la creación de botones para filtrado por country.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false);
+        mostrarToast(buildErrorToastMessage(t('errorCreateCountryButtons'), error), 'danger', false);
         
         for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
-            document.querySelector(`#${PREFIJO}-body-botones-canales`).insertAdjacentElement('afterend', insertarDivError(error, 'Ha ocurrido un error durante la creación de botones para filtro countries'));
+            document.querySelector(`#${PREFIJO}-body-botones-canales`).insertAdjacentElement('afterend', insertarDivError(error, t('errorCreateCountryButtons')));
         }
         return
     }

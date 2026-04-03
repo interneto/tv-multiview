@@ -24,6 +24,7 @@ import {
 } from "./index.js";
 import { CSS_CLASS_PRIMARY_BUTTON, CSS_CLASS_SECONDARY_BUTTON } from "../constants/index.js";
 import { listChannels } from "../channelsData.js";
+import { buildErrorToastMessage, getDisabledLabel, getHeightLabel, t } from '../i18n.js';
 
 export function activarVisionUnica() {
     try {
@@ -57,13 +58,13 @@ export function activarVisionUnica() {
         actualizarBotonesPersonalizarOverlay();
 
         INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA.disabled = true;
-        SPAN_VALOR_INPUT_RANGE.textContent = 'Deshabilitado';
+        SPAN_VALOR_INPUT_RANGE.textContent = getDisabledLabel();
 
         CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.disabled = true;
-        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = 'Deshabilitado';
+        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getDisabledLabel();
 
         BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach(boton => { boton.disabled = true });
-        SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = `Deshabilitado`;
+        SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = getDisabledLabel();
 
         let lsCanales = JSON.parse(localStorage.getItem('canales-vision-cuadricula')) || {};
 
@@ -82,13 +83,7 @@ export function activarVisionUnica() {
         document.querySelector('#boton-personalizar-boton-mover-overlay').classList.add('clase-vacia'); // esto es solo para mediaquery en css
     } catch (error) {
         console.error(`Error durante la activación del modo "Visión Única". Error: ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error durante la activación del modo "Visión Única".</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+        mostrarToast(buildErrorToastMessage(t('errorActivateSingleView'), error), 'danger', false)
         return
     }
 }
@@ -134,7 +129,7 @@ export function desactivarVisionUnica() {
         actualizarValorSlider();
 
         CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.disabled = false;
-        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = localStorage.getItem('uso-100vh') === 'activo' ? 'Expandido' : 'Reducido';
+        SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getHeightLabel(localStorage.getItem('uso-100vh') === 'activo');
 
         BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach(boton => { boton.disabled = false });
         SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = `${obtenerNumeroCanalesFila()}`;
@@ -144,13 +139,7 @@ export function desactivarVisionUnica() {
         document.querySelector('#boton-personalizar-boton-mover-overlay').classList.remove('clase-vacia');
     } catch (error) {
         console.error(`Error durante la desactivación del modo "Visión Única". Error: ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error durante la desactivación del modo "Visión Única".</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+        mostrarToast(buildErrorToastMessage(t('errorDeactivateSingleView'), error), 'danger', false)
         return
     }
 }
