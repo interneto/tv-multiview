@@ -1,3 +1,5 @@
+import { t } from '../i18n.js';
+
 export function mostrarToast(mensaje = '', tipo = 'secondary', autohideValue = true, delayValue = 3500) {
     const TOAST_CONTAINER = document.querySelector('#toast-container');
     const TOAST_DIV = document.createElement('div');
@@ -34,7 +36,7 @@ export function mostrarToast(mensaje = '', tipo = 'secondary', autohideValue = t
     const TOAST_BOTON_CERRAR = document.createElement('button');
     TOAST_BOTON_CERRAR.setAttribute('type', 'button');
     TOAST_BOTON_CERRAR.setAttribute('data-bs-dismiss', 'toast');
-    TOAST_BOTON_CERRAR.setAttribute('aria-label', 'Close');
+    TOAST_BOTON_CERRAR.setAttribute('aria-label', t('close'));
     TOAST_BOTON_CERRAR.classList.add('btn-close', 'btn-close-white', 'me-2', 'm-auto');
     TOAST_BOTON_CERRAR.addEventListener('click', () => {
         TOAST_DIV.remove();

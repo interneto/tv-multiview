@@ -1,5 +1,6 @@
 import { CSS_CLASS_PRIMARY_BUTTON } from "../constants/index.js";
 import { mostrarToast, obtenerNumeroCanalesFila } from "./index.js";
+import { buildErrorToastMessage, t } from '../i18n.js';
 
 import { 
     BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA,
@@ -68,14 +69,7 @@ export function adjustChannelColumnCount() {
         }
     } catch (error) {
         console.error('Error al ajustar clase "col" para canales activos: ', error);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error al intentar ajustar el numero de canales por fila.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>
-        `, 'danger', false);
+        mostrarToast(buildErrorToastMessage(t('errorAdjustChannelsPerRow'), error), 'danger', false);
         return;
     }
 }

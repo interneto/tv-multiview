@@ -8,12 +8,21 @@ import {
     TWITCH_BASE_URL
 } from './constants/index.js';
 import { mostrarToast, playAudioSinDelay, hideTextoBotonesOverlay } from './helpers/index.js';
+import { buildErrorToastMessage, t } from './i18n.js';
 
 // Funciones de UI de canales extraídas de main.js
 function savePreferredSignal(canalId, señalUtilizar = '', indexSeñalUtilizar = 0) {
     let lsPreferenciasSeñalCanales = JSON.parse(localStorage.getItem('preferencia-señal-canales')) || {};
     lsPreferenciasSeñalCanales[canalId] = { [señalUtilizar]: indexSeñalUtilizar };
     localStorage.setItem('preferencia-señal-canales', JSON.stringify(lsPreferenciasSeñalCanales));
+}
+
+function getSignalTypeLabel(signalKey) {
+    if (signalKey.startsWith('iframe_')) return 'web';
+    if (signalKey.startsWith('m3u8_')) return 'm3u8';
+    if (signalKey.startsWith('yt_')) return 'youtube';
+    if (signalKey.startsWith('twitch_')) return 'twitch';
+    return signalKey.replace('_', ' ');
 }
 
 export function generateStreamIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
@@ -77,11 +86,11 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
         const BOTON_SELECCIONAR_SEÑAL_CANAL = document.createElement("button");
         BOTON_SELECCIONAR_SEÑAL_CANAL.id = 'overlay-boton-selecionar-señal'
         BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('type', 'button');
-        BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('title', 'Seleccionar diferente señal');
+        BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('title', t('selectDifferentSignal'));
         BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('data-bs-toggle', 'dropdown');
         BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('aria-expanded', 'false');
 
-        BOTON_SELECCIONAR_SEÑAL_CANAL.innerHTML = '<span>Seleccionar señal</span><i class="bi bi-collection" data-bs-toggle="tooltip" data-bs-title="Seleccionar diferente señal"></i>';
+        BOTON_SELECCIONAR_SEÑAL_CANAL.innerHTML = `<span>${t('selectSignal')}</span><i class="bi bi-collection" data-bs-toggle="tooltip" data-bs-title="${t('selectDifferentSignal')}"></i>`;
         BOTON_SELECCIONAR_SEÑAL_CANAL.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'dropdown-toggle', 'd-flex', 'justify-content-center', 'align-items-center', 'gap-1', 'p-0', 'px-1', 'pe-auto', 'mt-1', 'rounded-3');
 
         const DROPDOWN_MENU_SELECCIONAR_SEÑAL_CANAL = document.createElement("ul");
@@ -105,7 +114,7 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
                     const listItem = document.createElement("li");
                     listItem.classList.add('dropdown-item', 'pe-auto', 'py-2', 'user-select-none');
                     if (tipoSeñalCargada === key && valorIndex === index) listItem.classList.add('bg-indigo', 'fw-bold');
-                    listItem.innerHTML = value.length === 1 ? `${iconoSeñal} ${key.split('_')[0]}` : `${iconoSeñal} ${key.split('_')[0]} <span class="fst-italic">${index}</span>`;
+                    listItem.innerHTML = value.length === 1 ? `${iconoSeñal} ${getSignalTypeLabel(key)}` : `${iconoSeñal} ${getSignalTypeLabel(key)} <span class="fst-italic">${index}</span>`;
                     listItem.addEventListener("click", () => {
                         DROPDOWN_MENU_SELECCIONAR_SEÑAL_CANAL.querySelectorAll('.dropdown-item').forEach(item => {
                             item.classList.remove('bg-indigo', 'fw-bold');
@@ -120,7 +129,7 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
                 const listItem = document.createElement("li");
                 listItem.classList.add('dropdown-item', 'pe-auto', 'py-2', 'user-select-none');
                 if (tipoSeñalCargada === key) listItem.classList.add('bg-indigo', 'fw-bold');
-                listItem.innerHTML = `${iconoSeñal} ${key.replace('_', ' ')}`;
+                listItem.innerHTML = `${iconoSeñal} ${getSignalTypeLabel(key)}`;
                 listItem.addEventListener("click", () => {
                     DROPDOWN_MENU_SELECCIONAR_SEÑAL_CANAL.querySelectorAll('.dropdown-item').forEach(item => {
                         item.classList.remove('bg-indigo', 'fw-bold');
@@ -136,20 +145,20 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
         const MOVE_CHANNEL_BUTTON = document.createElement('button');
         MOVE_CHANNEL_BUTTON.id = 'overlay-boton-mover';
         MOVE_CHANNEL_BUTTON.setAttribute('type', 'button');
-        MOVE_CHANNEL_BUTTON.setAttribute('title', 'Arrastrar y mover este canal');
+        MOVE_CHANNEL_BUTTON.setAttribute('title', t('moveChannel'));
         MOVE_CHANNEL_BUTTON.setAttribute('data-bs-toggle', 'tooltip');
-        MOVE_CHANNEL_BUTTON.setAttribute('data-bs-title', 'Arrastrar y mover este canal');
-        MOVE_CHANNEL_BUTTON.innerHTML = '<span>Mover</span><i class="bi bi-arrows-move"></i>';
+        MOVE_CHANNEL_BUTTON.setAttribute('data-bs-title', t('moveChannel'));
+        MOVE_CHANNEL_BUTTON.innerHTML = `<span>${t('move')}</span><i class="bi bi-arrows-move"></i>`;
         MOVE_CHANNEL_BUTTON.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3', 'clase-para-mover');
 
         const CHANGE_CHANNEL_BUTTON = document.createElement('button');
         CHANGE_CHANNEL_BUTTON.id = 'overlay-boton-cambiar';
         CHANGE_CHANNEL_BUTTON.setAttribute('type', 'button');
-        CHANGE_CHANNEL_BUTTON.setAttribute('title', 'Cambiar este canal');
+        CHANGE_CHANNEL_BUTTON.setAttribute('title', t('changeChannel'));
         CHANGE_CHANNEL_BUTTON.setAttribute('data-bs-toggle', 'tooltip');
-        CHANGE_CHANNEL_BUTTON.setAttribute('data-bs-title', 'Cambiar este canal');
+        CHANGE_CHANNEL_BUTTON.setAttribute('data-bs-title', t('changeChannel'));
         CHANGE_CHANNEL_BUTTON.setAttribute('data-button-cambio', canalId);
-        CHANGE_CHANNEL_BUTTON.innerHTML = '<span>Cambiar</span><i class="bi bi-arrow-repeat"></i>';
+        CHANGE_CHANNEL_BUTTON.innerHTML = `<span>${t('change')}</span><i class="bi bi-arrow-repeat"></i>`;
         CHANGE_CHANNEL_BUTTON.classList.add('btn', 'btn-sm', 'btn-dark-subtle', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3');
         CHANGE_CHANNEL_BUTTON.addEventListener('click', () => {
             LABEL_MODAL_CAMBIAR_CANAL.textContent = name;
@@ -159,13 +168,13 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
 
         const OFFICIAL_CHANNEL_LINK = document.createElement('a');
         OFFICIAL_CHANNEL_LINK.id = 'overlay-boton-pagina-oficial';
-        OFFICIAL_CHANNEL_LINK.title = 'Ir a la página oficial de esta transmisión';
+        OFFICIAL_CHANNEL_LINK.title = t('officialPage');
         if (tipoSeñalCargada === 'yt_id') website = `https://www.youtube.com/channel/${signals.yt_id}`;
         if (tipoSeñalCargada === 'twitch_id') website = `https://www.twitch.tv/${signals.twitch_id}`;
         OFFICIAL_CHANNEL_LINK.href = website !== '' ? website : `https://www.qwant.com/?q=${name}+en+vivo`;
         OFFICIAL_CHANNEL_LINK.setAttribute('role', 'button');
         OFFICIAL_CHANNEL_LINK.setAttribute('data-bs-toggle', 'tooltip');
-        OFFICIAL_CHANNEL_LINK.setAttribute('data-bs-title', 'Ir a la página oficial de esta transmisión');
+        OFFICIAL_CHANNEL_LINK.setAttribute('data-bs-title', t('officialPage'));
         OFFICIAL_CHANNEL_LINK.rel = 'noopener nofollow noreferrer';
         OFFICIAL_CHANNEL_LINK.innerHTML = `<span>
                 ${name}
@@ -180,12 +189,12 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
 
         const REMOVE_CHANNEL_BUTTON = document.createElement('button');
         REMOVE_CHANNEL_BUTTON.id = 'overlay-boton-quitar';
-        REMOVE_CHANNEL_BUTTON.setAttribute('aria-label', 'Close');
+        REMOVE_CHANNEL_BUTTON.setAttribute('aria-label', t('removeChannel'));
         REMOVE_CHANNEL_BUTTON.setAttribute('type', 'button');
-        REMOVE_CHANNEL_BUTTON.setAttribute('title', 'Quitar canal');
+        REMOVE_CHANNEL_BUTTON.setAttribute('title', t('removeChannel'));
         REMOVE_CHANNEL_BUTTON.setAttribute('data-bs-toggle', 'tooltip');
-        REMOVE_CHANNEL_BUTTON.setAttribute('data-bs-title', 'Quitar canal');
-        REMOVE_CHANNEL_BUTTON.innerHTML = '<span>Quitar</span><i class="bi bi-x-circle"></i>';
+        REMOVE_CHANNEL_BUTTON.setAttribute('data-bs-title', t('removeChannel'));
+        REMOVE_CHANNEL_BUTTON.innerHTML = `<span>${t('remove')}</span><i class="bi bi-x-circle"></i>`;
         REMOVE_CHANNEL_BUTTON.classList.add('btn', 'btn-sm', 'btn-danger', 'p-0', 'px-1', 'd-flex', 'gap-1', 'pe-auto', 'mt-1', 'rounded-3');
         REMOVE_CHANNEL_BUTTON.addEventListener('click', () => {
             tele.remove(canalId);
@@ -202,13 +211,7 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
         return FRAGMENT_OVERLAY;
     } catch (error) {
         console.error(`Error durante creación overlay para canal con id: ${canalId}. Error: ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error durante la creación del overlay para el canal con id: ${canalId}.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger')
+        mostrarToast(buildErrorToastMessage(t('errorCreateOverlay', { channel: canalId }), error), 'danger')
         return
     }
 }
@@ -257,10 +260,10 @@ export function createChannelFragment(canalId) {
     } else {
         console.error(`${canalId} no tiene signals definidas.`);
         mostrarToast(`
-        <span class="fw-bold">${canalId}</span> no tiene signals definidas. 
-        <br>Prueba recargando o borrar la caché del navegador.
+        <span class="fw-bold">${t('channelWithoutSignals', { channel: canalId })}</span>
+        <br>${t('errorCacheHint')}
         <button type="button" class="btn btn-danger rounded-pill btn-sm w-100 border-light mt-2" data-bs-toggle="modal"
-            data-bs-target="#modal-reset">Probar reiniciar almacenamiento local</button>`, 'danger', false);
+            data-bs-target="#modal-reset">${t('resetLocalStorage')}</button>`, 'danger', false);
     }
 }
 
@@ -281,13 +284,7 @@ export function updateActiveSignal(canalId) {
         if (typeof hideTextoBotonesOverlay === 'function') hideTextoBotonesOverlay();
     } catch (error) {
         console.error(`Error al intentar cambiar señal para canal con id: ${canalId}. Error: ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error al intentar cambiar señal para canal con id: ${canalId}.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger');
+        mostrarToast(buildErrorToastMessage(t('errorChangeSignal', { channel: canalId }), error), 'danger');
         return;
     }
 }

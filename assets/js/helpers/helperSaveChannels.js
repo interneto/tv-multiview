@@ -1,6 +1,7 @@
 import { listChannels } from "../channelsData.js";
 import { CONTAINER_VISION_CUADRICULA } from "../main.js";
 import { mostrarToast } from "../helpers/index.js";
+import { buildErrorToastMessage, t } from '../i18n.js';
 
 export function saveActiveChannelsToStorage() {
     try {
@@ -18,13 +19,7 @@ export function saveActiveChannelsToStorage() {
         }, 420);
     } catch (error) {
         console.error('Error al intentar guardar canales en el almacenamiento local: ', error);
-        mostrarToast(`
-        <span class="fw-bold">Error al intentar guardar canales en el almacenamiento local.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false)
+        mostrarToast(buildErrorToastMessage(t('errorSaveChannels'), error), 'danger', false)
         return
     }
 }

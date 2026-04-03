@@ -3,6 +3,7 @@ import { CSS_CLASS_SECONDARY_BUTTON, COUNTRY_CODES, CATEGORY_ICONS, CHANNEL_CONT
 import { CONTAINER_VIDEO_VISION_UNICA, tele } from "../main.js";
 import { mostrarToast, revisarSeñalesVacias, guardarOrdenOriginal } from "./index.js";
 import { insertarDivError } from './helperInsertDivError.js';
+import { buildErrorToastMessage, t } from '../i18n.js';
 
 export function crearBotonesParaCanales() {
     try {
@@ -11,7 +12,7 @@ export function crearBotonesParaCanales() {
             let { name, /* logo, */ country, category } = listChannels[canal];
             category = typeof category === 'string' ? category.toLowerCase() : '';
             let iconoCategoria = category && (category in CATEGORY_ICONS) ? CATEGORY_ICONS[category] : '<i class="bi bi-tv"></i>';
-            let namePais = country && typeof country === 'string' && COUNTRY_CODES[country.toLowerCase()] ? COUNTRY_CODES[country.toLowerCase()] : 'Desconocido';
+            let namePais = country && typeof country === 'string' && COUNTRY_CODES[country.toLowerCase()] ? COUNTRY_CODES[country.toLowerCase()] : t('unknown');
 
             let botonCanal = document.createElement('button');
             botonCanal.setAttribute('data-canal', canal);
@@ -60,16 +61,10 @@ export function crearBotonesParaCanales() {
 
     } catch (error) {
         console.error(`Error durante creación botones para canales. Error: ${error}`);
-        mostrarToast(`
-        <span class="fw-bold">Ha ocurrido un error durante la creación de botones para los canales.</span>
-        <hr>
-        <span class="bg-dark bg-opacity-25 px-2 rounded-3">Error: ${error}</span>
-        <hr>
-        Si error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.
-        <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()"> Pulsa para recargar <i class="bi bi-arrow-clockwise"></i></button>`, 'danger', false);
+        mostrarToast(buildErrorToastMessage(t('errorCreateChannelButtons'), error), 'danger', false);
 
         for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
-            document.querySelector(`#${PREFIJO}-body-botones-canales`).insertAdjacentElement('afterend', insertarDivError(error, 'Ha ocurrido un error durante la creación de botones para los canales'));
+            document.querySelector(`#${PREFIJO}-body-botones-canales`).insertAdjacentElement('afterend', insertarDivError(error, t('errorCreateChannelButtons')));
         }
     }
 }

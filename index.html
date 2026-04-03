@@ -9,10 +9,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
     <base target="_blank">
-    <title>TV Multiview</title>
+    <title>TV Multiview | Monitor de canales en vivo</title>
     <meta name="description"
-        content="PWA Código Abierto para ver/comparar preseleccionadas transmisiones de noticias provenientes de Chile (y el mundo)." />
+        content="PWA de codigo abierto para monitorear canales de TV en vivo, comparar multiples senales en una cuadricula y alternar a un modo de vision unica." />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -29,19 +35,19 @@
     </noscript>
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="tv-multiview">
+    <meta property="og:title" content="TV Multiview">
     <meta property="og:url" content="https://interneto.github.io/tv-multiview/">
     <meta property="og:description"
-        content="PWA Código Abierto para ver/comparar preseleccionadas transmisiones de noticias provenientes de Chile (y el mundo).">
+        content="Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente.">
     <meta property="og:image" content="assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp">
     <!-- Twitter Card-->
     <meta name="twitter:card"
         content="PWA Código Abierto para ver/comparar preseleccionadas transmisiones de noticias provenientes de Chile (y el mundo).">
     <meta property="twitter:domain" content="interneto.github.io">
     <meta property="twitter:url" content="https://interneto.github.io/tv-multiview/">
-    <meta name="twitter:title" content="tv-multiview">
+    <meta name="twitter:title" content="TV Multiview">
     <meta name="twitter:description"
-        content="PWA Código Abierto para ver/comparar preseleccionadas transmisiones de noticias provenientes de Chile (y el mundo).">
+        content="Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente.">
     <meta name="twitter:image" content="assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
@@ -50,7 +56,8 @@
     <!-- isMobile -->
     <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
     <!-- Service worker -->
-    <meta name="theme-color" content="#212529" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5efe6" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101417" />
     <link rel="manifest" href="site.webmanifest">
     <!-- Service worker notice: native install banner will be handled by browser when appropriate -->
     <script type="module">
@@ -68,8 +75,11 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#container-vision-cuadricula" target="_self">Saltar al contenido principal</a>
+
     <!-- Toast container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container">
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container" aria-live="polite"
+        aria-relevant="additions text">
     </div>
 
     <!-- Alerta error carga canales -->
@@ -95,6 +105,7 @@
                 class="position-absolute top-50 start-50 translate-middle border border-light-subtle rounded-5 shadow cursor-default-en-hover user-select-none overflow-hidden">
                 <div
                     class="tarjeta-logo-background bg-transparent bg-blur px-5 pb-4 pt-5 d-flex flex-column justify-content-center align-items-center">
+                    <p class="hero-kicker">Monitor de TV en vivo</p>
                     <div class="position-relative bg-light-subtle p-3 rounded-4 shadow" tabindex="-1">
                         <img src="assets/favicon/android-chrome-512x512.png" alt="logo tv-multiview">
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
@@ -102,6 +113,17 @@
                         </span>
                     </div>
                     <p class="display-1 gradient-text">tv-multiview</p>
+                    <p class="hero-copy text-center mb-0">Compara noticias y transmisiones en paralelo, alterna entre
+                        cuadricula y enfoque unico, y conserva tu configuracion en este mismo dispositivo.</p>
+                    <div class="hero-highlights" aria-label="Resumen rapido del sitio">
+                        <span class="app-pill">PWA instalable</span>
+                        <span class="app-pill">Modo cuadrícula</span>
+                        <span class="app-pill">Vision unica</span>
+                    </div>
+                    <div class="hero-metrics" aria-label="Estado actual de la interfaz">
+                        <span class="hero-metric"><strong data-ui-active-count>0</strong> <span data-ui-active-label>senales activas</span></span>
+                        <span class="hero-metric"><span data-ui-mode-label>Modo:</span> <strong data-ui-layout>Cuadricula</strong></span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -161,29 +183,44 @@
     </div>
 
     <!-- Navbar -->
-    <nav class='navbar navbar-expand-lg bg-dark-subtle shadow-sm p-1' id="navbar">
+    <nav class='navbar navbar-expand-lg bg-dark-subtle shadow-sm p-2' id="navbar" aria-label="Barra principal">
         <div class="container-fluid">
             <a href="./" target="_self" class="gradient-text me-2 fs-4 d-none">tv-multiview</a>
             <div class="btn-group" role="group" aria-label="grupo de botones para abrir selector canales">
                 <button type="button" class="btn btn-sm btn-indigo rounded-start-pill" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvas-canales" aria-controls="offcanvas-canales"><i class="bi bi-chevron-right"
-                        title="Sidepanel Canales"></i>
+                    data-bs-target="#offcanvas-canales" aria-controls="offcanvas-canales"
+                    aria-label="Abrir panel lateral de canales"><i class="bi bi-chevron-right"
+                        title="Panel lateral de canales"></i>
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-indigo rounded-end-pill" data-bs-toggle="modal"
-                    data-bs-target="#modal-canales">
-                    <i class="bi bi-collection-play"></i> Channels
+                    data-bs-target="#modal-canales" aria-label="Abrir selector completo de canales">
+                    <i class="bi bi-collection-play"></i> Canales
                 </button>
             </div>
 
+            <div class="navbar-live-shell ms-2">
+                <div class="navbar-status-pills" aria-label="Resumen del estado actual">
+                    <span class="app-pill app-pill-compact"><i class="bi bi-grid-3x2-gap"></i> <span
+                            data-ui-layout>Cuadricula</span></span>
+                    <span class="app-pill app-pill-compact"><i class="bi bi-broadcast"></i> <span
+                            data-ui-active-count>0</span> <span data-ui-active-label>senales activas</span></span>
+                </div>
+            </div>
+
+            <div class="btn-group btn-group-sm language-switcher ms-2" role="group" aria-label="Selector de idioma">
+                <button type="button" class="btn btn-outline-secondary" data-language-option="es">ES</button>
+                <button type="button" class="btn btn-outline-secondary" data-language-option="en">EN</button>
+            </div>
+
             <!-- Mobile right-side settings button -->
-            <button type="button" class="btn btn-sm btn-outline-secondary d-lg-none ms-auto" data-bs-toggle="offcanvas" data-bs-target="#sidepanel" aria-controls="sidepanel" title="Ajustes">
+            <button type="button" class="btn btn-sm btn-outline-secondary d-lg-none ms-auto" data-bs-toggle="offcanvas" data-bs-target="#sidepanel" aria-controls="sidepanel" title="Ajustes" aria-label="Abrir panel de ajustes">
                 <i class="bi bi-gear"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbar-toggler">
                 <ul class="navbar-nav ms-auto">
                     <a class='dropdown-item' href='#' data-bs-toggle="offcanvas" data-bs-target="#sidepanel"><i
-                            class="bi bi-gear"></i> Settings
+                            class="bi bi-gear"></i> Ajustes
                     </a>
                 </ul>
             </div>
@@ -197,7 +234,7 @@
     </div>
 
     <!-- Grid canales -->
-    <main class='vh-100'>
+    <main class='vh-100 app-shell' aria-label="Contenido principal de canales">
         <!-- version vision cuadricula -->
         <div class="row g-0 h-100" id="container-vision-cuadricula">
         </div>
@@ -218,15 +255,15 @@
                     <div class="d-flex flex-column">
                         <div class="form-floating w-100">
                             <input type="search" class="form-control rounded-3" id="vision-unica-input-filtro"
-                                placeholder="Buscar por country o canal">
-                            <label for="filtro">Buscar por country o canal</label>
+                                placeholder="Buscar por pais o canal" aria-label="Buscar por pais o canal en vision unica">
+                            <label for="vision-unica-input-filtro">Buscar por pais o canal</label>
                         </div>
                         <div class="bg-dark-subtle my-2 rounded-4 d-flex flex-column">
                             <div class="d-flex gap-2">
                                 <button class="btn btn-sm btn-dark w-100 rounded-pill" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#offcanvas-collapse-btn-group"
                                     aria-expanded="false" aria-controls="offcanvas-collapse-btn-group">
-                                    <i class="bi bi-funnel"></i> Filtrar por country
+                                    <i class="bi bi-funnel"></i> Filtrar por pais
                                 </button>
                                 <div class="ms-auto">
                                     <div class="btn-group" role="group">
@@ -426,13 +463,16 @@
     </div>
 
     <!-- Modal listado canales -->
-    <div class="modal fade" id="modal-canales" tabindex="-1" aria-labelledby="Modal con Listado de Canales"
+    <div class="modal fade" id="modal-canales" tabindex="-1" aria-labelledby="modal-canales-titulo"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
             <div class="modal-content text-center bg-transparent bg-blur border-0 shadow">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title text-light">Selecciona tus canales</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <div>
+                        <h5 class="modal-title text-light" id="modal-canales-titulo">Selecciona tus canales</h5>
+                        <p class="panel-description text-light-subtle mb-0">Explora el catalogo completo, filtra por pais y ordena rapidamente.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar">
                     </button>
                 </div>
 
@@ -442,7 +482,7 @@
                             <button class="btn btn-sm btn-dark w-100 rounded-pill" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#modal-collapse-btn-group"
                                 aria-expanded="false" aria-controls="modal-collapse-btn-group">
-                                <i class="bi bi-funnel"></i> Filtrar por country
+                                <i class="bi bi-funnel"></i> Filtrar por pais
                             </button>
                             <div class="ms-auto">
                                 <div class="btn-group" role="group">
@@ -520,8 +560,8 @@
                 <div class="modal-footer border-0">
                     <div class="form-floating w-100">
                         <input type="search" class="form-control rounded-4" id="modal-canales-input-filtro"
-                            placeholder="Buscar por country o canal">
-                        <label for="filtro">Buscar por country o canal</label>
+                            placeholder="Buscar por pais o canal" aria-label="Buscar por pais o canal en el modal de canales">
+                        <label for="modal-canales-input-filtro">Buscar por pais o canal</label>
                     </div>
                     <div class="d-flex justify-content-between w-100">
                         <button class="btn btn-danger rounded-pill d-none" id="boton-modal-quitar-todo-canal-activo">
@@ -541,10 +581,13 @@
 
     <!-- offcanvas canales -->
     <div class="offcanvas offcanvas-start bg-transparent bg-blur border border-start-0 border-2 border-light-subtle rounded-end-5"
-        id="offcanvas-canales" tabindex="-1" data-bs-scroll="true" aria-labelledby="offcanvas canales">
+        id="offcanvas-canales" tabindex="-1" data-bs-scroll="true" aria-labelledby="offcanvas-canales-titulo">
         <header class="offcanvas-header bg-transparent">
-            <h5 class="offcanvas-title text-light" id="offcanvas-canales">Selecciona tus canales</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div>
+                <h5 class="offcanvas-title text-light" id="offcanvas-canales-titulo">Selecciona tus canales</h5>
+                <p class="panel-description text-light-subtle mb-0">Abre, combina y limpia tu seleccion sin salir de la vista actual.</p>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
         </header>
 
         <div class="offcanvas-body scrollbar-thin-gray bg-transparent px-3 py-0">
@@ -554,7 +597,7 @@
                         <button class="btn btn-sm btn-dark w-100 rounded-pill" type="button" data-bs-toggle="collapse"
                             data-bs-target="#offcanvas-collapse-btn-group" aria-expanded="false"
                             aria-controls="offcanvas-collapse-btn-group">
-                            <i class="bi bi-funnel"></i> Filtrar por country
+                            <i class="bi bi-funnel"></i> Filtrar por pais
                         </button>
                         <div class="ms-auto">
                             <div class="btn-group" role="group">
@@ -629,8 +672,8 @@
         <footer class="p-2 d-flex flex-column bg-transparent">
             <div class="form-floating w-100">
                 <input type="search" class="form-control rounded-4" id="offcanvas-canales-input-filtro"
-                    placeholder="Buscar por country o canal">
-                <label for="filtro">Buscar por country o canal</label>
+                    placeholder="Buscar por pais o canal" aria-label="Buscar por pais o canal en el panel lateral de canales">
+                <label for="offcanvas-canales-input-filtro">Buscar por pais o canal</label>
             </div>
             <div class="d-flex justify-content-between mt-2">
                 <button class="btn btn-danger rounded-pill d-none" id="boton-offcanvas-quitar-todo-canal-activo">
@@ -715,7 +758,7 @@
         <button type="button"
             class="focus-outline-blue btn btn-sm btn-indigo rounded-start-5 shadow-sm d-flex gap-1 border-0 fw-normal"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvas-canales" aria-controls="offcanvas-canales">
-            <i class="bi bi-chevron-right"></i> <span>Channels</span>
+            <i class="bi bi-chevron-right"></i> <span>Canales</span>
         </button>
         <div class="bg-light-subtle">
             <button type="button"
@@ -728,20 +771,43 @@
             class="focus-outline-blue btn btn-sm btn-dark rounded-end-5 shadow-sm d-flex gap-1 border-0"
             aria-label="Acceso a personalizaciones" data-bs-toggle="offcanvas" data-bs-target="#sidepanel"
             aria-controls="sidepanel" tabindex="0">
-            <i class="bi bi-gear"></i> <span>Settings</span>
+            <i class="bi bi-gear"></i> <span>Ajustes</span>
         </button>
     </div>
 
     <!-- sidepanel/personalizaciones -->
     <div class="offcanvas offcanvas-end bg-transparent bg-blur border border-end-0 border-2 border-light-subtle rounded-start-5"
-        data-bs-scroll="true" tabindex="-1" id="sidepanel" aria-labelledby="sidepanel">
+        data-bs-scroll="true" tabindex="-1" id="sidepanel" aria-labelledby="sidepanel-titulo">
         <div class="offcanvas-header d-flex justify-content-center p-0">
-            <p class=" bg-dark-subtle rounded-bottom text-center px-5 fs-5 pb-1">Settings</p>
+            <p class=" bg-dark-subtle rounded-bottom text-center px-5 fs-5 pb-1" id="sidepanel-titulo">Ajustes</p>
             <button type="button" class="btn-close close-sidepanel" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+                aria-label="Cerrar"></button>
         </div>
         <div class="offcanvas-body scrollbar-thin-gray">
             <ul class="d-flex flex-column justify-content-start align-items-center w-100 gap-3 list-unstyled">
+                <li class="w-100">
+                    <div class="panel-summary-card">
+                        <p class="panel-summary-eyebrow">Resumen rapido</p>
+                        <div class="panel-summary-grid">
+                            <div>
+                                <span class="panel-summary-label">Modo</span>
+                                <strong data-ui-layout>Cuadricula</strong>
+                            </div>
+                            <div>
+                                <span class="panel-summary-label">Senales activas</span>
+                                <strong data-ui-active-count>0</strong>
+                            </div>
+                            <div>
+                                <span class="panel-summary-label">Guardado local</span>
+                                <strong>Activo</strong>
+                            </div>
+                            <div>
+                                <span class="panel-summary-label">Atajo recomendado</span>
+                                <strong>Vision unica</strong>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 <li class="w-100">
                     <div class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow">
                         <div class="form-check form-switch d-flex align-items-center gap-2" title="ocultar navbar">
@@ -991,7 +1057,7 @@
                             <i class="bi bi-github rounded-3 p-1 me-1"></i><a href="https://github.com/interneto/tv-multiview"
                                 rel="nofollow noreferrer">Repositorio <i class="bi bi-box-arrow-up-right"></i></a>
                         </p>
-                        </a>
+                        <p class="text-secondary mb-0">Personaliza la interfaz, instala la PWA y guarda tu seleccion de canales localmente.</p>
                     </div>
                 </li>
                 <li class="w-100">
