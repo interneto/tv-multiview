@@ -22,7 +22,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://live20.bozztv.com/dvrfl05/gin-1tvafg/index.m3u8"
+        "https://tv.cdn.xsg.ge/gpb-1tv/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -56,7 +56,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://alternatv.ar/stream/hls/live.m3u8"
+        "https://tv.alterna.ar/stream/hls/live.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -124,7 +124,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://viamotionhsi.netplus.ch/live/eds/atv/browser-dash/atv.mpd"
+        "https://tv.angiangtv.vn/live/kgtv2/kgtv2.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -193,7 +193,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://linear417-gb-hls1-prd-ak.cdn.skycdp.com/100e/Content/HLS_001_1080_30/Live/channel(skynews)/04_1080-30.m3u8"
+        "https://jmp2.uk/plu-55b285cd2665de274553d66f.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -431,7 +431,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://amg00788-cbc-amg00788c4-xumo-us-3045.playouts.now.amagi.tv/master.m3u8"
+        "https://d2ny9lo79ujali.cloudfront.net/CBC_News_International.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -465,7 +465,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://pe-fa-lp02a.9c9media.com/live/News1Digi/p/hls/00000201/38ef78f479b07aa0/index/0c6a10a2/live/stream/h264/v1/3500000/manifest.m3u8"
+        "https://live.ctvbolivia.com/hls/ctv.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -567,7 +567,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://stream.berosat.live:19360/cbc-tv/cbc-tv.m3u8"
+        "https://flu.systemnet.tv/CBC/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -710,7 +710,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://117.161.133.51:81/gitv_live/G_TAIQIU-CQ/G_TAIQIU-CQ.m3u8?p=GITV"
+        "http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -761,7 +761,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://strm.hdtvizlecanli.com/live/atv.m3u8"
+        "https://amg00405-rakutentv-cgtn-rakuten-i9tar.amagi.tv/master.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -846,7 +846,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://cdn1.intercom.cdn.moderntv.eu/intercom/stream/CARACOL/20-hls/live-media.m3u8"
+        "http://138.121.15.230:9002/CARACOL/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -880,7 +880,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://fl4.moveonjoy.com/National_Geographic/index.m3u8"
+        "https://live-fi.tvkaista.net/national-geographic/live.m3u8?hd=true"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -948,7 +948,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://strm.hdtvizlecanli.com/live/kabel1.m3u8"
+        "https://dash4.antik.sk/live/test_kabel_eins_tizen/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1106,7 +1106,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://video.misistemareseller.com/Fuegotv/Fuegotv/playlist.m3u8"
+        "https://streamunoapp.com:3553/live/cromtvlive.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1140,7 +1140,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://fl1002.bozztv.com/ga-cbc/index.m3u8"
+        "https://flu.systemnet.tv/CBC/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1157,7 +1157,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://fl1002.bozztv.com/ga-cbcdrama/index.m3u8"
+        "https://flu.systemnet.tv/CBCDrama/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1174,7 +1174,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://bcovlive-a.akamaihd.net/753a1f2c951b4fb3914f30e1deb147d8/us-west-2/6057955906001/playlist.m3u8"
+        "https://flu.systemnet.tv/CBCSofra/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1208,7 +1208,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://d32rw80ytx9uxs.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-vlldndmow4yre/24HES.m3u8"
+        "https://ztnr.rtve.es/ztnr/1694255.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1225,7 +1225,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://dum8zv1rbdjj2.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-x6uutpgph4tpt/ClanES.m3u8"
+        "https://rtvelivestream.rtve.es/rtvesec/clan/clan_main.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1293,7 +1293,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://d1cctoeg0n48w5.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-mnixw9wn5ugmv/TeledeporteES.m3u8"
+        "https://rtvelivestream.rtve.es/rtvesec/tdp/tdp_main.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1327,7 +1327,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://viamotionhsi.netplus.ch/live/eds/bfmtv/browser-HLS8/bfmtv.m3u8"
+        "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1395,7 +1395,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://viamotionhsi.netplus.ch/live/eds/m6hd/browser-dash/m6hd.mpd"
+        "http://99.27.51.147:8080/M6/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1466,7 +1466,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://streamer.nexyl.uk/5c858268-a93b-45f8-9e82-41d66b526d6c.m3u8"
+        "http://149.102.245.111/1263/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1500,7 +1500,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://livetv-fa.tubi.video/bbc-earth2/playlist.m3u8"
+        "https://jmp2.uk/plu-656535fc2c46f30008870fae.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1568,7 +1568,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://hugh.cdn.rumble.cloud/live/k5e12sb4/slot-82/fdd0-tbln/chunklist_DVR.m3u8"
+        "http://89.104.114.24:8080/art/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1602,7 +1602,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://www.hellasnet.tv/rest2.live.hn/u2r.trt/playlist.m3u8"
+        "https://av.hellasnet.tv/rst/trt/main_stream.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1721,7 +1721,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/cnbc-tv18/master.m3u8"
+        "https://n18syndication.akamaized.net/bpk-tv/CNBC_TV18_NW18_MOB/output01/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1738,7 +1738,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://live-e24.dailyhunt.in/eternowsa/live/amlst:E24_,b256,b512,b1024,b1824,.smil/playlist.m3u8"
+        "https://live-cf-e24.dailyhunt.in/master.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1960,7 +1960,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://viamotionhsi.netplus.ch/live/eds/rai3/browser-dash/rai3.mpd"
+        "https://dash2.antik.sk/live/test_rai_tre_tizen/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -2183,7 +2183,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://viamotionhsi.netplus.ch/live/eds/rtl9/browser-dash/rtl9.mpd"
+        "http://rezofoot.tv/rtl-9/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -2252,7 +2252,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://streaming1.medi1tv.com/live/smil:medi1fr.smil/playlist.m3u8"
+        "https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -2269,7 +2269,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://streaming1.medi1tv.com/live/smil:medi1ar.smil/playlist.m3u8"
+        "https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-arabic_g90v4ec/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -2286,7 +2286,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://streaming1.medi1tv.com/live/smil:medi1tv.smil/playlist.m3u8"
+        "https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-maghreb_jnbspmg/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -2354,7 +2354,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://80.79.6.221:25461/smash/public/21"
+        "https://2-fss-1.streamhoster.com/pl_148/201830-1293592-1/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -2476,7 +2476,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://58c04fb1d143f.streamlock.net/omroeplingewaard_1/omroeplingewaard_1/playlist.m3u8"
+        "https://highvolume02.streampartner.nl/omroeplingewaard_1/omroeplingewaard_1/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -2765,7 +2765,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://cdn-01.bonus-tv.ru/gsl/playlist.m3u8"
+        "https://unlimited1-us.dps.live/perfiltv/perfiltv.smil/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -2867,7 +2867,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://stream2.taksimbilisim.com:1935/alanyatv/alanyatv.smil/playlist.m3u8"
+        "https://cdn-alanyatv.yayin.com.tr/alanyatv/alanyatv/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3022,7 +3022,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://cors.tundracast.com:2000/https://streamer1.nexgen.bz/AMC/index.m3u8"
+        "http://23.239.31.26:8989/amc/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3160,7 +3160,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://fl4.moveonjoy.com/CNBC/index.m3u8"
+        "http://rezofoot.tv/CNBC/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3194,7 +3194,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "http://23.237.104.106:8080/USA_FOX_NEWS/index.m3u8"
+        "http://84.17.50.102/fox/index.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3398,7 +3398,7 @@
     "signals": {
       "iframe_url": [],
       "m3u8_url": [
-        "https://livetv-fa.tubi.video/kris/playlist.m3u8"
+        "https://jmp2.uk/plu-5459795fc9f133a519bc0bef.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -3452,9 +3452,7 @@
         "https://geo.dailymotion.com/player/x5poh.html?video=x82ug5r&autoplay=true&volume=0"
       ],
       "m3u8_url": [
-        "https://cdnesmain.telesur.ultrabase.net/mbliveMain/hd/playlist.m3u8",
-        "https://cdnesmain.telesur.ultrabase.net/mbliveMain/480p/playlist.m3u8",
-        "https://cdnesmain.telesur.ultrabase.net/mbliveMain/360p/playlist.m3u8"
+        "https://mblenmain01.telesur.ultrabase.net/mblivev3/480p/playlist.m3u8"
       ],
       "yt_id": "UCh57chOa8G811mvbqHBqxlw",
       "yt_embed": "",
