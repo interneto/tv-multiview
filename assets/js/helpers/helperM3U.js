@@ -1,6 +1,6 @@
 export async function M3U_A_JSON(m3u) {
     const channels = {};
-    const lines = m3u.split('\n').filter(line => line.trim() !== '');
+    const lines = m3u.split('\n').filter((line) => line.trim() !== '');
 
     for (let i = 1; i < lines.length; i++) {
         const channelInfo = lines[i].match(/([^\s]+)="([^"]+)"/g);
@@ -12,19 +12,21 @@ export async function M3U_A_JSON(m3u) {
             }, {});
 
             // Extraer el nombre del canal correctamente, incluso si hay atributos extra antes de la coma
-            const NOMBRE_CANAL = lines[i].substring(lines[i].lastIndexOf(',') + 1).trim() || 'Nombre canal no encontrado';
+            const NOMBRE_CANAL =
+                lines[i].substring(lines[i].lastIndexOf(',') + 1).trim() ||
+                'Nombre canal no encontrado';
 
-            const LOGO_IMG = attributes['tvg-logo'] ?? "";
-            const GROUP_TITLE_ID = attributes['group-title']?.toLowerCase() ?? "";
+            const LOGO_IMG = attributes['tvg-logo'] ?? '';
+            const GROUP_TITLE_ID = attributes['group-title']?.toLowerCase() ?? '';
 
             const TVG_ID = attributes['tvg-id'] ?? `canal-m3u8-${i}.`;
-            let [NOMBRE_CANAL_PARA_ID, COUNTRY_ID = ""] = TVG_ID.toLowerCase().split('.');
+            let [NOMBRE_CANAL_PARA_ID, COUNTRY_ID = ''] = TVG_ID.toLowerCase().split('.');
             if (COUNTRY_ID.includes('@')) {
                 COUNTRY_ID = COUNTRY_ID.split('@')[0];
             }
 
             // Buscar la URL m3u8 saltando líneas #EXTVLCOPT
-            let m3u8_url = "";
+            let m3u8_url = '';
             let j = i + 1;
             while (j < lines.length) {
                 if (!lines[j].startsWith('#')) {
@@ -35,19 +37,19 @@ export async function M3U_A_JSON(m3u) {
             }
 
             channels[NOMBRE_CANAL_PARA_ID] = {
-                "name": NOMBRE_CANAL,
-                "logo": LOGO_IMG,
-                "signals": {
-                    "iframe_url": [],
-                    "m3u8_url": [m3u8_url],
-                    "yt_id": "",
-                    "yt_embed": "",
-                    "yt_playlist": "",
-                    "twitch_id": ""
+                name: NOMBRE_CANAL,
+                logo: LOGO_IMG,
+                signals: {
+                    iframe_url: [],
+                    m3u8_url: [m3u8_url],
+                    yt_id: '',
+                    yt_embed: '',
+                    yt_playlist: '',
+                    twitch_id: '',
                 },
-                "website": "",
-                "category": GROUP_TITLE_ID,
-                "country": COUNTRY_ID,
+                website: '',
+                category: GROUP_TITLE_ID,
+                country: COUNTRY_ID,
             };
         }
     }

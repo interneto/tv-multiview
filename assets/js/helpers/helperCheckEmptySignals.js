@@ -1,9 +1,9 @@
-import { listChannels } from "../channelsData.js";
+import { listChannels } from '../channelsData.js';
 
 export function revisarSeñalesVacias(canalId) {
     const signals = listChannels?.[canalId]?.signals;
     if (signals) {
-        const todasLasSeñalesVacias = Object.values(signals).every(señal => {
+        const todasLasSeñalesVacias = Object.values(signals).every((señal) => {
             if (typeof señal === 'undefined' || señal === null) {
                 return true;
             } else if (Array.isArray(señal)) {

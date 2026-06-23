@@ -1,1163 +1,2022 @@
 <!doctype html>
 <html lang="es">
-<!--     
+    <!--     
     tv-multiview v0.20
     by interneto 
     https://github.com/interneto/tv-multiview
 -->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="dark light">
-    <base target="_blank">
-    <title>TV Multiview | Monitor de canales en vivo</title>
-    <meta name="description"
-        content="PWA de codigo abierto para monitorear canales de TV en vivo, comparar multiples senales en una cuadricula y alternar a un modo de vision unica." />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- bootstrap icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- video-js -->
-    <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
-    <!-- tv-multiview -->
-    <!-- Preload main stylesheet to reduce flash of unstyled content -->
-    <link rel="preload" href="assets/css/style.css" as="style" onload="this.rel='stylesheet'">
-    <noscript>
-        <link href="assets/css/style.css" rel="stylesheet">
-    </noscript>
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="TV Multiview">
-    <meta property="og:url" content="https://interneto.github.io/tv-multiview/">
-    <meta property="og:description"
-        content="Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente.">
-    <meta property="og:image" content="assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp">
-    <!-- Twitter Card-->
-    <meta name="twitter:card"
-        content="PWA Código Abierto para ver/comparar preseleccionadas transmisiones de noticias provenientes de Chile (y el mundo).">
-    <meta property="twitter:domain" content="interneto.github.io">
-    <meta property="twitter:url" content="https://interneto.github.io/tv-multiview/">
-    <meta name="twitter:title" content="TV Multiview">
-    <meta name="twitter:description"
-        content="Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente.">
-    <meta name="twitter:image" content="assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp">
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <!-- isMobile -->
-    <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
-    <!-- Service worker -->
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5efe6" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101417" />
-    <link rel="manifest" href="site.webmanifest">
-    <!-- Service worker notice: native install banner will be handled by browser when appropriate -->
-    <script type="module">
-        import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
-        const el = document.createElement('pwa-update');
-        el.swpath = "pwabuilder-sw.js"
-        el.updatemessage = "Nueva versión disponible";
-        el.offlineToastDuration = 2000;
-        document.body.appendChild(el);
-    </script>
-    <!-- Sortable -->
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <!-- pwa-install -->
-    <script src="https://unpkg.com/@khmyznikov/pwa-install@0.3.5/dist/pwa-install.bundle.js"></script>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <!-- CSP: script-src acotado a los CDN usados (principal vector XSS). img/media/connect/frame
+         quedan en https: porque los canales embeben iframes y streams de hosts arbitrarios.
+         'unsafe-inline' en script/style es necesario para los scripts/estilos inline propios. -->
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https:; object-src 'none'; base-uri 'self'; form-action 'self'"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="dark light" />
+        <base target="_blank" />
+        <title>TV Multiview | Monitor de canales en vivo</title>
+        <meta
+            name="description"
+            content="PWA de codigo abierto para monitorear canales de TV en vivo, comparar multiples senales en una cuadricula y alternar a un modo de vision unica."
+        />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+        <link rel="preconnect" href="https://unpkg.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
+        <!-- bootstrap icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+        <!-- video-js -->
+        <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet" />
+        <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
+        <!-- tv-multiview -->
+        <!-- Preload main stylesheet to reduce flash of unstyled content -->
+        <link
+            rel="preload"
+            href="assets/css/style.css"
+            as="style"
+            onload="this.rel = 'stylesheet'"
+        />
+        <noscript>
+            <link href="assets/css/style.css" rel="stylesheet" />
+        </noscript>
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="TV Multiview" />
+        <meta property="og:url" content="https://interneto.github.io/tv-multiview/" />
+        <meta
+            property="og:description"
+            content="Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente."
+        />
+        <meta
+            property="og:image"
+            content="assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp"
+        />
+        <!-- Twitter Card-->
+        <meta
+            name="twitter:card"
+            content="PWA Código Abierto para ver/comparar preseleccionadas transmisiones de noticias provenientes de Chile (y el mundo)."
+        />
+        <meta property="twitter:domain" content="interneto.github.io" />
+        <meta property="twitter:url" content="https://interneto.github.io/tv-multiview/" />
+        <meta name="twitter:title" content="TV Multiview" />
+        <meta
+            name="twitter:description"
+            content="Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente."
+        />
+        <meta
+            name="twitter:image"
+            content="assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp"
+        />
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+        <!-- isMobile -->
+        <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+        <!-- Service worker -->
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5efe6" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101417" />
+        <link rel="manifest" href="site.webmanifest" />
+        <!-- Service worker notice: native install banner will be handled by browser when appropriate -->
+        <script type="module">
+            import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+            const el = document.createElement('pwa-update');
+            el.swpath = 'pwabuilder-sw.js';
+            el.updatemessage = 'Nueva versión disponible';
+            el.offlineToastDuration = 2000;
+            document.body.appendChild(el);
+        </script>
+        <!-- Sortable -->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <!-- pwa-install -->
+        <script src="https://unpkg.com/@khmyznikov/pwa-install@0.3.5/dist/pwa-install.bundle.js"></script>
+    </head>
 
-<body>
-    <a class="skip-link" href="#container-vision-cuadricula" target="_self">Saltar al contenido principal</a>
+    <body>
+        <a class="skip-link" href="#container-vision-cuadricula" target="_self"
+            >Saltar al contenido principal</a
+        >
+        <!-- Barra de navegación con atajos de teclado -->
+        <nav aria-label="Atajos de teclado" class="d-none">
+            <a href="#container-vision-cuadricula" accesskey="1"></a>
+            <a href="#navbar" accesskey="2"></a>
+        </nav>
 
-    <!-- Toast container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container" aria-live="polite"
-        aria-relevant="additions text">
-    </div>
-
-    <!-- Alerta error carga canales -->
-    <div class="position-fixed overflow-hidden vw-100 vh-100 bg-dark-subtle d-flex flex-column align-items-center justify-content-center p-5 d-none gap-3"
-        id="alerta-error-carga-canales">
-        <h1>(╥﹏╥)</h1>
-        <h1>Ha ocurrido un error al intentar cargar el archivo que contiene los canales</h1>
-        <button type="button" class="btn btn-light" onclick="location.reload()">
-            <i class="bi bi-arrow-clockwise"></i> Pulsa para recargar
-        </button>
-        <button type="button" class="btn btn-danger" id="boton-borrar-localstorage-no-carga-canales"
-            data-bs-dismiss="modal" data-bs-toggle="offcanvas">
-            <strong><i class="bi bi-trash3"></i> Reiniciar almacenamiento local</strong>
-        </button>
-
-        <span class="text-secondary fs-6 mt-5" id="span-contenedor-error"></span>
-    </div>
-
-    <!-- Imagen y logo del fondo -->
-    <div class="fondo-global">
-        <section id="container-tarjeta-logo-background"> <!-- tarjeta logo -->
-            <div
-                class="position-absolute top-50 start-50 translate-middle border border-light-subtle rounded-5 shadow cursor-default-en-hover user-select-none overflow-hidden">
-                <div
-                    class="tarjeta-logo-background bg-transparent bg-blur px-5 pb-4 pt-5 d-flex flex-column justify-content-center align-items-center">
-                    <p class="hero-kicker">Monitor de TV en vivo</p>
-                    <div class="position-relative bg-light-subtle p-3 rounded-4 shadow" tabindex="-1">
-                        <img src="assets/favicon/android-chrome-512x512.png" alt="logo tv-multiview">
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-                            <i class="badge bg-secondary">v0.20</i>
-                        </span>
-                    </div>
-                    <p class="display-1 gradient-text">tv-multiview</p>
-                    <p class="hero-copy text-center mb-0">Compara noticias y transmisiones en paralelo, alterna entre
-                        cuadricula y enfoque unico, y conserva tu configuracion en este mismo dispositivo.</p>
-                    <div class="hero-highlights" aria-label="Resumen rapido del sitio">
-                        <span class="app-pill">PWA instalable</span>
-                        <span class="app-pill">Modo cuadrícula</span>
-                        <span class="app-pill">Vision unica</span>
-                    </div>
-                    <div class="hero-metrics" aria-label="Estado actual de la interfaz">
-                        <span class="hero-metric"><strong data-ui-active-count>0</strong> <span data-ui-active-label>senales activas</span></span>
-                        <span class="hero-metric"><span data-ui-mode-label>Modo:</span> <strong data-ui-layout>Cuadricula</strong></span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Alerta noscript -->
-    <noscript>
+        <!-- Toast container -->
         <div
-            class="bg-noscript z-9999 position-fixed overflow-hidden d-flex flex-column align-items-center justify-content-center vw-100 vh-100 p-5">
-            <h1>El sitio <strong>no</strong> funciona sin <strong>JavaScript</strong>.</h1>
-            <h2>Si lo has deshabilitado, por favor <strong>vuelve a activarlo</strong>.</h2>
-            <div class="wave"></div>
-        </div>
-    </noscript>
+            class="toast-container position-fixed bottom-0 end-0 p-3"
+            id="toast-container"
+            aria-live="polite"
+            aria-relevant="additions text"
+        ></div>
 
-    <!-- pwa-install -->
-    <pwa-install id="pwa-install" manifest-url="site.webmanifest"></pwa-install>
-
-    <!-- Dev helper: unregister SW and clear caches when running on localhost -->
-    <script>
-        (function() {
-            try {
-                const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '';
-                if (!isLocal) return;
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.getRegistrations()
-                        .then(regs => Promise.all(regs.map(r => r.unregister().then(ok => ({ scope: r.scope, unregistered: ok })))) )
-                        .then(results => console.log('Dev: service workers unregistered:', results))
-                        .catch(err => console.warn('Dev: error unregistering service workers', err));
-                }
-                if (window.caches) {
-                    caches.keys()
-                        .then(keys => Promise.all(keys.map(k => caches.delete(k))))
-                        .then(results => console.log('Dev: cache keys deleted:', results))
-                        .catch(err => console.warn('Dev: error clearing caches', err));
-                }
-                console.info('Dev: attempted to unregister SW and clear caches. Please do a hard reload (Ctrl+F5).');
-            } catch (e) {
-                console.warn('Dev: unexpected error in SW/cache cleanup script', e);
-            }
-        })();
-    </script>
-
-    <!-- Alerta tras borrado localstorage -->
-    <div id="alerta-borrado-localstorage" class="z-9999 position-fixed overflow-hidden vw-100 vh-100 bg-flicker d-none">
-        <div class="d-flex flex-column align-items-center justify-content-center bg-dark-subtle p-5 vw-100 vh-100">
-            <h1 class="user-select-none">
-                ヾ( ˃ᴗ˂ )◞ • *✰
-            </h1>
-            <h1 class="text-flicker user-select-none">
-                Tu almacenamiento local ha sido <strong>eliminado</strong>, prueba recargando el sitio/PWA
-            </h1>
-            <button type="button" class="btn btn-lg btn-light mt-5" onclick="location.reload()">
+        <!-- Alerta error carga canales -->
+        <div
+            class="position-fixed overflow-hidden vw-100 vh-100 bg-dark-subtle d-flex flex-column align-items-center justify-content-center p-5 d-none gap-3"
+            id="alerta-error-carga-canales"
+            role="alert"
+            aria-live="assertive"
+        >
+            <h1>(╥﹏╥)</h1>
+            <h1>Ha ocurrido un error al intentar cargar el archivo que contiene los canales</h1>
+            <button type="button" class="btn btn-light" onclick="location.reload()">
                 <i class="bi bi-arrow-clockwise"></i> Pulsa para recargar
             </button>
-        </div>
-    </div>
-
-    <!-- Navbar -->
-    <nav class='navbar navbar-expand-lg bg-dark-subtle shadow-sm p-2' id="navbar" aria-label="Barra principal">
-        <div class="container-fluid">
-            <a href="./" target="_self" class="gradient-text me-2 fs-4 d-none">tv-multiview</a>
-            <div class="btn-group" role="group" aria-label="grupo de botones para abrir selector canales">
-                <button type="button" class="btn btn-sm btn-indigo rounded-start-pill" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvas-canales" aria-controls="offcanvas-canales"
-                    aria-label="Abrir panel lateral de canales"><i class="bi bi-chevron-right"
-                        title="Panel lateral de canales"></i>
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-indigo rounded-end-pill" data-bs-toggle="modal"
-                    data-bs-target="#modal-canales" aria-label="Abrir selector completo de canales">
-                    <i class="bi bi-collection-play"></i> Canales
-                </button>
-            </div>
-
-            <div class="navbar-live-shell ms-2">
-                <div class="navbar-status-pills" aria-label="Resumen del estado actual">
-                    <span class="app-pill app-pill-compact"><i class="bi bi-grid-3x2-gap"></i> <span
-                            data-ui-layout>Cuadricula</span></span>
-                    <span class="app-pill app-pill-compact"><i class="bi bi-broadcast"></i> <span
-                            data-ui-active-count>0</span> <span data-ui-active-label>senales activas</span></span>
-                </div>
-            </div>
-
-            <div class="btn-group btn-group-sm language-switcher ms-2" role="group" aria-label="Selector de idioma">
-                <button type="button" class="btn btn-outline-secondary" data-language-option="es">ES</button>
-                <button type="button" class="btn btn-outline-secondary" data-language-option="en">EN</button>
-            </div>
-
-            <!-- Mobile right-side settings button -->
-            <button type="button" class="btn btn-sm btn-outline-secondary d-lg-none ms-auto" data-bs-toggle="offcanvas" data-bs-target="#sidepanel" aria-controls="sidepanel" title="Ajustes" aria-label="Abrir panel de ajustes">
-                <i class="bi bi-gear"></i>
+            <button
+                type="button"
+                class="btn btn-danger"
+                id="boton-borrar-localstorage-no-carga-canales"
+                data-bs-dismiss="modal"
+                data-bs-toggle="offcanvas"
+            >
+                <strong><i class="bi bi-trash3"></i> Reiniciar almacenamiento local</strong>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbar-toggler">
-                <ul class="navbar-nav ms-auto">
-                    <a class='dropdown-item' href='#' data-bs-toggle="offcanvas" data-bs-target="#sidepanel"><i
-                            class="bi bi-gear"></i> Ajustes
-                    </a>
-                </ul>
+            <span class="text-secondary fs-6 mt-5" id="span-contenedor-error"></span>
+        </div>
+
+        <!-- Imagen y logo del fondo -->
+        <div class="fondo-global">
+            <section id="container-tarjeta-logo-background" aria-label="Presentación del sitio">
+                <!-- tarjeta logo -->
+                <div
+                    class="position-absolute top-50 start-50 translate-middle border border-light-subtle rounded-5 shadow cursor-default-en-hover user-select-none overflow-hidden"
+                >
+                    <div
+                        class="tarjeta-logo-background bg-transparent bg-blur px-5 pb-4 pt-5 d-flex flex-column justify-content-center align-items-center"
+                    >
+                        <p class="hero-kicker">Monitor de TV en vivo</p>
+                        <div
+                            class="position-relative bg-light-subtle p-3 rounded-4 shadow"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="assets/favicon/android-chrome-512x512.png"
+                                alt="logo tv-multiview"
+                            />
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                            >
+                                <i class="badge bg-secondary">v0.20</i>
+                            </span>
+                        </div>
+                        <p class="display-1 gradient-text" role="heading" aria-level="1">tv-multiview</p>
+                        <p class="hero-copy text-center mb-0">
+                            Compara noticias y transmisiones en paralelo, alterna entre cuadricula y
+                            enfoque unico, y conserva tu configuracion en este mismo dispositivo.
+                        </p>
+                        <div class="hero-highlights" aria-label="Resumen rapido del sitio">
+                            <span class="app-pill">PWA instalable</span>
+                            <span class="app-pill">Modo cuadrícula</span>
+                            <span class="app-pill">Vision unica</span>
+                        </div>
+                        <div class="hero-metrics" aria-label="Estado actual de la interfaz">
+                            <span class="hero-metric"
+                                ><strong data-ui-active-count>0</strong>
+                                <span data-ui-active-label>senales activas</span></span
+                            >
+                            <span class="hero-metric"
+                                ><span data-ui-mode-label>Modo:</span>
+                                <strong data-ui-layout>Cuadricula</strong></span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Alerta noscript -->
+        <noscript>
+            <div
+                class="bg-noscript z-9999 position-fixed overflow-hidden d-flex flex-column align-items-center justify-content-center vw-100 vh-100 p-5"
+            >
+                <h1>El sitio <strong>no</strong> funciona sin <strong>JavaScript</strong>.</h1>
+                <h2>Si lo has deshabilitado, por favor <strong>vuelve a activarlo</strong>.</h2>
+                <div class="wave"></div>
+            </div>
+        </noscript>
+
+        <!-- pwa-install -->
+        <pwa-install id="pwa-install" manifest-url="site.webmanifest"></pwa-install>
+
+        <!-- Dev helper: unregister SW and clear caches when running on localhost -->
+        <script>
+            (function () {
+                try {
+                    const isLocal =
+                        location.hostname === 'localhost' ||
+                        location.hostname === '127.0.0.1' ||
+                        location.hostname === '';
+                    if (!isLocal) return;
+                    if ('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .getRegistrations()
+                            .then((regs) =>
+                                Promise.all(
+                                    regs.map((r) =>
+                                        r
+                                            .unregister()
+                                            .then((ok) => ({ scope: r.scope, unregistered: ok })),
+                                    ),
+                                ),
+                            )
+                            .then((results) =>
+                                console.log('Dev: service workers unregistered:', results),
+                            )
+                            .catch((err) =>
+                                console.warn('Dev: error unregistering service workers', err),
+                            );
+                    }
+                    if (window.caches) {
+                        caches
+                            .keys()
+                            .then((keys) => Promise.all(keys.map((k) => caches.delete(k))))
+                            .then((results) => console.log('Dev: cache keys deleted:', results))
+                            .catch((err) => console.warn('Dev: error clearing caches', err));
+                    }
+                    console.info(
+                        'Dev: attempted to unregister SW and clear caches. Please do a hard reload (Ctrl+F5).',
+                    );
+                } catch (e) {
+                    console.warn('Dev: unexpected error in SW/cache cleanup script', e);
+                }
+            })();
+        </script>
+
+        <!-- Alerta tras borrado localstorage -->
+        <div
+            id="alerta-borrado-localstorage"
+            class="z-9999 position-fixed overflow-hidden vw-100 vh-100 bg-flicker d-none"
+        >
+            <div
+                class="d-flex flex-column align-items-center justify-content-center bg-dark-subtle p-5 vw-100 vh-100"
+            >
+                <h1 class="user-select-none">ヾ( ˃ᴗ˂ )◞ • *✰</h1>
+                <h1 class="text-flicker user-select-none">
+                    Tu almacenamiento local ha sido <strong>eliminado</strong>, prueba recargando el
+                    sitio/PWA
+                </h1>
+                <button type="button" class="btn btn-lg btn-light mt-5" onclick="location.reload()">
+                    <i class="bi bi-arrow-clockwise"></i> Pulsa para recargar
+                </button>
             </div>
         </div>
-    </nav>
 
-    <!-- Alerta sin conexión a internet -->
-    <div class="alert alert-danger alert-dismissible fade show mb-0 d-none" role="alert" id="alerta-internet-status">
-        <i class="bi bi-cloud-slash bg-danger-subtle rounded-3 p-1"></i> Sin conexión a internet
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+        <!-- Navbar -->
+        <nav
+            class="navbar navbar-expand-lg bg-dark-subtle shadow-sm p-2"
+            id="navbar"
+            aria-label="Barra principal"
+        >
+            <div class="container-fluid">
+                <a href="./" target="_self" class="gradient-text me-2 fs-4 d-none">tv-multiview</a>
+                <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="grupo de botones para abrir selector canales"
+                >
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-indigo rounded-start-pill"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvas-canales"
+                        aria-controls="offcanvas-canales"
+                        aria-label="Abrir panel lateral de canales"
+                    >
+                        <i class="bi bi-chevron-right" title="Panel lateral de canales"></i>
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-indigo rounded-end-pill"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-canales"
+                        aria-label="Abrir selector completo de canales"
+                    >
+                        <i class="bi bi-collection-play"></i> Canales
+                    </button>
+                </div>
 
-    <!-- Grid canales -->
-    <main class='vh-100 app-shell' aria-label="Contenido principal de canales">
-        <!-- version vision cuadricula -->
-        <div class="row g-0 h-100" id="container-vision-cuadricula">
+                <div class="navbar-live-shell ms-2">
+                    <div class="navbar-status-pills" aria-label="Resumen del estado actual">
+                        <span class="app-pill app-pill-compact"
+                            ><i class="bi bi-grid-3x2-gap"></i>
+                            <span data-ui-layout>Cuadricula</span></span
+                        >
+                        <span class="app-pill app-pill-compact"
+                            ><i class="bi bi-broadcast"></i> <span data-ui-active-count>0</span>
+                            <span data-ui-active-label>senales activas</span></span
+                        >
+                    </div>
+                </div>
+
+                <div
+                    class="btn-group btn-group-sm language-switcher ms-2"
+                    role="group"
+                    aria-label="Selector de idioma"
+                >
+                    <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-language-option="es"
+                    >
+                        ES
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-language-option="en"
+                    >
+                        EN
+                    </button>
+                </div>
+
+                <!-- Mobile right-side settings button -->
+                <button
+                    type="button"
+                    class="btn btn-sm btn-outline-info d-none d-lg-inline-block me-1"
+                    id="boton-compartir-vista"
+                    title="Compartir vista actual"
+                    aria-label="Compartir enlace con la vista actual de canales"
+                >
+                    <i class="bi bi-share"></i>
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary d-lg-none ms-auto"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#sidepanel"
+                    aria-controls="sidepanel"
+                    title="Ajustes"
+                    aria-label="Abrir panel de ajustes"
+                >
+                    <i class="bi bi-gear"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar-toggler">
+                    <ul class="navbar-nav ms-auto">
+                        <a
+                            class="dropdown-item"
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#sidepanel"
+                            ><i class="bi bi-gear"></i> Ajustes
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Alerta sin conexión a internet -->
+        <div
+            class="alert alert-danger alert-dismissible fade show mb-0 d-none"
+            role="alert"
+            id="alerta-internet-status"
+        >
+            <i class="bi bi-cloud-slash bg-danger-subtle rounded-3 p-1"></i> Sin conexión a internet
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+            ></button>
         </div>
 
-        <!-- version vision unica -->
-        <div class='vh-100 w-100 position-absolute overflow-hidden d-none' id="container-vision-unica">
-            <div class='vision-unica-grid bg-dark-subtle h-100'>
-                <div class="h-100 overflow-hidden p-2 d-flex flex-column shadow rounded-3 border border-light-subtle"
-                    id="panel-canales-vision-unica">
+        <!-- Grid canales -->
+        <main class="vh-100 app-shell" aria-label="Contenido principal de canales">
+            <!-- version vision cuadricula -->
+            <div class="row g-0 h-100" id="container-vision-cuadricula"></div>
 
-                    <button type="button" data-bs-toggle="tooltip"
-                        data-bs-title="Arrastrar y mover este panel [izquierda-derecha]"
-                        id="boton-mover-panel-canales-vision-unica"
-                        class="btn btn-sm btn-dark-subtle p-0 px-1 d-flex rounded-3 clase-para-mover mb-2">
-                        Mover <i class="bi bi-arrows-move ms-auto"></i>
-                    </button>
+            <!-- version vision unica -->
+            <div
+                class="vh-100 w-100 position-absolute overflow-hidden d-none"
+                id="container-vision-unica"
+            >
+                <div class="vision-unica-grid bg-dark-subtle h-100">
+                    <div
+                        class="h-100 overflow-hidden p-2 d-flex flex-column shadow rounded-3 border border-light-subtle"
+                        id="panel-canales-vision-unica"
+                    >
+                        <button
+                            type="button"
+                            data-bs-toggle="tooltip"
+                            data-bs-title="Arrastrar y mover este panel [izquierda-derecha]"
+                            id="boton-mover-panel-canales-vision-unica"
+                            class="btn btn-sm btn-dark-subtle p-0 px-1 d-flex rounded-3 clase-para-mover mb-2"
+                        >
+                            Mover <i class="bi bi-arrows-move ms-auto"></i>
+                        </button>
 
-                    <div class="d-flex flex-column">
-                        <div class="form-floating w-100">
-                            <input type="search" class="form-control rounded-3" id="vision-unica-input-filtro"
-                                placeholder="Buscar por pais o canal" aria-label="Buscar por pais o canal en vision unica">
-                            <label for="vision-unica-input-filtro">Buscar por pais o canal</label>
+                        <div class="d-flex flex-column">
+                            <div class="form-floating w-100">
+                                <input
+                                    type="search"
+                                    class="form-control rounded-3"
+                                    id="vision-unica-input-filtro"
+                                    placeholder="Buscar por pais o canal"
+                                    aria-label="Buscar por pais o canal en vision unica"
+                                />
+                                <label for="vision-unica-input-filtro"
+                                    >Buscar por pais o canal</label
+                                >
+                            </div>
+                            <div class="bg-dark-subtle my-2 rounded-4 d-flex flex-column">
+                                <div class="d-flex gap-2">
+                                    <button
+                                        class="btn btn-sm btn-dark w-100 rounded-pill"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#offcanvas-collapse-btn-group"
+                                        aria-expanded="false"
+                                        aria-controls="offcanvas-collapse-btn-group"
+                                    >
+                                        <i class="bi bi-funnel"></i> Filtrar por pais
+                                    </button>
+                                    <div class="ms-auto">
+                                        <div class="btn-group" role="group">
+                                            <button
+                                                type="button"
+                                                class="btn btn-sm btn-dark dropdown-toggle rounded-pill"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false"
+                                            >
+                                                <i class="bi bi-sort-down"></i> Orden
+                                            </button>
+                                            <ul class="dropdown-menu p-2 rounded-4">
+                                                <li class="mb-1">
+                                                    <input
+                                                        type="radio"
+                                                        class="btn-check"
+                                                        name="btnradiovisionunica"
+                                                        id="vision-unica-boton-orden-ascendente"
+                                                        autocomplete="off"
+                                                    />
+                                                    <label
+                                                        class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                        for="vision-unica-boton-orden-ascendente"
+                                                    >
+                                                        <i class="bi bi-sort-alpha-down"></i>
+                                                        Ascendente
+                                                    </label>
+                                                </li>
+                                                <li class="my-1">
+                                                    <input
+                                                        type="radio"
+                                                        class="btn-check"
+                                                        name="btnradiovisionunica"
+                                                        id="vision-unica-boton-orden-descendente"
+                                                        autocomplete="off"
+                                                    />
+                                                    <label
+                                                        class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                        for="vision-unica-boton-orden-descendente"
+                                                    >
+                                                        <i class="bi bi-sort-alpha-up-alt"></i>
+                                                        Descendente
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input
+                                                        type="radio"
+                                                        class="btn-check"
+                                                        name="btnradiovisionunica"
+                                                        id="vision-unica-boton-orden-original"
+                                                        autocomplete="off"
+                                                        checked
+                                                    />
+                                                    <label
+                                                        class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                        for="vision-unica-boton-orden-original"
+                                                    >
+                                                        <i class="bi bi-arrow-clockwise"></i>
+                                                        Predeterminado
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collapse py-2" id="offcanvas-collapse-btn-group">
+                                    <div class="card card-body rounded-4">
+                                        <div
+                                            class="btn-group btn-group-sm container-btn-group px-1 scrollbar-thin-gray"
+                                            role="group"
+                                            aria-label="Toggle radio para grupo botones"
+                                            id="vision-unica-collapse-botones-listado-filtro-countries"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bg-dark-subtle my-2 rounded-4 d-flex flex-column">
+
+                        <div
+                            class="h-100 pt-0 bg-transparent scrollbar-thin-gray overflow-auto overflow-x-hidden"
+                        >
+                            <div
+                                class="vision-unica-body-canales"
+                                id="vision-unica-body-botones-canales"
+                            ></div>
+                            <!-- Mensaje alerta sin resultados offcanvas -->
+                            <div
+                                class="vision-unica-mensaje-alerta d-none shadow"
+                                tabindex="0"
+                                id="vision-unica-mensaje-alerta"
+                            >
+                                <div
+                                    class="d-flex flex-column rounded-3 justify-content-center align-items-center text-wrap h-100 bg-danger-subtle p-3"
+                                >
+                                    <p
+                                        class="fs-4 bg-danger p-3 rounded-3 overflow-auto"
+                                        style="max-height: 150px"
+                                    >
+                                        <i class="bi bi-backspace-reverse"></i> No se han encontrado
+                                        resultados para tu búsqueda (<span
+                                            class="text-break fst-italic"
+                                        ></span
+                                        >).
+                                    </p>
+                                    <div class="bg-danger bg-opacity-10 p-3 rounded-3">
+                                        <p>Sugerencias:</p>
+                                        <ul>
+                                            <li>
+                                                Asegúrate de que todas las palabras estén escritas
+                                                correctamente.
+                                            </li>
+                                            <li>Prueba diferentes palabras clave.</li>
+                                            <li>Prueba palabras en español.</li>
+                                            <li>Desactiva los filtros por country.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Mensaje alerta sin resultados -->
+                        </div>
+                    </div>
+
+                    <div
+                        class="h-100 w-100 bg-transparent rounded-3 border border-light-subtle shadow overflow-hidden"
+                        id="container-video-vision-unica"
+                    >
+                        <div
+                            class="d-flex justify-content-center align-items-center h-100 w-100"
+                            id="icono-sin-señal-vision-unica"
+                        >
+                            <p class="display-1"><i class="bi bi-camera-video-off"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Alerta tras guardado orden canales -->
+        <div class="position-fixed bottom-0 end-0 m-5 shadow d-none" id="alerta-guardado-canales">
+            <div
+                class="d-flex bg-info-subtle gap-2 align-items-center justify-content-between p-2 rounded-4 fs-smaller"
+            >
+                <i class="bi bi-floppy"></i> Guardando canales
+            </div>
+        </div>
+
+        <!-- Modal solo cambio canal activo -->
+        <div
+            class="modal fade"
+            id="modal-cambiar-canal"
+            tabindex="-1"
+            aria-labelledby="modal exclusivo cambio"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
+                <div class="modal-content bg-blur border-0">
+                    <div class="modal-header bg-transparent border-0 d-flex flex-column">
+                        <div class="form-floating w-100">
+                            <input
+                                class="form-control rounded-4"
+                                type="search"
+                                id="modal-cambiar-canal-input-filtro"
+                                placeholder="Escribe para buscar..."
+                            />
+                            <label for="modal-cambiar-canal-input-filtro"
+                                >Cambiar [<span id="label-para-name-canal-cambiar"></span>]
+                                por:</label
+                            >
+                        </div>
+
+                        <div
+                            class="w-100 bg-dark-subtle p-2 rounded-3 d-flex flex-column mt-2 rounded-4"
+                        >
                             <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-dark w-100 rounded-pill" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#offcanvas-collapse-btn-group"
-                                    aria-expanded="false" aria-controls="offcanvas-collapse-btn-group">
+                                <button
+                                    class="btn btn-sm btn-dark w-100 rounded-pill"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#modal-cambiar-canal-collapse-btn-group"
+                                    aria-expanded="false"
+                                    aria-controls="modal-cambiar-canal-collapse-btn-group"
+                                >
+                                    <i class="bi bi-funnel"></i> Filtrar por country
+                                </button>
+                                <div class="btn-group">
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-dark dropdown-toggle h-100 rounded-pill"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="bi bi-sort-down"></i>
+                                        Orden
+                                    </button>
+                                    <ul class="dropdown-menu p-2 rounded-4">
+                                        <li class="my-1">
+                                            <input
+                                                type="radio"
+                                                class="btn-check"
+                                                name="btnRadioAutocomplete"
+                                                id="modal-cambiar-canal-boton-orden-ascendente"
+                                                autocomplete="off"
+                                            />
+                                            <label
+                                                class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                for="modal-cambiar-canal-boton-orden-ascendente"
+                                                ><i class="bi bi-sort-alpha-down"></i>
+                                                Ascendente</label
+                                            >
+                                        </li>
+                                        <li class="my-1">
+                                            <input
+                                                type="radio"
+                                                class="btn-check"
+                                                name="btnRadioAutocomplete"
+                                                id="modal-cambiar-canal-boton-orden-descendente"
+                                                autocomplete="off"
+                                            />
+                                            <label
+                                                class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                for="modal-cambiar-canal-boton-orden-descendente"
+                                                ><i class="bi bi-sort-alpha-up-alt"></i>
+                                                Descendente</label
+                                            >
+                                        </li>
+                                        <li class="my-1">
+                                            <input
+                                                type="radio"
+                                                class="btn-check"
+                                                name="btnRadioAutocomplete"
+                                                id="modal-cambiar-canal-boton-orden-original"
+                                                autocomplete="off"
+                                                checked="checked"
+                                            />
+                                            <label
+                                                class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                for="modal-cambiar-canal-boton-orden-original"
+                                                ><i class="bi bi-arrow-clockwise"></i>
+                                                Predeterminado</label
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="collapse py-2" id="modal-cambiar-canal-collapse-btn-group">
+                                <div class="card card-body rounded-4">
+                                    <div
+                                        class="btn-group btn-group-sm container-btn-group"
+                                        role="group"
+                                        aria-label="Toggle radio para grupo botones"
+                                        id="modal-cambiar-canal-collapse-botones-listado-filtro-countries"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="modal-body vh-100 scrollbar-thin-gray bg-transparent rounded-bottom-3"
+                    >
+                        <div>
+                            <div
+                                class="modal-cambiar-canal-mensaje-alerta shadow d-none"
+                                tabindex="0"
+                                id="modal-cambiar-canal-mensaje-alerta"
+                            >
+                                <div
+                                    class="d-flex flex-column rounded-3 justify-content-center align-items-center text-wrap h-100 bg-danger-subtle p-3"
+                                >
+                                    <p
+                                        class="fs-4 bg-danger p-3 rounded-3 overflow-auto"
+                                        style="max-height: 150px"
+                                    >
+                                        <i class="bi bi-backspace-reverse"></i>
+                                        No se han encontrado resultados para tu búsqueda (<span
+                                            class="text-break fst-italic"
+                                        ></span
+                                        >).
+                                    </p>
+                                    <div class="bg-danger bg-opacity-10 p-3 rounded-3 text-start">
+                                        <ul>
+                                            <li>
+                                                Asegúrate de que todas las palabras estén escritas
+                                                correctamente.
+                                            </li>
+                                            <li>Prueba diferentes palabras clave.</li>
+                                            <li>Prueba palabras en español.</li>
+                                            <li>Desactiva los filtros por country.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="autocomplete-container shadow d-flex flex-column gap-2"
+                            id="modal-cambiar-canal-body-botones-canales"
+                        ></div>
+                    </div>
+
+                    <div
+                        class="modal-footer bg-transparent border-0 d-flex align-items-center justify-content-center"
+                    >
+                        <button
+                            type="button"
+                            class="btn btn-secondary rounded-pill d-flex justify-content-center align-items-center"
+                            data-bs-dismiss="modal"
+                            style="height: 2.5rem; width: 2.5rem"
+                        >
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal listado canales -->
+        <div
+            class="modal fade"
+            id="modal-canales"
+            tabindex="-1"
+            aria-labelledby="modal-canales-titulo"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                <div class="modal-content text-center bg-transparent bg-blur border-0 shadow">
+                    <div class="modal-header border-0">
+                        <div>
+                            <h5 class="modal-title text-light" id="modal-canales-titulo">
+                                Selecciona tus canales
+                            </h5>
+                            <p class="panel-description text-light-subtle mb-0">
+                                Explora el catalogo completo, filtra por pais y ordena rapidamente.
+                            </p>
+                        </div>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Cerrar"
+                        ></button>
+                    </div>
+
+                    <div class="modal-body vh-100 py-0 scrollbar-thin-gray">
+                        <div class="w-100 bg-dark-subtle p-2 rounded-4 mb-2 d-flex flex-column">
+                            <div class="d-flex gap-2">
+                                <button
+                                    class="btn btn-sm btn-dark w-100 rounded-pill"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#modal-collapse-btn-group"
+                                    aria-expanded="false"
+                                    aria-controls="modal-collapse-btn-group"
+                                >
                                     <i class="bi bi-funnel"></i> Filtrar por pais
                                 </button>
                                 <div class="ms-auto">
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-sm btn-dark dropdown-toggle rounded-pill"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-dark dropdown-toggle h-100 rounded-pill"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                        >
                                             <i class="bi bi-sort-down"></i> Orden
                                         </button>
                                         <ul class="dropdown-menu p-2 rounded-4">
                                             <li class="mb-1">
-                                                <input type="radio" class="btn-check" name="btnradiovisionunica"
-                                                    id="vision-unica-boton-orden-ascendente" autocomplete="off">
+                                                <input
+                                                    type="radio"
+                                                    class="btn-check"
+                                                    name="btnradio"
+                                                    id="modal-canales-boton-orden-ascendente"
+                                                    autocomplete="off"
+                                                />
                                                 <label
                                                     class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                                    for="vision-unica-boton-orden-ascendente">
+                                                    for="modal-canales-boton-orden-ascendente"
+                                                >
                                                     <i class="bi bi-sort-alpha-down"></i> Ascendente
                                                 </label>
                                             </li>
                                             <li class="my-1">
-                                                <input type="radio" class="btn-check" name="btnradiovisionunica"
-                                                    id="vision-unica-boton-orden-descendente" autocomplete="off">
+                                                <input
+                                                    type="radio"
+                                                    class="btn-check"
+                                                    name="btnradio"
+                                                    id="modal-canales-boton-orden-descendente"
+                                                    autocomplete="off"
+                                                />
                                                 <label
                                                     class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                                    for="vision-unica-boton-orden-descendente">
-                                                    <i class="bi bi-sort-alpha-up-alt"></i> Descendente
+                                                    for="modal-canales-boton-orden-descendente"
+                                                >
+                                                    <i class="bi bi-sort-alpha-up-alt"></i>
+                                                    Descendente
                                                 </label>
                                             </li>
                                             <li>
-                                                <input type="radio" class="btn-check" name="btnradiovisionunica"
-                                                    id="vision-unica-boton-orden-original" autocomplete="off" checked>
+                                                <input
+                                                    type="radio"
+                                                    class="btn-check"
+                                                    name="btnradio"
+                                                    id="modal-canales-boton-orden-original"
+                                                    autocomplete="off"
+                                                    checked
+                                                />
                                                 <label
                                                     class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                                    for="vision-unica-boton-orden-original">
-                                                    <i class="bi bi-arrow-clockwise"></i> Predeterminado
+                                                    for="modal-canales-boton-orden-original"
+                                                >
+                                                    <i class="bi bi-arrow-clockwise"></i>
+                                                    Predeterminado
                                                 </label>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="collapse py-2" id="offcanvas-collapse-btn-group">
-                                <div class="card card-body rounded-4">
-                                    <div class="btn-group btn-group-sm container-btn-group px-1 scrollbar-thin-gray"
-                                        role="group" aria-label="Toggle radio para grupo botones"
-                                        id='vision-unica-collapse-botones-listado-filtro-countries'>
 
+                            <div class="collapse py-2" id="modal-collapse-btn-group">
+                                <div class="card card-body rounded-4">
+                                    <div
+                                        class="btn-group btn-group-sm container-btn-group"
+                                        role="group"
+                                        aria-label="Toggle radio para grupo botones"
+                                        id="modal-canales-collapse-botones-listado-filtro-countries"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <!-- Mensaje alerta sin resultados modal -->
+                            <div
+                                class="modal-canales-mensaje-alerta d-none shadow"
+                                tabindex="0"
+                                id="modal-canales-mensaje-alerta"
+                            >
+                                <div
+                                    class="d-flex flex-column rounded-3 justify-content-center align-items-center text-wrap h-100 bg-danger-subtle p-3"
+                                >
+                                    <p
+                                        class="fs-4 bg-danger p-3 rounded-3 overflow-auto"
+                                        style="max-height: 150px"
+                                    >
+                                        <i class="bi bi-backspace-reverse"></i> No se han encontrado
+                                        resultados para tu búsqueda (<span
+                                            class="text-break fst-italic"
+                                        ></span
+                                        >).
+                                    </p>
+                                    <div class="bg-danger bg-opacity-10 p-3 rounded-3 text-start">
+                                        <p>Sugerencias:</p>
+                                        <ul>
+                                            <li>
+                                                Asegúrate de que todas las palabras estén escritas
+                                                correctamente.
+                                            </li>
+                                            <li>Prueba diferentes palabras clave.</li>
+                                            <li>Prueba palabras en español.</li>
+                                            <li>Desactiva los filtros por country.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="h-100 pt-0 bg-transparent scrollbar-thin-gray overflow-auto overflow-x-hidden ">
-                        <div class="vision-unica-body-canales" id="vision-unica-body-botones-canales">
-                        </div>
-                        <!-- Mensaje alerta sin resultados offcanvas -->
-                        <div class="vision-unica-mensaje-alerta d-none shadow" tabindex="0"
-                            id="vision-unica-mensaje-alerta">
+                            <!-- /Mensaje alerta sin resultados -->
                             <div
-                                class="d-flex flex-column rounded-3 justify-content-center align-items-center text-wrap h-100 bg-danger-subtle p-3">
-                                <p class="fs-4 bg-danger p-3 rounded-3 overflow-auto" style="max-height: 150px;">
-                                    <i class="bi bi-backspace-reverse"></i> No se han encontrado resultados para tu
-                                    búsqueda
-                                    (<span class="text-break fst-italic"></span>).
-                                </p>
-                                <div class="bg-danger bg-opacity-10 p-3 rounded-3">
-                                    <p>Sugerencias:</p>
-                                    <ul>
-                                        <li>Asegúrate de que todas las palabras estén escritas correctamente.</li>
-                                        <li>Prueba diferentes palabras clave.</li>
-                                        <li>Prueba palabras en español.</li>
-                                        <li>Desactiva los filtros por country.</li>
-                                    </ul>
-                                </div>
-                            </div>
+                                class="modal-body-canales"
+                                id="modal-canales-body-botones-canales"
+                            ></div>
                         </div>
-                        <!-- /Mensaje alerta sin resultados -->
-                    </div>
-                </div>
-
-                <div class="h-100 w-100 bg-transparent rounded-3 border border-light-subtle shadow overflow-hidden"
-                    id="container-video-vision-unica">
-                    <div class="d-flex justify-content-center align-items-center h-100 w-100"
-                        id="icono-sin-señal-vision-unica">
-                        <p class="display-1"><i class="bi bi-camera-video-off"></i></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Alerta tras guardado orden canales -->
-    <div class="position-fixed bottom-0 end-0 m-5 shadow d-none" id="alerta-guardado-canales">
-        <div class="d-flex bg-info-subtle gap-2 align-items-center justify-content-between p-2 rounded-4 fs-smaller">
-            <i class="bi bi-floppy"></i> Guardando canales
-        </div>
-    </div>
-
-    <!-- Modal solo cambio canal activo -->
-    <div class="modal fade" id="modal-cambiar-canal" tabindex="-1" aria-labelledby="modal exclusivo cambio"
-        aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
-            <div class="modal-content bg-blur border-0">
-                <div class="modal-header bg-transparent border-0 d-flex flex-column">
-                    <div class="form-floating w-100">
-                        <input class="form-control rounded-4" type="search" id="modal-cambiar-canal-input-filtro"
-                            placeholder="Escribe para buscar..." />
-                        <label for="modal-cambiar-canal-input-filtro">Cambiar [<span
-                                id="label-para-name-canal-cambiar"></span>] por:</label>
                     </div>
 
-                    <div class="w-100 bg-dark-subtle p-2 rounded-3 d-flex flex-column mt-2 rounded-4">
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-sm btn-dark w-100 rounded-pill" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#modal-cambiar-canal-collapse-btn-group"
-                                aria-expanded="false" aria-controls="modal-cambiar-canal-collapse-btn-group">
-                                <i class="bi bi-funnel"></i> Filtrar por country
+                    <div class="modal-footer border-0">
+                        <div class="form-floating w-100">
+                            <input
+                                type="search"
+                                class="form-control rounded-4"
+                                id="modal-canales-input-filtro"
+                                placeholder="Buscar por pais o canal"
+                                aria-label="Buscar por pais o canal en el modal de canales"
+                            />
+                            <label for="modal-canales-input-filtro">Buscar por pais o canal</label>
+                        </div>
+                        <div class="d-flex justify-content-between w-100">
+                            <button
+                                class="btn btn-danger rounded-pill d-none"
+                                id="boton-modal-quitar-todo-canal-activo"
+                            >
+                                <i class="bi bi-power"></i> Quitar todos
                             </button>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-dark dropdown-toggle h-100 rounded-pill"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-sort-down"></i>
-                                    Orden
-                                </button>
-                                <ul class="dropdown-menu p-2 rounded-4">
-                                    <li class="my-1">
-                                        <input type="radio" class="btn-check" name="btnRadioAutocomplete"
-                                            id="modal-cambiar-canal-boton-orden-ascendente" autocomplete="off" />
-                                        <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                            for="modal-cambiar-canal-boton-orden-ascendente"><i
-                                                class="bi bi-sort-alpha-down"></i> Ascendente</label>
-                                    </li>
-                                    <li class="my-1">
-                                        <input type="radio" class="btn-check" name="btnRadioAutocomplete"
-                                            id="modal-cambiar-canal-boton-orden-descendente" autocomplete="off" />
-                                        <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                            for="modal-cambiar-canal-boton-orden-descendente"><i
-                                                class="bi bi-sort-alpha-up-alt"></i> Descendente</label>
-                                    </li>
-                                    <li class="my-1">
-                                        <input type="radio" class="btn-check" name="btnRadioAutocomplete"
-                                            id="modal-cambiar-canal-boton-orden-original" autocomplete="off"
-                                            checked="checked" />
-                                        <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                            for="modal-cambiar-canal-boton-orden-original"><i
-                                                class="bi bi-arrow-clockwise"></i> Predeterminado</label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="collapse py-2" id="modal-cambiar-canal-collapse-btn-group">
-                            <div class="card card-body rounded-4">
-                                <div class="btn-group btn-group-sm container-btn-group" role="group"
-                                    aria-label="Toggle radio para grupo botones"
-                                    id="modal-cambiar-canal-collapse-botones-listado-filtro-countries">
-                                </div>
-                            </div>
+                            <button
+                                class="btn btn-light rounded-pill d-none"
+                                id="boton-modal-cargar-canales-por-defecto"
+                                data-bs-dismiss="modal"
+                            >
+                                <i class="bi bi-arrow-clockwise"></i> Cargar predeterminados
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-secondary ms-auto rounded-pill"
+                                data-bs-dismiss="modal"
+                            >
+                                Cerrar
+                            </button>
                         </div>
                     </div>
-                </div>
-
-                <div class="modal-body vh-100 scrollbar-thin-gray bg-transparent rounded-bottom-3">
-                    <div>
-                        <div class="modal-cambiar-canal-mensaje-alerta shadow d-none" tabindex="0"
-                            id="modal-cambiar-canal-mensaje-alerta">
-                            <div
-                                class="d-flex flex-column rounded-3 justify-content-center align-items-center text-wrap h-100 bg-danger-subtle p-3">
-                                <p class="fs-4 bg-danger p-3 rounded-3 overflow-auto" style="max-height: 150px">
-                                    <i class="bi bi-backspace-reverse"></i>
-                                    No se han encontrado resultados para tu búsqueda (<span
-                                        class="text-break fst-italic"></span>).
-                                </p>
-                                <div class="bg-danger bg-opacity-10 p-3 rounded-3 text-start">
-                                    <ul>
-                                        <li>Asegúrate de que todas las palabras estén escritas correctamente.</li>
-                                        <li>Prueba diferentes palabras clave.</li>
-                                        <li>Prueba palabras en español.</li>
-                                        <li>Desactiva los filtros por country.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="autocomplete-container shadow d-flex flex-column gap-2"
-                        id="modal-cambiar-canal-body-botones-canales"></div>
-                </div>
-
-                <div class="modal-footer bg-transparent border-0 d-flex align-items-center justify-content-center">
-                    <button type="button"
-                        class="btn btn-secondary rounded-pill d-flex justify-content-center align-items-center"
-                        data-bs-dismiss="modal" style="height: 2.5rem; width: 2.5rem">
-                        <i class="bi bi-x-lg"></i>
-                    </button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal listado canales -->
-    <div class="modal fade" id="modal-canales" tabindex="-1" aria-labelledby="modal-canales-titulo"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-            <div class="modal-content text-center bg-transparent bg-blur border-0 shadow">
-                <div class="modal-header border-0">
-                    <div>
-                        <h5 class="modal-title text-light" id="modal-canales-titulo">Selecciona tus canales</h5>
-                        <p class="panel-description text-light-subtle mb-0">Explora el catalogo completo, filtra por pais y ordena rapidamente.</p>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar">
-                    </button>
+        <!-- offcanvas canales -->
+        <div
+            class="offcanvas offcanvas-start bg-transparent bg-blur border border-start-0 border-2 border-light-subtle rounded-end-5"
+            id="offcanvas-canales"
+            tabindex="-1"
+            data-bs-scroll="true"
+            aria-labelledby="offcanvas-canales-titulo"
+        >
+            <header class="offcanvas-header bg-transparent">
+                <div>
+                    <h5 class="offcanvas-title text-light" id="offcanvas-canales-titulo">
+                        Selecciona tus canales
+                    </h5>
+                    <p class="panel-description text-light-subtle mb-0">
+                        Abre, combina y limpia tu seleccion sin salir de la vista actual.
+                    </p>
                 </div>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Cerrar"
+                ></button>
+            </header>
 
-                <div class="modal-body vh-100 py-0 scrollbar-thin-gray ">
-                    <div class="w-100 bg-dark-subtle p-2 rounded-4 mb-2 d-flex flex-column">
+            <div class="offcanvas-body scrollbar-thin-gray bg-transparent px-3 py-0">
+                <div class="d-flex flex-column bg-transparent">
+                    <div class="bg-dark-subtle p-2 mb-2 rounded-4 d-flex flex-column">
                         <div class="d-flex gap-2">
-                            <button class="btn btn-sm btn-dark w-100 rounded-pill" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#modal-collapse-btn-group"
-                                aria-expanded="false" aria-controls="modal-collapse-btn-group">
+                            <button
+                                class="btn btn-sm btn-dark w-100 rounded-pill"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#offcanvas-collapse-btn-group"
+                                aria-expanded="false"
+                                aria-controls="offcanvas-collapse-btn-group"
+                            >
                                 <i class="bi bi-funnel"></i> Filtrar por pais
                             </button>
                             <div class="ms-auto">
                                 <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-dark dropdown-toggle h-100 rounded-pill"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-dark dropdown-toggle rounded-pill"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
                                         <i class="bi bi-sort-down"></i> Orden
                                     </button>
                                     <ul class="dropdown-menu p-2 rounded-4">
                                         <li class="mb-1">
-                                            <input type="radio" class="btn-check" name="btnradio"
-                                                id="modal-canales-boton-orden-ascendente" autocomplete="off">
-                                            <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                                for="modal-canales-boton-orden-ascendente">
-                                                <i class="bi bi-sort-alpha-down"></i> Ascendente
-                                            </label>
+                                            <input
+                                                type="radio"
+                                                class="btn-check"
+                                                name="btnradio2"
+                                                id="offcanvas-canales-boton-orden-ascendente"
+                                                autocomplete="off"
+                                            />
+                                            <label
+                                                class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                for="offcanvas-canales-boton-orden-ascendente"
+                                                ><i class="bi bi-sort-alpha-down"></i>
+                                                Ascendente</label
+                                            >
                                         </li>
                                         <li class="my-1">
-                                            <input type="radio" class="btn-check" name="btnradio"
-                                                id="modal-canales-boton-orden-descendente" autocomplete="off">
-                                            <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                                for="modal-canales-boton-orden-descendente">
-                                                <i class="bi bi-sort-alpha-up-alt"></i> Descendente
-                                            </label>
+                                            <input
+                                                type="radio"
+                                                class="btn-check"
+                                                name="btnradio2"
+                                                id="offcanvas-canales-boton-orden-descendente"
+                                                autocomplete="off"
+                                            />
+                                            <label
+                                                class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                for="offcanvas-canales-boton-orden-descendente"
+                                                ><i class="bi bi-sort-alpha-up-alt"></i>
+                                                Descendente</label
+                                            >
                                         </li>
                                         <li>
-                                            <input type="radio" class="btn-check" name="btnradio"
-                                                id="modal-canales-boton-orden-original" autocomplete="off" checked>
-                                            <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                                for="modal-canales-boton-orden-original">
-                                                <i class="bi bi-arrow-clockwise"></i> Predeterminado
-                                            </label>
+                                            <input
+                                                type="radio"
+                                                class="btn-check"
+                                                name="btnradio2"
+                                                id="offcanvas-canales-boton-orden-original"
+                                                autocomplete="off"
+                                                checked
+                                            />
+                                            <label
+                                                class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
+                                                for="offcanvas-canales-boton-orden-original"
+                                                ><i class="bi bi-arrow-clockwise"></i>
+                                                Predeterminado</label
+                                            >
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="collapse py-2" id="modal-collapse-btn-group">
+                        <div class="collapse py-2" id="offcanvas-collapse-btn-group">
                             <div class="card card-body rounded-4">
-                                <div class="btn-group btn-group-sm container-btn-group" role="group"
+                                <div
+                                    class="btn-group btn-group-sm container-btn-group px-1 scrollbar-thin-gray"
+                                    role="group"
                                     aria-label="Toggle radio para grupo botones"
-                                    id='modal-canales-collapse-botones-listado-filtro-countries'>
-                                </div>
+                                    id="offcanvas-canales-collapse-botones-listado-filtro-countries"
+                                ></div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <!-- Mensaje alerta sin resultados modal -->
-                        <div class="modal-canales-mensaje-alerta d-none shadow" tabindex="0"
-                            id="modal-canales-mensaje-alerta">
-                            <div
-                                class="d-flex flex-column rounded-3 justify-content-center align-items-center text-wrap h-100 bg-danger-subtle p-3">
-                                <p class="fs-4 bg-danger p-3 rounded-3 overflow-auto" style="max-height: 150px;">
-                                    <i class="bi bi-backspace-reverse"></i> No se han encontrado resultados para tu
-                                    búsqueda (<span class="text-break fst-italic"></span>).
-                                </p>
-                                <div class="bg-danger bg-opacity-10 p-3 rounded-3 text-start">
-                                    <p>Sugerencias:</p>
-                                    <ul>
-                                        <li>Asegúrate de que todas las palabras estén escritas correctamente.</li>
-                                        <li>Prueba diferentes palabras clave.</li>
-                                        <li>Prueba palabras en español.</li>
-                                        <li>Desactiva los filtros por country.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Mensaje alerta sin resultados -->
-                        <div class="modal-body-canales" id="modal-canales-body-botones-canales">
                         </div>
                     </div>
                 </div>
 
-                <div class="modal-footer border-0">
-                    <div class="form-floating w-100">
-                        <input type="search" class="form-control rounded-4" id="modal-canales-input-filtro"
-                            placeholder="Buscar por pais o canal" aria-label="Buscar por pais o canal en el modal de canales">
-                        <label for="modal-canales-input-filtro">Buscar por pais o canal</label>
-                    </div>
-                    <div class="d-flex justify-content-between w-100">
-                        <button class="btn btn-danger rounded-pill d-none" id="boton-modal-quitar-todo-canal-activo">
-                            <i class="bi bi-power"></i> Quitar todos
-                        </button>
-                        <button class="btn btn-light rounded-pill d-none" id="boton-modal-cargar-canales-por-defecto"
-                            data-bs-dismiss="modal">
-                            <i class="bi bi-arrow-clockwise"></i> Cargar predeterminados
-                        </button>
-                        <button type="button" class="btn btn-secondary ms-auto rounded-pill"
-                            data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- offcanvas canales -->
-    <div class="offcanvas offcanvas-start bg-transparent bg-blur border border-start-0 border-2 border-light-subtle rounded-end-5"
-        id="offcanvas-canales" tabindex="-1" data-bs-scroll="true" aria-labelledby="offcanvas-canales-titulo">
-        <header class="offcanvas-header bg-transparent">
-            <div>
-                <h5 class="offcanvas-title text-light" id="offcanvas-canales-titulo">Selecciona tus canales</h5>
-                <p class="panel-description text-light-subtle mb-0">Abre, combina y limpia tu seleccion sin salir de la vista actual.</p>
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-        </header>
-
-        <div class="offcanvas-body scrollbar-thin-gray bg-transparent px-3 py-0">
-            <div class="d-flex flex-column bg-transparent">
-                <div class="bg-dark-subtle p-2 mb-2 rounded-4 d-flex flex-column">
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-sm btn-dark w-100 rounded-pill" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#offcanvas-collapse-btn-group" aria-expanded="false"
-                            aria-controls="offcanvas-collapse-btn-group">
-                            <i class="bi bi-funnel"></i> Filtrar por pais
-                        </button>
-                        <div class="ms-auto">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-sm btn-dark dropdown-toggle rounded-pill"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-sort-down"></i> Orden
-                                </button>
-                                <ul class="dropdown-menu p-2 rounded-4">
-                                    <li class="mb-1">
-                                        <input type="radio" class="btn-check" name="btnradio2"
-                                            id="offcanvas-canales-boton-orden-ascendente" autocomplete="off">
-                                        <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                            for="offcanvas-canales-boton-orden-ascendente"><i
-                                                class="bi bi-sort-alpha-down"></i> Ascendente</label>
-                                    </li>
-                                    <li class="my-1">
-                                        <input type="radio" class="btn-check" name="btnradio2"
-                                            id="offcanvas-canales-boton-orden-descendente" autocomplete="off">
-                                        <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                            for="offcanvas-canales-boton-orden-descendente"><i
-                                                class="bi bi-sort-alpha-up-alt"></i> Descendente</label>
-                                    </li>
+                <div class="h-100">
+                    <!-- Mensaje alerta sin resultados offcanvas -->
+                    <div
+                        class="offcanvas-canales-mensaje-alerta d-none shadow"
+                        tabindex="0"
+                        id="offcanvas-canales-mensaje-alerta"
+                    >
+                        <div
+                            class="d-flex flex-column rounded-3 justify-content-center align-items-center text-wrap h-100 bg-danger-subtle p-3"
+                        >
+                            <p
+                                class="fs-4 bg-danger p-3 rounded-3 overflow-auto"
+                                style="max-height: 150px"
+                            >
+                                <i class="bi bi-backspace-reverse"></i> No se han encontrado
+                                resultados para tu búsqueda (<span
+                                    class="text-break fst-italic"
+                                ></span
+                                >).
+                            </p>
+                            <div class="bg-danger bg-opacity-10 p-3 rounded-3">
+                                <p>Sugerencias:</p>
+                                <ul>
                                     <li>
-                                        <input type="radio" class="btn-check" name="btnradio2"
-                                            id="offcanvas-canales-boton-orden-original" autocomplete="off" checked>
-                                        <label class="btn btn-sm btn-outline-indigo w-100 d-flex gap-1 rounded-3"
-                                            for="offcanvas-canales-boton-orden-original"><i
-                                                class="bi bi-arrow-clockwise"></i> Predeterminado</label>
+                                        Asegúrate de que todas las palabras estén escritas
+                                        correctamente.
                                     </li>
+                                    <li>Prueba diferentes palabras clave.</li>
+                                    <li>Prueba palabras en español.</li>
+                                    <li>Desactiva los filtros por country.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="collapse py-2" id="offcanvas-collapse-btn-group">
-                        <div class="card card-body rounded-4">
-                            <div class="btn-group btn-group-sm container-btn-group px-1 scrollbar-thin-gray"
-                                role="group" aria-label="Toggle radio para grupo botones"
-                                id='offcanvas-canales-collapse-botones-listado-filtro-countries'>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100">
-                <!-- Mensaje alerta sin resultados offcanvas -->
-                <div class="offcanvas-canales-mensaje-alerta d-none shadow" tabindex="0"
-                    id="offcanvas-canales-mensaje-alerta">
+                    <!-- /Mensaje alerta sin resultados -->
                     <div
-                        class="d-flex flex-column rounded-3 justify-content-center align-items-center text-wrap h-100 bg-danger-subtle p-3">
-                        <p class="fs-4 bg-danger p-3 rounded-3 overflow-auto" style="max-height: 150px;">
-                            <i class="bi bi-backspace-reverse"></i> No se han encontrado resultados para tu búsqueda
-                            (<span class="text-break fst-italic"></span>).
-                        </p>
-                        <div class="bg-danger bg-opacity-10 p-3 rounded-3">
-                            <p>Sugerencias:</p>
-                            <ul>
-                                <li>Asegúrate de que todas las palabras estén escritas correctamente.</li>
-                                <li>Prueba diferentes palabras clave.</li>
-                                <li>Prueba palabras en español.</li>
-                                <li>Desactiva los filtros por country.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Mensaje alerta sin resultados -->
-                <div class="offcanvas-canales-body-canales" id="offcanvas-canales-body-botones-canales">
+                        class="offcanvas-canales-body-canales"
+                        id="offcanvas-canales-body-botones-canales"
+                    ></div>
                 </div>
             </div>
-        </div>
 
-        <footer class="p-2 d-flex flex-column bg-transparent">
-            <div class="form-floating w-100">
-                <input type="search" class="form-control rounded-4" id="offcanvas-canales-input-filtro"
-                    placeholder="Buscar por pais o canal" aria-label="Buscar por pais o canal en el panel lateral de canales">
-                <label for="offcanvas-canales-input-filtro">Buscar por pais o canal</label>
-            </div>
-            <div class="d-flex justify-content-between mt-2">
-                <button class="btn btn-danger rounded-pill d-none" id="boton-offcanvas-quitar-todo-canal-activo">
-                    <i class="bi bi-power"></i> Quitar todos
-                </button>
-                <button class="btn btn-light rounded-pill d-none" id="boton-offcanvas-cargar-canales-por-defecto">
-                    <i class="bi bi-arrow-clockwise"></i> Cargar predeterminados
-                </button>
-                <button type="button" class="btn btn-secondary ms-auto rounded-pill"
-                    data-bs-dismiss="offcanvas">Cerrar</button>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Modal bienvenida/Descargo de responsabilidad -->
-    <div class="modal fade d-none" id="modal-bienvenida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="Modal de Bienvenida" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-fullscreen-md-down">
-            <div class="modal-content bg-transparent border-0 shadow">
-                <div class="modal-header bg-body">
-                    <h5 class="modal-title">Descargo de responsabilidad</h5>
+            <footer class="p-2 d-flex flex-column bg-transparent">
+                <div class="form-floating w-100">
+                    <input
+                        type="search"
+                        class="form-control rounded-4"
+                        id="offcanvas-canales-input-filtro"
+                        placeholder="Buscar por pais o canal"
+                        aria-label="Buscar por pais o canal en el panel lateral de canales"
+                    />
+                    <label for="offcanvas-canales-input-filtro">Buscar por pais o canal</label>
                 </div>
-                <div class="modal-body bg-body scrollbar-thin-gray">
-                    <ul class="ps-3">
-                        <li tabindex="0">"tv-multiview" es un proyecto de código abierto gratuito que permite gestionar
-                            canales
-                            de televisión
-                            de libre acceso por Internet.</li>
-                        <li tabindex="0">"tv-multiview" no decodifica transmisiones. Los enlaces que figuran en este
-                            proyecto
-                            son procesados
-                            desde diferentes sitios públicos con libre distribución/acceso.</li>
-                        <li tabindex="0">"tv-multiview" no posee ningún tipo de monetización, en consecuencia, no se lucra
-                            de
-                            ninguna forma o
-                            medio.</li>
-                        <li tabindex="0">El proyecto cuenta con reproductores multimedia, los que no corresponden a
-                            una
-                            retransmisión
-                            de los canales ni implica la decodificación de éstos.</li>
-                        <li tabindex="0">No se es propietario, ni responsable de ninguno de los contenidos emitidos
-                            por
-                            parte de cada
-                            canal.</li>
-                        <li tabindex="0">"tv-multiview" no ofrece canales de pago bajo ninguna modalidad.</li>
-                        <li tabindex="0">En este proyecto no se almacena ninguna transmisión.</li>
-                        <li tabindex="0">El proyecto tanto como sus mantenedores no asumen responsabilidad alguna
-                            respecto a los
-                            derechos de propiedad
-                            intelectual que se puedan ver infringidos por terceros o cualquier usuario.</li>
-                        <li tabindex="0">El usuario por defecto tiene la capacidad de dirigirse al sitio oficial de
-                            cada
-                            transmisión
-                            en todo
-                            momento.</li>
-                        <li tabindex="0">Si posees los derechos de algún canal y deseas que sea retirado, <a
-                                href="https://github.com/interneto/json-tv-multiview/issues" rel="nofollow noreferrer">
-                                contáctame
-                                <i class="bi bi-box-arrow-up-right"></i></a>.
-                        </li>
-                    </ul>
-                    <hr>
-                    <p>— Si quieres conocer el origen de cada livestream visita el <a
-                            href="https://github.com/interneto/tv-multiview" rel="nofollow noreferrer"><i
-                                class="bi bi-github"></i> repositorio
-                            GitHub <i class="bi bi-box-arrow-up-right"></i></a> de la
-                        página.
-                    </p>
-                </div>
-                <div class="modal-footer d-flex align-items-center justify-content-center bg-blur">
-                    <button type="button" class="btn btn-lg btn-success pulsate-3" id="boton-entendido"
-                        data-bs-dismiss="modal" data-bs-target="#modal-bienvenida">Entendido <p
-                            class="fs-x-small m-0 p-0">(No volver a mostrar)</p></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- botones flotantes -->
-    <div class="btn-group position-fixed bottom-0 start-50 translate-middle-x z-2 mb-3" role="group"
-        aria-label="grupo botones flotantes" id="grupo-botones-flotantes">
-        <button type="button"
-            class="focus-outline-blue btn btn-sm btn-indigo rounded-start-5 shadow-sm d-flex gap-1 border-0 fw-normal"
-            data-bs-toggle="offcanvas" data-bs-target="#offcanvas-canales" aria-controls="offcanvas-canales">
-            <i class="bi bi-chevron-right"></i> <span>Canales</span>
-        </button>
-        <div class="bg-light-subtle">
-            <button type="button"
-                class="focus-outline-blue btn btn-sm btn-outline-indigo rounded-0 shadow-sm border-0 h-100"
-                data-bs-toggle="modal" data-bs-target="#modal-canales" title="boton modal canales flotante">
-                <i class="bi bi-collection-play"></i>
-            </button>
-        </div>
-        <button type="button"
-            class="focus-outline-blue btn btn-sm btn-dark rounded-end-5 shadow-sm d-flex gap-1 border-0"
-            aria-label="Acceso a personalizaciones" data-bs-toggle="offcanvas" data-bs-target="#sidepanel"
-            aria-controls="sidepanel" tabindex="0">
-            <i class="bi bi-gear"></i> <span>Ajustes</span>
-        </button>
-    </div>
-
-    <!-- sidepanel/personalizaciones -->
-    <div class="offcanvas offcanvas-end bg-transparent bg-blur border border-end-0 border-2 border-light-subtle rounded-start-5"
-        data-bs-scroll="true" tabindex="-1" id="sidepanel" aria-labelledby="sidepanel-titulo">
-        <div class="offcanvas-header d-flex justify-content-center p-0">
-            <p class=" bg-dark-subtle rounded-bottom text-center px-5 fs-5 pb-1" id="sidepanel-titulo">Ajustes</p>
-            <button type="button" class="btn-close close-sidepanel" data-bs-dismiss="offcanvas"
-                aria-label="Cerrar"></button>
-        </div>
-        <div class="offcanvas-body scrollbar-thin-gray">
-            <ul class="d-flex flex-column justify-content-start align-items-center w-100 gap-3 list-unstyled">
-                <li class="w-100">
-                    <div class="panel-summary-card">
-                        <p class="panel-summary-eyebrow">Resumen rapido</p>
-                        <div class="panel-summary-grid">
-                            <div>
-                                <span class="panel-summary-label">Modo</span>
-                                <strong data-ui-layout>Cuadricula</strong>
-                            </div>
-                            <div>
-                                <span class="panel-summary-label">Senales activas</span>
-                                <strong data-ui-active-count>0</strong>
-                            </div>
-                            <div>
-                                <span class="panel-summary-label">Guardado local</span>
-                                <strong>Activo</strong>
-                            </div>
-                            <div>
-                                <span class="panel-summary-label">Atajo recomendado</span>
-                                <strong>Vision unica</strong>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow">
-                        <div class="form-check form-switch d-flex align-items-center gap-2" title="ocultar navbar">
-                            <input class="form-check-input" type="checkbox" role="switch"
-                                id="checkbox-personalizar-visualizacion-navbar">
-                            <label class="form-check-label w-100 d-flex justify-content-between align-items-center"
-                                for="checkbox-personalizar-visualizacion-navbar">
-                                Navbar
-                                <span class="ps-1 fs-smaller text-secondary"
-                                    id="span-valor-visualizacion-navbar"></span>
-                                <i class="bi bi-border-top ms-auto bg-light-subtle px-2 py-1 rounded-circle"></i>
-                            </label>
-                        </div>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow">
-                        <div class="d-flex gap-2 justify-content-evenly align-items-center">
-                            <button type="button" id="boton-activar-diseño-vision-grid"
-                                class="focus-outline-blue btn btn-sm btn-indigo rounded-start-5 shadow-sm d-flex gap-1 border-0 w-100 h-100 justify-content-center align-items-center"
-                                tabindex="0">
-                                <span class="w-100 h-100"><i class="bi bi-grid-3x2"></i> Visión cuadrícula</span>
-                            </button>
-                            <button type="button" id="boton-activar-diseño-vision-unica"
-                                class="focus-outline-blue btn btn-sm btn-light-subtle rounded-end-5 shadow-sm d-flex gap-1 border-0 w-100 h-100 justify-content-center align-items-center"
-                                tabindex="0">
-                                <span class="w-100 h-100"><i class="bi bi-layout-sidebar"></i> Visión única</span>
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-4 border border-light-subtle shadow">
-                        <div class="form-check form-switch d-flex align-items-center gap-2" title="ocultar overlay">
-                            <input class="form-check-input" type="checkbox" role="switch"
-                                id="checkbox-personalizar-visualizacion-overlay">
-                            <label class="form-check-label w-100 d-flex justify-content-start align-items-center"
-                                for="checkbox-personalizar-visualizacion-overlay">
-                                Overlay canales
-                                <span class="ps-1 fs-smaller text-secondary"
-                                    id="span-valor-visualizacion-overlay"></span>
-                                <i class="bi bi-window-fullscreen flip-icon ms-auto bg-light-subtle px-2 py-1 rounded-circle"
-                                    id="icono-personalizar-visualizacion-overlay"></i>
-                            </label>
-                        </div>
-                        <div class="w-100 btn-group d-flex flex-column justify-content-center align-items-center py-2 px-3 bg-dark-subtle border border-light-subtle rounded-4 shadow mt-2"
-                            role="group" aria-label="button group botones dentro overlay"
-                            id="grupo-botones-personalizar-botones-dentro-overlay">
-                            <p class="align-self-start">Botones en overlay</p>
-                            <div class="d-flex justify-content-between w-100">
-                                <div class="d-flex flex-column div-boton-personalizar-overlay align-items-center">
-                                    <input type="checkbox" class="btn-check" name="btncheckboxbotonesoverlay"
-                                        id="btnSelecionarSeñal" autocomplete="off" checked
-                                        data-botonOverlay="overlay-boton-selecionar-señal">
-                                    <label class="btn btn-outline-indigo rounded-4" for="btnSelecionarSeñal"><i
-                                            class="bi bi-collection"></i></label>
-                                    <span class="fs-smaller text-secondary"></span>
-                                </div>
-                                <div class="d-flex flex-column div-boton-personalizar-overlay align-items-center"
-                                    id="boton-personalizar-boton-mover-overlay">
-                                    <input type="checkbox" class="btn-check" name="btncheckboxbotonesoverlay"
-                                        id="btnMover" autocomplete="off" checked
-                                        data-botonOverlay="overlay-boton-mover">
-                                    <label class="btn btn-outline-indigo rounded-4" for="btnMover"><i
-                                            class="bi bi-arrows-move"></i></label>
-                                    <span class="fs-smaller text-secondary"></span>
-                                </div>
-                                <div class="d-flex flex-column div-boton-personalizar-overlay align-items-center">
-                                    <input type="checkbox" class="btn-check" name="btncheckboxbotonesoverlay"
-                                        id="btnCambiar" autocomplete="off" checked
-                                        data-botonOverlay="overlay-boton-cambiar">
-                                    <label class="btn btn-outline-indigo rounded-4" for="btnCambiar"><i
-                                            class="bi bi-arrow-repeat"></i></label>
-                                    <span class="fs-smaller text-secondary"></span>
-                                </div>
-                                <div class="d-flex flex-column div-boton-personalizar-overlay align-items-center">
-                                    <input type="checkbox" class="btn-check" name="btncheckboxbotonesoverlay"
-                                        id="btnFuente" autocomplete="off" checked
-                                        data-botonOverlay="overlay-boton-pagina-oficial">
-                                    <label class="btn btn-outline-indigo rounded-4" for="btnFuente"><i
-                                            class="bi bi-box-arrow-up-right"></i></label>
-                                    <span class="fs-smaller text-secondary"></span>
-                                </div>
-                                <div class="d-flex flex-column div-boton-personalizar-overlay align-items-center">
-                                    <input type="checkbox" class="btn-check" name="btncheckboxbotonesoverlay"
-                                        id="btnQuitar" autocomplete="off" checked
-                                        data-botonOverlay="overlay-boton-quitar">
-                                    <label class="btn btn-outline-indigo rounded-4" for="btnQuitar"><i
-                                            class="bi bi-x-circle"></i></label>
-                                    <span class="fs-smaller text-secondary"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow">
-                        <div class="form-check form-switch d-flex align-items-center gap-2">
-                            <input class="form-check-input" type="checkbox" id="checkbox-personalizar-tema">
-                            <label class="form-check-label w-100 d-flex justify-content-start align-items-center gap-1"
-                                for="checkbox-personalizar-tema"> Tema
-                                <div class="fs-smaller text-secondary">
-                                    [<span id="span-valor-tema">Claro</span>]
-                                </div>
-                                <i class="bi bi-sun bg-light-subtle px-2 py-1 rounded-circle ms-auto"
-                                    id="icono-personalizar-tema"></i>
-                            </label>
-                        </div>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-4 border border-light-subtle shadow">
-                        <label for="input-range-tamaño-container-vision-cuadricula"
-                            class="slider-label form-label d-flex align-items-center gap-1">Tamaño
-                            <div class="fs-smaller text-secondary">
-                                [<span id="span-valor-input-range">100%</span>]
-                            </div>
-                        </label>
-                        <input type="range" value="100" min="50" max="100" class="form-range"
-                            id="input-range-tamaño-container-vision-cuadricula">
-
-                        <div class="w-100 py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow mt-2">
-                            <div class="form-check form-switch d-flex align-items-center gap-2"
-                                title="alternar uso 100% altura disponible">
-                                <input class="form-check-input" type="checkbox" role="switch"
-                                    id="checkbox-personalizar-altura-canales">
-                                <label
-                                    class="form-check-label w-100 d-flex justify-content-start align-items-center gap-1"
-                                    for="checkbox-personalizar-altura-canales" id="status-altura-canales">
-                                    100% altura
-                                    <div class="fs-smaller text-secondary">
-                                        [<span id="span-valor-altura-canales"></span>]
-                                    </div>
-                                    <i class="bi bi-arrows-vertical ms-auto bg-light-subtle px-2 py-1 rounded-circle"
-                                        id="icono-personalizar-altura-canales"></i>
-                                </label>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-4 border border-light-subtle shadow">
-                        Número de canales por fila
-                        <div class="fs-smaller text-secondary d-inline">
-                            [<span id="span-valor-transmisiones-por-fila">3</span>]
-                        </div>
-
-                        <div id="container-botones-personalizar-transmisiones-por-fila" class="btn-group w-100 gap-1"
-                            role="group" aria-label="grupo botones número transmisiones por fila">
-                            <button value="12" type="button" class="btn btn-light-subtle rounded-4 w-100">1</button>
-                            <button value="6" type="button" class="btn btn-light-subtle rounded-4 w-100">2</button>
-                            <button value="4" type="button" class="btn btn-indigo rounded-4 w-100">3</button>
-                            <button value="3" type="button" class="btn btn-light-subtle rounded-4 w-100">4</button>
-                            <button value="2" type="button" class="btn btn-light-subtle rounded-4 w-100">6</button>
-                            <button value="1" type="button" class="btn btn-light-subtle rounded-4 w-100"
-                                data-bs-toggle="tooltip" data-bs-title="12 a lo enfermo">12</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow">
-                        <button type="button"
-                            class="btn btn-light-subtle rounded-pill d-flex align-items-center justify-content-center w-100"
-                            id="boton-fullscreen">
-                            Entrar pantalla completa <i class="bi bi-arrows-fullscreen ms-auto"></i>
-                        </button>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="w-100 btn-group d-flex flex-column justify-content-center align-items-center 
-                    py-2 px-3 bg-dark-subtle border border-light-subtle rounded-4 shadow gap-1" role="group"
-                        aria-label="button group posicion botones flotantes"
-                        id="grupo-botones-posicion-botones-flotantes">
-                        <p class="my-2 align-self-start">Botones flotantes</p>
-                        <div class="d-flex gap-1">
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante1"
-                                autocomplete="off" data-position="top-0 start-0 mt-3">
-                            <label class="btn btn-outline-indigo rounded-4 rounded-bottom-0 rounded-end-0"
-                                for="btnradioflotante1"><i class="bi bi-arrow-up-left-square"></i></label>
-
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante2"
-                                autocomplete="off" data-position="top-0 start-50 mt-3 translate-middle-x">
-                            <label class="btn btn-outline-indigo rounded-0" for="btnradioflotante2"><i
-                                    class="bi bi-arrow-up-square"></i></label>
-
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante3"
-                                autocomplete="off" data-position="top-0 end-0 mt-3">
-                            <label class="btn btn-outline-indigo rounded-4 rounded-bottom-0 rounded-start-0"
-                                for="btnradioflotante3"><i class="bi bi-arrow-up-right-square"></i></label>
-                        </div>
-                        <div class="d-flex gap-1">
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante4"
-                                autocomplete="off" data-position="top-50 start-0 translate-middle-y">
-                            <label class="btn btn-outline-indigo rounded-0" for="btnradioflotante4"><i
-                                    class="bi bi-arrow-left-square"></i></label>
-
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante5"
-                                autocomplete="off" data-position="top-50 start-50 translate-middle">
-                            <label class="btn btn-outline-indigo rounded-0" for="btnradioflotante5"><i
-                                    class="bi bi-c-square"></i></label>
-
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante6"
-                                autocomplete="off" data-position="top-50 end-0 translate-middle-y">
-                            <label class="btn btn-outline-indigo rounded-0" for="btnradioflotante6"><i
-                                    class="bi bi-arrow-right-square"></i></label>
-                        </div>
-                        <div class="d-flex gap-1">
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante7"
-                                autocomplete="off" data-position="bottom-0 start-0 mb-3">
-                            <label class="btn btn-outline-indigo rounded-4 rounded-top-0 rounded-end-0"
-                                for="btnradioflotante7"><i class="bi bi-arrow-down-left-square"></i></label>
-
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante8"
-                                autocomplete="off" data-position="bottom-0 start-50 mb-3 translate-middle-x">
-                            <label class="btn btn-outline-indigo rounded-0" for="btnradioflotante8"><i
-                                    class="bi bi-arrow-down-square"></i></label>
-
-                            <input type="radio" class="btn-check" name="btnradioflotante" id="btnradioflotante9"
-                                autocomplete="off" data-position="bottom-0 end-0 mb-3" checked>
-                            <label class="btn btn-outline-indigo rounded-4 rounded-top-0 rounded-start-0"
-                                for="btnradioflotante9"><i class="bi bi-arrow-down-right-square"></i></label>
-                        </div>
-                        <div class="w-100 py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow mt-2">
-                            <div class="form-check form-switch d-flex align-items-center gap-2"
-                                title="ocultar texto botones flotante">
-                                <input class="form-check-input" type="checkbox" role="switch"
-                                    id="checkbox-personalizar-texto-botones-flotantes">
-                                <label class="form-check-label w-100 d-flex justify-content-start align-items-center"
-                                    for="checkbox-personalizar-texto-botones-flotantes"
-                                    id="status-texto-botones-flotantes">
-                                    Texto botones
-                                    <span class="ps-1 fs-smaller text-secondary"
-                                        id="span-valor-texto-en-botones-flotante"></span>
-                                    <i class="bi bi-info-square ms-auto bg-light-subtle px-2 py-1 rounded-circle"
-                                        id="icono-personalizar-texto-botones-flotantes"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div
-                        class="bg-dark-subtle rounded-4 w-100 py-2 px-3 border border-light-subtle shadow d-flex flex-column">
-                        <p>Información</p>
-                        <p>
-                            <i class="bi bi-github rounded-3 p-1 me-1"></i><a href="https://github.com/interneto/tv-multiview"
-                                rel="nofollow noreferrer">Repositorio <i class="bi bi-box-arrow-up-right"></i></a>
-                        </p>
-                        <p class="text-secondary mb-0">Personaliza la interfaz, instala la PWA y guarda tu seleccion de canales localmente.</p>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow">
-                        <div class="form-check form-switch d-flex align-items-center gap-2" title="ocultar fondo">
-                            <input class="form-check-input" type="checkbox" role="switch"
-                                id="checkbox-tarjeta-logo-background">
-                            <label class="form-check-label w-100 d-flex justify-content-start align-items-center"
-                                for="checkbox-tarjeta-logo-background">
-                                Logo en fondo
-                                <span class="ps-1 fs-smaller text-secondary"
-                                    id="span-valor-visualizacion-tarjeta-logo-background"></span>
-                                <i class="bi bi-eye ms-auto bg-light-subtle px-2 py-1 rounded-circle"
-                                    id="icono-personalizar-visualizacion-tarjeta-logo-background"></i>
-                            </label>
-                        </div>
-                    </div>
-                </li>
-                <li class="w-100">
-                    <div class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow">
-                        <button type="button"
-                            class="btn btn-sm btn-warning rounded-pill w-100 d-flex justify-content-between align-items-center text-start"
-                            id="boton-experimental">
-                            <span class="flex-grow-1">Activar modo experimental canales IPTV</span><i
-                                class="bi bi-question-circle ms-auto bg-light-subtle text-body rounded-circle px-1"
-                                data-bs-toggle="tooltip" data-bs-title="
-                            Este botón carga lista IPTV en conjunto a los canales predeterminados.
-                            El funcionamiento de estos, tanto como sus enlaces a los sitios oficiales no se garantiza. 
-                            Esta carga debe ser siempre activada manualmente."></i>
-                        </button>
-                    </div>
-                </li>
-                <li class="w-100 d-flex bg-dark-subtle rounded-pill py-2 px-3 border border-light-subtle shadow">
-                    <button type="button"
-                        class="btn btn-danger rounded-pill btn-sm w-100 d-flex justify-content-between align-items-center text-start"
-                        data-bs-toggle="modal" data-bs-target="#modal-reset"><span class="flex-grow-1">Reiniciar
-                            personalizaciones</span><i
-                            class="bi bi-question-circle ms-auto bg-light-subtle text-body rounded-circle px-1"
-                            data-bs-toggle="tooltip"
-                            data-bs-title="Este botón sirve para limpiar datos del sitio. Se te pedirá confirmar este paso."></i>
+                <div class="d-flex justify-content-between mt-2">
+                    <button
+                        class="btn btn-danger rounded-pill d-none"
+                        id="boton-offcanvas-quitar-todo-canal-activo"
+                    >
+                        <i class="bi bi-power"></i> Quitar todos
                     </button>
-                </li>
-            </ul>
-        </div>
-        <div class="d-flex p-3 bg-dark bg-opacity-75 gap-2 rounded-bottom-5">
-            <button type="button" class="btn btn-success rounded-pill" id="boton-instalar-pwa">
-                <i class="bi bi-plus-circle-dotted"></i> Instalar
-            </button>
-
-            <button class="btn btn-secondary ms-auto rounded-pill" data-bs-dismiss="offcanvas"
-                aria-label="Close">Cerrar</button>
-        </div>
-    </div>
-
-    <!-- alerta previa borrado localstorage -->
-    <div class="modal modal-alert py-5" tabindex="-1" role="dialog" id="modal-reset">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content rounded-4 shadow bg-danger-subtle border-0">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title">¿Estás seguro de que deseas reiniciar todas tus personalizaciones?</h5>
-                </div>
-                <div class="modal-body py-4">
-                    <p>
-                        Al hacerlo, todas las entradas que hayan sido creadas por este sitio en tu navegador a través
-                        de tu almacenamiento local (localStorage) serán eliminadas. Esto es equivalente a recargar la
-                        página desde cero.
-                    </p>
-                    <p class="text-secondary fst-italic">
-                        Si estas presentando problemas con el funcionamiento de la página es recomendable proseguir y/o
-                        borrar la caché del navegador.
-                    </p>
-                </div>
-                <div class="modal-footer flex-nowrap p-0 overflow-hidden border-0">
-                    <button type="button" class="btn btn-danger w-100 m-0 rounded-0" id="boton-borrar-localstorage"
-                        data-bs-dismiss="modal" data-bs-toggle="offcanvas">
-                        <strong><i class="bi bi-trash3"></i> Reiniciar</strong>
+                    <button
+                        class="btn btn-light rounded-pill d-none"
+                        id="boton-offcanvas-cargar-canales-por-defecto"
+                    >
+                        <i class="bi bi-arrow-clockwise"></i> Cargar predeterminados
                     </button>
-                    <button type="button" class="btn btn-secondary w-100 m-0 rounded-0" data-bs-dismiss="modal">
+                    <button
+                        type="button"
+                        class="btn btn-secondary ms-auto rounded-pill"
+                        data-bs-dismiss="offcanvas"
+                    >
                         Cerrar
                     </button>
                 </div>
+            </footer>
+        </div>
 
+        <!-- Modal bienvenida/Descargo de responsabilidad -->
+        <div
+            class="modal fade d-none"
+            id="modal-bienvenida"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="Modal de Bienvenida"
+            aria-hidden="true"
+        >
+            <div
+                class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-fullscreen-md-down"
+            >
+                <div class="modal-content bg-transparent border-0 shadow">
+                    <div class="modal-header bg-body">
+                        <h5 class="modal-title">Descargo de responsabilidad</h5>
+                    </div>
+                    <div class="modal-body bg-body scrollbar-thin-gray">
+                        <ul class="ps-3">
+                            <li tabindex="0">
+                                "tv-multiview" es un proyecto de código abierto gratuito que permite
+                                gestionar canales de televisión de libre acceso por Internet.
+                            </li>
+                            <li tabindex="0">
+                                "tv-multiview" no decodifica transmisiones. Los enlaces que figuran
+                                en este proyecto son procesados desde diferentes sitios públicos con
+                                libre distribución/acceso.
+                            </li>
+                            <li tabindex="0">
+                                "tv-multiview" no posee ningún tipo de monetización, en
+                                consecuencia, no se lucra de ninguna forma o medio.
+                            </li>
+                            <li tabindex="0">
+                                El proyecto cuenta con reproductores multimedia, los que no
+                                corresponden a una retransmisión de los canales ni implica la
+                                decodificación de éstos.
+                            </li>
+                            <li tabindex="0">
+                                No se es propietario, ni responsable de ninguno de los contenidos
+                                emitidos por parte de cada canal.
+                            </li>
+                            <li tabindex="0">
+                                "tv-multiview" no ofrece canales de pago bajo ninguna modalidad.
+                            </li>
+                            <li tabindex="0">
+                                En este proyecto no se almacena ninguna transmisión.
+                            </li>
+                            <li tabindex="0">
+                                El proyecto tanto como sus mantenedores no asumen responsabilidad
+                                alguna respecto a los derechos de propiedad intelectual que se
+                                puedan ver infringidos por terceros o cualquier usuario.
+                            </li>
+                            <li tabindex="0">
+                                El usuario por defecto tiene la capacidad de dirigirse al sitio
+                                oficial de cada transmisión en todo momento.
+                            </li>
+                            <li tabindex="0">
+                                Si posees los derechos de algún canal y deseas que sea retirado,
+                                <a
+                                    href="https://github.com/interneto/json-tv-multiview/issues"
+                                    rel="nofollow noreferrer"
+                                >
+                                    contáctame
+                                    <i class="bi bi-box-arrow-up-right"></i></a
+                                >.
+                            </li>
+                        </ul>
+                        <hr />
+                        <p>
+                            — Si quieres conocer el origen de cada livestream visita el
+                            <a
+                                href="https://github.com/interneto/tv-multiview"
+                                rel="nofollow noreferrer"
+                                ><i class="bi bi-github"></i> repositorio GitHub
+                                <i class="bi bi-box-arrow-up-right"></i
+                            ></a>
+                            de la página.
+                        </p>
+                    </div>
+                    <div
+                        class="modal-footer d-flex align-items-center justify-content-center bg-blur"
+                    >
+                        <button
+                            type="button"
+                            class="btn btn-lg btn-success pulsate-3"
+                            id="boton-entendido"
+                            data-bs-dismiss="modal"
+                            data-bs-target="#modal-bienvenida"
+                        >
+                            Entendido
+                            <p class="fs-x-small m-0 p-0">(No volver a mostrar)</p>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="assets/js/main.js" type="module"></script>
-    <script src="assets/js/buttons.js" type="module"></script>
-    <script src="assets/js/observer.js" type="module"></script>
-</body>
-<!--
+        <!-- botones flotantes -->
+        <div
+            class="btn-group position-fixed bottom-0 start-50 translate-middle-x z-2 mb-3"
+            role="group"
+            aria-label="grupo botones flotantes"
+            id="grupo-botones-flotantes"
+        >
+            <button
+                type="button"
+                class="focus-outline-blue btn btn-sm btn-indigo rounded-start-5 shadow-sm d-flex gap-1 border-0 fw-normal"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvas-canales"
+                aria-controls="offcanvas-canales"
+            >
+                <i class="bi bi-chevron-right"></i> <span>Canales</span>
+            </button>
+            <div class="bg-light-subtle">
+                <button
+                    type="button"
+                    class="focus-outline-blue btn btn-sm btn-outline-indigo rounded-0 shadow-sm border-0 h-100"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modal-canales"
+                    title="boton modal canales flotante"
+                >
+                    <i class="bi bi-collection-play"></i>
+                </button>
+            </div>
+            <button
+                type="button"
+                class="focus-outline-blue btn btn-sm btn-dark rounded-end-5 shadow-sm d-flex gap-1 border-0"
+                aria-label="Acceso a personalizaciones"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#sidepanel"
+                aria-controls="sidepanel"
+                tabindex="0"
+            >
+                <i class="bi bi-gear"></i> <span>Ajustes</span>
+            </button>
+        </div>
+
+        <!-- sidepanel/personalizaciones -->
+        <div
+            class="offcanvas offcanvas-end bg-transparent bg-blur border border-end-0 border-2 border-light-subtle rounded-start-5"
+            data-bs-scroll="true"
+            tabindex="-1"
+            id="sidepanel"
+            aria-labelledby="sidepanel-titulo"
+        >
+            <div class="offcanvas-header d-flex justify-content-center p-0">
+                <p
+                    class="bg-dark-subtle rounded-bottom text-center px-5 fs-5 pb-1"
+                    id="sidepanel-titulo"
+                >
+                    Ajustes
+                </p>
+                <button
+                    type="button"
+                    class="btn-close close-sidepanel"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Cerrar"
+                ></button>
+            </div>
+            <div class="offcanvas-body scrollbar-thin-gray">
+                <ul
+                    class="d-flex flex-column justify-content-start align-items-center w-100 gap-3 list-unstyled"
+                >
+                    <li class="w-100">
+                        <div class="panel-summary-card">
+                            <p class="panel-summary-eyebrow">Resumen rapido</p>
+                            <div class="panel-summary-grid">
+                                <div>
+                                    <span class="panel-summary-label">Modo</span>
+                                    <strong data-ui-layout>Cuadricula</strong>
+                                </div>
+                                <div>
+                                    <span class="panel-summary-label">Senales activas</span>
+                                    <strong data-ui-active-count>0</strong>
+                                </div>
+                                <div>
+                                    <span class="panel-summary-label">Guardado local</span>
+                                    <strong>Activo</strong>
+                                </div>
+                                <div>
+                                    <span class="panel-summary-label">Atajo recomendado</span>
+                                    <strong>Vision unica</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow"
+                        >
+                            <div
+                                class="form-check form-switch d-flex align-items-center gap-2"
+                                title="ocultar navbar"
+                            >
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    role="switch"
+                                    id="checkbox-personalizar-visualizacion-navbar"
+                                />
+                                <label
+                                    class="form-check-label w-100 d-flex justify-content-between align-items-center"
+                                    for="checkbox-personalizar-visualizacion-navbar"
+                                >
+                                    Navbar
+                                    <span
+                                        class="ps-1 fs-smaller text-secondary"
+                                        id="span-valor-visualizacion-navbar"
+                                    ></span>
+                                    <i
+                                        class="bi bi-border-top ms-auto bg-light-subtle px-2 py-1 rounded-circle"
+                                    ></i>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow"
+                        >
+                            <div class="d-flex gap-2 justify-content-evenly align-items-center">
+                                <button
+                                    type="button"
+                                    id="boton-activar-diseño-vision-grid"
+                                    class="focus-outline-blue btn btn-sm btn-indigo rounded-start-5 shadow-sm d-flex gap-1 border-0 w-100 h-100 justify-content-center align-items-center"
+                                    tabindex="0"
+                                >
+                                    <span class="w-100 h-100"
+                                        ><i class="bi bi-grid-3x2"></i> Visión cuadrícula</span
+                                    >
+                                </button>
+                                <button
+                                    type="button"
+                                    id="boton-activar-diseño-vision-unica"
+                                    class="focus-outline-blue btn btn-sm btn-light-subtle rounded-end-5 shadow-sm d-flex gap-1 border-0 w-100 h-100 justify-content-center align-items-center"
+                                    tabindex="0"
+                                >
+                                    <span class="w-100 h-100"
+                                        ><i class="bi bi-layout-sidebar"></i> Visión única</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-4 border border-light-subtle shadow"
+                        >
+                            <div
+                                class="form-check form-switch d-flex align-items-center gap-2"
+                                title="ocultar overlay"
+                            >
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    role="switch"
+                                    id="checkbox-personalizar-visualizacion-overlay"
+                                />
+                                <label
+                                    class="form-check-label w-100 d-flex justify-content-start align-items-center"
+                                    for="checkbox-personalizar-visualizacion-overlay"
+                                >
+                                    Overlay canales
+                                    <span
+                                        class="ps-1 fs-smaller text-secondary"
+                                        id="span-valor-visualizacion-overlay"
+                                    ></span>
+                                    <i
+                                        class="bi bi-window-fullscreen flip-icon ms-auto bg-light-subtle px-2 py-1 rounded-circle"
+                                        id="icono-personalizar-visualizacion-overlay"
+                                    ></i>
+                                </label>
+                            </div>
+                            <div
+                                class="w-100 btn-group d-flex flex-column justify-content-center align-items-center py-2 px-3 bg-dark-subtle border border-light-subtle rounded-4 shadow mt-2"
+                                role="group"
+                                aria-label="button group botones dentro overlay"
+                                id="grupo-botones-personalizar-botones-dentro-overlay"
+                            >
+                                <p class="align-self-start">Botones en overlay</p>
+                                <div class="d-flex justify-content-between w-100">
+                                    <div
+                                        class="d-flex flex-column div-boton-personalizar-overlay align-items-center"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            class="btn-check"
+                                            name="btncheckboxbotonesoverlay"
+                                            id="btnSelecionarSeñal"
+                                            autocomplete="off"
+                                            checked
+                                            data-botonOverlay="overlay-boton-selecionar-señal"
+                                        />
+                                        <label
+                                            class="btn btn-outline-indigo rounded-4"
+                                            for="btnSelecionarSeñal"
+                                            ><i class="bi bi-collection"></i
+                                        ></label>
+                                        <span class="fs-smaller text-secondary"></span>
+                                    </div>
+                                    <div
+                                        class="d-flex flex-column div-boton-personalizar-overlay align-items-center"
+                                        id="boton-personalizar-boton-mover-overlay"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            class="btn-check"
+                                            name="btncheckboxbotonesoverlay"
+                                            id="btnMover"
+                                            autocomplete="off"
+                                            checked
+                                            data-botonOverlay="overlay-boton-mover"
+                                        />
+                                        <label
+                                            class="btn btn-outline-indigo rounded-4"
+                                            for="btnMover"
+                                            ><i class="bi bi-arrows-move"></i
+                                        ></label>
+                                        <span class="fs-smaller text-secondary"></span>
+                                    </div>
+                                    <div
+                                        class="d-flex flex-column div-boton-personalizar-overlay align-items-center"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            class="btn-check"
+                                            name="btncheckboxbotonesoverlay"
+                                            id="btnCambiar"
+                                            autocomplete="off"
+                                            checked
+                                            data-botonOverlay="overlay-boton-cambiar"
+                                        />
+                                        <label
+                                            class="btn btn-outline-indigo rounded-4"
+                                            for="btnCambiar"
+                                            ><i class="bi bi-arrow-repeat"></i
+                                        ></label>
+                                        <span class="fs-smaller text-secondary"></span>
+                                    </div>
+                                    <div
+                                        class="d-flex flex-column div-boton-personalizar-overlay align-items-center"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            class="btn-check"
+                                            name="btncheckboxbotonesoverlay"
+                                            id="btnFuente"
+                                            autocomplete="off"
+                                            checked
+                                            data-botonOverlay="overlay-boton-pagina-oficial"
+                                        />
+                                        <label
+                                            class="btn btn-outline-indigo rounded-4"
+                                            for="btnFuente"
+                                            ><i class="bi bi-box-arrow-up-right"></i
+                                        ></label>
+                                        <span class="fs-smaller text-secondary"></span>
+                                    </div>
+                                    <div
+                                        class="d-flex flex-column div-boton-personalizar-overlay align-items-center"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            class="btn-check"
+                                            name="btncheckboxbotonesoverlay"
+                                            id="btnQuitar"
+                                            autocomplete="off"
+                                            checked
+                                            data-botonOverlay="overlay-boton-quitar"
+                                        />
+                                        <label
+                                            class="btn btn-outline-indigo rounded-4"
+                                            for="btnQuitar"
+                                            ><i class="bi bi-x-circle"></i
+                                        ></label>
+                                        <span class="fs-smaller text-secondary"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow"
+                        >
+                            <div class="form-check form-switch d-flex align-items-center gap-2">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="checkbox-personalizar-tema"
+                                />
+                                <label
+                                    class="form-check-label w-100 d-flex justify-content-start align-items-center gap-1"
+                                    for="checkbox-personalizar-tema"
+                                >
+                                    Tema
+                                    <div class="fs-smaller text-secondary">
+                                        [<span id="span-valor-tema">Claro</span>]
+                                    </div>
+                                    <i
+                                        class="bi bi-sun bg-light-subtle px-2 py-1 rounded-circle ms-auto"
+                                        id="icono-personalizar-tema"
+                                    ></i>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-4 border border-light-subtle shadow"
+                        >
+                            <label
+                                for="input-range-tamaño-container-vision-cuadricula"
+                                class="slider-label form-label d-flex align-items-center gap-1"
+                                >Tamaño
+                                <div class="fs-smaller text-secondary">
+                                    [<span id="span-valor-input-range">100%</span>]
+                                </div>
+                            </label>
+                            <input
+                                type="range"
+                                value="100"
+                                min="50"
+                                max="100"
+                                class="form-range"
+                                id="input-range-tamaño-container-vision-cuadricula"
+                            />
+
+                            <div
+                                class="w-100 py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow mt-2"
+                            >
+                                <div
+                                    class="form-check form-switch d-flex align-items-center gap-2"
+                                    title="alternar uso 100% altura disponible"
+                                >
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        role="switch"
+                                        id="checkbox-personalizar-altura-canales"
+                                    />
+                                    <label
+                                        class="form-check-label w-100 d-flex justify-content-start align-items-center gap-1"
+                                        for="checkbox-personalizar-altura-canales"
+                                        id="status-altura-canales"
+                                    >
+                                        100% altura
+                                        <div class="fs-smaller text-secondary">
+                                            [<span id="span-valor-altura-canales"></span>]
+                                        </div>
+                                        <i
+                                            class="bi bi-arrows-vertical ms-auto bg-light-subtle px-2 py-1 rounded-circle"
+                                            id="icono-personalizar-altura-canales"
+                                        ></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-4 border border-light-subtle shadow"
+                        >
+                            Número de canales por fila
+                            <div class="fs-smaller text-secondary d-inline">
+                                [<span id="span-valor-transmisiones-por-fila">3</span>]
+                            </div>
+
+                            <div
+                                id="container-botones-personalizar-transmisiones-por-fila"
+                                class="btn-group w-100 gap-1"
+                                role="group"
+                                aria-label="grupo botones número transmisiones por fila"
+                            >
+                                <button
+                                    value="12"
+                                    type="button"
+                                    class="btn btn-light-subtle rounded-4 w-100"
+                                >
+                                    1
+                                </button>
+                                <button
+                                    value="6"
+                                    type="button"
+                                    class="btn btn-light-subtle rounded-4 w-100"
+                                >
+                                    2
+                                </button>
+                                <button
+                                    value="4"
+                                    type="button"
+                                    class="btn btn-indigo rounded-4 w-100"
+                                >
+                                    3
+                                </button>
+                                <button
+                                    value="3"
+                                    type="button"
+                                    class="btn btn-light-subtle rounded-4 w-100"
+                                >
+                                    4
+                                </button>
+                                <button
+                                    value="2"
+                                    type="button"
+                                    class="btn btn-light-subtle rounded-4 w-100"
+                                >
+                                    6
+                                </button>
+                                <button
+                                    value="1"
+                                    type="button"
+                                    class="btn btn-light-subtle rounded-4 w-100"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-title="12 a lo enfermo"
+                                >
+                                    12
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow"
+                        >
+                            <button
+                                type="button"
+                                class="btn btn-light-subtle rounded-pill d-flex align-items-center justify-content-center w-100"
+                                id="boton-fullscreen"
+                            >
+                                Entrar pantalla completa
+                                <i class="bi bi-arrows-fullscreen ms-auto"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="w-100 btn-group d-flex flex-column justify-content-center align-items-center py-2 px-3 bg-dark-subtle border border-light-subtle rounded-4 shadow gap-1"
+                            role="group"
+                            aria-label="button group posicion botones flotantes"
+                            id="grupo-botones-posicion-botones-flotantes"
+                        >
+                            <p class="my-2 align-self-start">Botones flotantes</p>
+                            <div class="d-flex gap-1">
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante1"
+                                    autocomplete="off"
+                                    data-position="top-0 start-0 mt-3"
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-4 rounded-bottom-0 rounded-end-0"
+                                    for="btnradioflotante1"
+                                    ><i class="bi bi-arrow-up-left-square"></i
+                                ></label>
+
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante2"
+                                    autocomplete="off"
+                                    data-position="top-0 start-50 mt-3 translate-middle-x"
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-0"
+                                    for="btnradioflotante2"
+                                    ><i class="bi bi-arrow-up-square"></i
+                                ></label>
+
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante3"
+                                    autocomplete="off"
+                                    data-position="top-0 end-0 mt-3"
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-4 rounded-bottom-0 rounded-start-0"
+                                    for="btnradioflotante3"
+                                    ><i class="bi bi-arrow-up-right-square"></i
+                                ></label>
+                            </div>
+                            <div class="d-flex gap-1">
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante4"
+                                    autocomplete="off"
+                                    data-position="top-50 start-0 translate-middle-y"
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-0"
+                                    for="btnradioflotante4"
+                                    ><i class="bi bi-arrow-left-square"></i
+                                ></label>
+
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante5"
+                                    autocomplete="off"
+                                    data-position="top-50 start-50 translate-middle"
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-0"
+                                    for="btnradioflotante5"
+                                    ><i class="bi bi-c-square"></i
+                                ></label>
+
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante6"
+                                    autocomplete="off"
+                                    data-position="top-50 end-0 translate-middle-y"
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-0"
+                                    for="btnradioflotante6"
+                                    ><i class="bi bi-arrow-right-square"></i
+                                ></label>
+                            </div>
+                            <div class="d-flex gap-1">
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante7"
+                                    autocomplete="off"
+                                    data-position="bottom-0 start-0 mb-3"
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-4 rounded-top-0 rounded-end-0"
+                                    for="btnradioflotante7"
+                                    ><i class="bi bi-arrow-down-left-square"></i
+                                ></label>
+
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante8"
+                                    autocomplete="off"
+                                    data-position="bottom-0 start-50 mb-3 translate-middle-x"
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-0"
+                                    for="btnradioflotante8"
+                                    ><i class="bi bi-arrow-down-square"></i
+                                ></label>
+
+                                <input
+                                    type="radio"
+                                    class="btn-check"
+                                    name="btnradioflotante"
+                                    id="btnradioflotante9"
+                                    autocomplete="off"
+                                    data-position="bottom-0 end-0 mb-3"
+                                    checked
+                                />
+                                <label
+                                    class="btn btn-outline-indigo rounded-4 rounded-top-0 rounded-start-0"
+                                    for="btnradioflotante9"
+                                    ><i class="bi bi-arrow-down-right-square"></i
+                                ></label>
+                            </div>
+                            <div
+                                class="w-100 py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow mt-2"
+                            >
+                                <div
+                                    class="form-check form-switch d-flex align-items-center gap-2"
+                                    title="ocultar texto botones flotante"
+                                >
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        role="switch"
+                                        id="checkbox-personalizar-texto-botones-flotantes"
+                                    />
+                                    <label
+                                        class="form-check-label w-100 d-flex justify-content-start align-items-center"
+                                        for="checkbox-personalizar-texto-botones-flotantes"
+                                        id="status-texto-botones-flotantes"
+                                    >
+                                        Texto botones
+                                        <span
+                                            class="ps-1 fs-smaller text-secondary"
+                                            id="span-valor-texto-en-botones-flotante"
+                                        ></span>
+                                        <i
+                                            class="bi bi-info-square ms-auto bg-light-subtle px-2 py-1 rounded-circle"
+                                            id="icono-personalizar-texto-botones-flotantes"
+                                        ></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="bg-dark-subtle rounded-4 w-100 py-2 px-3 border border-light-subtle shadow d-flex flex-column"
+                        >
+                            <p>Información</p>
+                            <p>
+                                <i class="bi bi-github rounded-3 p-1 me-1"></i
+                                ><a
+                                    href="https://github.com/interneto/tv-multiview"
+                                    rel="nofollow noreferrer"
+                                    >Repositorio <i class="bi bi-box-arrow-up-right"></i
+                                ></a>
+                            </p>
+                            <p class="text-secondary mb-0">
+                                Personaliza la interfaz, instala la PWA y guarda tu seleccion de
+                                canales localmente.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow"
+                        >
+                            <div
+                                class="form-check form-switch d-flex align-items-center gap-2"
+                                title="ocultar fondo"
+                            >
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    role="switch"
+                                    id="checkbox-tarjeta-logo-background"
+                                />
+                                <label
+                                    class="form-check-label w-100 d-flex justify-content-start align-items-center"
+                                    for="checkbox-tarjeta-logo-background"
+                                >
+                                    Logo en fondo
+                                    <span
+                                        class="ps-1 fs-smaller text-secondary"
+                                        id="span-valor-visualizacion-tarjeta-logo-background"
+                                    ></span>
+                                    <i
+                                        class="bi bi-eye ms-auto bg-light-subtle px-2 py-1 rounded-circle"
+                                        id="icono-personalizar-visualizacion-tarjeta-logo-background"
+                                    ></i>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="w-100">
+                        <div
+                            class="py-2 px-3 bg-dark-subtle rounded-pill border border-light-subtle shadow"
+                        >
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-warning rounded-pill w-100 d-flex justify-content-between align-items-center text-start"
+                                id="boton-experimental"
+                            >
+                                <span class="flex-grow-1"
+                                    >Activar modo experimental canales IPTV</span
+                                ><i
+                                    class="bi bi-question-circle ms-auto bg-light-subtle text-body rounded-circle px-1"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-title="
+                            Este botón carga lista IPTV en conjunto a los canales predeterminados.
+                            El funcionamiento de estos, tanto como sus enlaces a los sitios oficiales no se garantiza. 
+                            Esta carga debe ser siempre activada manualmente."
+                                ></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li
+                        class="w-100 d-flex bg-dark-subtle rounded-pill py-2 px-3 border border-light-subtle shadow"
+                    >
+                        <button
+                            type="button"
+                            class="btn btn-danger rounded-pill btn-sm w-100 d-flex justify-content-between align-items-center text-start"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal-reset"
+                        >
+                            <span class="flex-grow-1">Reiniciar personalizaciones</span
+                            ><i
+                                class="bi bi-question-circle ms-auto bg-light-subtle text-body rounded-circle px-1"
+                                data-bs-toggle="tooltip"
+                                data-bs-title="Este botón sirve para limpiar datos del sitio. Se te pedirá confirmar este paso."
+                            ></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex p-3 bg-dark bg-opacity-75 gap-2 rounded-bottom-5">
+                <button type="button" class="btn btn-success rounded-pill" id="boton-instalar-pwa">
+                    <i class="bi bi-plus-circle-dotted"></i> Instalar
+                </button>
+
+                <button
+                    class="btn btn-secondary ms-auto rounded-pill"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                >
+                    Cerrar
+                </button>
+            </div>
+        </div>
+
+        <!-- alerta previa borrado localstorage -->
+        <div class="modal modal-alert py-5" tabindex="-1" role="dialog" id="modal-reset">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content rounded-4 shadow bg-danger-subtle border-0">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title">
+                            ¿Estás seguro de que deseas reiniciar todas tus personalizaciones?
+                        </h5>
+                    </div>
+                    <div class="modal-body py-4">
+                        <p>
+                            Al hacerlo, todas las entradas que hayan sido creadas por este sitio en
+                            tu navegador a través de tu almacenamiento local (localStorage) serán
+                            eliminadas. Esto es equivalente a recargar la página desde cero.
+                        </p>
+                        <p class="text-secondary fst-italic">
+                            Si estas presentando problemas con el funcionamiento de la página es
+                            recomendable proseguir y/o borrar la caché del navegador.
+                        </p>
+                    </div>
+                    <div class="modal-footer flex-nowrap p-0 overflow-hidden border-0">
+                        <button
+                            type="button"
+                            class="btn btn-danger w-100 m-0 rounded-0"
+                            id="boton-borrar-localstorage"
+                            data-bs-dismiss="modal"
+                            data-bs-toggle="offcanvas"
+                        >
+                            <strong><i class="bi bi-trash3"></i> Reiniciar</strong>
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-secondary w-100 m-0 rounded-0"
+                            data-bs-dismiss="modal"
+                        >
+                            Cerrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
+        <script src="assets/js/main.js" type="module"></script>
+        <script src="assets/js/buttons.js" type="module"></script>
+        <script src="assets/js/observer.js" type="module"></script>
+    </body>
+    <!--
 ██╗    ██╗███████╗███╗   ██╗ █████╗     ██╗    ██╗███████╗███╗   ██╗ █████╗ 
 ██║    ██║██╔════╝████╗  ██║██╔══██╗    ██║    ██║██╔════╝████╗  ██║██╔══██╗
 ██║ █╗ ██║█████╗  ██╔██╗ ██║███████║    ██║ █╗ ██║█████╗  ██╔██╗ ██║███████║
 ██║███╗██║██╔══╝  ██║╚██╗██║██╔══██║    ██║███╗██║██╔══╝  ██║╚██╗██║██╔══██║
 ╚███╔███╔╝███████╗██║ ╚████║██║  ██║    ╚███╔███╔╝███████╗██║ ╚████║██║  ██║
  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝     ╚══╝╚══╝ ╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝
--->
-
-</html>
+--></html>

@@ -32,6 +32,7 @@ Mapping proposal Spanish -> English filenames:
 - helperUnicVision.js -> helperSingleView.js
 
 Plan:
+
 1. Create new English-named wrapper files that re-export everything from the Spanish originals.
 2. Update `helpers/index.js` to export from the new English wrapper files (and also preserve original exports for backward compatibility for now).
 3. Search and update direct imports optionally (we'll keep compatibility so not strictly necessary immediately).

@@ -3,11 +3,14 @@ const LANGUAGE_STORAGE_KEY = 'ui-language';
 const translations = {
     es: {
         title: 'TV Multiview | Monitor de canales en vivo',
-        metaDescription: 'PWA de codigo abierto para monitorear canales de TV en vivo, comparar multiples senales en una cuadricula y alternar a un modo de vision unica.',
-        socialDescription: 'Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente.',
+        metaDescription:
+            'PWA de codigo abierto para monitorear canales de TV en vivo, comparar multiples senales en una cuadricula y alternar a un modo de vision unica.',
+        socialDescription:
+            'Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente.',
         skipContent: 'Saltar al contenido principal',
         liveMonitor: 'Monitor de TV en vivo',
-        heroCopy: 'Compara noticias y transmisiones en paralelo, alterna entre cuadricula y enfoque unico, y conserva tu configuracion en este mismo dispositivo.',
+        heroCopy:
+            'Compara noticias y transmisiones en paralelo, alterna entre cuadricula y enfoque unico, y conserva tu configuracion en este mismo dispositivo.',
         pwaInstallable: 'PWA instalable',
         gridMode: 'Modo cuadrícula',
         singleView: 'Visión única',
@@ -28,22 +31,30 @@ const translations = {
         selectChannels: 'Selecciona tus canales',
         catalogDescription: 'Explora el catalogo completo, filtra por país y ordena rapidamente.',
         sidepanelDescription: 'Abre, combina y limpia tu seleccion sin salir de la vista actual.',
-        loadChannelsFileError: 'Ha ocurrido un error al intentar cargar el archivo que contiene los canales',
+        loadChannelsFileError:
+            'Ha ocurrido un error al intentar cargar el archivo que contiene los canales',
         resetLocalStorage: 'Reiniciar almacenamiento local',
-        localStorageDeleted: 'Tu almacenamiento local ha sido eliminado, prueba recargando el sitio/PWA',
+        localStorageDeleted:
+            'Tu almacenamiento local ha sido eliminado, prueba recargando el sitio/PWA',
         removeAll: 'Quitar todos',
         loadDefaults: 'Cargar predeterminados',
         reload: 'Recargar',
         close: 'Cerrar',
         disclaimerTitle: 'Descargo de responsabilidad',
-        disclaimerItem1: '"tv-multiview" es un proyecto de código abierto gratuito que permite gestionar canales de television de libre acceso por Internet.',
-        disclaimerItem2: '"tv-multiview" no decodifica transmisiones. Los enlaces de este proyecto se procesan desde diferentes sitios públicos con libre distribución o acceso.',
-        disclaimerItem3: '"tv-multiview" no posee ningún tipo de monetización, en consecuencia no se lucra de ninguna forma o medio.',
-        disclaimerItem4: 'El proyecto cuenta con reproductores multimedia que no corresponden a una retransmisión de los canales ni implican su decodificación.',
-        disclaimerItem5: 'No se es propietario ni responsable de ninguno de los contenidos emitidos por cada canal.',
+        disclaimerItem1:
+            '"tv-multiview" es un proyecto de código abierto gratuito que permite gestionar canales de television de libre acceso por Internet.',
+        disclaimerItem2:
+            '"tv-multiview" no decodifica transmisiones. Los enlaces de este proyecto se procesan desde diferentes sitios públicos con libre distribución o acceso.',
+        disclaimerItem3:
+            '"tv-multiview" no posee ningún tipo de monetización, en consecuencia no se lucra de ninguna forma o medio.',
+        disclaimerItem4:
+            'El proyecto cuenta con reproductores multimedia que no corresponden a una retransmisión de los canales ni implican su decodificación.',
+        disclaimerItem5:
+            'No se es propietario ni responsable de ninguno de los contenidos emitidos por cada canal.',
         disclaimerItem6: '"tv-multiview" no ofrece canales de pago bajo ninguna modalidad.',
         disclaimerItem7: 'En este proyecto no se almacena ninguna transmisión.',
-        disclaimerItem8: 'El proyecto y sus mantenedores no asumen responsabilidad alguna respecto a derechos de propiedad intelectual que puedan ser infringidos por terceros o por cualquier usuario.',
+        disclaimerItem8:
+            'El proyecto y sus mantenedores no asumen responsabilidad alguna respecto a derechos de propiedad intelectual que puedan ser infringidos por terceros o por cualquier usuario.',
         disclaimerItem9: 'El usuario siempre puede dirigirse al sitio oficial de cada transmisión.',
         disclaimerContactIntro: 'Si posees los derechos de algún canal y deseas que sea retirado,',
         contactMe: 'contáctame',
@@ -69,11 +80,13 @@ const translations = {
         buttonText: 'Texto botones',
         information: 'Información',
         repository: 'Repositorio',
-        infoDescription: 'Personaliza la interfaz, instala la PWA y guarda tu seleccion de canales localmente.',
+        infoDescription:
+            'Personaliza la interfaz, instala la PWA y guarda tu seleccion de canales localmente.',
         backgroundLogo: 'Logo en fondo',
         experimentalMode: 'Activar modo experimental canales IPTV',
         experimentalLoading: 'Cargando...',
-        experimentalTooltip: 'Este botón carga la lista IPTV junto con los canales predeterminados. El funcionamiento de estos, así como sus enlaces a sitios oficiales, no se garantiza. Esta carga siempre debe activarse manualmente.',
+        experimentalTooltip:
+            'Este botón carga la lista IPTV junto con los canales predeterminados. El funcionamiento de estos, así como sus enlaces a sitios oficiales, no se garantiza. Esta carga siempre debe activarse manualmente.',
         install: 'Instalar',
         savingChannels: 'Guardando canales',
         languageSelector: 'Selector de idioma',
@@ -95,56 +108,80 @@ const translations = {
         selectDifferentSignal: 'Seleccionar diferente señal',
         officialPage: 'Ir a la página oficial de esta transmisión',
         resetModalTitle: '¿Estás seguro de que deseas reiniciar todas tus personalizaciones?',
-        resetModalBody: 'Al hacerlo, todas las entradas creadas por este sitio en tu navegador serán eliminadas del almacenamiento local.',
-        resetModalNote: 'Si la página presenta problemas, también conviene borrar la caché del navegador.',
+        resetModalBody:
+            'Al hacerlo, todas las entradas creadas por este sitio en tu navegador serán eliminadas del almacenamiento local.',
+        resetModalNote:
+            'Si la página presenta problemas, también conviene borrar la caché del navegador.',
         reset: 'Reiniciar',
         alreadySingleView: 'Ya estas en modo visión única',
         alreadyGridView: 'Ya estas en modo visión cuadrícula',
-        experimentalEnabled: 'Modo experimental activado. Se han combinado listas de canales y sus signals m3u8.',
-        alreadyExperimental: 'Ya estas en modo experimental. Revisa los canales que se cargaron. Para regresar al modo normal recarga la página.',
-        shareText: 'PWA de codigo abierto para ver y comparar transmisiones de noticias y TV en vivo.',
+        experimentalEnabled:
+            'Modo experimental activado. Se han combinado listas de canales y sus signals m3u8.',
+        alreadyExperimental:
+            'Ya estas en modo experimental. Revisa los canales que se cargaron. Para regresar al modo normal recarga la página.',
+        shareText:
+            'PWA de codigo abierto para ver y comparar transmisiones de noticias y TV en vivo.',
         copyLink: 'Copiar enlace',
         copySuccess: 'Copiado exitoso',
         copyFailed: 'Copiado fallido',
         enterFullscreen: 'Entrar pantalla completa',
-        exitFullscreen: 'Salir pantalla completa'
-        ,errorDetailsLabel: 'Error',
-        errorStorageHint: 'Si el error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.',
+        exitFullscreen: 'Salir pantalla completa',
+        errorDetailsLabel: 'Error',
+        errorStorageHint:
+            'Si el error persiste tras recargar, prueba borrar tu almacenamiento local desde el panel "Settings" o borrando la caché del navegador.',
         errorCacheHint: 'Si el error persiste tras recargar, prueba borrar la caché del navegador.',
-        errorLoadDefaultChannels: 'Ha ocurrido un error al intentar cargar canales predeterminados.',
-        errorClearLocalStorage: 'Ha ocurrido un error al intentar eliminar el almacenamiento local del sitio.',
+        errorLoadDefaultChannels:
+            'Ha ocurrido un error al intentar cargar canales predeterminados.',
+        errorClearLocalStorage:
+            'Ha ocurrido un error al intentar eliminar el almacenamiento local del sitio.',
         errorEnterFullscreen: 'Ha ocurrido un error al solicitar entrar a pantalla completa.',
         errorExitFullscreen: 'Ha ocurrido un error al solicitar salir de pantalla completa.',
         errorCreateChannel: 'Ha ocurrido un error durante la creación del canal con id: {channel}.',
-        errorRemoveChannel: 'Ha ocurrido un error durante la eliminación del canal con id: {channel}.',
+        errorRemoveChannel:
+            'Ha ocurrido un error durante la eliminación del canal con id: {channel}.',
         errorLoadChannels: 'Ha ocurrido un error durante la carga de canales predeterminados.',
         errorInitialLoad: 'Ha ocurrido un error durante la carga inicial.',
         errorExperimentalMode: 'Ha ocurrido un error al intentar activar modo experimental.',
-        errorCreateOverlay: 'Ha ocurrido un error durante la creación del overlay para el canal con id: {channel}.',
-        errorChangeSignal: 'Ha ocurrido un error al intentar cambiar señal para el canal con id: {channel}.',
-        errorCreateChannelButtons: 'Ha ocurrido un error durante la creación de botones para los canales.',
-        errorCreateCountryButtons: 'Ha ocurrido un error durante la creación de botones para filtro de países.',
+        errorCreateOverlay:
+            'Ha ocurrido un error durante la creación del overlay para el canal con id: {channel}.',
+        errorChangeSignal:
+            'Ha ocurrido un error al intentar cambiar señal para el canal con id: {channel}.',
+        errorCreateChannelButtons:
+            'Ha ocurrido un error durante la creación de botones para los canales.',
+        errorCreateCountryButtons:
+            'Ha ocurrido un error durante la creación de botones para filtro de países.',
         errorActivateCountryFilter: 'Ha ocurrido un error al intentar activar el filtro por país.',
-        errorAdjustChannelsPerRow: 'Ha ocurrido un error al intentar ajustar el número de canales por fila.',
+        errorAdjustChannelsPerRow:
+            'Ha ocurrido un error al intentar ajustar el número de canales por fila.',
         errorFilterChannels: 'Ha ocurrido un error al intentar filtrar canales.',
         errorRemoveAllChannels: 'Ha ocurrido un error al intentar quitar todos los canales.',
-        errorReplaceChannel: 'Ha ocurrido un error al intentar cambiar el canal con id: {oldChannel} por el canal: {newChannel}.',
-        errorSaveChannels: 'Ha ocurrido un error al intentar guardar canales en el almacenamiento local.',
-        errorLoadSingleViewOrder: 'Ha ocurrido un error durante la carga del orden de paneles para modo "Visión Única".',
-        errorUpdateOverlayButtons: 'Ha ocurrido un error durante la actualización del estado de los botones del overlay.',
-        errorActivateSingleView: 'Ha ocurrido un error durante la activación del modo "Visión Única".',
-        errorDeactivateSingleView: 'Ha ocurrido un error durante la desactivación del modo "Visión Única".',
+        errorReplaceChannel:
+            'Ha ocurrido un error al intentar cambiar el canal con id: {oldChannel} por el canal: {newChannel}.',
+        errorSaveChannels:
+            'Ha ocurrido un error al intentar guardar canales en el almacenamiento local.',
+        errorLoadSingleViewOrder:
+            'Ha ocurrido un error durante la carga del orden de paneles para modo "Visión Única".',
+        errorUpdateOverlayButtons:
+            'Ha ocurrido un error durante la actualización del estado de los botones del overlay.',
+        errorActivateSingleView:
+            'Ha ocurrido un error durante la activación del modo "Visión Única".',
+        errorDeactivateSingleView:
+            'Ha ocurrido un error durante la desactivación del modo "Visión Única".',
         channelWithoutSignals: '{channel} no tiene señales definidas.',
-        preferredSignalUnavailable: 'Tu señal preferida para {channel} ({signal}) dejó de estar disponible.',
-        nextSignalFallback: 'Se utilizará la siguiente señal disponible.'
+        preferredSignalUnavailable:
+            'Tu señal preferida para {channel} ({signal}) dejó de estar disponible.',
+        nextSignalFallback: 'Se utilizará la siguiente señal disponible.',
     },
     en: {
         title: 'TV Multiview | Live channel monitor',
-        metaDescription: 'Open-source PWA to monitor live TV channels, compare multiple streams in a grid, and switch into a single-view mode.',
-        socialDescription: 'Live TV monitor for comparing streams, switching between grid and focus view, and saving your local setup.',
+        metaDescription:
+            'Open-source PWA to monitor live TV channels, compare multiple streams in a grid, and switch into a single-view mode.',
+        socialDescription:
+            'Live TV monitor for comparing streams, switching between grid and focus view, and saving your local setup.',
         skipContent: 'Skip to main content',
         liveMonitor: 'Live TV monitor',
-        heroCopy: 'Compare news and live streams side by side, switch between grid and focus view, and keep your setup on this device.',
+        heroCopy:
+            'Compare news and live streams side by side, switch between grid and focus view, and keep your setup on this device.',
         pwaInstallable: 'Installable PWA',
         gridMode: 'Grid mode',
         singleView: 'Single view',
@@ -164,8 +201,10 @@ const translations = {
         defaultOrder: 'Default',
         selectChannels: 'Select your channels',
         catalogDescription: 'Browse the full catalog, filter by country, and sort it quickly.',
-        sidepanelDescription: 'Open, combine, and clear your selection without leaving the current view.',
-        loadChannelsFileError: 'An error occurred while loading the file that contains the channels',
+        sidepanelDescription:
+            'Open, combine, and clear your selection without leaving the current view.',
+        loadChannelsFileError:
+            'An error occurred while loading the file that contains the channels',
         resetLocalStorage: 'Reset local storage',
         localStorageDeleted: 'Your local storage has been removed. Try reloading the site or PWA.',
         removeAll: 'Remove all',
@@ -173,14 +212,20 @@ const translations = {
         reload: 'Reload',
         close: 'Close',
         disclaimerTitle: 'Disclaimer',
-        disclaimerItem1: '"tv-multiview" is a free open-source project for managing freely accessible TV channels over the Internet.',
-        disclaimerItem2: '"tv-multiview" does not decode broadcasts. The links shown in this project are processed from public sources with open distribution or access.',
-        disclaimerItem3: '"tv-multiview" has no monetization of any kind and therefore does not profit in any way.',
-        disclaimerItem4: 'The project includes media players, but they are not retransmissions of the channels and do not imply any decoding of them.',
-        disclaimerItem5: 'The project is neither the owner nor responsible for any content broadcast by each channel.',
+        disclaimerItem1:
+            '"tv-multiview" is a free open-source project for managing freely accessible TV channels over the Internet.',
+        disclaimerItem2:
+            '"tv-multiview" does not decode broadcasts. The links shown in this project are processed from public sources with open distribution or access.',
+        disclaimerItem3:
+            '"tv-multiview" has no monetization of any kind and therefore does not profit in any way.',
+        disclaimerItem4:
+            'The project includes media players, but they are not retransmissions of the channels and do not imply any decoding of them.',
+        disclaimerItem5:
+            'The project is neither the owner nor responsible for any content broadcast by each channel.',
         disclaimerItem6: '"tv-multiview" does not offer paid channels in any form.',
         disclaimerItem7: 'No broadcast is stored in this project.',
-        disclaimerItem8: 'The project and its maintainers assume no responsibility regarding intellectual property rights that may be infringed by third parties or any user.',
+        disclaimerItem8:
+            'The project and its maintainers assume no responsibility regarding intellectual property rights that may be infringed by third parties or any user.',
         disclaimerItem9: 'Users can always go to the official site of each broadcast.',
         disclaimerContactIntro: 'If you own the rights to any channel and want it removed,',
         contactMe: 'contact me',
@@ -206,11 +251,13 @@ const translations = {
         buttonText: 'Button text',
         information: 'Information',
         repository: 'Repository',
-        infoDescription: 'Customize the interface, install the PWA, and keep your channel selection locally.',
+        infoDescription:
+            'Customize the interface, install the PWA, and keep your channel selection locally.',
         backgroundLogo: 'Background logo',
         experimentalMode: 'Enable IPTV experimental mode',
         experimentalLoading: 'Loading...',
-        experimentalTooltip: 'This button loads the IPTV list together with the default channels. Their behavior, as well as links to official sites, is not guaranteed. This load must always be enabled manually.',
+        experimentalTooltip:
+            'This button loads the IPTV list together with the default channels. Their behavior, as well as links to official sites, is not guaranteed. This load must always be enabled manually.',
         install: 'Install',
         savingChannels: 'Saving channels',
         languageSelector: 'Language selector',
@@ -232,13 +279,17 @@ const translations = {
         selectDifferentSignal: 'Select a different stream',
         officialPage: 'Go to the official page for this stream',
         resetModalTitle: 'Are you sure you want to reset all your customizations?',
-        resetModalBody: 'If you continue, every entry created by this site in your browser local storage will be removed.',
-        resetModalNote: 'If the page is not working properly, clearing the browser cache is also recommended.',
+        resetModalBody:
+            'If you continue, every entry created by this site in your browser local storage will be removed.',
+        resetModalNote:
+            'If the page is not working properly, clearing the browser cache is also recommended.',
         reset: 'Reset',
         alreadySingleView: 'You are already in single-view mode',
         alreadyGridView: 'You are already in grid mode',
-        experimentalEnabled: 'Experimental mode enabled. Channel lists and m3u8 signals were merged.',
-        alreadyExperimental: 'Experimental mode is already active. Review the loaded channels. Reload the page to return to normal mode.',
+        experimentalEnabled:
+            'Experimental mode enabled. Channel lists and m3u8 signals were merged.',
+        alreadyExperimental:
+            'Experimental mode is already active. Review the loaded channels. Reload the page to return to normal mode.',
         shareText: 'Open-source PWA to watch and compare live news and TV streams.',
         copyLink: 'Copy link',
         copySuccess: 'Copied successfully',
@@ -246,7 +297,8 @@ const translations = {
         enterFullscreen: 'Enter fullscreen',
         exitFullscreen: 'Exit fullscreen',
         errorDetailsLabel: 'Error',
-        errorStorageHint: 'If the error persists after reloading, try clearing your local storage from the "Settings" panel or clearing the browser cache.',
+        errorStorageHint:
+            'If the error persists after reloading, try clearing your local storage from the "Settings" panel or clearing the browser cache.',
         errorCacheHint: 'If the error persists after reloading, try clearing the browser cache.',
         errorLoadDefaultChannels: 'An error occurred while loading default channels.',
         errorClearLocalStorage: 'An error occurred while clearing the site local storage.',
@@ -257,24 +309,30 @@ const translations = {
         errorLoadChannels: 'An error occurred while loading default channels.',
         errorInitialLoad: 'An error occurred during the initial load.',
         errorExperimentalMode: 'An error occurred while enabling experimental mode.',
-        errorCreateOverlay: 'An error occurred while creating the overlay for the channel with id: {channel}.',
-        errorChangeSignal: 'An error occurred while changing the signal for the channel with id: {channel}.',
+        errorCreateOverlay:
+            'An error occurred while creating the overlay for the channel with id: {channel}.',
+        errorChangeSignal:
+            'An error occurred while changing the signal for the channel with id: {channel}.',
         errorCreateChannelButtons: 'An error occurred while creating the channel buttons.',
         errorCreateCountryButtons: 'An error occurred while creating the country filter buttons.',
         errorActivateCountryFilter: 'An error occurred while activating the country filter.',
-        errorAdjustChannelsPerRow: 'An error occurred while adjusting the number of channels per row.',
+        errorAdjustChannelsPerRow:
+            'An error occurred while adjusting the number of channels per row.',
         errorFilterChannels: 'An error occurred while filtering channels.',
         errorRemoveAllChannels: 'An error occurred while removing all channels.',
-        errorReplaceChannel: 'An error occurred while replacing channel id: {oldChannel} with channel: {newChannel}.',
+        errorReplaceChannel:
+            'An error occurred while replacing channel id: {oldChannel} with channel: {newChannel}.',
         errorSaveChannels: 'An error occurred while saving channels to local storage.',
-        errorLoadSingleViewOrder: 'An error occurred while loading the panel order for "Single View" mode.',
+        errorLoadSingleViewOrder:
+            'An error occurred while loading the panel order for "Single View" mode.',
         errorUpdateOverlayButtons: 'An error occurred while updating the overlay button state.',
         errorActivateSingleView: 'An error occurred while enabling "Single View" mode.',
         errorDeactivateSingleView: 'An error occurred while disabling "Single View" mode.',
         channelWithoutSignals: '{channel} has no signals defined.',
-        preferredSignalUnavailable: 'Your preferred signal for {channel} ({signal}) is no longer available.',
-        nextSignalFallback: 'The next available signal will be used.'
-    }
+        preferredSignalUnavailable:
+            'Your preferred signal for {channel} ({signal}) is no longer available.',
+        nextSignalFallback: 'The next available signal will be used.',
+    },
 };
 
 function interpolate(template, params = {}) {
@@ -282,26 +340,28 @@ function interpolate(template, params = {}) {
 }
 
 function setText(selector, value) {
-    document.querySelectorAll(selector).forEach(element => {
+    document.querySelectorAll(selector).forEach((element) => {
         element.textContent = value;
     });
 }
 
 function setHtml(selector, value) {
-    document.querySelectorAll(selector).forEach(element => {
+    document.querySelectorAll(selector).forEach((element) => {
         element.innerHTML = value;
     });
 }
 
 function setAttr(selector, attribute, value) {
-    document.querySelectorAll(selector).forEach(element => {
+    document.querySelectorAll(selector).forEach((element) => {
         element.setAttribute(attribute, value);
     });
 }
 
 function setLeadingText(selector, value) {
-    document.querySelectorAll(selector).forEach(element => {
-        const textNode = [...element.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+    document.querySelectorAll(selector).forEach((element) => {
+        const textNode = [...element.childNodes].find(
+            (node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim(),
+        );
         if (textNode) {
             textNode.textContent = `${value} `;
         }
@@ -363,7 +423,7 @@ export function getLayoutLabel(layout) {
 }
 
 function refreshLanguageButtons() {
-    document.querySelectorAll('[data-language-option]').forEach(button => {
+    document.querySelectorAll('[data-language-option]').forEach((button) => {
         const isActive = button.dataset.languageOption === getCurrentLanguage();
         button.classList.toggle('active', isActive);
         button.setAttribute('aria-pressed', `${isActive}`);
@@ -373,7 +433,7 @@ function refreshLanguageButtons() {
 function refreshTooltips() {
     if (!window.bootstrap?.Tooltip) return;
 
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(element => {
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((element) => {
         const instance = window.bootstrap.Tooltip.getInstance(element);
         if (instance) {
             instance.dispose();
@@ -392,10 +452,19 @@ export function translatePage() {
 
     setText('.skip-link', t('skipContent'));
     setText('#alerta-error-carga-canales h1:nth-of-type(2)', t('loadChannelsFileError'));
-    setHtml('#alerta-error-carga-canales .btn.btn-light', `<i class="bi bi-arrow-clockwise"></i> ${t('reload')}`);
-    setHtml('#boton-borrar-localstorage-no-carga-canales strong', `<i class="bi bi-trash3"></i> ${t('resetLocalStorage')}`);
+    setHtml(
+        '#alerta-error-carga-canales .btn.btn-light',
+        `<i class="bi bi-arrow-clockwise"></i> ${t('reload')}`,
+    );
+    setHtml(
+        '#boton-borrar-localstorage-no-carga-canales strong',
+        `<i class="bi bi-trash3"></i> ${t('resetLocalStorage')}`,
+    );
     setText('#alerta-borrado-localstorage .text-flicker', t('localStorageDeleted'));
-    setHtml('#alerta-borrado-localstorage .btn.btn-lg.btn-light.mt-5', `<i class="bi bi-arrow-clockwise"></i> ${t('reload')}`);
+    setHtml(
+        '#alerta-borrado-localstorage .btn.btn-lg.btn-light.mt-5',
+        `<i class="bi bi-arrow-clockwise"></i> ${t('reload')}`,
+    );
 
     setText('.hero-kicker', t('liveMonitor'));
     setText('.hero-copy', t('heroCopy'));
@@ -405,17 +474,30 @@ export function translatePage() {
     setText('[data-ui-active-label]', t('activeSignals'));
     setText('[data-ui-mode-label]', t('modeLabel'));
 
-    setHtml('#navbar .btn-outline-indigo.rounded-end-pill', `<i class="bi bi-collection-play"></i> ${t('channels')}`);
+    setHtml(
+        '#navbar .btn-outline-indigo.rounded-end-pill',
+        `<i class="bi bi-collection-play"></i> ${t('channels')}`,
+    );
     setAttr('#navbar .btn-indigo.rounded-start-pill', 'aria-label', t('openChannelsSidebar'));
     setAttr('#navbar .btn-outline-indigo.rounded-end-pill', 'aria-label', t('openChannelsCatalog'));
     setHtml('#navbar-toggler .dropdown-item', `<i class="bi bi-gear"></i> ${t('settings')}`);
     setAttr('#navbar .btn.btn-sm.btn-outline-secondary.d-lg-none', 'title', t('settings'));
-    setAttr('#navbar .btn.btn-sm.btn-outline-secondary.d-lg-none', 'aria-label', t('openSettingsPanel'));
+    setAttr(
+        '#navbar .btn.btn-sm.btn-outline-secondary.d-lg-none',
+        'aria-label',
+        t('openSettingsPanel'),
+    );
     setAttr('.language-switcher', 'aria-label', t('languageSelector'));
-    setHtml('#alerta-internet-status', `<i class="bi bi-cloud-slash bg-danger-subtle rounded-3 p-1"></i> ${t('noInternet')} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="${t('close')}"></button>`);
+    setHtml(
+        '#alerta-internet-status',
+        `<i class="bi bi-cloud-slash bg-danger-subtle rounded-3 p-1"></i> ${t('noInternet')} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="${t('close')}"></button>`,
+    );
     setAttr('#alerta-internet-status .btn-close', 'aria-label', t('close'));
 
-    setHtml('#boton-mover-panel-canales-vision-unica', `${t('move')} <i class="bi bi-arrows-move ms-auto"></i>`);
+    setHtml(
+        '#boton-mover-panel-canales-vision-unica',
+        `${t('move')} <i class="bi bi-arrows-move ms-auto"></i>`,
+    );
     setAttr('#boton-mover-panel-canales-vision-unica', 'data-bs-title', t('movePanel'));
     setAttr('#vision-unica-input-filtro', 'placeholder', t('searchByCountryOrChannel'));
     setAttr('#vision-unica-input-filtro', 'aria-label', t('searchByCountryOrChannel'));
@@ -432,10 +514,22 @@ export function translatePage() {
     setText('label[for="modal-canales-input-filtro"]', t('searchByCountryOrChannel'));
     setText('label[for="offcanvas-canales-input-filtro"]', t('searchByCountryOrChannel'));
 
-    setHtml('#boton-modal-quitar-todo-canal-activo', `<i class="bi bi-power"></i> ${t('removeAll')}`);
-    setHtml('#boton-offcanvas-quitar-todo-canal-activo', `<i class="bi bi-power"></i> ${t('removeAll')}`);
-    setHtml('#boton-modal-cargar-canales-por-defecto', `<i class="bi bi-arrow-clockwise"></i> ${t('loadDefaults')}`);
-    setHtml('#boton-offcanvas-cargar-canales-por-defecto', `<i class="bi bi-arrow-clockwise"></i> ${t('loadDefaults')}`);
+    setHtml(
+        '#boton-modal-quitar-todo-canal-activo',
+        `<i class="bi bi-power"></i> ${t('removeAll')}`,
+    );
+    setHtml(
+        '#boton-offcanvas-quitar-todo-canal-activo',
+        `<i class="bi bi-power"></i> ${t('removeAll')}`,
+    );
+    setHtml(
+        '#boton-modal-cargar-canales-por-defecto',
+        `<i class="bi bi-arrow-clockwise"></i> ${t('loadDefaults')}`,
+    );
+    setHtml(
+        '#boton-offcanvas-cargar-canales-por-defecto',
+        `<i class="bi bi-arrow-clockwise"></i> ${t('loadDefaults')}`,
+    );
     setText('#modal-canales .modal-footer .btn.btn-secondary.ms-auto.rounded-pill', t('close'));
     setText('#offcanvas-canales footer .btn.btn-secondary.ms-auto.rounded-pill', t('close'));
     setAttr('#modal-canales .btn-close', 'aria-label', t('close'));
@@ -445,9 +539,18 @@ export function translatePage() {
     for (let index = 1; index <= 9; index += 1) {
         setText(`#modal-bienvenida li:nth-child(${index})`, t(`disclaimerItem${index}`));
     }
-    setHtml('#modal-bienvenida li:nth-child(10)', `${t('disclaimerContactIntro')} <a href="https://github.com/interneto/json-tv-multiview/issues" rel="nofollow noreferrer">${t('contactMe')} <i class="bi bi-box-arrow-up-right"></i></a>.`);
-    setHtml('#modal-bienvenida .modal-body > p', `- ${t('disclaimerSourceIntro')} <a href="https://github.com/interneto/tv-multiview" rel="nofollow noreferrer"><i class="bi bi-github"></i> ${t('repository')} <i class="bi bi-box-arrow-up-right"></i></a>.`);
-    setHtml('#boton-entendido', `${t('understood')} <p class="fs-x-small m-0 p-0">${t('doNotShowAgain')}</p>`);
+    setHtml(
+        '#modal-bienvenida li:nth-child(10)',
+        `${t('disclaimerContactIntro')} <a href="https://github.com/interneto/json-tv-multiview/issues" rel="nofollow noreferrer">${t('contactMe')} <i class="bi bi-box-arrow-up-right"></i></a>.`,
+    );
+    setHtml(
+        '#modal-bienvenida .modal-body > p',
+        `- ${t('disclaimerSourceIntro')} <a href="https://github.com/interneto/tv-multiview" rel="nofollow noreferrer"><i class="bi bi-github"></i> ${t('repository')} <i class="bi bi-box-arrow-up-right"></i></a>.`,
+    );
+    setHtml(
+        '#boton-entendido',
+        `${t('understood')} <p class="fs-x-small m-0 p-0">${t('doNotShowAgain')}</p>`,
+    );
 
     setText('#grupo-botones-flotantes .btn-indigo span', t('channels'));
     setText('#grupo-botones-flotantes .btn-dark span', t('settings'));
@@ -460,9 +563,18 @@ export function translatePage() {
     setText('.panel-summary-label:nth-of-type(3)', t('localSave'));
     setText('.panel-summary-label:nth-of-type(4)', t('recommendedShortcut'));
     setLeadingText('label[for="checkbox-personalizar-visualizacion-navbar"]', t('navbar'));
-    setHtml('#boton-activar-diseño-vision-grid span', `<i class="bi bi-grid-3x2"></i> ${t('gridView')}`);
-    setHtml('#boton-activar-diseño-vision-unica span', `<i class="bi bi-layout-sidebar"></i> ${t('singleView')}`);
-    setLeadingText('label[for="checkbox-personalizar-visualizacion-overlay"]', t('overlayChannels'));
+    setHtml(
+        '#boton-activar-diseño-vision-grid span',
+        `<i class="bi bi-grid-3x2"></i> ${t('gridView')}`,
+    );
+    setHtml(
+        '#boton-activar-diseño-vision-unica span',
+        `<i class="bi bi-layout-sidebar"></i> ${t('singleView')}`,
+    );
+    setLeadingText(
+        'label[for="checkbox-personalizar-visualizacion-overlay"]',
+        t('overlayChannels'),
+    );
     setText('#grupo-botones-personalizar-botones-dentro-overlay > p', t('overlayButtons'));
     setLeadingText('label[for="checkbox-personalizar-tema"]', t('theme'));
     setLeadingText('label[for="input-range-tamaño-container-vision-cuadricula"]', t('size'));
@@ -470,9 +582,18 @@ export function translatePage() {
     setLeadingText('#sidepanel li:nth-child(7) > div', t('channelsPerRow'));
     setText('#grupo-botones-posicion-botones-flotantes > p', t('floatingButtons'));
     setLeadingText('label[for="checkbox-personalizar-texto-botones-flotantes"]', t('buttonText'));
-    setText('#sidepanel li .bg-dark-subtle.rounded-4.w-100.py-2.px-3.border.border-light-subtle.shadow.d-flex.flex-column > p:first-child', t('information'));
-    setHtml('#sidepanel li .bg-dark-subtle.rounded-4.w-100.py-2.px-3.border.border-light-subtle.shadow.d-flex.flex-column a', `${t('repository')} <i class="bi bi-box-arrow-up-right"></i>`);
-    setText('#sidepanel li .bg-dark-subtle.rounded-4.w-100.py-2.px-3.border.border-light-subtle.shadow.d-flex.flex-column .text-secondary.mb-0', t('infoDescription'));
+    setText(
+        '#sidepanel li .bg-dark-subtle.rounded-4.w-100.py-2.px-3.border.border-light-subtle.shadow.d-flex.flex-column > p:first-child',
+        t('information'),
+    );
+    setHtml(
+        '#sidepanel li .bg-dark-subtle.rounded-4.w-100.py-2.px-3.border.border-light-subtle.shadow.d-flex.flex-column a',
+        `${t('repository')} <i class="bi bi-box-arrow-up-right"></i>`,
+    );
+    setText(
+        '#sidepanel li .bg-dark-subtle.rounded-4.w-100.py-2.px-3.border.border-light-subtle.shadow.d-flex.flex-column .text-secondary.mb-0',
+        t('infoDescription'),
+    );
     setLeadingText('label[for="checkbox-tarjeta-logo-background"]', t('backgroundLogo'));
     setText('#boton-experimental span', t('experimentalMode'));
     setAttr('#boton-experimental i.bi-question-circle', 'data-bs-title', t('experimentalTooltip'));
@@ -488,27 +609,30 @@ export function translatePage() {
 
     setText('[data-country="all"] .flex-grow-1', t('all'));
     setText('[data-country="Desconocido"] .flex-grow-1', t('unknown'));
-    setHtml('#alerta-guardado-canales .badge.bg-success-subtle.text-success', `<i class="bi bi-floppy"></i> ${t('savingChannels')}`);
+    setHtml(
+        '#alerta-guardado-canales .badge.bg-success-subtle.text-success',
+        `<i class="bi bi-floppy"></i> ${t('savingChannels')}`,
+    );
 
-    document.querySelectorAll('#overlay-boton-selecionar-señal').forEach(element => {
+    document.querySelectorAll('#overlay-boton-selecionar-señal').forEach((element) => {
         element.setAttribute('title', t('selectDifferentSignal'));
         element.innerHTML = `<span>${t('selectSignal')}</span><i class="bi bi-collection" data-bs-toggle="tooltip" data-bs-title="${t('selectDifferentSignal')}"></i>`;
     });
-    document.querySelectorAll('#overlay-boton-mover').forEach(element => {
+    document.querySelectorAll('#overlay-boton-mover').forEach((element) => {
         element.setAttribute('title', t('moveChannel'));
         element.setAttribute('data-bs-title', t('moveChannel'));
         element.innerHTML = `<span>${t('move')}</span><i class="bi bi-arrows-move"></i>`;
     });
-    document.querySelectorAll('#overlay-boton-cambiar').forEach(element => {
+    document.querySelectorAll('#overlay-boton-cambiar').forEach((element) => {
         element.setAttribute('title', t('changeChannel'));
         element.setAttribute('data-bs-title', t('changeChannel'));
         element.innerHTML = `<span>${t('change')}</span><i class="bi bi-arrow-repeat"></i>`;
     });
-    document.querySelectorAll('#overlay-boton-pagina-oficial').forEach(element => {
+    document.querySelectorAll('#overlay-boton-pagina-oficial').forEach((element) => {
         element.setAttribute('title', t('officialPage'));
         element.setAttribute('data-bs-title', t('officialPage'));
     });
-    document.querySelectorAll('#overlay-boton-quitar').forEach(element => {
+    document.querySelectorAll('#overlay-boton-quitar').forEach((element) => {
         element.setAttribute('aria-label', t('removeChannel'));
         element.setAttribute('title', t('removeChannel'));
         element.setAttribute('data-bs-title', t('removeChannel'));
@@ -528,7 +652,7 @@ export function setCurrentLanguage(language) {
 }
 
 export function initI18n() {
-    document.querySelectorAll('[data-language-option]').forEach(button => {
+    document.querySelectorAll('[data-language-option]').forEach((button) => {
         if (button.dataset.i18nBound === 'true') return;
         button.dataset.i18nBound = 'true';
         button.addEventListener('click', () => {

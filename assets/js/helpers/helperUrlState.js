@@ -1,0 +1,85 @@
+/**
+ * Helper para sincronizar el estado de los canales activos con la URL (hash).
+ * Permite compartir/restaurar la vista actual mediante enlaces.
+ *
+ * Formato: #canales=canal1,canal2,canal3&layout=vision-cuadricula
+ *
+ * @module helperUrlState
+ */
+
+/**
+ * Codifica los canales activos del contenedor en un string para la URL.
+ * @param {string} containerSelector - Selector CSS del contenedor de canales.
+ * @returns {string} Lista de IDs de canales separados por coma.
+ */
+export function getActiveChannelsFromDom(containerSelector) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return '';
+    const canales = container.querySelectorAll('div[data-canal]');
+    return Array.from(canales)
+        .map((div) => div.dataset.canal)
+        .filter(Boolean)
+        .join(',');
+}
+
+/**
+ * Serializa el estado actual (canales + layout) en el hash de la URL.
+ */
+export function pushStateToUrl(containerSelector) {
+    const canales = getActiveChannelsFromDom(containerSelector);
+    const layout = localStorage.getItem('diseño-seleccionado') || 'vision-cuadricula';
+    const params = new URLSearchParams();
+    if (canales) params.set('canales', canales);
+    params.set('layout', layout);
+
+    const newHash = params.toString();
+    if (window.location.hash !== `#${newHash}`) {
+        history.replaceState(null, '', `#${newHash}`);
+    }
+}
+
+/**
+ * Lee el hash de la URL y extrae los parámetros de estado.
+ * @returns {{ canales: string[], layout: string|null }}
+ */
+export function parseStateFromUrl() {
+    const hash = window.location.hash.replace(/^#/, '');
+    const params = new URLSearchParams(hash);
+    const canalesStr = params.get('canales') || '';
+    const canales = canalesStr ? canalesStr.split(',').filter(Boolean) : [];
+    const layout = params.get('layout') || null;
+    return { canales, layout };
+}
+
+/**
+ * Construye un enlace para compartir el estado actual.
+ * @returns {string} URL absoluta para compartir.
+ */
+export function buildShareUrl() {
+    const url = new URL(window.location.href);
+    url.hash = window.location.hash;
+    return url.toString();
+}
+
+/**
+ * Copia la URL de compartir al portapapeles.
+ * @returns {Promise<boolean>} true si se copió correctamente.
+ */
+export async function copyShareUrlToClipboard() {
+    const url = buildShareUrl();
+    try {
+        await navigator.clipboard.writeText(url);
+        return true;
+    } catch {
+        // Fallback para navegadores sin API clipboard
+        const textarea = document.createElement('textarea');
+        textarea.value = url;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        return true;
+    }
+}

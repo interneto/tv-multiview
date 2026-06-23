@@ -1,6 +1,11 @@
 import { t } from '../i18n.js';
 
-export function mostrarToast(mensaje = '', tipo = 'secondary', autohideValue = true, delayValue = 3500) {
+export function mostrarToast(
+    mensaje = '',
+    tipo = 'secondary',
+    autohideValue = true,
+    delayValue = 3500,
+) {
     const TOAST_CONTAINER = document.querySelector('#toast-container');
     const TOAST_DIV = document.createElement('div');
     TOAST_DIV.setAttribute('role', 'alert');
@@ -46,6 +51,9 @@ export function mostrarToast(mensaje = '', tipo = 'secondary', autohideValue = t
     TOAST_DIV.append(TOAST_BOTON_CERRAR);
     TOAST_CONTAINER.append(TOAST_DIV);
 
-    const BOOTSTRAP_TOAST = new bootstrap.Toast(TOAST_DIV, { delay: Number(delayValue), autohide: autohideValue });
+    const BOOTSTRAP_TOAST = new bootstrap.Toast(TOAST_DIV, {
+        delay: Number(delayValue),
+        autohide: autohideValue,
+    });
     BOOTSTRAP_TOAST.show();
 }

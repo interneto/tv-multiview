@@ -1,15 +1,25 @@
-import { CSS_CLASS_PRIMARY_BUTTON } from "../constants/index.js";
-import { mostrarToast, obtenerNumeroCanalesFila } from "./index.js";
+import { CSS_CLASS_PRIMARY_BUTTON } from '../constants/index.js';
+import { mostrarToast, obtenerNumeroCanalesFila } from './index.js';
 import { buildErrorToastMessage, t } from '../i18n.js';
 
-import { 
+import {
     BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA,
-    CONTAINER_VISION_CUADRICULA
-} from "../main.js";
+    CONTAINER_VISION_CUADRICULA,
+} from '../main.js';
 
 function AsignarClaseColumna(transmisionPorModifica, clasesPorAñadir) {
     if (!transmisionPorModifica || !clasesPorAñadir) return;
-    const clasesAEliminar = ['col-12', 'col-6', 'col-4', 'col-3', 'col-2', 'col-1', 'col', 'vh-100', 'overflow-hidden'];
+    const clasesAEliminar = [
+        'col-12',
+        'col-6',
+        'col-4',
+        'col-3',
+        'col-2',
+        'col-1',
+        'col',
+        'vh-100',
+        'overflow-hidden',
+    ];
     transmisionPorModifica.classList.remove(...clasesAEliminar);
     transmisionPorModifica.classList.add(...clasesPorAñadir);
 }
@@ -27,7 +37,7 @@ export function adjustChannelColumnCount() {
             containerVision.classList.add('h-100');
         } else {
             containerVision.classList.remove('h-100');
-        }        
+        }
         const numCanalesFila = obtenerNumeroCanalesFila();
         if (!lsTransmisionesFila || isNaN(Number(lsTransmisionesFila))) return;
         if (!isMobile.any) {
@@ -42,7 +52,8 @@ export function adjustChannelColumnCount() {
             } else {
                 for (let transmisionActiva of transmisionesEnGrid) {
                     AsignarClaseColumna(transmisionActiva, [`col-${lsTransmisionesFila}`]);
-                    if (lsTransmisionesFila === '12' || lsTransmisionesFila === '6') transmisionActiva.classList.add(...claseCienViewHeight);
+                    if (lsTransmisionesFila === '12' || lsTransmisionesFila === '6')
+                        transmisionActiva.classList.add(...claseCienViewHeight);
                 }
             }
         } else if (screen.orientation && screen.orientation.type === 'landscape-primary') {
@@ -53,7 +64,8 @@ export function adjustChannelColumnCount() {
             } else {
                 for (let transmisionActiva of transmisionesEnGrid) {
                     AsignarClaseColumna(transmisionActiva, [`col-${lsTransmisionesFila}`]);
-                    if (lsTransmisionesFila === '12' || lsTransmisionesFila === '6') transmisionActiva.classList.add(...claseCienViewHeight);
+                    if (lsTransmisionesFila === '12' || lsTransmisionesFila === '6')
+                        transmisionActiva.classList.add(...claseCienViewHeight);
                 }
             }
         } else {
@@ -69,15 +81,21 @@ export function adjustChannelColumnCount() {
         }
     } catch (error) {
         console.error('Error al ajustar clase "col" para canales activos: ', error);
-        mostrarToast(buildErrorToastMessage(t('errorAdjustChannelsPerRow'), error), 'danger', false);
+        mostrarToast(
+            buildErrorToastMessage(t('errorAdjustChannelsPerRow'), error),
+            'danger',
+            false,
+        );
         return;
     }
 }
 
 export function ajustarClaseColTransmisionesPorFila(columnaValue) {
-    const botonDejarActivo = document.querySelector(`#container-botones-personalizar-transmisiones-por-fila button[value='${columnaValue}']`);
+    const botonDejarActivo = document.querySelector(
+        `#container-botones-personalizar-transmisiones-por-fila button[value='${columnaValue}']`,
+    );
     if (!botonDejarActivo) return;
-    BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach(boton => {
+    BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach((boton) => {
         boton.classList.replace(CSS_CLASS_PRIMARY_BUTTON, 'btn-light-subtle');
     });
     botonDejarActivo.classList.replace('btn-light-subtle', CSS_CLASS_PRIMARY_BUTTON);

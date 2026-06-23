@@ -10,7 +10,7 @@
 - [ ] Improve [main.js](./assets/js/main.js)
 - [ ] Improve [index.html](./index.html)
 
-----
+---
 
 ## Improvements
 

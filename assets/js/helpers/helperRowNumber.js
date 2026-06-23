@@ -1,4 +1,5 @@
-export function obtenerNumeroCanalesFila() { // el numero, no el valor clase 'col-'
+export function obtenerNumeroCanalesFila() {
+    // el numero, no el valor clase 'col-'
     let lsTransmisionesFila = localStorage.getItem('numero-class-columnas-por-fila');
     let seleccionTransmisionesFila;
     if (lsTransmisionesFila === '12') {
@@ -14,5 +15,5 @@ export function obtenerNumeroCanalesFila() { // el numero, no el valor clase 'co
     } else if (lsTransmisionesFila === '1') {
         seleccionTransmisionesFila = 12;
     }
-    return seleccionTransmisionesFila
+    return seleccionTransmisionesFila;
 }
