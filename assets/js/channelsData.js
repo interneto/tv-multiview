@@ -1,56 +1,56 @@
-import { URL_TV_CHANNELS_JSON, URL_IPTV_CHANNELS_M3U } from "./constants/index.js";
-import { areSimilarNames, M3U_A_JSON } from "./helpers/index.js";
+import { URL_TV_CHANNELS_JSON, URL_IPTV_CHANNELS_M3U } from './constants/index.js';
+import { areSimilarNames, M3U_A_JSON } from './helpers/index.js';
 
 export const DEFAULT_CHANNELS_ARRAY = [
     // 🇨🇦 Canada
-    'ctv',          // CTV Television Network
+    'ctv', // CTV Television Network
 
     // 🇨🇳 China
-    'cctv',         // China Central Television
+    'cctv', // China Central Television
 
     // 🇩🇪 Germany
-    'zdf',          // Zweites Deutsches Fernsehen
-    'tele5',        // Germany entertainment
-    'rtl',          // Germany / Europe
+    'zdf', // Zweites Deutsches Fernsehen
+    'tele5', // Germany entertainment
+    'rtl', // Germany / Europe
 
     // 🇪🇸 Spain
-    '24horas',      // TVN 24 Horas
+    '24horas', // TVN 24 Horas
     // 'la1',          // La 1 (RTVE)
-    'la2',          // La 2 (RTVE)
+    'la2', // La 2 (RTVE)
 
     // 🇬🇧 United Kingdom
-    'bbcone',       // BBC One
-    'skynews',      // Sky News
-    
+    'bbcone', // BBC One
+    'skynews', // Sky News
+
     // 🇫🇷 France
-    'france24',     // France 24
+    'france24', // France 24
 
     // 🇯🇵 Japan
-    'nhk',          // Japan
-    
+    'nhk', // Japan
+
     // 🇮🇹 Italy
-    'rai1',         // Rai 1
-    
+    'rai1', // Rai 1
+
     // 🇵🇹 Portugal
     //'rtp',          // Rádio e Televisão de Portugal (RTP)
 
     // 🇷🇺 Russia
-    'rt',           // Russia Today (Russia)
-    
+    'rt', // Russia Today (Russia)
+
     // 🇺🇸 United States
-    'abc',          // American Broadcasting Company
-    'abcnews',      // ABC News
-    'nbc',          // National Broadcasting Company
-    'amc',          // AMC (entertainment)
+    'abc', // American Broadcasting Company
+    'abcnews', // ABC News
+    'nbc', // National Broadcasting Company
+    'amc', // AMC (entertainment)
     // 'cbs',       // CBS (commented out)
     // 'cnn',       // Cable News Network (commented out)
     // 'foxnews',   // Fox News (commented out)
 
     // 🌍 World-International / Multi-region
-    'aljazeera',    // Al Jazeera (Qatar, global coverage)
-    'dw',           // Deutsche Welle (Germany, international)
-    'euronews',     // Euronews (multi-language news)
-    'redbulltv',    // Red Bull TV (entertainment, sports)
+    'aljazeera', // Al Jazeera (Qatar, global coverage)
+    'dw', // Deutsche Welle (Germany, international)
+    'euronews', // Euronews (multi-language news)
+    'redbulltv', // Red Bull TV (entertainment, sports)
     // 'cnnint',       // CNN International
     //'skyatlantic',  // UK / Europe
 ];
@@ -62,6 +62,20 @@ export let listChannels;
 const LS_KEY_CANALES = 'backup-json-canales';
 const LS_KEY_CANALES_FECHA = 'backup-json-canales-fecha';
 const BACKUP_EXPIRACION_HORAS = 24;
+const FETCH_TIMEOUT_MS = 8000;
+
+// fetch con timeout + chequeo de response.ok. Lanza si falla la red o el status no es 2xx.
+async function fetchWithTimeout(url, ms = FETCH_TIMEOUT_MS) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), ms);
+    try {
+        const response = await fetch(url, { signal: controller.signal });
+        if (!response.ok) throw new Error(`HTTP ${response.status} al cargar ${url}`);
+        return response;
+    } finally {
+        clearTimeout(timer);
+    }
+}
 
 export function isBackupValid() {
     const fechaStr = localStorage.getItem(LS_KEY_CANALES_FECHA);
@@ -93,19 +107,19 @@ export async function loadChannelData() {
         if (listChannels) return;
     }
     console.info('Probando carga archivo principal con canales');
-    const response = await fetch(URL_TV_CHANNELS_JSON);
     try {
+        const response = await fetchWithTimeout(URL_TV_CHANNELS_JSON);
         listChannels = await response.json();
         listChannels = normalizeChannelList(listChannels);
         saveChannelBackup(listChannels);
-    } catch (parseError) {
-        console.error('Error al parsear JSON principal:', parseError);
+    } catch (error) {
+        console.error('Error al cargar/parsear JSON principal:', error);
         if (isBackupValid()) {
-            console.warn('Usando backup localStorage por error de parseo');
+            console.warn('Usando backup localStorage por error de red/parseo');
             listChannels = fetchBackupChannels();
             if (listChannels) return;
         }
-        throw parseError;
+        throw error;
     }
 }
 
@@ -114,24 +128,21 @@ function normalizeChannelList(obj) {
     const out = {};
     for (const key of Object.keys(obj)) {
         const item = obj[key] || {};
-        const name = item.name ?? item.name ?? item.title ?? '';
-        const signals = item.signals ?? item.signals ?? item.streams ?? {};
-        const website = item.website ?? item.website ?? item.url ?? '';
-        const category = item.category ?? item.category ?? '';
-        const country = item.country ?? item.country ?? item.countries ?? '';
-        const logo = item.logo ?? item.logo ?? '';
-
-        // Ensure signals has expected substructure (arrays or strings as stored)
-        const signalsNormalizadas = { ...signals };
+        const name = item.name ?? item.title ?? '';
+        const signals = item.signals ?? item.streams ?? {};
+        const website = item.website ?? item.url ?? '';
+        const category = item.category ?? '';
+        const country = item.country ?? item.countries ?? '';
+        const logo = item.logo ?? '';
 
         out[key] = {
             ...item,
             name,
             logo,
-            signals: signalsNormalizadas,
+            signals: { ...signals },
             website,
             category,
-            country
+            country,
         };
     }
     return out;
@@ -139,7 +150,7 @@ function normalizeChannelList(obj) {
 
 export async function fetchIptvChannelsData() {
     console.info('Probando carga archivo m3u');
-    const m3uResponse = await fetch(URL_IPTV_CHANNELS_M3U);
+    const m3uResponse = await fetchWithTimeout(URL_IPTV_CHANNELS_M3U);
     const m3uData = await m3uResponse.text();
     const parseM3u = await M3U_A_JSON(m3uData);
 
@@ -157,7 +168,9 @@ export async function fetchIptvChannelsData() {
             const existingChannel = mapCanales[nameParseM3u];
 
             if (existingChannel && areSimilarNames(existingChannel.name, nameParseM3u)) {
-                const newUrls = parseM3u[nameCanal].signals.m3u8_url.filter(url => !existingChannel.signals.m3u8_url.includes(url));
+                const newUrls = parseM3u[nameCanal].signals.m3u8_url.filter(
+                    (url) => !existingChannel.signals.m3u8_url.includes(url),
+                );
                 existingChannel.signals.m3u8_url.push(...newUrls);
             } else {
                 listChannels[nameCanal] = parseM3u[nameCanal];

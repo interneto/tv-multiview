@@ -1,17 +1,19 @@
-import { CHANNEL_CONTAINER_ID_PREFIXES } from "../constants/index.js";
+import { CHANNEL_CONTAINER_ID_PREFIXES } from '../constants/index.js';
 
 // Almacenar el orden original de los botones como identificadores únicos
 const ordenOriginal = {
     'modal-canales': [],
     'offcanvas-canales': [],
     'modal-cambiar-canal': [],
-    'vision-unica': []
+    'vision-unica': [],
 };
 
 export function guardarOrdenOriginal(containerBotones) {
     try {
-        const BOTONES_EN_CONTENEDOR = Array.from(document.querySelectorAll(`#${containerBotones} button`));
-        const ids = BOTONES_EN_CONTENEDOR.map(btn => btn.getAttribute('data-canal'));
+        const BOTONES_EN_CONTENEDOR = Array.from(
+            document.querySelectorAll(`#${containerBotones} button`),
+        );
+        const ids = BOTONES_EN_CONTENEDOR.map((btn) => btn.getAttribute('data-canal'));
         for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
             if (containerBotones.startsWith(PREFIJO)) {
                 ordenOriginal[PREFIJO] = ids;
@@ -27,10 +29,14 @@ export function ordenarBotonesCanalesAscendente(containerBotones) {
     try {
         const BODY_CONTENEDOR_BOTONES = document.querySelector(`#${containerBotones}`);
         if (!BODY_CONTENEDOR_BOTONES) return;
-        const BOTONES_EN_CONTENEDOR = Array.from(BODY_CONTENEDOR_BOTONES.querySelectorAll('button'));
-        BOTONES_EN_CONTENEDOR.sort((a, b) => a.textContent.trim().localeCompare(b.textContent.trim()));
+        const BOTONES_EN_CONTENEDOR = Array.from(
+            BODY_CONTENEDOR_BOTONES.querySelectorAll('button'),
+        );
+        BOTONES_EN_CONTENEDOR.sort((a, b) =>
+            a.textContent.trim().localeCompare(b.textContent.trim()),
+        );
         const fragment = document.createDocumentFragment();
-        BOTONES_EN_CONTENEDOR.forEach(botonCanal => {
+        BOTONES_EN_CONTENEDOR.forEach((botonCanal) => {
             fragment.append(botonCanal);
         });
         BODY_CONTENEDOR_BOTONES.innerHTML = '';
@@ -45,10 +51,14 @@ export function ordenarBotonesCanalesDescendente(containerBotones) {
     try {
         const BODY_CONTENEDOR_BOTONES = document.querySelector(`#${containerBotones}`);
         if (!BODY_CONTENEDOR_BOTONES) return;
-        const BOTONES_EN_CONTENEDOR = Array.from(BODY_CONTENEDOR_BOTONES.querySelectorAll('button'));
-        BOTONES_EN_CONTENEDOR.sort((a, b) => b.textContent.trim().localeCompare(a.textContent.trim()));
+        const BOTONES_EN_CONTENEDOR = Array.from(
+            BODY_CONTENEDOR_BOTONES.querySelectorAll('button'),
+        );
+        BOTONES_EN_CONTENEDOR.sort((a, b) =>
+            b.textContent.trim().localeCompare(a.textContent.trim()),
+        );
         const fragment = document.createDocumentFragment();
-        BOTONES_EN_CONTENEDOR.forEach(botonCanal => {
+        BOTONES_EN_CONTENEDOR.forEach((botonCanal) => {
             fragment.append(botonCanal);
         });
         BODY_CONTENEDOR_BOTONES.innerHTML = '';
@@ -72,7 +82,7 @@ export function restaurarOrdenOriginalBotonesCanales(containerBotones) {
         }
         if (!Array.isArray(idsOriginales)) return;
         const fragment = document.createDocumentFragment();
-        idsOriginales.forEach(id => {
+        idsOriginales.forEach((id) => {
             const boton = BODY_CONTENEDOR_BOTONES.querySelector(`button[data-canal="${id}"]`);
             if (boton) fragment.append(boton);
         });

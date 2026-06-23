@@ -1,11 +1,11 @@
-import { tele } from './main.js'
+import { tele } from './main.js';
 import {
     aplicarTema,
     mostrarToast,
     playAudioSinDelay,
     removeAllActiveChannels,
-    obtenerCanalesPredeterminados
-} from './helpers/index.js'
+    obtenerCanalesPredeterminados,
+} from './helpers/index.js';
 import {
     AUDIO_STATIC_EFFECT as AUDIO_NOTIFICATION,
     AUDIO_FAIL,
@@ -15,10 +15,11 @@ import {
 import { buildErrorToastMessage, t } from './i18n.js';
 
 function getShareData() {
+    const urlObj = new URL(window.location.href);
     return {
         title: 'tv-multiview',
         text: t('shareText'),
-        url: 'https://interneto.github.io/tv-multiview/'
+        url: urlObj.toString(),
     };
 }
 
@@ -43,8 +44,6 @@ BOTON_ENTENDIDO?.addEventListener('click', () => {
 // MARK: Botón PWA Install
 let containerPwaInstall = document.querySelector('#pwa-install');
 const BOTON_INSTALAR_PWA = document.querySelector('#boton-instalar-pwa');
-// Save the beforeinstallprompt event so we can trigger it on demand
-let deferredInstallPrompt = null;
 
 // Ocultar botón PWA en Firefox
 if (navigator.userAgent.toLowerCase().includes('firefox')) {
@@ -85,30 +84,50 @@ if (navigator.share && BOTON_COMPARTIR) {
     CONTENEDOR_BOTONES_COMPARTIR_RRSS?.classList.replace('d-none', 'd-flex');
 }
 
+// MARK: Botón compartir vista (navbar)
+const BOTON_COMPARTIR_VISTA = document.querySelector('#boton-compartir-vista');
+BOTON_COMPARTIR_VISTA?.addEventListener('click', async () => {
+    try {
+        await navigator.share(getShareData());
+    } catch (err) {
+        if (err.name !== 'AbortError') {
+            console.error(`Error al compartir: ${err}`);
+        }
+    }
+});
+
 // MARK: Botones carga canales predeterminados
 const cargarCanalesPredeterminados = () => {
     try {
-        document.querySelectorAll('div[data-canal]').forEach(transmision => {
+        document.querySelectorAll('div[data-canal]').forEach((transmision) => {
             tele.remove(transmision.dataset.canal);
         });
         playAudioSinDelay(AUDIO_TURN_ON);
-        obtenerCanalesPredeterminados(isMobile?.any).forEach(canal => tele.add(canal));
+        obtenerCanalesPredeterminados(isMobile?.any).forEach((canal) => tele.add(canal));
     } catch (error) {
         console.error(`Error durante carga canales predeterminados. Error: ${error}`);
-        mostrarToast(buildErrorToastMessage(t('errorLoadDefaultChannels'), error), 'danger', false)
-        return
+        mostrarToast(buildErrorToastMessage(t('errorLoadDefaultChannels'), error), 'danger', false);
+        return;
     }
 };
 
-export const DEFAULT_CHANNEL_LOAD_BUTTON = document.querySelector('#boton-modal-cargar-canales-por-defecto');
-export const BUTTON_LOAD_DEFAULT_CHANNELS = document.querySelector('#boton-offcanvas-cargar-canales-por-defecto');
+export const DEFAULT_CHANNEL_LOAD_BUTTON = document.querySelector(
+    '#boton-modal-cargar-canales-por-defecto',
+);
+export const BUTTON_LOAD_DEFAULT_CHANNELS = document.querySelector(
+    '#boton-offcanvas-cargar-canales-por-defecto',
+);
 
 DEFAULT_CHANNEL_LOAD_BUTTON?.addEventListener('click', cargarCanalesPredeterminados);
 BUTTON_LOAD_DEFAULT_CHANNELS?.addEventListener('click', cargarCanalesPredeterminados);
 
 // MARK: Botones quitar
-export const ACTIVE_CHANNEL_REMOVE_ALL_BUTTON = document.querySelector('#boton-modal-quitar-todo-canal-activo');
-export const BUTTON_REMOVE_ACTIVE_CHANNEL = document.querySelector('#boton-offcanvas-quitar-todo-canal-activo');
+export const ACTIVE_CHANNEL_REMOVE_ALL_BUTTON = document.querySelector(
+    '#boton-modal-quitar-todo-canal-activo',
+);
+export const BUTTON_REMOVE_ACTIVE_CHANNEL = document.querySelector(
+    '#boton-offcanvas-quitar-todo-canal-activo',
+);
 
 ACTIVE_CHANNEL_REMOVE_ALL_BUTTON?.addEventListener('click', removeAllActiveChannels);
 BUTTON_REMOVE_ACTIVE_CHANNEL?.addEventListener('click', removeAllActiveChannels);
@@ -125,8 +144,12 @@ BOTON_BORRAR_LOCALSTORAGE?.addEventListener('click', () => {
         document.querySelector('#alerta-borrado-localstorage')?.classList.remove('d-none');
     } catch (error) {
         console.error('Error al intentar eliminar almacenamiento local sitio: ', error);
-        mostrarToast(buildErrorToastMessage(t('errorClearLocalStorage'), error, 'cache'), 'danger', false);
-        return
+        mostrarToast(
+            buildErrorToastMessage(t('errorClearLocalStorage'), error, 'cache'),
+            'danger',
+            false,
+        );
+        return;
     }
 });
 
@@ -145,8 +168,12 @@ function enterFullscreen() {
         }
     } catch (error) {
         console.error(`Error al solicitar entrar a pantalla completa. Error: ${error}`);
-        mostrarToast(buildErrorToastMessage(t('errorEnterFullscreen'), error, 'cache'), 'danger', false);
-        return
+        mostrarToast(
+            buildErrorToastMessage(t('errorEnterFullscreen'), error, 'cache'),
+            'danger',
+            false,
+        );
+        return;
     }
 }
 
@@ -163,27 +190,36 @@ function exitFullscreen() {
         }
     } catch (error) {
         console.error(`Error al solicitar salir de pantalla completa. Error: ${error}`);
-        mostrarToast(buildErrorToastMessage(t('errorExitFullscreen'), error, 'cache'), 'danger', false);
-        return
+        mostrarToast(
+            buildErrorToastMessage(t('errorExitFullscreen'), error, 'cache'),
+            'danger',
+            false,
+        );
+        return;
     }
 }
 
 function isFullscreenSupported() {
     return !!(
-        document.fullscreenEnabled
-        || document.webkitFullscreenEnabled
-        || document.mozFullScreenEnabled
-        || document.msFullscreenEnabled
+        document.fullscreenEnabled ||
+        document.webkitFullscreenEnabled ||
+        document.mozFullScreenEnabled ||
+        document.msFullscreenEnabled
     );
 }
 
 function isFullscreen() {
-    return isFullscreenSupported() && !!(
-        document.fullscreenElement
-        || document.webkitFullscreenElement
-        || document.mozFullScreenElement
-        || document.msFullscreenElement
-        /* || window.innerHeight == screen.height */
+    return (
+        isFullscreenSupported() &&
+        !!(
+            (
+                document.fullscreenElement ||
+                document.webkitFullscreenElement ||
+                document.mozFullScreenElement ||
+                document.msFullscreenElement
+            )
+            /* || window.innerHeight == screen.height */
+        )
     );
 }
 
@@ -199,8 +235,10 @@ if (!isFullscreenSupported() && BOTON_FULLSCREEN?.parentElement?.parentElement) 
 function handleFullscreenChange() {
     if (!BOTON_FULLSCREEN) return;
     isFullscreen()
-    ? (BOTON_FULLSCREEN.innerHTML = renderFullscreenButton(true), BOTON_FULLSCREEN.classList.replace('btn-light-subtle', 'btn-indigo'))
-    : (BOTON_FULLSCREEN.innerHTML = renderFullscreenButton(false), BOTON_FULLSCREEN.classList.replace('btn-indigo', 'btn-light-subtle'));
+        ? ((BOTON_FULLSCREEN.innerHTML = renderFullscreenButton(true)),
+          BOTON_FULLSCREEN.classList.replace('btn-light-subtle', 'btn-indigo'))
+        : ((BOTON_FULLSCREEN.innerHTML = renderFullscreenButton(false)),
+          BOTON_FULLSCREEN.classList.replace('btn-indigo', 'btn-light-subtle'));
 }
 
 /* window.addEventListener('resize', handleFullscreenChange); */
@@ -218,7 +256,6 @@ document.addEventListener('mozfullscreenchange', handleFullscreenChange);
 document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 window.addEventListener('ui-language-change', handleFullscreenChange);
 handleFullscreenChange();
-
 
 // MARK: Botón copiar enlace
 const SHARE_LINK_BUTTON = document.querySelector('#boton-copiar-enlace-compartir');

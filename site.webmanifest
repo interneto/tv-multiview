@@ -3,14 +3,8 @@
     "short_name": "tv-multiview",
     "description": "PWA for viewing multiple TV channels simultaneously.",
     "lang": "es",
-    "categories": [
-        "television",
-        "productivity",
-        "utilities",
-        "video",
-        "news"
-    ],
-    
+    "categories": ["television", "productivity", "utilities", "video", "news"],
+
     "theme_color": "#4b01c3",
     "background_color": "#212529",
     "display": "standalone",
@@ -18,7 +12,7 @@
 
     "start_url": "./",
     "id": "./",
-    
+
     "icons": [
         {
             "src": "./assets/favicon/android-chrome-192x192.png",
@@ -64,10 +58,5 @@
     "edge_side_panel": {
         "preferred_width": 508
     },
-    "display_override": [
-        "standalone",
-        "browser",
-        "minimal-ui",
-        "window-controls-overlay"
-    ]
+    "display_override": ["standalone", "browser", "minimal-ui", "window-controls-overlay"]
 }

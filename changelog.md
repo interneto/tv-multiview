@@ -89,7 +89,7 @@
     - Ability to reorder channels with plugin from [SortableJS](https://github.com/SortableJS/Sortable) grid
     - Icon for contributions in modal credits and README.md with [contributors-img](https://github.com/lacolaco/contributors-img)
     - Sound effects for link copy alert in share modal: [button-pressed by Pixabay](https://pixabay.com/sound-effects/button-pressed-38129/), [Cancel/miss chime by Raclure](https://freesound.org/people/Raclure/sounds/405548/)
-    - Sound effect for buttons to remove all active [TV](https://freesound.org/people/MATRIXXX_/sounds/523553/) channels[, Shutdown.wav by MATRIXXX_](https://freesound.org/people/MATRIXXX_/sounds/523553/)
+    - Sound effect for buttons to remove all active [TV](https://freesound.org/people/MATRIXXX_/sounds/523553/) channels[, Shutdown.wav by MATRIXXX\_](https://freesound.org/people/MATRIXXX_/sounds/523553/)
     - Background sound effect for alert after deleting localStorage [DefectLineTransformer by blaukreuz](https://freesound.org/people/blaukreuz/sounds/440128/)
     - Sound effect for buttons to remove channel [User Interface Clicks and Buttons 1 by original_sound](https://freesound.org/people/original_sound/sounds/493551/)
     - Stale variation[https://alienxproject.github.io/X/](https://alienxproject.github.io/X/)
@@ -256,7 +256,7 @@
 - Changed
     - Bootstrap V4.6.0 > 5.1.3
     - Created sidebar with site configuration options (I've recently accessed the page from my phone and I think it's better if they are accessible without obstructing the content you're trying to adjust)
-    - I converted some scripts to vanilla JS to start phasing out jQuery (there are two left that I didn't know how to translate ¯_(ツ)_/¯).
+    - I converted some scripts to vanilla JS to start phasing out jQuery (there are two left that I didn't know how to translate ¯*(ツ)*/¯).
     - General design changes
     - We have a filter! (gg jQuery)
     - The broadcast on/off button works great now

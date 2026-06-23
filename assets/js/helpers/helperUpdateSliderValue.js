@@ -1,9 +1,8 @@
-
 import {
     CONTAINER_VISION_CUADRICULA,
     INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA,
-    SPAN_VALOR_INPUT_RANGE
-} from "../main.js";
+    SPAN_VALOR_INPUT_RANGE,
+} from '../main.js';
 
 export function actualizarValorSlider() {
     let valorInputRange = parseInt(localStorage.getItem('valor-input-range') ?? 100);
