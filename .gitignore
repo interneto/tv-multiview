@@ -3,3 +3,4 @@ dist/
 migration/
 extra/
 canales.json
+.worktrees/
