@@ -73,6 +73,11 @@ const STREAM_ERROR_PRESENTATION = {
     'network-error': { icon: 'bi-wifi-off', labelKey: 'streamErrorNetwork' },
 };
 
+// Algunos mirrors aceptan la conexión y nunca responden: ni error ni datos, readyState
+// se queda en 0 para siempre. Sin este timeout ese player nunca libera su cupo (ver
+// MAX_CONCURRENT_PLAYERS) y el resto de la cola espera un turno que no llega nunca.
+const STREAM_LOAD_TIMEOUT_MS = 15000;
+
 // Con N players ABR cargando a la vez, play() empieza a rechazar por contención de
 // recursos (decoders/MediaSource) antes de que el propio stream tenga chance de
 // fallar o funcionar — confirmado en pruebas: canales que fallan en un batch de 18
@@ -211,9 +216,25 @@ export function createVideoPlayer(canalId, urlCarga) {
             slotHeld = false;
             releasePlayerSlot();
         };
-        player.on('dispose', releaseSlotOnce);
+
+        const loadTimeoutId = setTimeout(() => {
+            console.warn(`Timeout de carga para canal "${canalId}". Source: ${urlCarga}`);
+            const presentacion = STREAM_ERROR_PRESENTATION['network-error'];
+            DIV_ELEMENT.innerHTML = buildFallbackMarkup(
+                presentacion.icon,
+                t(presentacion.labelKey),
+            );
+            player.dispose();
+        }, STREAM_LOAD_TIMEOUT_MS);
+
+        player.on('dispose', () => {
+            clearTimeout(loadTimeoutId);
+            releaseSlotOnce();
+        });
+        player.on('loadeddata', () => clearTimeout(loadTimeoutId));
 
         player.on('error', async () => {
+            clearTimeout(loadTimeoutId);
             releaseSlotOnce();
             const tipoError = await classifyStreamError(player, urlCarga);
             const presentacion = STREAM_ERROR_PRESENTATION[tipoError];
@@ -232,6 +253,7 @@ export function createVideoPlayer(canalId, urlCarga) {
 
         player.ready(() => {
             player.play().catch(() => {
+                clearTimeout(loadTimeoutId);
                 releaseSlotOnce();
                 DIV_ELEMENT.innerHTML = fallbackMarkup;
             });

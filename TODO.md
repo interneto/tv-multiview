@@ -23,7 +23,7 @@
 
 ### Medium-Low
 
-- [ ] **Test helpers** → Validate transformations and avoid regressions.
+- [ ] **Test helpers** → Validate transformations and avoid regressions. Priority: the player-slot queue in `channelUI.js` (`acquirePlayerSlot`/`releasePlayerSlot`/`STREAM_LOAD_TIMEOUT_MS`) — a hung stream that never fires `error` used to hold its slot forever and starve every queued channel behind it; a test should cover the timeout path so this can't silently regress.
 - [ ] **Finish Prettier pass** → `format:check` still flags ~63 legacy files (`assets/js/**`, `tools/**`, root docs) never reformatted since Prettier was added.
 
 ### Low
