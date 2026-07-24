@@ -2,10 +2,19 @@
  * Helper para sincronizar el estado de los canales activos con la URL (hash).
  * Permite compartir/restaurar la vista actual mediante enlaces.
  *
- * Formato: #canales=canal1,canal2,canal3&layout=vision-cuadricula
+ * Formato: #channels=channel1.channel2.channel3&layout=grid
  *
  * @module helperUrlState
  */
+
+// '.' no requiere percent-encoding en un query string (a diferencia de ',' -> %2C),
+// y ningún id de canal actual lo usa, así que sirve de separador sin ambigüedad.
+const CHANNEL_SEPARATOR = '.';
+
+// Los valores de layout en localStorage ('diseño-seleccionado') se mantienen en
+// español por compatibilidad interna; el enlace para compartir sí se traduce.
+const LAYOUT_TO_URL = { 'vision-cuadricula': 'grid', 'vision-unica': 'single' };
+const LAYOUT_FROM_URL = { grid: 'vision-cuadricula', single: 'vision-unica' };
 
 /**
  * Codifica los canales activos del contenedor en un string para la URL.
@@ -19,7 +28,7 @@ export function getActiveChannelsFromDom(containerSelector) {
     return Array.from(canales)
         .map((div) => div.dataset.canal)
         .filter(Boolean)
-        .join(',');
+        .join(CHANNEL_SEPARATOR);
 }
 
 /**
@@ -27,10 +36,10 @@ export function getActiveChannelsFromDom(containerSelector) {
  */
 export function pushStateToUrl(containerSelector) {
     const canales = getActiveChannelsFromDom(containerSelector);
-    const layout = localStorage.getItem('diseño-seleccionado') || 'vision-cuadricula';
+    const layoutLS = localStorage.getItem('diseño-seleccionado') || 'vision-cuadricula';
     const params = new URLSearchParams();
-    if (canales) params.set('canales', canales);
-    params.set('layout', layout);
+    if (canales) params.set('channels', canales);
+    params.set('layout', LAYOUT_TO_URL[layoutLS] ?? layoutLS);
 
     const newHash = params.toString();
     if (window.location.hash !== `#${newHash}`) {
@@ -45,9 +54,10 @@ export function pushStateToUrl(containerSelector) {
 export function parseStateFromUrl() {
     const hash = window.location.hash.replace(/^#/, '');
     const params = new URLSearchParams(hash);
-    const canalesStr = params.get('canales') || '';
-    const canales = canalesStr ? canalesStr.split(',').filter(Boolean) : [];
-    const layout = params.get('layout') || null;
+    const canalesStr = params.get('channels') || '';
+    const canales = canalesStr ? canalesStr.split(CHANNEL_SEPARATOR).filter(Boolean) : [];
+    const layoutUrl = params.get('layout');
+    const layout = layoutUrl ? (LAYOUT_FROM_URL[layoutUrl] ?? layoutUrl) : null;
     return { canales, layout };
 }
 
