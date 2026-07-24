@@ -6,9 +6,39 @@
     --app-surface-light: rgba(255, 248, 239, 0.82);
     --app-border: rgba(255, 255, 255, 0.12);
     --app-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
-    --app-font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
-    --app-font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    --app-font-display: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --app-font-body: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
+/* Simplified hero styling: minimal, low-contrast, no heavy gradients */
+.tarjeta-logo-background {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(255,255,255,0.04) !important;
+    padding: 1.25rem !important;
+    border-radius: 1rem !important;
+}
+
+.tarjeta-logo-background img {
+    width: 64px !important;
+    height: 64px !important;
+}
+
+.display-1.gradient-text {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    color: var(--app-accent) !important;
+    font-size: 2.25rem !important;
+    font-weight: 600 !important;
+}
+
+/* hide decorative pills to keep hero minimal */
+.hero-highlights { display: none !important; }
+
+/* simpler metrics style */
+.hero-metrics { display:flex; gap:1rem; margin-top:0.75rem; }
+.hero-metric { background: rgba(0,0,0,0.12); padding:0.35rem 0.6rem; border-radius:999px; font-size:0.9rem; }
+
 
 html {
     scroll-behavior: smooth;
@@ -284,6 +314,32 @@ h5,
     isolation: isolate;
 }
 
+#container-vision-cuadricula,
+#container-video-vision-unica {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+#container-vision-cuadricula > div[data-canal],
+#container-video-vision-unica > div[data-canal] {
+    position: relative;
+    z-index: 0;
+}
+
+#container-vision-cuadricula > div[data-canal] > .ratio,
+#container-video-vision-unica > div[data-canal] > .ratio {
+    position: relative;
+    z-index: 0;
+}
+
+#icono-sin-señal-vision-unica {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .panel-description {
     max-width: 30rem;
     font-size: 0.92rem;
@@ -318,7 +374,7 @@ h5,
 }
 
 .marca-al-mover {
-    z-index: 2;
+    z-index: 4;
     background-color: var(--bs-indigo);
     outline: 3px solid var(--bs-indigo);
     border-radius: 15px;
@@ -596,8 +652,8 @@ pwa-update {
 /* barra sobre canales */
 .barra-overlay {
     opacity: 0.5;
-    z-index: 2;
-    /* index 2, para casos error carga videojs */
+    z-index: 3;
+    /* index 3, para que quede por encima del contenido del canal */
     display: flex !important;
 
     &:hover,
