@@ -17,6 +17,9 @@ const browserGlobals = {
     requestAnimationFrame: 'readonly',
     cancelAnimationFrame: 'readonly',
     AbortController: 'readonly',
+    AbortSignal: 'readonly',
+    queueMicrotask: 'readonly',
+    IntersectionObserver: 'readonly',
     MutationObserver: 'readonly',
     Audio: 'readonly',
     screen: 'readonly',
@@ -41,7 +44,16 @@ const nodeGlobals = {
 };
 
 module.exports = [
-    { ignores: ['json-tv/**', 'assets/favicon/**', 'assets/img/**', 'pwabuilder-sw.js'] },
+    {
+        ignores: [
+            'json-tv/**',
+            'assets/favicon/**',
+            'assets/img/**',
+            'pwabuilder-sw.js',
+            '.worktrees/**',
+            '.claude/worktrees/**',
+        ],
+    },
     js.configs.recommended,
     {
         files: ['extra/**/*.js'],

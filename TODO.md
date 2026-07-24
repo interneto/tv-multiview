@@ -7,31 +7,31 @@
     - [ ] Add right settings in mobile navbar panel.
 - [x] Check if channels are active
 
-- [ ] Improve [main.js](./assets/js/main.js)
-- [ ] Improve [index.html](./index.html)
-
 ---
 
 ## Improvements
 
 ### Medium
 
-- [ ] **Lint and formatting** → Code uniformity.
-- [ ] **State in URL** → Allow sharing/restoring views.
+- [x] **Lint and formatting** → ESLint + Prettier configured.
+- [x] **State in URL** → Sharing/restoring views via `#channels=` hash (`helperUrlState.js`).
+- [x] **Errors and retries in fetch** → `fetchWithTimeout` + `AbortController` (8s timeout).
+- [x] **Accessibility (a11y)** → ARIA roles, skip link, focus, keyboard access keys added.
 - [ ] **IndexedDB** → More robust persistence than localStorage.
-- [ ] **PWA / Service Worker** → Improve cache and offline performance.
-- [ ] **Accessibility (a11y)** → ARIA roles, focus, contrast, Lighthouse.
+- [ ] **Register the service worker** → `pwabuilder-sw.js` exists and is referenced by the manifest/`pwa-install`, but nothing calls `.register()` in production — the app currently has no working offline cache or install-driven SW.
+- [ ] **CI (GitHub Actions)** → No workflow exists yet. Run `lint`, `format:check`, and `validate:json` on push/PR so bad data (e.g. mismatched-language keys) or lint regressions can't merge silently.
 
 ### Medium-Low
 
 - [ ] **Test helpers** → Validate transformations and avoid regressions.
-- [ ] **Errors and retries in fetch** → Better tolerance to network failures.
+- [ ] **Finish Prettier pass** → `format:check` still flags ~63 legacy files (`assets/js/**`, `tools/**`, root docs) never reformatted since Prettier was added.
 
 ### Low
 
-- [ ] **API and helper documentation** → JSDoc and basic docs.
+- [ ] **API and helper documentation** → Only `helperUrlState.js` has JSDoc so far; extend to the other helpers.
 - [ ] **Image optimization** → WebP, compression, srcset.
 - [ ] **UX in “Load defaults”** → Confirmations and customization.
+- [ ] **Lighthouse audit** → Run a full pass now that the a11y basics are in to catch what's left (contrast, perf).
 
 ### Optional
 

@@ -4,3 +4,5 @@ assets/img/
 assets/sounds/
 pwabuilder-sw.js
 node_modules/
+.worktrees/
+.claude/worktrees/

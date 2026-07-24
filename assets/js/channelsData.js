@@ -5,12 +5,8 @@ export const DEFAULT_CHANNELS_ARRAY = [
     // 🇨🇦 Canada
     'ctv', // CTV Television Network
 
-    // 🇨🇳 China
-    'cctv', // China Central Television
-
     // 🇩🇪 Germany
     'zdf', // Zweites Deutsches Fernsehen
-    'tele5', // Germany entertainment
     'rtl', // Germany / Europe
 
     // 🇪🇸 Spain
@@ -24,9 +20,6 @@ export const DEFAULT_CHANNELS_ARRAY = [
 
     // 🇫🇷 France
     'france24', // France 24
-
-    // 🇯🇵 Japan
-    'nhk', // Japan
 
     // 🇮🇹 Italy
     'rai1', // Rai 1
@@ -55,7 +48,6 @@ export const DEFAULT_CHANNELS_ARRAY = [
     //'skyatlantic',  // UK / Europe
 ];
 
-// No añadimos extras para asegurar que se carguen exactamente 9 canales
 export const DEFAULT_CHANNEL_LIST_EXTRAS = [];
 
 export let listChannels;
