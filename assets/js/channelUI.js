@@ -65,7 +65,17 @@ export function createVideoPlayer(canalId, urlCarga) {
     const DIV_ELEMENT = document.createElement('div');
     DIV_ELEMENT.setAttribute('data-canal-cambio', canalId);
     DIV_ELEMENT.classList.add('ratio', 'ratio-16x9', 'h-100');
+
+    const fallbackMarkup = `
+        <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100 text-center text-body-secondary bg-dark-subtle rounded-3 border border-light-subtle p-3">
+            <i class="bi bi-camera-video-off display-5 mb-2"></i>
+            <div class="fw-semibold">${canalId}</div>
+            <div class="small opacity-75">Stream no disponible</div>
+        </div>
+    `;
+
     const videoElement = document.createElement('video');
+    videoElement.id = `video-${canalId}`;
     videoElement.setAttribute('contenedor-canal-cambio', canalId);
     videoElement.classList.add(
         'position-absolute',
@@ -76,13 +86,39 @@ export function createVideoPlayer(canalId, urlCarga) {
         'overflow-hidden',
     );
     videoElement.toggleAttribute('controls');
+    videoElement.setAttribute('playsinline', '');
     DIV_ELEMENT.append(videoElement);
-    const player = videojs(videoElement);
+
+    if (!urlCarga || typeof urlCarga !== 'string' || !urlCarga.trim()) {
+        DIV_ELEMENT.innerHTML = fallbackMarkup;
+        return DIV_ELEMENT;
+    }
+
+    const player = videojs(videoElement, {
+        controls: true,
+        preload: 'metadata',
+        fluid: true,
+        aspectRatio: '16:9',
+        autoplay: false,
+        muted: true,
+    });
+
+    player.on('error', () => {
+        console.warn(`Video.js error for channel "${canalId}". Source: ${urlCarga}`);
+        DIV_ELEMENT.innerHTML = fallbackMarkup;
+    });
+
     player.src({
         src: urlCarga,
-        controls: true,
+        type: 'application/x-mpegURL',
     });
-    player.autoplay('muted');
+
+    player.ready(() => {
+        player.play().catch(() => {
+            DIV_ELEMENT.innerHTML = fallbackMarkup;
+        });
+    });
+
     return DIV_ELEMENT;
 }
 
@@ -342,39 +378,55 @@ export function createChannelFragment(canalId) {
         let señalUtilizar;
         let valorIndexArraySeñal = 0;
 
-        if (Array.isArray(iframe_url) && iframe_url.length > 0) {
-            señalUtilizar = 'iframe_url';
-        } else if (Array.isArray(m3u8_url) && m3u8_url.length > 0) {
-            señalUtilizar = 'm3u8_url';
-        } else if (yt_id !== '') {
-            señalUtilizar = 'yt_id';
-        } else if (yt_embed !== '') {
-            señalUtilizar = 'yt_embed';
-        } else if (yt_playlist !== '') {
-            señalUtilizar = 'yt_playlist';
-        } else if (twitch_id !== '') {
-            señalUtilizar = 'twitch_id';
+        const valoresSeñales = [
+            { key: 'iframe_url', values: Array.isArray(iframe_url) ? iframe_url : [] },
+            { key: 'm3u8_url', values: Array.isArray(m3u8_url) ? m3u8_url : [] },
+        ];
+
+        const señalPreferida = lsPreferenciasSeñalCanales[canalId];
+        if (señalPreferida) {
+            const keyPreferido = Object.keys(señalPreferida)[0]?.toString();
+            const indexPreferido = Number(Object.values(señalPreferida)[0]);
+            if (keyPreferido && ['iframe_url', 'm3u8_url', 'yt_id', 'yt_embed', 'yt_playlist', 'twitch_id'].includes(keyPreferido)) {
+                señalUtilizar = keyPreferido;
+                valorIndexArraySeñal = Number.isFinite(indexPreferido) ? indexPreferido : 0;
+            }
         }
 
-        if (lsPreferenciasSeñalCanales[canalId]) {
-            señalUtilizar = Object.keys(lsPreferenciasSeñalCanales[canalId])[0].toString();
-            valorIndexArraySeñal = Number(Object.values(lsPreferenciasSeñalCanales[canalId]));
+        if (!señalUtilizar) {
+            const señalElegible = valoresSeñales.find(({ values }) =>
+                values.some((value) => typeof value === 'string' && value.trim().startsWith('http')),
+            );
+            if (señalElegible) {
+                señalUtilizar = señalElegible.key;
+            } else if (yt_id !== '') {
+                señalUtilizar = 'yt_id';
+            } else if (yt_embed !== '') {
+                señalUtilizar = 'yt_embed';
+            } else if (yt_playlist !== '') {
+                señalUtilizar = 'yt_playlist';
+            } else if (twitch_id !== '') {
+                señalUtilizar = 'twitch_id';
+            }
         }
 
         const FRAGMENT_CANAL = document.createDocumentFragment();
         if (señalUtilizar === 'm3u8_url') {
+            const urlM3u8 = Array.isArray(m3u8_url) ? m3u8_url[valorIndexArraySeñal] : '';
             FRAGMENT_CANAL.append(
-                createVideoPlayer(canalId, m3u8_url[valorIndexArraySeñal]),
+                createVideoPlayer(canalId, urlM3u8),
                 createChannelOverlay(canalId, 'm3u8_url', valorIndexArraySeñal),
             );
             return FRAGMENT_CANAL;
-        } else {
+        } else if (señalUtilizar) {
             FRAGMENT_CANAL.append(
                 generateStreamIframe(canalId, señalUtilizar, valorIndexArraySeñal),
                 createChannelOverlay(canalId, señalUtilizar, valorIndexArraySeñal),
             );
             return FRAGMENT_CANAL;
         }
+
+        return FRAGMENT_CANAL;
     } else {
         console.error(`${canalId} no tiene signals definidas.`);
         mostrarToast(

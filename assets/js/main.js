@@ -360,8 +360,8 @@ export let tele = {
             // Evita que queden referencias vivas en memoria o que el reproductor siga ejecutando peticiones de red tras su remoción.
             let videoElement = transmisionPorRemover.querySelector('video');
             if (videoElement) {
-                let player = videojs(videoElement.id);
-                if (player) {
+                const player = videojs.getPlayer(videoElement);
+                if (player && typeof player.dispose === 'function') {
                     console.log(`Disposing player for canal "${canal}"...`);
                     player.dispose();
                 }
