@@ -26,6 +26,53 @@ function getSignalTypeLabel(signalKey) {
     return signalKey.replace('_', ' ');
 }
 
+// URLs de streams con token/firma de expiración (Akamai hdntl/hdnts, CloudFront signature, etc.)
+const TOKEN_PARAM_PATTERN = /[?&](?:hdntl|hdnts|token|signature|sig|auth|exp)=/i;
+
+function isMixedContent(url) {
+    return location.protocol === 'https:' && url.startsWith('http://');
+}
+
+function hasTokenParam(url) {
+    return TOKEN_PARAM_PATTERN.test(url);
+}
+
+// El navegador oculta a JS el motivo real de un fallo cross-origin (CORS vs red/DNS/timeout
+// son indistinguibles vía fetch/XHR por diseño de seguridad). Esta sonda en modo 'no-cors'
+// solo distingue "el servidor respondió algo" (bloqueo CORS) de "no se pudo ni conectar" (red).
+async function isReachableIgnoringCors(url) {
+    try {
+        await fetch(url, { mode: 'no-cors', cache: 'no-store', signal: AbortSignal.timeout(6000) });
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+// Clasifica el fallo de un player para mostrar al usuario una razón útil en vez de un
+// MEDIA_ERR_SRC_NOT_SUPPORTED genérico. Ver nota arriba sobre los límites reales de CORS en JS.
+async function classifyStreamError(player, urlCarga) {
+    if (isMixedContent(urlCarga)) return 'mixed-content';
+
+    const codigoError = player.error()?.code;
+    const yaHuboDatosEnBuffer = player.buffered().length > 0;
+    // MEDIA_ERR_NETWORK (2) con datos ya buffereados = falló un segmento a mitad de
+    // reproducción (404/timeout de un .ts), no la carga inicial del stream.
+    if (codigoError === 2 && yaHuboDatosEnBuffer) return 'segment-error';
+
+    const alcanzable = await isReachableIgnoringCors(urlCarga);
+    if (alcanzable) return 'cors-blocked';
+    return hasTokenParam(urlCarga) ? 'expired-token' : 'network-error';
+}
+
+const STREAM_ERROR_PRESENTATION = {
+    'mixed-content': { icon: 'bi-shield-exclamation', labelKey: 'streamErrorMixedContent' },
+    'cors-blocked': { icon: 'bi-slash-circle', labelKey: 'streamErrorCorsBlocked' },
+    'segment-error': { icon: 'bi-hourglass-split', labelKey: 'streamErrorSegment' },
+    'expired-token': { icon: 'bi-key', labelKey: 'streamErrorTokenExpired' },
+    'network-error': { icon: 'bi-wifi-off', labelKey: 'streamErrorNetwork' },
+};
+
 export function generateStreamIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
     valorIndex = Number(valorIndex);
     const DIV_ELEMENT = document.createElement('div');
@@ -66,13 +113,14 @@ export function createVideoPlayer(canalId, urlCarga) {
     DIV_ELEMENT.setAttribute('data-canal-cambio', canalId);
     DIV_ELEMENT.classList.add('ratio', 'ratio-16x9', 'h-100');
 
-    const fallbackMarkup = `
+    const buildFallbackMarkup = (icon = 'bi-camera-video-off', label = t('streamUnavailable')) => `
         <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100 text-center text-body-secondary bg-dark-subtle rounded-3 border border-light-subtle p-3">
-            <i class="bi bi-camera-video-off display-5 mb-2"></i>
+            <i class="bi ${icon} display-5 mb-2"></i>
             <div class="fw-semibold">${canalId}</div>
-            <div class="small opacity-75">Stream no disponible</div>
+            <div class="small opacity-75">${label}</div>
         </div>
     `;
+    const fallbackMarkup = buildFallbackMarkup();
 
     const videoElement = document.createElement('video');
     videoElement.id = `video-${canalId}`;
@@ -94,32 +142,68 @@ export function createVideoPlayer(canalId, urlCarga) {
         return DIV_ELEMENT;
     }
 
-    const player = videojs(videoElement, {
-        controls: true,
-        preload: 'metadata',
-        fluid: true,
-        aspectRatio: '16:9',
-        autoplay: false,
-        muted: true,
-    });
+    // http:// nunca carga en una página https (mixed content bloqueado por el navegador):
+    // ni siquiera vale la pena instanciar video.js ni pedir la playlist.
+    if (isMixedContent(urlCarga)) {
+        const presentacion = STREAM_ERROR_PRESENTATION['mixed-content'];
+        console.warn(`Mixed content bloqueado para canal "${canalId}". Source: ${urlCarga}`);
+        DIV_ELEMENT.innerHTML = buildFallbackMarkup(presentacion.icon, t(presentacion.labelKey));
+        return DIV_ELEMENT;
+    }
 
-    player.on('error', () => {
-        console.warn(`Video.js error for channel "${canalId}". Source: ${urlCarga}`);
-        DIV_ELEMENT.innerHTML = fallbackMarkup;
-    });
+    // El caller adjunta DIV_ELEMENT al DOM justo después de que esta función retorna
+    // (mismo tick síncrono). Diferimos la instanciación de video.js a un microtask para
+    // que el <video> ya esté en el documento y evitar el warning "element supplied is
+    // not included in the DOM". Si el canal fue removido antes de que corra (add+remove
+    // muy rápido), no hacemos nada: no hay nada que disponer.
+    queueMicrotask(() => {
+        if (!document.body.contains(videoElement)) return;
 
-    player.src({
-        src: urlCarga,
-        type: 'application/x-mpegURL',
-    });
+        const player = videojs(videoElement, {
+            controls: true,
+            preload: 'metadata',
+            fluid: true,
+            aspectRatio: '16:9',
+            autoplay: false,
+            muted: true,
+        });
 
-    player.ready(() => {
-        player.play().catch(() => {
-            DIV_ELEMENT.innerHTML = fallbackMarkup;
+        player.on('error', async () => {
+            const tipoError = await classifyStreamError(player, urlCarga);
+            const presentacion = STREAM_ERROR_PRESENTATION[tipoError];
+            console.warn(
+                `Video.js error for channel "${canalId}" [${tipoError}]. Source: ${urlCarga}`,
+            );
+            DIV_ELEMENT.innerHTML = presentacion
+                ? buildFallbackMarkup(presentacion.icon, t(presentacion.labelKey))
+                : fallbackMarkup;
+        });
+
+        player.src({
+            src: urlCarga,
+            type: 'application/x-mpegURL',
+        });
+
+        player.ready(() => {
+            player.play().catch(() => {
+                DIV_ELEMENT.innerHTML = fallbackMarkup;
+            });
         });
     });
 
     return DIV_ELEMENT;
+}
+
+// Busca el <video> de video.js dentro de un contenedor de canal y lo dispone,
+// si existe. Evita fugas de memoria y requests HLS colgados al remover o
+// reemplazar un canal/señal sin destruir el player anterior.
+export function disposeVideoPlayer(containerDiv) {
+    const videoElement = containerDiv?.querySelector('video');
+    if (!videoElement) return;
+    const player = videojs.getPlayer(videoElement);
+    if (player && typeof player.dispose === 'function') {
+        player.dispose();
+    }
 }
 
 export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
@@ -456,6 +540,7 @@ export function updateActiveSignal(canalId) {
             `#overlay-de-canal-${canalId}`,
         );
 
+        disposeVideoPlayer(divExistenteACambiar);
         divExistenteACambiar.remove();
         barraOverlayDeCanalACambiar.remove();
 

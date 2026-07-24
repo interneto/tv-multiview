@@ -1,5 +1,5 @@
 import { loadChannelData, fetchIptvChannelsData, listChannels } from './channelsData.js';
-import { createChannelFragment } from './channelUI.js';
+import { createChannelFragment, disposeVideoPlayer } from './channelUI.js';
 import {
     CHANNEL_CONTAINER_ID_PREFIXES,
     FIXED_COLUMN_VALUE_DESKTOP,
@@ -65,6 +65,18 @@ export const ICONO_SIN_SEÑAL_ACTIVA_VISION_UNICA = document.querySelector(
     '#icono-sin-señal-vision-unica',
 );
 
+// Tarjeta de logo/splash: solo se muestra al iniciar (antes de que carguen canales) y
+// cuando no queda ningún canal activo en ningún layout, respetando el checkbox de
+// "ocultar fondo" en ajustes como interruptor maestro.
+function updateLogoBackgroundVisibility() {
+    const activeChannels =
+        (CONTAINER_VISION_CUADRICULA?.querySelectorAll('div[data-canal]')?.length ?? 0) +
+        (CONTAINER_VIDEO_VISION_UNICA?.querySelectorAll('div[data-canal]')?.length ?? 0);
+    const shouldShow =
+        CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.checked && activeChannels === 0;
+    CONTAINER_TARJETA_LOGO_BACKGROUND.classList.toggle('d-none', !shouldShow);
+}
+
 export function syncInterfaceStatus() {
     const activeChannels =
         CONTAINER_VISION_CUADRICULA?.querySelectorAll('div[data-canal]')?.length ?? 0;
@@ -77,6 +89,8 @@ export function syncInterfaceStatus() {
     document.querySelectorAll('[data-ui-layout]').forEach((node) => {
         node.textContent = currentLayout;
     });
+
+    updateLogoBackgroundVisibility();
 }
 
 function refreshLocalizedUiState() {
@@ -286,10 +300,7 @@ const CONTAINER_TARJETA_LOGO_BACKGROUND = document.querySelector(
 );
 
 CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.addEventListener('click', () => {
-    CONTAINER_TARJETA_LOGO_BACKGROUND.classList.toggle(
-        'd-none',
-        !CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.checked,
-    );
+    updateLogoBackgroundVisibility();
     setCheckboxState(
         CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND,
         SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND,
@@ -355,17 +366,7 @@ export let tele = {
                 );
             let transmisionPorRemover = document.querySelector(`div[data-canal="${canal}"]`);
 
-            // Buscar el elemento <video> dentro del contenedor específico del canal.
-            // Esto es necesario para obtener la instancia de Video.js y poder destruirla correctamente antes de eliminar el DOM.
-            // Evita que queden referencias vivas en memoria o que el reproductor siga ejecutando peticiones de red tras su remoción.
-            let videoElement = transmisionPorRemover.querySelector('video');
-            if (videoElement) {
-                const player = videojs.getPlayer(videoElement);
-                if (player && typeof player.dispose === 'function') {
-                    console.log(`Disposing player for canal "${canal}"...`);
-                    player.dispose();
-                }
-            }
+            disposeVideoPlayer(transmisionPorRemover);
 
             removerTooltipsBootstrap();
             transmisionPorRemover.remove();
@@ -640,10 +641,7 @@ window.addEventListener('DOMContentLoaded', () => {
             'tarjeta-fondo-display',
             true,
         );
-        CONTAINER_TARJETA_LOGO_BACKGROUND.classList.toggle(
-            'd-none',
-            !CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.checked,
-        );
+        updateLogoBackgroundVisibility();
         ICONO_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.classList.replace(
             'bi-eye-slash',
             'bi-eye',
@@ -655,10 +653,7 @@ window.addEventListener('DOMContentLoaded', () => {
             'tarjeta-fondo-display',
             false,
         );
-        CONTAINER_TARJETA_LOGO_BACKGROUND.classList.toggle(
-            'd-none',
-            !CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.checked,
-        );
+        updateLogoBackgroundVisibility();
         ICONO_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.classList.replace(
             'bi-eye',
             'bi-eye-slash',

@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.21]
+
+- Fixed
+    - Player lifecycle: dispose the video.js player before removing its container on channel/signal replacement, preventing leaked players and orphaned HLS requests.
+    - Defer video.js initialization until the element is attached to the DOM, removing the "element supplied is not included in the DOM" warning.
+    - Hero title was invisible due to a stale `-webkit-text-fill-color: transparent` left over from the gradient-text style.
+
+- Added
+    - Stream error classification (mixed content, CORS-blocked, network unreachable, failed segment, possibly expired token) shown to the user instead of a generic "Stream unavailable".
+    - Skip instantiating the player for http:// sources on an https page, since mixed content is always blocked by the browser.
+    - Hero/splash card now only appears at startup and when there are no active channels, with an entrance animation.
+
+- Changed
+    - Simplified the hero card to just the logo, title, and version badge.
+
 ## [v0.20]
 
 - Changed

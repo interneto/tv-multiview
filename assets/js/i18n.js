@@ -8,14 +8,8 @@ const translations = {
         socialDescription:
             'Monitor de TV en vivo para comparar senales, cambiar entre cuadricula y foco unico, y guardar tu configuracion localmente.',
         skipContent: 'Saltar al contenido principal',
-        liveMonitor: 'Monitor de TV en vivo',
-        heroCopy:
-            'Compara noticias y transmisiones en paralelo, alterna entre cuadricula y enfoque unico, y conserva tu configuracion en este mismo dispositivo.',
-        pwaInstallable: 'PWA instalable',
-        gridMode: 'Modo cuadrícula',
         singleView: 'Visión única',
         activeSignals: 'señales activas',
-        modeLabel: 'Modo:',
         channels: 'Canales',
         settings: 'Ajustes',
         noInternet: 'Sin conexión a internet',
@@ -171,6 +165,12 @@ const translations = {
         preferredSignalUnavailable:
             'Tu señal preferida para {channel} ({signal}) dejó de estar disponible.',
         nextSignalFallback: 'Se utilizará la siguiente señal disponible.',
+        streamUnavailable: 'Stream no disponible',
+        streamErrorMixedContent: 'Bloqueado: la fuente usa http:// en una página https',
+        streamErrorCorsBlocked: 'Bloqueado por la política CORS del servidor de origen',
+        streamErrorSegment: 'Falló un fragmento del stream (caída puntual o token vencido)',
+        streamErrorTokenExpired: 'Posible token de acceso expirado',
+        streamErrorNetwork: 'Servidor no disponible (caído, tiempo agotado o dirección incorrecta)',
     },
     en: {
         title: 'TV Multiview | Live channel monitor',
@@ -179,14 +179,8 @@ const translations = {
         socialDescription:
             'Live TV monitor for comparing streams, switching between grid and focus view, and saving your local setup.',
         skipContent: 'Skip to main content',
-        liveMonitor: 'Live TV monitor',
-        heroCopy:
-            'Compare news and live streams side by side, switch between grid and focus view, and keep your setup on this device.',
-        pwaInstallable: 'Installable PWA',
-        gridMode: 'Grid mode',
         singleView: 'Single view',
         activeSignals: 'active signals',
-        modeLabel: 'Mode:',
         channels: 'Channels',
         settings: 'Settings',
         noInternet: 'No internet connection',
@@ -332,6 +326,12 @@ const translations = {
         preferredSignalUnavailable:
             'Your preferred signal for {channel} ({signal}) is no longer available.',
         nextSignalFallback: 'The next available signal will be used.',
+        streamUnavailable: 'Stream unavailable',
+        streamErrorMixedContent: 'Blocked: source uses http:// on an https page',
+        streamErrorCorsBlocked: "Blocked by the source server's CORS policy",
+        streamErrorSegment: 'A stream segment failed (brief outage or expired token)',
+        streamErrorTokenExpired: 'Access token likely expired',
+        streamErrorNetwork: 'Server unreachable (down, timed out, or wrong address)',
     },
 };
 
@@ -465,14 +465,6 @@ export function translatePage() {
         '#alerta-borrado-localstorage .btn.btn-lg.btn-light.mt-5',
         `<i class="bi bi-arrow-clockwise"></i> ${t('reload')}`,
     );
-
-    setText('.hero-kicker', t('liveMonitor'));
-    setText('.hero-copy', t('heroCopy'));
-    setText('.hero-highlights .app-pill:nth-child(1)', t('pwaInstallable'));
-    setText('.hero-highlights .app-pill:nth-child(2)', t('gridMode'));
-    setText('.hero-highlights .app-pill:nth-child(3)', t('singleView'));
-    setText('[data-ui-active-label]', t('activeSignals'));
-    setText('[data-ui-mode-label]', t('modeLabel'));
 
     setHtml(
         '#navbar .btn-outline-indigo.rounded-end-pill',
