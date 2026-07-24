@@ -41,6 +41,7 @@ const nodeGlobals = {
     process: 'readonly',
     __dirname: 'readonly',
     console: 'readonly',
+    fetch: 'readonly',
 };
 
 module.exports = [

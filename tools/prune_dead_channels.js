@@ -20,10 +20,10 @@ function hasOtherFallback(signals) {
     if (!signals) return false;
     return Boolean(
         signals.yt_id ||
-            signals.yt_embed ||
-            signals.yt_playlist ||
-            signals.twitch_id ||
-            (Array.isArray(signals.iframe_url) && signals.iframe_url.length > 0),
+        signals.yt_embed ||
+        signals.yt_playlist ||
+        signals.twitch_id ||
+        (Array.isArray(signals.iframe_url) && signals.iframe_url.length > 0),
     );
 }
 

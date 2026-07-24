@@ -52,7 +52,9 @@ async function main() {
     }
 
     fs.writeFileSync(CHANNELS_FILE, JSON.stringify(ours, null, 2) + '\n', 'utf8');
-    console.log(`\nDone. Added yt_id fallback to ${added} of ${Object.keys(ours).length} channels.`);
+    console.log(
+        `\nDone. Added yt_id fallback to ${added} of ${Object.keys(ours).length} channels.`,
+    );
 }
 
 main().catch((err) => {
