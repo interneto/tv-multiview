@@ -1,4 +1,4 @@
-import { createChannelFragment } from '../channelUI.js';
+import { createChannelFragment, disposeVideoPlayer } from '../channelUI.js';
 import { tele } from '../main.js';
 import { mostrarToast, ajustarClaseBotonCanal, saveActiveChannelsToStorage } from './index.js';
 import { buildErrorToastMessage, t } from '../i18n.js';
@@ -22,6 +22,7 @@ export function reemplazarCanalActivo(canalIdBotonPulsadoEnModal, canalIdExisten
                 tele.remove(canalIdBotonPulsadoEnModal);
             }
 
+            disposeVideoPlayer(divExistenteACambiar);
             divExistenteACambiar.remove();
             barraOverlayDeCanalACambiar.remove();
 
