@@ -14,7 +14,7 @@
 .tarjeta-logo-background {
     background: transparent !important;
     box-shadow: none !important;
-    border: 1px solid rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
     padding: 1.25rem !important;
     border-radius: 1rem !important;
 }
@@ -50,7 +50,6 @@
     font-size: 2.25rem !important;
     font-weight: 600 !important;
 }
-
 
 html {
     scroll-behavior: smooth;

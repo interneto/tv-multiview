@@ -16,14 +16,7 @@ function loadJson(file) {
     }
 }
 
-const allowedChannelProps = new Set([
-    'name',
-    'logo',
-    'signals',
-    'website',
-    'category',
-    'country',
-]);
+const allowedChannelProps = new Set(['name', 'logo', 'signals', 'website', 'category', 'country']);
 const allowedSignalProps = new Set([
     'iframe_url',
     'm3u8_url',

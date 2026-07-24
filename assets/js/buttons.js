@@ -212,12 +212,10 @@ function isFullscreen() {
     return (
         isFullscreenSupported() &&
         !!(
-            (
-                document.fullscreenElement ||
-                document.webkitFullscreenElement ||
-                document.mozFullScreenElement ||
-                document.msFullscreenElement
-            )
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
             /* || window.innerHeight == screen.height */
         )
     );
