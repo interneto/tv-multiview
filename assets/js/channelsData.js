@@ -1,51 +1,19 @@
 import { URL_TV_CHANNELS_JSON, URL_IPTV_CHANNELS_M3U } from './constants/index.js';
 import { areSimilarNames, M3U_A_JSON } from './helpers/index.js';
 
+// 9 canales para la grilla 3x3 por defecto, uno por tema para que la primera
+// impresión no sea "solo noticias": deportes, entretenimiento, infantil,
+// negocios, documentales y actualidad internacional.
 export const DEFAULT_CHANNELS_ARRAY = [
-    // 🇨🇦 Canada
-    'ctv', // CTV Television Network
-
-    // 🇩🇪 Germany
-    'zdf', // Zweites Deutsches Fernsehen
-    'rtl', // Germany / Europe
-
-    // 🇪🇸 Spain
-    '24horas', // TVN 24 Horas
-    // 'la1',          // La 1 (RTVE)
-    'la2', // La 2 (RTVE)
-
-    // 🇬🇧 United Kingdom
-    'bbcone', // BBC One
-    'skynews', // Sky News
-
-    // 🇫🇷 France
-    'france24', // France 24
-
-    // 🇮🇹 Italy
-    'rai1', // Rai 1
-
-    // 🇵🇹 Portugal
-    //'rtp',          // Rádio e Televisão de Portugal (RTP)
-
-    // 🇷🇺 Russia
-    'rt', // Russia Today (Russia)
-
-    // 🇺🇸 United States
-    'abc', // American Broadcasting Company
-    'abcnews', // ABC News
-    'nbc', // National Broadcasting Company
-    'amc', // AMC (entertainment)
-    // 'cbs',       // CBS (commented out)
-    // 'cnn',       // Cable News Network (commented out)
-    // 'foxnews',   // Fox News (commented out)
-
-    // 🌍 World-International / Multi-region
-    'aljazeera', // Al Jazeera (Qatar, global coverage)
-    'dw', // Deutsche Welle (Germany, international)
-    'euronews', // Euronews (multi-language news)
-    'redbulltv', // Red Bull TV (entertainment, sports)
-    // 'cnnint',       // CNN International
-    //'skyatlantic',  // UK / Europe
+    'teledeporte', // Sports (España)
+    'redbulltv', // Sports / entertainment (deportes extremos)
+    'skynews', // News (Reino Unido)
+    'aljazeera', // News / international (Qatar, cobertura global)
+    'nickelodeon', // Kids
+    'cnbc', // Business
+    'bbearth', // Documentary / nature
+    'nbc', // General / entertainment (EE.UU.)
+    'm6', // Entertainment (Francia)
 ];
 
 export const DEFAULT_CHANNEL_LIST_EXTRAS = [];
