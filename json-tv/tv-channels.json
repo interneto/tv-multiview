@@ -133,8 +133,7 @@
     },
     "website": "",
     "category": "general",
-    "country": "at",
-    "active": false
+    "country": "at"
   },
   "redbulltv": {
     "name": "Red Bull TV",
@@ -627,8 +626,7 @@
     },
     "website": "",
     "category": "",
-    "country": "ch",
-    "active": false
+    "country": "ch"
   },
   "13c": {
     "name": "13C",
@@ -648,9 +646,9 @@
     "country": "cl"
   },
   "t13": {
-    "nombre": "T13",
+    "name": "T13",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/0/09/Logotipo_de_Teletrece.svg",
-    "señales": {
+    "signals": {
       "iframe_url": [
         "https://rudo.video/live/t13"
       ],
@@ -663,9 +661,9 @@
       "yt_playlist": "",
       "twitch_id": "t13envivo"
     },
-    "sitio_oficial": "https://www.t13.cl/en-vivo",
-    "país": "cl",
-    "categoría": "news"
+    "website": "https://www.t13.cl/en-vivo",
+    "country": "cl",
+    "category": "news"
   },
   "uatv": {
     "name": "UATV",
@@ -991,8 +989,7 @@
     },
     "website": "",
     "category": "kids",
-    "country": "de",
-    "active": false
+    "country": "de"
   },
   "oktvludwigshafen": {
     "name": "OK-TV Ludwigshafen",
@@ -1043,8 +1040,7 @@
     },
     "website": "",
     "category": "",
-    "country": "de",
-    "active": false
+    "country": "de"
   },
   "zdf": {
     "name": "ZDF HD",
@@ -1061,8 +1057,7 @@
     },
     "website": "",
     "category": "",
-    "country": "de",
-    "active": false
+    "country": "de"
   },
   "zdfinfo": {
     "name": "ZDFinfo HD",
@@ -1079,8 +1074,7 @@
     },
     "website": "",
     "category": "",
-    "country": "de",
-    "active": false
+    "country": "de"
   },
   "zdfneo": {
     "name": "ZDFneo HD",
@@ -1097,8 +1091,7 @@
     },
     "website": "",
     "category": "",
-    "country": "de",
-    "active": false
+    "country": "de"
   },
   "fuegotv": {
     "name": "Fuego TV",
@@ -1185,7 +1178,7 @@
     "category": "lifestyle",
     "country": "eg"
   },
-  "3/24": {
+  "3-24": {
     "name": "3/24",
     "logo": "https://i.imgur.com/0mXoX1H.png",
     "signals": {
@@ -1404,8 +1397,7 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "fr",
-    "active": false
+    "country": "fr"
   },
   "tf1": {
     "name": "TF1 HD",
@@ -1422,8 +1414,7 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "fr",
-    "active": false
+    "country": "fr"
   },
   "tf1seriesfilms": {
     "name": "TF1 Series Films SD",
@@ -1440,8 +1431,7 @@
     },
     "website": "",
     "category": "movies",
-    "country": "fr",
-    "active": false
+    "country": "fr"
   },
   "bbcdramaes": {
     "name": "BBC drama",
@@ -1883,8 +1873,7 @@
     },
     "website": "",
     "category": "general",
-    "country": "it",
-    "active": false
+    "country": "it"
   },
   "italia2": {
     "name": "Italia 2",
@@ -1969,8 +1958,7 @@
     },
     "website": "",
     "category": "",
-    "country": "it",
-    "active": false
+    "country": "it"
   },
   "rtl1025best": {
     "name": "RTL 102.5 Best",
@@ -2174,8 +2162,7 @@
     },
     "website": "",
     "category": "general",
-    "country": "kr",
-    "active": false
+    "country": "kr"
   },
   "rtl9": {
     "name": "RTL9 SD",
@@ -2192,8 +2179,7 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "lu",
-    "active": false
+    "country": "lu"
   },
   "rtlteleletzebuerg": {
     "name": "RTL Tele Letzebuerg",
@@ -2363,8 +2349,7 @@
     },
     "website": "",
     "category": "general",
-    "country": "mt",
-    "active": false
+    "country": "mt"
   },
   "aztecainternacional": {
     "name": "Azteca Internacional",
@@ -2415,8 +2400,7 @@
     },
     "website": "",
     "category": "",
-    "country": "my",
-    "active": false
+    "country": "my"
   },
   "tvcnews": {
     "name": "TVC News",
@@ -2450,8 +2434,7 @@
     },
     "website": "",
     "category": "news",
-    "country": "nl",
-    "active": false
+    "country": "nl"
   },
   "omroephoekschewaard": {
     "name": "Omroep Hoeksche Waard",
@@ -2893,8 +2876,7 @@
     },
     "website": "",
     "category": "",
-    "country": "tr",
-    "active": false
+    "country": "tr"
   },
   "dersim62tv": {
     "name": "Dersim62 TV",
@@ -2945,8 +2927,7 @@
     },
     "website": "",
     "category": "news",
-    "country": "tr",
-    "active": false
+    "country": "tr"
   },
   "bbcdrama": {
     "name": "BBC drama",
@@ -3031,8 +3012,7 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "us",
-    "active": false
+    "country": "us"
   },
   "atvsat": {
     "name": "ATVSat",
@@ -3117,8 +3097,7 @@
     },
     "website": "",
     "category": "sports",
-    "country": "us",
-    "active": false
+    "country": "us"
   },
   "billiardtv": {
     "name": "Billiard TV SD",
