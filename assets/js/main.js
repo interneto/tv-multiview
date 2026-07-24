@@ -322,10 +322,15 @@ export const BOTONES_REPOSICIONAR_BOTONES_FLOTANTES = document.querySelectorAll(
     '#grupo-botones-posicion-botones-flotantes .btn-check',
 );
 
+// IDs de canal renombrados en tv-channels.json: un link/backup local viejo con el id
+// anterior debe seguir resolviendo al canal actual en vez de fallar en silencio.
+const LEGACY_CHANNEL_ALIASES = { '3/24': '3-24' };
+
 // MARK: Manejo canales
 export let tele = {
     add: (canal) => {
         try {
+            canal = LEGACY_CHANNEL_ALIASES[canal] ?? canal;
             if (!canal || !listChannels?.[canal])
                 return console.error(
                     `El canal "${canal}" proporcionado no es válido para ser añadido.`,
