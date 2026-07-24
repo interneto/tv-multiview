@@ -1,0 +1,1323 @@
+{
+  "sicarditv": {
+    "name": "Sicardi TV",
+    "logo": "https://i.imgur.com/W2EUIL2.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://vivo.solumedia.com:19360/sicarditv/sicarditv.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "ar"
+  },
+  "atv": {
+    "name": "ATV",
+    "logo": "https://i.imgur.com/1pA0Tid.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://strm.hdtvizlecanli.com/live/atv.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "at"
+  },
+  "atv2": {
+    "name": "ATV2 HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Logo_ATV2.svg/512px-Logo_ATV2.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://tv.angiangtv.vn/live/kgtv2/kgtv2.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "at",
+    "active": false
+  },
+  "arubatvplus": {
+    "name": "ArubaTV +",
+    "logo": "https://i.imgur.com/9s6LZJZ.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://livertmptwo.com:19360/atvplusrelay/atvplusrelay.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "entertainment",
+    "country": "aw"
+  },
+  "cbcsport": {
+    "name": "CBC Sport",
+    "logo": "https://i.imgur.com/3mEdjuq.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://mn-nl.mncdn.com/cbcsports_live/cbcsports/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "sports",
+    "country": "az"
+  },
+  "aljazeerabalkans": {
+    "name": "Al Jazeera Balkans",
+    "logo": "https://i.imgur.com/vMzCr8O.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://live-hls-apps-ajb-v3-fa.getaj.net/AJB/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "ba"
+  },
+  "belrtl": {
+    "name": "Bel RTL",
+    "logo": "https://i.imgur.com/0DUprIW.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://bel-live-hls.akamaized.net/hls/live/2038650/BEL-Live-HLS/master.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "music",
+    "country": "be"
+  },
+  "catve2": {
+    "name": "Catve2",
+    "logo": "https://i.imgur.com/qiVfsfB.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://5b33b873179a2.streamlock.net:1443/catve2/catve2/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "br"
+  },
+  "catvefm": {
+    "name": "Catve FM",
+    "logo": "https://i.imgur.com/w89yw36.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://5b33b873179a2.streamlock.net:1443/radiocamera/livestream/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "br"
+  },
+  "catvemastertv": {
+    "name": "Catve Master TV",
+    "logo": "https://i.imgur.com/4m7Iazm.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://5b33b873179a2.streamlock.net:1443/mastertv/livestream/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "br"
+  },
+  "sbtinterior": {
+    "name": "SBT Interior",
+    "logo": "https://i.imgur.com/IkZfa4j.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://cdn.jmvstream.com/w/LVW-10801/LVW10801_Xvg4R0u57n/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "br"
+  },
+  "tvmon": {
+    "name": "TV Mon",
+    "logo": "https://i.imgur.com/Gjan8rl.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://srv1.zcast.com.br/tvmon/tvmon/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "br"
+  },
+  "cbctdt": {
+    "name": "CBCT-DT",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/e/e9/CBCT-DT_logo.jpg",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://cbcrclinear-tor.akamaized.net/hls/live/2042756/CBCRCLINEAR_TOR_2/master5.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "ca"
+  },
+  "hamdardtv": {
+    "name": "Hamdard TV",
+    "logo": "https://i.ibb.co/JcD2xck/logo-hamda.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://tv.hamdardtv.com/hamdard/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "ca"
+  },
+  "tsn1": {
+    "name": "TSN1",
+    "logo": "https://i.imgur.com/eRFE0jZ.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://fl4.moveonjoy.com/TSN_1/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "sports",
+    "country": "ca"
+  },
+  "cbctv": {
+    "name": "CBC TV",
+    "logo": "https://i.imgur.com/zmsDo6X.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://flu.systemnet.tv/CBC/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "cd"
+  },
+  "rtnc": {
+    "name": "RTNC",
+    "logo": "https://i.imgur.com/oVXO950.jpeg",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://69.64.57.208/rtnc/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "cd"
+  },
+  "rtnc3": {
+    "name": "RTNC 3 SD",
+    "logo": "https://i.imgur.com/rr9Zsno.jpeg",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://51.254.199.122:8080/e-cableRTNC3/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "cd"
+  },
+  "rsila1": {
+    "name": "RSI La 1 SD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/RSI_La_1_2012.svg/512px-RSI_La_1_2012.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/rsila1hd/browser-dash/rsila1hd.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "ch",
+    "active": false
+  },
+  "cctvbilliards": {
+    "name": "CCTV-Billiards",
+    "logo": "https://i.imgur.com/WK3keM9.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "sports",
+    "country": "cn"
+  },
+  "nationalgeographic": {
+    "name": "National Geographic",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/512px-Natgeologo.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://live-fi.tvkaista.net/national-geographic/live.m3u8?hd=true"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "documentary",
+    "country": "cz"
+  },
+  "disneychannel": {
+    "name": "Disney Channel",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/disneychannelde/browser-HLS8/disneychannelde.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "kids",
+    "country": "de"
+  },
+  "ltv": {
+    "name": "L TV",
+    "logo": "https://i.imgur.com/HuGaMJj.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://live2.telvi.de/hls/l-tv_s1.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "de"
+  },
+  "oktvludwigshafen": {
+    "name": "OK-TV Ludwigshafen",
+    "logo": "https://i.imgur.com/xiDeF8Y.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://s.ok54.de/oklu/livestream/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "de"
+  },
+  "rtl": {
+    "name": "RTL",
+    "logo": "https://i.imgur.com/94K94k2.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/rtl/browser-HLS8/rtl.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "de"
+  },
+  "rtlzwei": {
+    "name": "RTL Zwei HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/512px-RTLZWEI_Logo_2019.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/rtl2/browser-dash/rtl2.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "de",
+    "active": false
+  },
+  "zdf": {
+    "name": "ZDF HD",
+    "logo": "https://i.imgur.com/rtLb6m9.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/zdfhd/browser-dash/zdfhd.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "de",
+    "active": false
+  },
+  "zdfinfo": {
+    "name": "ZDFinfo HD",
+    "logo": "https://i.imgur.com/vtq1IWp.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/zdfinfohd/browser-dash/zdfinfohd.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "de",
+    "active": false
+  },
+  "zdfneo": {
+    "name": "ZDFneo HD",
+    "logo": "https://i.imgur.com/1JIIGgL.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/zdfneohd/browser-dash/zdfneohd.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "de",
+    "active": false
+  },
+  "fuegotv": {
+    "name": "Fuego TV",
+    "logo": "https://i.imgur.com/T9vWjeB.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://streamunoapp.com:3553/live/cromtvlive.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "music",
+    "country": "do"
+  },
+  "cbc": {
+    "name": "CBC SD",
+    "logo": "https://i.imgur.com/8apNaLP.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://flu.systemnet.tv/CBC/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "eg"
+  },
+  "cbcdrama": {
+    "name": "CBC Drama SD",
+    "logo": "https://i.imgur.com/I8YdakH.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://flu.systemnet.tv/CBCDrama/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "series",
+    "country": "eg"
+  },
+  "cbcsofra": {
+    "name": "CBC Sofra",
+    "logo": "https://i.imgur.com/YAdk2WR.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://flu.systemnet.tv/CBCSofra/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "lifestyle",
+    "country": "eg"
+  },
+  "france2": {
+    "name": "France 2",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/France_2_2018.svg/512px-France_2_2018.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://69.64.57.208/france2/mono.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "fr"
+  },
+  "tf1": {
+    "name": "TF1 HD",
+    "logo": "https://i.imgur.com/QxHt9NC.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/tf1hd/browser-dash/tf1hd.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "entertainment",
+    "country": "fr",
+    "active": false
+  },
+  "tf1seriesfilms": {
+    "name": "TF1 Series Films SD",
+    "logo": "https://i.imgur.com/4CJIDKQ.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/hd1/browser-dash/hd1.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "movies",
+    "country": "fr",
+    "active": false
+  },
+  "bbcone": {
+    "name": "BBC 1",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/BBC_One_logo_2021.svg/330px-BBC_One_logo_2021.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://149.102.245.111/1263/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "gb"
+  },
+  "bbctwo": {
+    "name": "BBC 2",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/BBC_Two_logo.png/330px-BBC_Two_logo.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/bbc2/browser-HLS8/bbc2.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "gb"
+  },
+  "cnbceurope": {
+    "name": "CNBC Europe HD",
+    "logo": "https://i.imgur.com/B6sfpDa.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/cnbc/browser-HLS8/cnbc.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "business",
+    "country": "gb"
+  },
+  "iranefardatv": {
+    "name": "IraneFarda TV",
+    "logo": "https://i.imgur.com/ixgcgZY.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://hls.iranfarda.live/hls/stream.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "gb"
+  },
+  "art": {
+    "name": "ART",
+    "logo": "https://i.imgur.com/mNeLu04.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://89.104.114.24:8080/art/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "culture",
+    "country": "gr"
+  },
+  "ng": {
+    "name": "NG",
+    "logo": "https://i.imgur.com/IcgbJKF.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://live.streams.ovh/NGradio/NGradio/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "music",
+    "country": "gr"
+  },
+  "atvspirit": {
+    "name": "ATV Spirit",
+    "logo": "https://i.imgur.com/JINE5xS.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://146.59.85.40:89/atvspirit/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "hu"
+  },
+  "rtlketto": {
+    "name": "RTL Ketto",
+    "logo": "https://i.imgur.com/IVv0qrI.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://194.76.186.33:8000/play/a01z/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "hu"
+  },
+  "cnbcindonesia": {
+    "name": "CNBC Indonesia",
+    "logo": "https://i.imgur.com/bUfeG7Y.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://live.cnbcindonesia.com/livecnbc/smil:cnbctv.smil/master.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "business",
+    "country": "id"
+  },
+  "e24": {
+    "name": "E 24",
+    "logo": "https://i.imgur.com/vCaPNTe.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://live-cf-e24.dailyhunt.in/master.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "entertainment",
+    "country": "in"
+  },
+  "vbcnews": {
+    "name": "VBC News",
+    "logo": "https://i.imgur.com/SvXCjha.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://5a1178b42cc03.streamlock.net/8200/8200/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "in"
+  },
+  "carinatv": {
+    "name": "CarinaTV SD",
+    "logo": "https://i.imgur.com/ANGD7gv.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://samson.streamerr.co:8081/carinatv/tracks-v1a1/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "it"
+  },
+  "italia1": {
+    "name": "Italia 1",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Italia_1_logo.svg/512px-Italia_1_logo.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://viamotionhsi.netplus.ch/live/eds/italia1/browser-dash/italia1.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "it",
+    "active": false
+  },
+  "rai2": {
+    "name": "Rai 2 HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Rai_2_-_Logo_2016.svg/512px-Rai_2_-_Logo_2016.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://m3u.iranvids.com/rai02/output.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "it"
+  },
+  "312kino": {
+    "name": "312kino",
+    "logo": "https://i.ibb.co/3m9LrLj/k7gIibH.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://176.126.166.43:1935/live/312kino/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "sports",
+    "country": "kg"
+  },
+  "eacnewstv": {
+    "name": "EAC News TV SD",
+    "logo": "https://i.imgur.com/EuYhS9Z.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://live-evg17.tv360.metfone.com.kh/LiveApp/streams/eacnews.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "kh"
+  },
+  "arirangtv": {
+    "name": "Arirang TV",
+    "logo": "https://i.imgur.com/Asu5pE9.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://cdn-01.bonus-tv.ru/arirang_edge/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general;news",
+    "country": "kr"
+  },
+  "monacoinfo": {
+    "name": "Monaco Info",
+    "logo": "https://i.imgur.com/FPyPaL1.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://webtv.monacoinfo.com/live/prod/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "mc"
+  },
+  "viaatv": {
+    "name": "ViaATV",
+    "logo": "https://i.imgur.com/Ua6rOXo.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://streamer01.myvideoplace.tv/streamer02/hls/ATV_DIRECT_EV_111018.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "mq"
+  },
+  "tv2": {
+    "name": "TV2",
+    "logo": "https://i.imgur.com/LGEdeyJ.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "my",
+    "active": false
+  },
+  "tvcnews": {
+    "name": "TVC News",
+    "logo": "https://i.imgur.com/jaSq18B.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://69.64.57.208/tvcnews/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "ng"
+  },
+  "atvplus": {
+    "name": "ATV+",
+    "logo": "https://i.imgur.com/fY9256H.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://alba-pe-atv-atvmas.stream.mediatiquestream.com/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "pe"
+  },
+  "atvsur": {
+    "name": "ATV Sur",
+    "logo": "https://i.imgur.com/LnyVa5H.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://alba-pe-atv-atvsur.stream.mediatiquestream.com/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "pe"
+  },
+  "vamisatv": {
+    "name": "VamisaTV",
+    "logo": "https://i.imgur.com/qaR3aqn.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://inliveserver.com:1936/10044/10044/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "pe"
+  },
+  "catv": {
+    "name": "CAtv",
+    "logo": "https://caribbeanadvantage.com/images/CAtv-logo-512.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://video2.getstreamhosting.com:19360/8216/8216.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "pr"
+  },
+  "famatv": {
+    "name": "Famatv",
+    "logo": "https://i.ibb.co/tMmRp18/Fama-TV-cor-whitebg-hotizontal.jpg",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://tv2.fastcast4u.com:3310/live/famatvlive.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "music",
+    "country": "pt"
+  },
+  "aljazeeradocumentary": {
+    "name": "Al Jazeera Documentary",
+    "logo": "https://i.imgur.com/5dNJlLo.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://live-hls-apps-ajd-fa.getaj.net/AJD/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "qa"
+  },
+  "ardealtv": {
+    "name": "Ardeal TV",
+    "logo": "https://i.imgur.com/5XwtFKd.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://frn.rtsp.me/wzhx8pmNF7-kstp_J0AdjA/1695647213/hls/yZ9ED27Q.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "ro"
+  },
+  "u": {
+    "name": "U",
+    "logo": "https://i.imgur.com/KDZvt0Q.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://zabava-htlive.cdn.ngenix.net/hls/CH_U/variant.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "entertainment",
+    "country": "ru"
+  },
+  "axnasia": {
+    "name": "AXN Asia Vietnam",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/512px-AXN_logo_%282015%29.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://tv.ddns.vn/tv/axnhd/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "movies",
+    "country": "sg"
+  },
+  "atvavrupa": {
+    "name": "ATV Avrupa",
+    "logo": "https://i.tmgrup.com.tr/aav/site/v1/i/atv-avrupa-logo.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://185.234.111.229:8000/play/a018"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "tr",
+    "active": false
+  },
+  "dersim62tv": {
+    "name": "Dersim62 TV",
+    "logo": "https://i.imgur.com/wFTl8aQ.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://live.arkumedia.com:1935/dersim62tv/dersim62tv/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "tr"
+  },
+  "ebcnews": {
+    "name": "EBC News",
+    "logo": "https://i.imgur.com/QFZs80p.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://seb.sason.top/sc/dsxw_fhd.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "tw"
+  },
+  "z": {
+    "name": "Z",
+    "logo": "https://i.imgur.com/E5aV5aa.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://stream.ztv.zp.ua/hls/live.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "",
+    "country": "ua"
+  },
+  "amc": {
+    "name": "AMC",
+    "logo": "https://i.imgur.com/L1h6W5Q.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://23.239.31.26:8989/amc/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "entertainment",
+    "country": "us",
+    "active": false
+  },
+  "foxnewschannel": {
+    "name": "Fox News Channel",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/512px-Fox_News_Channel_logo.svg.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://84.17.50.102/fox/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "us"
+  },
+  "foxsports2": {
+    "name": "Fox Sports 2 HD",
+    "logo": "https://i.imgur.com/LHtxKI8.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://23.237.104.106:8080/USA_FS2/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "sports",
+    "country": "us"
+  },
+  "msnbc": {
+    "name": "MSNBC",
+    "logo": "https://i.imgur.com/kGUR6NE.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "http://41.205.93.154/MSNBC/index.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "news",
+    "country": "us"
+  },
+  "samuelgoldwynclassics": {
+    "name": "Samuel Goldwyn Classics",
+    "logo": "https://i.imgur.com/XC30JAF.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://samuelgoldwyn-classics-1-us.roku.wurl.tv/playlist.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "classic",
+    "country": "us"
+  },
+  "visionglobaltv": {
+    "name": "Vision Global TV SD",
+    "logo": "https://i.imgur.com/3FaNbYD.png",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://vdopanel.jlahozconsulting.com:3407/hybrid/play.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "general",
+    "country": "us"
+  },
+  "kandelatv": {
+    "name": "KandelaTV",
+    "logo": "https://i.imgur.com/cCFxyIp.jpg",
+    "signals": {
+      "iframe_url": [],
+      "m3u8_url": [
+        "https://streamtv.intervenhosting.net:3718/live/kandelamedioslive.m3u8"
+      ],
+      "yt_id": "",
+      "yt_embed": "",
+      "yt_playlist": "",
+      "twitch_id": ""
+    },
+    "website": "",
+    "category": "music",
+    "country": "ve"
+  }
+}

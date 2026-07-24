@@ -217,14 +217,28 @@ export function createVideoPlayer(canalId, urlCarga) {
             releasePlayerSlot();
         };
 
+        // Si el m3u8 falla (CORS, servidor caído, timeout, etc.) y el canal tiene un yt_id
+        // de respaldo, lo usamos automáticamente en vez de mostrar solo un error: un embed
+        // de YouTube es un iframe, nunca pega contra los mismos bloqueos de CORS/hotlink.
+        // Siempre dispone el player: ya no se va a usar, sea cual sea el desenlace.
+        const fallbackToYoutubeOrShowError = (tipoError) => {
+            clearTimeout(loadTimeoutId);
+            player.dispose();
+            const ytId = listChannels[canalId]?.signals?.yt_id;
+            if (ytId) {
+                DIV_ELEMENT.replaceWith(generateStreamIframe(canalId, 'yt_id'));
+                return;
+            }
+            const presentacion = STREAM_ERROR_PRESENTATION[tipoError];
+            DIV_ELEMENT.innerHTML = presentacion
+                ? buildFallbackMarkup(presentacion.icon, t(presentacion.labelKey))
+                : fallbackMarkup;
+        };
+
         const loadTimeoutId = setTimeout(() => {
             console.warn(`Timeout de carga para canal "${canalId}". Source: ${urlCarga}`);
-            const presentacion = STREAM_ERROR_PRESENTATION['network-error'];
-            DIV_ELEMENT.innerHTML = buildFallbackMarkup(
-                presentacion.icon,
-                t(presentacion.labelKey),
-            );
-            player.dispose();
+            releaseSlotOnce();
+            fallbackToYoutubeOrShowError('network-error');
         }, STREAM_LOAD_TIMEOUT_MS);
 
         player.on('dispose', () => {
@@ -234,16 +248,12 @@ export function createVideoPlayer(canalId, urlCarga) {
         player.on('loadeddata', () => clearTimeout(loadTimeoutId));
 
         player.on('error', async () => {
-            clearTimeout(loadTimeoutId);
             releaseSlotOnce();
             const tipoError = await classifyStreamError(player, urlCarga);
-            const presentacion = STREAM_ERROR_PRESENTATION[tipoError];
             console.warn(
                 `Video.js error for channel "${canalId}" [${tipoError}]. Source: ${urlCarga}`,
             );
-            DIV_ELEMENT.innerHTML = presentacion
-                ? buildFallbackMarkup(presentacion.icon, t(presentacion.labelKey))
-                : fallbackMarkup;
+            fallbackToYoutubeOrShowError(tipoError);
         });
 
         player.src({
@@ -253,9 +263,8 @@ export function createVideoPlayer(canalId, urlCarga) {
 
         player.ready(() => {
             player.play().catch(() => {
-                clearTimeout(loadTimeoutId);
                 releaseSlotOnce();
-                DIV_ELEMENT.innerHTML = fallbackMarkup;
+                fallbackToYoutubeOrShowError();
             });
         });
     });
