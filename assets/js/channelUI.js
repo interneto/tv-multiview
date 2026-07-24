@@ -565,7 +565,17 @@ export function createChannelFragment(canalId) {
         if (señalPreferida) {
             const keyPreferido = Object.keys(señalPreferida)[0]?.toString();
             const indexPreferido = Number(Object.values(señalPreferida)[0]);
-            if (keyPreferido && ['iframe_url', 'm3u8_url', 'yt_id', 'yt_embed', 'yt_playlist', 'twitch_id'].includes(keyPreferido)) {
+            if (
+                keyPreferido &&
+                [
+                    'iframe_url',
+                    'm3u8_url',
+                    'yt_id',
+                    'yt_embed',
+                    'yt_playlist',
+                    'twitch_id',
+                ].includes(keyPreferido)
+            ) {
                 señalUtilizar = keyPreferido;
                 valorIndexArraySeñal = Number.isFinite(indexPreferido) ? indexPreferido : 0;
             }
@@ -573,7 +583,9 @@ export function createChannelFragment(canalId) {
 
         if (!señalUtilizar) {
             const señalElegible = valoresSeñales.find(({ values }) =>
-                values.some((value) => typeof value === 'string' && value.trim().startsWith('http')),
+                values.some(
+                    (value) => typeof value === 'string' && value.trim().startsWith('http'),
+                ),
             );
             if (señalElegible) {
                 señalUtilizar = señalElegible.key;

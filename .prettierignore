@@ -6,3 +6,5 @@ pwabuilder-sw.js
 node_modules/
 .worktrees/
 .claude/worktrees/
+package-lock.json
+pnpm-lock.yaml
