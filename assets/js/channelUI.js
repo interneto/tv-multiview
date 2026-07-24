@@ -73,6 +73,33 @@ const STREAM_ERROR_PRESENTATION = {
     'network-error': { icon: 'bi-wifi-off', labelKey: 'streamErrorNetwork' },
 };
 
+// Con N players ABR cargando a la vez, play() empieza a rechazar por contención de
+// recursos (decoders/MediaSource) antes de que el propio stream tenga chance de
+// fallar o funcionar — confirmado en pruebas: canales que fallan en un batch de 18
+// funcionan bien solos. Este límite evita que más de MAX_CONCURRENT_PLAYERS
+// instancien video.js a la vez; el resto espera turno en cola.
+// ponytail: cupo fijo, ajustar/derivar de navigator.hardwareConcurrency si algún día hace falta.
+const MAX_CONCURRENT_PLAYERS = 6;
+let activePlayerSlots = 0;
+const playerSlotQueue = [];
+
+function acquirePlayerSlot() {
+    if (activePlayerSlots < MAX_CONCURRENT_PLAYERS) {
+        activePlayerSlots += 1;
+        return Promise.resolve();
+    }
+    return new Promise((resolve) => playerSlotQueue.push(resolve));
+}
+
+function releasePlayerSlot() {
+    const next = playerSlotQueue.shift();
+    if (next) {
+        next();
+    } else {
+        activePlayerSlots = Math.max(0, activePlayerSlots - 1);
+    }
+}
+
 export function generateStreamIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
     valorIndex = Number(valorIndex);
     const DIV_ELEMENT = document.createElement('div');
@@ -156,8 +183,17 @@ export function createVideoPlayer(canalId, urlCarga) {
     // que el <video> ya esté en el documento y evitar el warning "element supplied is
     // not included in the DOM". Si el canal fue removido antes de que corra (add+remove
     // muy rápido), no hacemos nada: no hay nada que disponer.
-    queueMicrotask(() => {
+    queueMicrotask(async () => {
         if (!document.body.contains(videoElement)) return;
+
+        // Espera turno si ya hay MAX_CONCURRENT_PLAYERS cargando: instanciar video.js sobre
+        // todos los canales a la vez es lo que hace que play() rechace por contención de
+        // recursos, no que el stream esté caído.
+        await acquirePlayerSlot();
+        if (!document.body.contains(videoElement)) {
+            releasePlayerSlot();
+            return;
+        }
 
         const player = videojs(videoElement, {
             controls: true,
@@ -166,9 +202,19 @@ export function createVideoPlayer(canalId, urlCarga) {
             aspectRatio: '16:9',
             autoplay: false,
             muted: true,
+            html5: { vhs: { enableLowInitialPlaylist: true } },
         });
 
+        let slotHeld = true;
+        const releaseSlotOnce = () => {
+            if (!slotHeld) return;
+            slotHeld = false;
+            releasePlayerSlot();
+        };
+        player.on('dispose', releaseSlotOnce);
+
         player.on('error', async () => {
+            releaseSlotOnce();
             const tipoError = await classifyStreamError(player, urlCarga);
             const presentacion = STREAM_ERROR_PRESENTATION[tipoError];
             console.warn(
@@ -186,12 +232,38 @@ export function createVideoPlayer(canalId, urlCarga) {
 
         player.ready(() => {
             player.play().catch(() => {
+                releaseSlotOnce();
                 DIV_ELEMENT.innerHTML = fallbackMarkup;
             });
         });
     });
 
     return DIV_ELEMENT;
+}
+
+// Pausa/reanuda un canal ya instanciado según esté o no en viewport (llamado por el
+// IntersectionObserver de observer.js). Nunca reanuda un player que el usuario pausó
+// a mano: solo retoma los que nosotros mismos pausamos por salir de vista.
+export function setPlayerVisibility(canalId, isVisible) {
+    const videoElement = document.querySelector(
+        `div[data-canal="${canalId}"] video, div[data-canal="${canalId}"] .vjs-tech`,
+    );
+    if (!videoElement) return;
+    const player = videojs.getPlayer(videoElement);
+    if (!player) return;
+
+    if (!isVisible) {
+        if (!player.paused()) {
+            player.__autoPausedByVisibility = true;
+            player.pause();
+        }
+        return;
+    }
+
+    if (player.__autoPausedByVisibility) {
+        player.__autoPausedByVisibility = false;
+        player.play().catch(() => {});
+    }
 }
 
 // Busca el <video> de video.js dentro de un contenedor de canal y lo dispone,
