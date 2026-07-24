@@ -1,5 +1,28 @@
 # Changelog
 
+## [v0.22]
+
+- Fixed
+    - Player-slot queue could deadlock: a hung stream that never fires `error` held its concurrency slot forever, starving every queued channel behind it. Added a load timeout that frees the slot and shows a proper error instead.
+    - Video played correctly but rendered at 0 height: `fluid: true` fought the Bootstrap `.ratio` wrapper's own sizing, so video.js's aspect-ratio calculation never applied. Switched to `fill: true`.
+    - Capped concurrent player instantiation and pause/resume off-viewport tiles via IntersectionObserver, fixing spurious "unavailable" errors caused by resource contention when loading many channels at once.
+    - Auto-fallback to a channel's YouTube signal when its m3u8 stream errors out, instead of just showing "unavailable".
+    - Share links used Spanish param/value names and a comma separator that needed percent-encoding; switched to `channels=a.b.c&layout=grid`. Old-format links now fall back to defaults instead of crashing.
+    - Renamed the "3/24" channel key to "3-24" to match the project's channel-key format, with a legacy alias so existing shared links/bookmarks keep working.
+    - Fixed the "t13" channel entry using Spanish property names, which made the app treat it as having no signals.
+    - Fixed the settings summary panel showing "Layout" as every row's label due to a selector bug, and wired up two values and the navbar's active-signal label that were never translated at all.
+    - Fixed the active-channel count only counting grid-view channels, reading 0/stale in single-view mode.
+    - `eslint`/`prettier` were re-linting a nested git worktree with the wrong config, producing hundreds of false-positive errors; excluded it and closed the real formatting debt.
+    - `validate_json_light.js` was rejecting the schema-valid `category` property on ~60 channels.
+
+- Added
+    - GitHub Actions CI running lint, format check, and channel-data validation on every push/PR.
+    - `.gitattributes` pinning LF line endings to stop Windows checkouts from fighting Prettier's line-ending default.
+
+- Removed
+    - Pruned 77 channels with a dead stream and no usable fallback; 8 others gained a YouTube fallback and were kept.
+    - Dropped a stale, zero-consumer channel-check report and the dead `active` property left on 21 channel entries.
+
 ## [v0.21]
 
 - Fixed
