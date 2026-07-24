@@ -213,16 +213,29 @@ export function createVideoPlayer(canalId, urlCarga) {
         };
         player.on('dispose', releaseSlotOnce);
 
-        player.on('error', async () => {
-            releaseSlotOnce();
-            const tipoError = await classifyStreamError(player, urlCarga);
+        // Si el m3u8 falla (CORS, servidor caído, etc.) y el canal tiene un yt_id de
+        // respaldo, lo usamos automáticamente en vez de mostrar solo un error: un embed
+        // de YouTube es un iframe, nunca pega contra los mismos bloqueos de CORS/hotlink.
+        const fallbackToYoutubeOrShowError = (tipoError) => {
+            const ytId = listChannels[canalId]?.signals?.yt_id;
+            if (ytId) {
+                player.dispose();
+                DIV_ELEMENT.replaceWith(generateStreamIframe(canalId, 'yt_id'));
+                return;
+            }
             const presentacion = STREAM_ERROR_PRESENTATION[tipoError];
-            console.warn(
-                `Video.js error for channel "${canalId}" [${tipoError}]. Source: ${urlCarga}`,
-            );
             DIV_ELEMENT.innerHTML = presentacion
                 ? buildFallbackMarkup(presentacion.icon, t(presentacion.labelKey))
                 : fallbackMarkup;
+        };
+
+        player.on('error', async () => {
+            releaseSlotOnce();
+            const tipoError = await classifyStreamError(player, urlCarga);
+            console.warn(
+                `Video.js error for channel "${canalId}" [${tipoError}]. Source: ${urlCarga}`,
+            );
+            fallbackToYoutubeOrShowError(tipoError);
         });
 
         player.src({
@@ -233,7 +246,7 @@ export function createVideoPlayer(canalId, urlCarga) {
         player.ready(() => {
             player.play().catch(() => {
                 releaseSlotOnce();
-                DIV_ELEMENT.innerHTML = fallbackMarkup;
+                fallbackToYoutubeOrShowError();
             });
         });
     });
