@@ -161,7 +161,6 @@ export function createVideoPlayer(canalId, urlCarga) {
         'position-absolute',
         'p-0',
         'video-js',
-        'vjs-16-9',
         'vjs-fill',
         'overflow-hidden',
     );
@@ -203,8 +202,11 @@ export function createVideoPlayer(canalId, urlCarga) {
         const player = videojs(videoElement, {
             controls: true,
             preload: 'metadata',
-            fluid: true,
-            aspectRatio: '16:9',
+            // The parent .ratio.ratio-16x9 already sizes the box — the player only needs
+            // to fill it. `fluid: true` would fight that: it forces video.js's own
+            // padding-top aspect-ratio technique, which never computed a value here and
+            // left the player at height:0 while it kept decoding and playing invisibly.
+            fill: true,
             autoplay: false,
             muted: true,
             html5: { vhs: { enableLowInitialPlaylist: true } },
