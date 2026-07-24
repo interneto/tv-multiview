@@ -79,7 +79,8 @@ function updateLogoBackgroundVisibility() {
 
 export function syncInterfaceStatus() {
     const activeChannels =
-        CONTAINER_VISION_CUADRICULA?.querySelectorAll('div[data-canal]')?.length ?? 0;
+        (CONTAINER_VISION_CUADRICULA?.querySelectorAll('div[data-canal]')?.length ?? 0) +
+        (CONTAINER_VIDEO_VISION_UNICA?.querySelectorAll('div[data-canal]')?.length ?? 0);
     const currentLayout = getLayoutLabel(localStorage.getItem('diseño-seleccionado'));
 
     document.querySelectorAll('[data-ui-active-count]').forEach((node) => {

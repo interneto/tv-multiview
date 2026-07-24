@@ -550,10 +550,19 @@ export function translatePage() {
 
     setText('#sidepanel-titulo', t('settings'));
     setText('.panel-summary-eyebrow', t('quickSummary'));
-    setText('.panel-summary-label:nth-of-type(1)', t('layout'));
-    setText('.panel-summary-label:nth-of-type(2)', t('activeSignals'));
-    setText('.panel-summary-label:nth-of-type(3)', t('localSave'));
-    setText('.panel-summary-label:nth-of-type(4)', t('recommendedShortcut'));
+    // :nth-of-type counts siblings within each element's own parent, and each label
+    // is the only <span> in its <div> — ":nth-of-type(1)" alone matched all four,
+    // overwriting every label with the same text. Scope through the parent instead.
+    setText('.panel-summary-grid > div:nth-child(1) .panel-summary-label', t('layout'));
+    setText('.panel-summary-grid > div:nth-child(2) .panel-summary-label', t('activeSignals'));
+    setText('.panel-summary-grid > div:nth-child(3) .panel-summary-label', t('localSave'));
+    setText(
+        '.panel-summary-grid > div:nth-child(4) .panel-summary-label',
+        t('recommendedShortcut'),
+    );
+    setText('.panel-summary-grid > div:nth-child(3) strong', t('active'));
+    setText('.panel-summary-grid > div:nth-child(4) strong', t('singleView'));
+    setText('[data-ui-active-label]', t('activeSignals'));
     setLeadingText('label[for="checkbox-personalizar-visualizacion-navbar"]', t('navbar'));
     setHtml(
         '#boton-activar-diseño-vision-grid span',
