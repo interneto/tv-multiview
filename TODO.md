@@ -20,6 +20,8 @@
 - [ ] **Image optimization** → WebP, compression, srcset.
 - [ ] **UX in “Load defaults”** → Confirmations and customization.
 - [ ] **Lighthouse audit** → Run a full pass now that the a11y basics are in to catch what's left (contrast, perf).
+- [ ] **Keyboard-accessible reorder** → Drag-and-drop (Sortable.js) is pointer-only; the move buttons have `aria-label`s but no keyboard way to actually reorder tiles. Add arrow-key move or a "move up/down" action.
+- [ ] **`cnbc` default stream is `http://`** → Blocked as mixed content on the HTTPS site and by the CSP `media-src https:`; the tile falls back to its `yt_id`. Swap the m3u8 for an HTTPS source or drop `cnbc` from `DEFAULT_CHANNELS_ARRAY`.
 
 ### Optional
 

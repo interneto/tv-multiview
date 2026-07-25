@@ -345,6 +345,7 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
         const BOTON_SELECCIONAR_SEÑAL_CANAL = document.createElement('button');
         BOTON_SELECCIONAR_SEÑAL_CANAL.id = 'overlay-boton-selecionar-señal';
         BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('type', 'button');
+        BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('aria-label', t('selectDifferentSignal'));
         BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('title', t('selectDifferentSignal'));
         BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('data-bs-toggle', 'dropdown');
         BOTON_SELECCIONAR_SEÑAL_CANAL.setAttribute('aria-expanded', 'false');
@@ -426,6 +427,7 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
         const MOVE_CHANNEL_BUTTON = document.createElement('button');
         MOVE_CHANNEL_BUTTON.id = 'overlay-boton-mover';
         MOVE_CHANNEL_BUTTON.setAttribute('type', 'button');
+        MOVE_CHANNEL_BUTTON.setAttribute('aria-label', t('moveChannel'));
         MOVE_CHANNEL_BUTTON.setAttribute('title', t('moveChannel'));
         MOVE_CHANNEL_BUTTON.setAttribute('data-bs-toggle', 'tooltip');
         MOVE_CHANNEL_BUTTON.setAttribute('data-bs-title', t('moveChannel'));
@@ -447,6 +449,7 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
         const CHANGE_CHANNEL_BUTTON = document.createElement('button');
         CHANGE_CHANNEL_BUTTON.id = 'overlay-boton-cambiar';
         CHANGE_CHANNEL_BUTTON.setAttribute('type', 'button');
+        CHANGE_CHANNEL_BUTTON.setAttribute('aria-label', t('changeChannel'));
         CHANGE_CHANNEL_BUTTON.setAttribute('title', t('changeChannel'));
         CHANGE_CHANNEL_BUTTON.setAttribute('data-bs-toggle', 'tooltip');
         CHANGE_CHANNEL_BUTTON.setAttribute('data-bs-title', t('changeChannel'));
