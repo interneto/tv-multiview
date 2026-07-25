@@ -1,10 +1,9 @@
 import { listChannels } from '../channelsData.js';
-import { revisarSeñalesVacias, mostrarToast } from './index.js';
+import { revisarSeñalesVacias, mostrarToast, readStoredObject } from './index.js';
 import { buildPreferredSignalUnavailableMessage } from '../i18n.js';
 
 export function borraPreferenciaSeñalInvalida() {
-    let lsPreferenciasSeñalCanales =
-        JSON.parse(localStorage.getItem('preferencia-señal-canales')) || {};
+    let lsPreferenciasSeñalCanales = readStoredObject('preferencia-señal-canales');
     if (Object.keys(lsPreferenciasSeñalCanales).length !== 0) {
         for (const idCanalGuardado in lsPreferenciasSeñalCanales) {
             let tipoSeñalGuardada = Object.keys(

@@ -7,13 +7,13 @@ import {
     playAudioSinDelay,
     hideTextoBotonesOverlay,
     activarTooltipsBootstrap,
+    readStoredObject,
 } from './helpers/index.js';
 import { buildErrorToastMessage, t } from './i18n.js';
 
 // Funciones de UI de canales extraídas de main.js
 function savePreferredSignal(canalId, señalUtilizar = '', indexSeñalUtilizar = 0) {
-    let lsPreferenciasSeñalCanales =
-        JSON.parse(localStorage.getItem('preferencia-señal-canales')) || {};
+    let lsPreferenciasSeñalCanales = readStoredObject('preferencia-señal-canales');
     lsPreferenciasSeñalCanales[canalId] = { [señalUtilizar]: indexSeñalUtilizar };
     localStorage.setItem('preferencia-señal-canales', JSON.stringify(lsPreferenciasSeñalCanales));
 }
@@ -564,8 +564,7 @@ export function createChannelFragment(canalId) {
             yt_playlist = '',
             twitch_id = '',
         } = listChannels[canalId].signals;
-        let lsPreferenciasSeñalCanales =
-            JSON.parse(localStorage.getItem('preferencia-señal-canales')) || {};
+        let lsPreferenciasSeñalCanales = readStoredObject('preferencia-señal-canales');
 
         let señalUtilizar;
         let valorIndexArraySeñal = 0;

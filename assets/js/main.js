@@ -45,6 +45,7 @@ import {
     reemplazarCanalActivo,
     pushStateToUrl,
     parseStateFromUrl,
+    readStoredObject,
 } from './helpers/index.js';
 import {
     buildErrorToastMessage,
@@ -397,7 +398,7 @@ export let tele = {
         }
     },
     cargaCanalesPredeterminados: () => {
-        let lsCanales = JSON.parse(localStorage.getItem('canales-vision-cuadricula')) || {};
+        let lsCanales = readStoredObject('canales-vision-cuadricula');
         if (Object.keys(lsCanales).length === 0 && lsModal !== 'hide') {
             obtenerCanalesPredeterminados(isMobile.any).forEach((canal) => tele.add(canal));
         } else {

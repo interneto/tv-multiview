@@ -7,6 +7,13 @@ import assert from 'node:assert/strict';
 
 import { areSimilarNames } from '../assets/js/helpers/helperSimilarNames.js';
 import { M3U_A_JSON } from '../assets/js/helpers/helperM3U.js';
+import { readStoredObject } from '../assets/js/helpers/helperStorage.js';
+
+// Minimal localStorage stub (Node has no DOM). Only getItem is exercised.
+const store = {};
+globalThis.localStorage = {
+    getItem: (k) => (k in store ? store[k] : null),
+};
 
 test('areSimilarNames: case-insensitive exact match', () => {
     assert.equal(areSimilarNames('BBC One', 'bbc one'), true);
@@ -51,6 +58,23 @@ test('M3U_A_JSON: parses id, country, name, logo, category and stream url', asyn
         category: 'news',
         country: 'fr',
     });
+});
+
+test('readStoredObject: missing key returns empty object', () => {
+    delete store.absent;
+    assert.deepEqual(readStoredObject('absent'), {});
+});
+
+test('readStoredObject: valid JSON object is returned as-is', () => {
+    store.ok = JSON.stringify({ cnn: 0 });
+    assert.deepEqual(readStoredObject('ok'), { cnn: 0 });
+});
+
+test('readStoredObject: corrupt/non-object JSON falls back to empty object', () => {
+    store.corrupt = '{not valid json';
+    assert.deepEqual(readStoredObject('corrupt'), {});
+    store.scalar = '5';
+    assert.deepEqual(readStoredObject('scalar'), {});
 });
 
 test('M3U_A_JSON: skips #EXTVLCOPT lines when finding the stream url', async () => {

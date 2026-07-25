@@ -23,6 +23,7 @@ import {
     actualizarBotonesPersonalizarOverlay,
     hideTextoBotonesOverlay,
     adjustChannelColumnCount,
+    readStoredObject,
 } from './index.js';
 import { CSS_CLASS_PRIMARY_BUTTON, CSS_CLASS_SECONDARY_BUTTON } from '../constants/index.js';
 import { listChannels } from '../channelsData.js';
@@ -80,7 +81,7 @@ export function activarVisionUnica() {
         });
         SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = getDisabledLabel();
 
-        let lsCanales = JSON.parse(localStorage.getItem('canales-vision-cuadricula')) || {};
+        let lsCanales = readStoredObject('canales-vision-cuadricula');
 
         if (CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]'))
             tele.remove(
