@@ -14,8 +14,8 @@ module.exports = [
             'extra/**',
             'migration/**',
             'dist/**',
-            'pwabuilder-sw.js'
-        ]
+            'pwabuilder-sw.js',
+        ],
     },
     js.configs.recommended,
     {
@@ -29,25 +29,25 @@ module.exports = [
                 videojs: 'readonly',
                 bootstrap: 'readonly',
                 Sortable: 'readonly',
-                isMobile: 'readonly'
-            }
+                isMobile: 'readonly',
+            },
         },
         rules: {
             // Existing untyped code has latent global refs and unused imports;
             // surface them as warnings, not blocking errors.
             'no-undef': 'warn',
-            'no-unused-vars': ['warn', { args: 'none' }]
-        }
+            'no-unused-vars': ['warn', { args: 'none' }],
+        },
     },
     {
         files: ['tools/**/*.js', '*.config.js'],
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: 'commonjs',
-            globals: globals.node
+            globals: globals.node,
         },
         rules: {
-            'no-unused-vars': ['warn', { args: 'none', varsIgnorePattern: '^_' }]
-        }
-    }
+            'no-unused-vars': ['warn', { args: 'none', varsIgnorePattern: '^_' }],
+        },
+    },
 ];
