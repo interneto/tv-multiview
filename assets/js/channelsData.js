@@ -22,8 +22,10 @@ export const DEFAULT_CHANNELS_ARRAY = [
     'tvmonaco', // Entertainment / general (Mónaco, francófono; reemplaza a m6, retirado)
 ];
 
+/** @type {string[]} */
 export const DEFAULT_CHANNEL_LIST_EXTRAS = [];
 
+/** @type {Record<string, any> | undefined} */
 export let listChannels;
 // Claves legacy en localStorage: se siguen leyendo para migrar el backup de
 // usuarios que ya lo tenían ahí, y se borran en cuanto IndexedDB toma el relevo.
@@ -34,6 +36,11 @@ const BACKUP_EXPIRACION_HORAS = 24;
 const FETCH_TIMEOUT_MS = 8000;
 
 // fetch con timeout + chequeo de response.ok. Lanza si falla la red o el status no es 2xx.
+/**
+ * @param {string} url
+ * @param {number} ms
+ * @returns {Promise<Response>}
+ */
 async function fetchWithTimeout(url, ms = FETCH_TIMEOUT_MS) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), ms);
@@ -156,8 +163,13 @@ export async function loadChannelData() {
     }
 }
 
+/**
+ * @param {Record<string, any>} obj
+ * @returns {Record<string, any>}
+ */
 function normalizeChannelList(obj) {
     if (!obj || typeof obj !== 'object') return obj;
+    /** @type {Record<string, any>} */
     const out = {};
     for (const key of Object.keys(obj)) {
         const item = obj[key] || {};
@@ -188,6 +200,7 @@ export async function fetchIptvChannelsData() {
     const parseM3u = await M3U_A_JSON(m3uData);
 
     // Crear un mapa para indexar los canales por name
+    /** @type {Record<string, any>} */
     const mapCanales = {};
     if (listChannels) {
         for (const canal of Object.keys(listChannels)) {
@@ -201,10 +214,11 @@ export async function fetchIptvChannelsData() {
             const existingChannel = mapCanales[nameParseM3u];
 
             if (existingChannel && areSimilarNames(existingChannel.name, nameParseM3u)) {
-                const newUrls = parseM3u[nameCanal].signals.m3u8_url.filter(
-                    (url) => !existingChannel.signals.m3u8_url.includes(url),
-                );
-                existingChannel.signals.m3u8_url.push(...newUrls);
+                const existingUrls = /** @type {string[]} */ (existingChannel.signals.m3u8_url);
+                const newUrls = /** @type {string[]} */ (
+                    parseM3u[nameCanal].signals.m3u8_url
+                ).filter((url) => !existingUrls.includes(url));
+                existingUrls.push(...newUrls);
             } else {
                 listChannels[nameCanal] = parseM3u[nameCanal];
             }

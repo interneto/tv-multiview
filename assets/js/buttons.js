@@ -25,6 +25,10 @@ function getShareData() {
     };
 }
 
+/**
+ * @param {boolean} isActive
+ * @returns {string}
+ */
 function renderFullscreenButton(isActive) {
     return isActive
         ? `${t('exitFullscreen')} <i class="bi bi-fullscreen-exit ms-auto"></i>`
@@ -44,6 +48,7 @@ BOTON_ENTENDIDO?.addEventListener('click', () => {
 });
 
 // MARK: Botón PWA Install
+/** @type {HTMLElement & {showDialog?: (visible: boolean) => void} | null} */
 let containerPwaInstall = document.querySelector('#pwa-install');
 const BOTON_INSTALAR_PWA = document.querySelector('#boton-instalar-pwa');
 
@@ -64,6 +69,7 @@ if (navigator.userAgent.toLowerCase().includes('firefox')) {
 }
 
 // MARK: Botón tema
+/** @type {HTMLInputElement | null} */
 export const CHECKBOX_PERSONALIZAR_TEMA = document.querySelector('#checkbox-personalizar-tema');
 CHECKBOX_PERSONALIZAR_TEMA?.addEventListener('change', () => {
     aplicarTema(CHECKBOX_PERSONALIZAR_TEMA.checked);
@@ -99,20 +105,24 @@ BOTON_COMPARTIR_VISTA?.addEventListener('click', async () => {
 });
 
 // MARK: Botones carga canales predeterminados
+/**
+ * @param {string} modo
+ * @returns {void}
+ */
 function aplicarCanalesPredeterminados(modo) {
     try {
         if (modo === 'replace') {
             document.querySelectorAll('div[data-canal]').forEach((transmision) => {
-                tele.remove(transmision.dataset.canal);
+                tele.remove(/** @type {HTMLElement} */ (transmision).dataset.canal);
             });
         }
         playAudioSinDelay(AUDIO_TURN_ON);
         const yaActivos = new Set(
             Array.from(document.querySelectorAll('div[data-canal]')).map(
-                (div) => div.dataset.canal,
+                (div) => /** @type {HTMLElement} */ (div).dataset.canal,
             ),
         );
-        obtenerCanalesPredeterminados(isMobile?.any)
+        obtenerCanalesPredeterminados(isMobile ? isMobile.any() : false)
             .filter((canal) => !yaActivos.has(canal))
             .forEach((canal) => tele.add(canal));
     } catch (error) {
@@ -309,6 +319,7 @@ handleFullscreenChange();
 
 // MARK: Botón copiar enlace
 const SHARE_LINK_BUTTON = document.querySelector('#boton-copiar-enlace-compartir');
+/** @type {HTMLInputElement | null} */
 const INPUT_ENLACE_COMPARTIR = document.querySelector('#input-enlace-compartir');
 
 SHARE_LINK_BUTTON?.addEventListener('click', async () => {

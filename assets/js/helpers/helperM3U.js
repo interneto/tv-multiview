@@ -6,7 +6,7 @@
  * URL se saltan las líneas `#EXTVLCOPT`, que van entre el `#EXTINF` y el stream.
  *
  * @param {string} m3u Contenido del archivo .m3u.
- * @returns {Promise<Object<string, Object>>} Canales indexados por id.
+ * @returns {Promise<Record<string, any>>} Canales indexados por id.
  */
 export async function M3U_A_JSON(m3u) {
     const channels = /** @type {Record<string, any>} */ ({});
