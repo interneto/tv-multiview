@@ -1359,3 +1359,15 @@ html[data-bs-theme='dark'] [data-language-option].btn-outline-secondary {
     --bs-btn-color: #adb5bd;
     --bs-btn-border-color: #adb5bd;
 }
+
+/* MARK: tamaño letra controles video.js
+   La hoja de estilos de video.js deja los controles (botones y tiempos) en
+   9-10px, bajo el 12px que pide WCAG (auditoría font-size). El icono se dibuja
+   a partir del font-size, así que el mínimo debe respetarse en los botones. */
+.vjs-control-bar .vjs-button {
+    font-size: 1.4em !important;
+}
+
+.vjs-control-bar .vjs-time-control {
+    font-size: 1.15em !important;
+}

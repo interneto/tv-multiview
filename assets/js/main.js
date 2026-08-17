@@ -46,6 +46,7 @@ import {
     pushStateToUrl,
     parseStateFromUrl,
     readStoredObject,
+    fixPwaInstallScreenshotAlt,
 } from './helpers/index.js';
 import {
     buildErrorToastMessage,
@@ -522,6 +523,7 @@ window.addEventListener('resize', hideTextoBotonesOverlay);
 // MARK: DOMContentLoaded
 window.addEventListener('DOMContentLoaded', () => {
     initI18n();
+    fixPwaInstallScreenshotAlt();
     syncInterfaceStatus();
     detectarTemaSistema();
     iniciarRevisarConexion();

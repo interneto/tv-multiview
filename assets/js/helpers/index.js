@@ -36,3 +36,4 @@ export * from './helperIdbStore.js';
 export * from './helperPlayerSlots.js';
 export * from './helperKeyboardReorder.js';
 export * from './helperConfirmDialog.js';
+export * from './helperPwaInstallA11y.js';
