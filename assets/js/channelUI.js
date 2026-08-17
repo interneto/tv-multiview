@@ -14,12 +14,22 @@ import { acquirePlayerSlotHandle } from './helpers/helperPlayerSlots.js';
 import { buildErrorToastMessage, t } from './i18n.js';
 
 // Funciones de UI de canales extraídas de main.js
+/**
+ * @param {string} canalId
+ * @param {string} señalUtilizar
+ * @param {number} indexSeñalUtilizar
+ * @returns {void}
+ */
 function savePreferredSignal(canalId, señalUtilizar = '', indexSeñalUtilizar = 0) {
     let lsPreferenciasSeñalCanales = readStoredObject('preferencia-señal-canales');
     lsPreferenciasSeñalCanales[canalId] = { [señalUtilizar]: indexSeñalUtilizar };
     localStorage.setItem('preferencia-señal-canales', JSON.stringify(lsPreferenciasSeñalCanales));
 }
 
+/**
+ * @param {string} signalKey
+ * @returns {string}
+ */
 function getSignalTypeLabel(signalKey) {
     if (signalKey.startsWith('iframe_')) return 'web';
     if (signalKey.startsWith('m3u8_')) return 'm3u8';
@@ -31,10 +41,18 @@ function getSignalTypeLabel(signalKey) {
 // URLs de streams con token/firma de expiración (Akamai hdntl/hdnts, CloudFront signature, etc.)
 const TOKEN_PARAM_PATTERN = /[?&](?:hdntl|hdnts|token|signature|sig|auth|exp)=/i;
 
+/**
+ * @param {string} url
+ * @returns {boolean}
+ */
 function isMixedContent(url) {
     return location.protocol === 'https:' && url.startsWith('http://');
 }
 
+/**
+ * @param {string} url
+ * @returns {boolean}
+ */
 function hasTokenParam(url) {
     return TOKEN_PARAM_PATTERN.test(url);
 }
@@ -42,6 +60,10 @@ function hasTokenParam(url) {
 // El navegador oculta a JS el motivo real de un fallo cross-origin (CORS vs red/DNS/timeout
 // son indistinguibles vía fetch/XHR por diseño de seguridad). Esta sonda en modo 'no-cors'
 // solo distingue "el servidor respondió algo" (bloqueo CORS) de "no se pudo ni conectar" (red).
+/**
+ * @param {string} url
+ * @returns {Promise<boolean>}
+ */
 async function isReachableIgnoringCors(url) {
     try {
         await fetch(url, { mode: 'no-cors', cache: 'no-store', signal: AbortSignal.timeout(6000) });
@@ -53,6 +75,11 @@ async function isReachableIgnoringCors(url) {
 
 // Clasifica el fallo de un player para mostrar al usuario una razón útil en vez de un
 // MEDIA_ERR_SRC_NOT_SUPPORTED genérico. Ver nota arriba sobre los límites reales de CORS en JS.
+/**
+ * @param {any} player
+ * @param {string} urlCarga
+ * @returns {Promise<string>}
+ */
 async function classifyStreamError(player, urlCarga) {
     if (isMixedContent(urlCarga)) return 'mixed-content';
 
@@ -67,6 +94,7 @@ async function classifyStreamError(player, urlCarga) {
     return hasTokenParam(urlCarga) ? 'expired-token' : 'network-error';
 }
 
+/** @type {Record<string, { icon: string; labelKey: string }>} */
 const STREAM_ERROR_PRESENTATION = {
     'mixed-content': { icon: 'bi-shield-exclamation', labelKey: 'streamErrorMixedContent' },
     'cors-blocked': { icon: 'bi-slash-circle', labelKey: 'streamErrorCorsBlocked' },
@@ -80,6 +108,12 @@ const STREAM_ERROR_PRESENTATION = {
 // helperPlayerSlots) y el resto de la cola espera un turno que no llega nunca.
 export const STREAM_LOAD_TIMEOUT_MS = 15000;
 
+/**
+ * @param {string} canalId
+ * @param {string} tipoSeñalParaIframe
+ * @param {number|string} valorIndex
+ * @returns {HTMLDivElement}
+ */
 export function generateStreamIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
     valorIndex = Number(valorIndex);
     const DIV_ELEMENT = document.createElement('div');
@@ -87,6 +121,7 @@ export function generateStreamIframe(canalId, tipoSeñalParaIframe, valorIndex =
     DIV_ELEMENT.setAttribute('data-canal-cambio', canalId);
     const { name, signals } = listChannels[canalId];
 
+    /** @type {Record<string, string | undefined>} */
     const URL_POR_TIPO_SEÑAL = {
         iframe_url: signals.iframe_url && signals.iframe_url[valorIndex],
         yt_id:
@@ -115,6 +150,11 @@ export function generateStreamIframe(canalId, tipoSeñalParaIframe, valorIndex =
     return DIV_ELEMENT;
 }
 
+/**
+ * @param {string} canalId
+ * @param {string|undefined} urlCarga
+ * @returns {HTMLDivElement}
+ */
 export function createVideoPlayer(canalId, urlCarga) {
     const DIV_ELEMENT = document.createElement('div');
     DIV_ELEMENT.setAttribute('data-canal-cambio', canalId);
@@ -191,6 +231,7 @@ export function createVideoPlayer(canalId, urlCarga) {
         // de respaldo, lo usamos automáticamente en vez de mostrar solo un error: un embed
         // de YouTube es un iframe, nunca pega contra los mismos bloqueos de CORS/hotlink.
         // Siempre dispone el player: ya no se va a usar, sea cual sea el desenlace.
+        /** @param {string} [tipoError] */
         const fallbackToYoutubeOrShowError = (tipoError) => {
             clearTimeout(loadTimeoutId);
             // Un mismo fallo llega por dos vías (el evento 'error' y el rechazo de
@@ -256,6 +297,11 @@ export function createVideoPlayer(canalId, urlCarga) {
 // Pausa/reanuda un canal ya instanciado según esté o no en viewport (llamado por el
 // IntersectionObserver de observer.js). Nunca reanuda un player que el usuario pausó
 // a mano: solo retoma los que nosotros mismos pausamos por salir de vista.
+/**
+ * @param {string} canalId
+ * @param {boolean} isVisible
+ * @returns {void}
+ */
 export function setPlayerVisibility(canalId, isVisible) {
     const videoElement = document.querySelector(
         `div[data-canal="${canalId}"] video, div[data-canal="${canalId}"] .vjs-tech`,
@@ -281,6 +327,10 @@ export function setPlayerVisibility(canalId, isVisible) {
 // Busca el <video> de video.js dentro de un contenedor de canal y lo dispone,
 // si existe. Evita fugas de memoria y requests HLS colgados al remover o
 // reemplazar un canal/señal sin destruir el player anterior.
+/**
+ * @param {Element|undefined} containerDiv
+ * @returns {void}
+ */
 export function disposeVideoPlayer(containerDiv) {
     const videoElement = containerDiv?.querySelector('video');
     if (!videoElement) return;
@@ -290,6 +340,12 @@ export function disposeVideoPlayer(containerDiv) {
     }
 }
 
+/**
+ * @param {string} canalId
+ * @param {string} tipoSeñalCargada
+ * @param {number|string} valorIndex
+ * @returns {DocumentFragment|undefined}
+ */
 export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0) {
     try {
         let { name = 'Nombre Canal', signals, website, country, category } = listChannels[canalId];
@@ -452,7 +508,7 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
         CHANGE_CHANNEL_BUTTON.addEventListener('click', () => {
             LABEL_MODAL_CAMBIAR_CANAL.textContent = name;
             LABEL_MODAL_CAMBIAR_CANAL.setAttribute('id-canal-cambio', canalId);
-            new bootstrap.Modal(MODAL_CAMBIAR_CANAL).show();
+            new bootstrap.Modal(/** @type {HTMLElement} */ (MODAL_CAMBIAR_CANAL)).show();
         });
 
         const OFFICIAL_CHANNEL_LINK = document.createElement('a');
@@ -540,6 +596,10 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
     }
 }
 
+/**
+ * @param {string} canalId
+ * @returns {DocumentFragment}
+ */
 export function createChannelFragment(canalId) {
     if (listChannels[canalId]?.signals) {
         let {
@@ -630,6 +690,10 @@ export function createChannelFragment(canalId) {
     }
 }
 
+/**
+ * @param {string} canalId
+ * @returns {void}
+ */
 export function updateActiveSignal(canalId) {
     try {
         if (!canalId)

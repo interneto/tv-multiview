@@ -9,6 +9,7 @@ declare global {
     options?: Record<string, unknown>,
   ): any;
   namespace videojs {
+    function getPlayer(element: Element): any | null;
     interface Player {
       play(): Promise<void>;
       pause(): void;
