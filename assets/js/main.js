@@ -60,6 +60,7 @@ import {
 
 // MARK: querySelector Globales
 const MAIN_NAVBAR = document.querySelector('#navbar');
+/** @type {HTMLElement | null} */
 export const CONTAINER_VISION_CUADRICULA = document.querySelector('#container-vision-cuadricula');
 export const CONTAINER_VISION_UNICA = document.querySelector('#container-vision-unica');
 export const CONTAINER_VIDEO_VISION_UNICA = document.querySelector('#container-video-vision-unica');
@@ -148,9 +149,11 @@ let lsFondo = localStorage.getItem('tarjeta-fondo-display');
 
 // MARK: PERSONALIZACIONES
 // Navbar
+/** @type {HTMLInputElement | null} */
 const CHECKBOX_PERSONALIZAR_VISUALIZACION_NAVBAR = document.querySelector(
     '#checkbox-personalizar-visualizacion-navbar',
 );
+/** @type {HTMLElement | null} */
 const SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_NAVBAR = document.querySelector(
     '#span-valor-visualizacion-navbar',
 );
@@ -166,9 +169,11 @@ CHECKBOX_PERSONALIZAR_VISUALIZACION_NAVBAR.addEventListener('click', () => {
 });
 
 // Overlay
+/** @type {HTMLInputElement | null} */
 export const CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY = document.querySelector(
     '#checkbox-personalizar-visualizacion-overlay',
 );
+/** @type {HTMLElement | null} */
 export const SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY = document.querySelector(
     '#span-valor-visualizacion-overlay',
 );
@@ -190,7 +195,8 @@ export const BOTONES_PERSONALIZAR_OVERLAY = document.querySelectorAll(
     '.div-boton-personalizar-overlay',
 );
 BOTONES_PERSONALIZAR_OVERLAY.forEach((contenedorBoton) => {
-    let botonIndividual = contenedorBoton.querySelector('.btn-check');
+    /** @type {HTMLInputElement} */
+    const botonIndividual = contenedorBoton.querySelector('.btn-check');
     let datasetBoton = botonIndividual.dataset.botonoverlay;
     botonIndividual.addEventListener('click', () => {
         localStorage.setItem(`${datasetBoton}`, botonIndividual.checked ? 'show' : 'hide');
@@ -199,19 +205,23 @@ BOTONES_PERSONALIZAR_OVERLAY.forEach((contenedorBoton) => {
 });
 
 // Tamaño
+/** @type {HTMLInputElement | null} */
 export const INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA = document.querySelector(
     '#input-range-tamaño-container-vision-cuadricula',
 );
+/** @type {HTMLElement | null} */
 export const SPAN_VALOR_INPUT_RANGE = document.querySelector('#span-valor-input-range');
 
 INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA.addEventListener('input', (event) => {
-    SPAN_VALOR_INPUT_RANGE.innerHTML = `${event.target.value}%`;
-    CONTAINER_VISION_CUADRICULA.style.maxWidth = `${event.target.value}%`;
-    localStorage.setItem('valor-input-range', event.target.value);
+    const valor = /** @type {HTMLInputElement} */ (event.target).value;
+    SPAN_VALOR_INPUT_RANGE.innerHTML = `${valor}%`;
+    CONTAINER_VISION_CUADRICULA.style.maxWidth = `${valor}%`;
+    localStorage.setItem('valor-input-range', valor);
     hideTextoBotonesOverlay();
 });
 
 // alternar altura canales
+/** @type {HTMLInputElement | null} */
 export const CHECKBOX_PERSONALIZAR_USO_100VH_CANALES = document.querySelector(
     '#checkbox-personalizar-altura-canales',
 );
@@ -240,9 +250,11 @@ CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.addEventListener('click', () => {
 });
 
 // Canales por fila
+/** @type {HTMLElement | null} */
 export const SPAN_VALOR_TRANSMISIONES_POR_FILA = document.querySelector(
     '#span-valor-transmisiones-por-fila',
 );
+/** @type {NodeListOf<HTMLButtonElement>} */
 export const BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA = document.querySelectorAll(
     '#container-botones-personalizar-transmisiones-por-fila button',
 );
@@ -256,9 +268,11 @@ BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach((boton) => {
 });
 
 // Texto botones flotantes
+/** @type {HTMLInputElement | null} */
 const CHECKBOX_PERSONALIZAR_TEXTO_BOTONES_FLOTANTES = document.querySelector(
     '#checkbox-personalizar-texto-botones-flotantes',
 );
+/** @type {HTMLElement | null} */
 const SPAN_VALOR_CHECKBOX_PERSONALIZAR_TEXTO_BOTONES_FLOTANTES = document.querySelector(
     '#span-valor-texto-en-botones-flotante',
 );
@@ -290,9 +304,11 @@ CHECKBOX_PERSONALIZAR_TEXTO_BOTONES_FLOTANTES.addEventListener('click', () => {
 });
 
 // ocultar fondo
+/** @type {HTMLInputElement | null} */
 const CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND = document.querySelector(
     '#checkbox-tarjeta-logo-background',
 );
+/** @type {HTMLElement | null} */
 const SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND =
     document.querySelector('#span-valor-visualizacion-tarjeta-logo-background');
 const ICONO_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND = document.querySelector(
@@ -321,15 +337,18 @@ CHECKBOX_PERSONALIZAR_VISUALIZACION_TARJETA_LOGO_BACKGROUND.addEventListener('cl
           );
 });
 
+/** @type {NodeListOf<HTMLInputElement>} */
 export const BOTONES_REPOSICIONAR_BOTONES_FLOTANTES = document.querySelectorAll(
     '#grupo-botones-posicion-botones-flotantes .btn-check',
 );
 
 // IDs de canal renombrados en tv-channels.json: un link/backup local viejo con el id
 // anterior debe seguir resolviendo al canal actual en vez de fallar en silencio.
+/** @type {Record<string, string>} */
 const LEGACY_CHANNEL_ALIASES = { '3/24': '3-24' };
 
 // MARK: Manejo canales
+/** @type {{ add: (canal: string) => void; remove: (canal: string) => void; cargaCanalesPredeterminados: () => void }} */
 export let tele = {
     add: (canal) => {
         try {
@@ -401,7 +420,7 @@ export let tele = {
     cargaCanalesPredeterminados: () => {
         let lsCanales = readStoredObject('canales-vision-cuadricula');
         if (Object.keys(lsCanales).length === 0 && lsModal !== 'hide') {
-            obtenerCanalesPredeterminados(isMobile.any).forEach((canal) => tele.add(canal));
+            obtenerCanalesPredeterminados(isMobile.any()).forEach((canal) => tele.add(canal));
         } else {
             try {
                 Object.keys(lsCanales).forEach((canal) => {
@@ -533,7 +552,7 @@ window.addEventListener('DOMContentLoaded', () => {
             .forEach((boton) => {
                 boton.addEventListener('click', () =>
                     reemplazarCanalActivo(
-                        boton.dataset.canal,
+                        /** @type {HTMLElement} */ (boton).dataset.canal,
                         LABEL_MODAL_CAMBIAR_CANAL.getAttribute('id-canal-cambio'),
                     ),
                 );
@@ -549,14 +568,15 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     // Efecto glow en hover a logo del fondo
+    /** @type {HTMLElement | null} */
     const TARJETA_LOGO_BACKGROUND = document.querySelector('.tarjeta-logo-background');
-    TARJETA_LOGO_BACKGROUND.onmousemove = (e) => {
-        let rect = TARJETA_LOGO_BACKGROUND.getBoundingClientRect(),
-            x = e.clientX - rect.left,
-            y = e.clientY - rect.top;
+    TARJETA_LOGO_BACKGROUND?.addEventListener('mousemove', (e) => {
+        const rect = TARJETA_LOGO_BACKGROUND.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
         TARJETA_LOGO_BACKGROUND.style.setProperty('--mouse-x', `${x}px`);
         TARJETA_LOGO_BACKGROUND.style.setProperty('--mouse-y', `${y}px`);
-    };
+    });
 
     // Ensure modal is always considered as 'accepted'
     localStorage.setItem('modal-status', 'hide');
@@ -583,7 +603,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     BOTONES_REPOSICIONAR_BOTONES_FLOTANTES.forEach((boton) => {
         boton.addEventListener('click', () => {
-            const BOTON_DATASET_POSITION = boton.dataset.position.split(' ');
+            const BOTON_DATASET_POSITION =
+                /** @type {[string, string, string, string]} */ (boton.dataset.position.split(' '));
             clicBotonPosicionBotonesFlotantes(...BOTON_DATASET_POSITION);
         });
     });
@@ -734,15 +755,22 @@ window.addEventListener('DOMContentLoaded', () => {
             restaurarOrdenOriginalBotonesCanales,
         );
 
-        let bodyBotonesCanales = document.querySelector(`#${PREFIJO}-body-botones-canales`);
-        document.querySelector(`#${PREFIJO}-input-filtro`).addEventListener('input', (e) => {
-            document.querySelector(`#${PREFIJO}-input-filtro`).focus();
-            filtrarCanalesPorInput(e.target.value, bodyBotonesCanales);
+        const bodyBotonesCanales = /** @type {HTMLElement | null} */ (
+            document.querySelector(`#${PREFIJO}-body-botones-canales`)
+        );
+        /** @type {HTMLInputElement | null} */
+        const inputFiltro = document.querySelector(`#${PREFIJO}-input-filtro`);
+        inputFiltro?.addEventListener('input', (e) => {
+            inputFiltro.focus();
+            filtrarCanalesPorInput(
+                /** @type {HTMLInputElement} */ (e.target).value,
+                bodyBotonesCanales,
+            );
         });
     }
 
     document.addEventListener('hidden.bs.toast', (event) => {
-        event.target.remove();
+        /** @type {HTMLElement} */ (event.target).remove();
     });
 
     localStorage.setItem('modo-experimental', 'inactivo');

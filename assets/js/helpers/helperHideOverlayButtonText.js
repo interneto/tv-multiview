@@ -10,18 +10,20 @@
 export function hideTextoBotonesOverlay() {
     const BARRAS_OVERLAY = document.querySelectorAll('.barra-overlay');
     BARRAS_OVERLAY.forEach((overlay) => {
-        if (!overlay) return;
-        const BOTONES_DENTRO_BARRA_OVERLAY = overlay.querySelectorAll('.btn');
-        const TEXTO_BOTONES_DENTRO_BARRA_OVERLAY = overlay.querySelectorAll(
+        const overl = /** @type {HTMLElement} */(overlay);
+        if (!overl) return;
+        const BOTONES_DENTRO_BARRA_OVERLAY = overl.querySelectorAll('.btn');
+        const TEXTO_BOTONES_DENTRO_BARRA_OVERLAY = overl.querySelectorAll(
             'span:not(.dropdown-item span)',
         );
 
         // siempre activa texto antes de ocultarlo para tomar tamaño total, no solo del icono
         TEXTO_BOTONES_DENTRO_BARRA_OVERLAY.forEach((span) => {
-            if (span && span.style.display !== 'inline') span.style.display = 'inline';
+            const sp = /** @type {HTMLElement} */(span);
+            if (sp && sp.style.display !== 'inline') sp.style.display = 'inline';
         });
 
-        const overlayWidth = Math.floor(overlay.offsetWidth);
+        const overlayWidth = Math.floor(overl.offsetWidth);
         let botonesWidth = 0;
 
         BOTONES_DENTRO_BARRA_OVERLAY.forEach((button) => {
@@ -32,11 +34,12 @@ export function hideTextoBotonesOverlay() {
 
         const ocultar = botonesWidth >= overlayWidth;
         TEXTO_BOTONES_DENTRO_BARRA_OVERLAY.forEach((span) => {
-            if (!span) return;
-            if (ocultar && span.style.display !== 'none') {
-                span.style.display = 'none';
-            } else if (!ocultar && span.style.display !== 'inline') {
-                span.style.display = 'inline';
+            const sp = /** @type {HTMLElement} */(span);
+            if (!sp) return;
+            if (ocultar && sp.style.display !== 'none') {
+                sp.style.display = 'none';
+            } else if (!ocultar && sp.style.display !== 'inline') {
+                sp.style.display = 'inline';
             }
         });
     });

@@ -88,7 +88,7 @@ export function activarVisionUnica() {
         SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getDisabledLabel();
 
         BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach((boton) => {
-            /** @type {HTMLInputElement} */ (boton).disabled = true;
+            boton.disabled = true;
         });
         SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = getDisabledLabel();
 
@@ -181,7 +181,7 @@ export function desactivarVisionUnica() {
         );
 
         BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach((boton) => {
-            /** @type {HTMLInputElement} */ (boton).disabled = false;
+            boton.disabled = false;
         });
         SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = `${obtenerNumeroCanalesFila()}`;
 

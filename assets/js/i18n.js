@@ -347,28 +347,54 @@ const translations = {
     },
 };
 
+/**
+ * @param {string} template
+ * @param {Record<string, unknown>} [params]
+ * @returns {string}
+ */
 function interpolate(template, params = {}) {
     return template.replace(/\{(\w+)\}/g, (_, key) => `${params[key] ?? ''}`);
 }
 
+/**
+ * @param {string} selector
+ * @param {string} value
+ * @returns {void}
+ */
 function setText(selector, value) {
     document.querySelectorAll(selector).forEach((element) => {
         element.textContent = value;
     });
 }
 
+/**
+ * @param {string} selector
+ * @param {string} value
+ * @returns {void}
+ */
 function setHtml(selector, value) {
     document.querySelectorAll(selector).forEach((element) => {
         element.innerHTML = value;
     });
 }
 
+/**
+ * @param {string} selector
+ * @param {string} attribute
+ * @param {string} value
+ * @returns {void}
+ */
 function setAttr(selector, attribute, value) {
     document.querySelectorAll(selector).forEach((element) => {
         element.setAttribute(attribute, value);
     });
 }
 
+/**
+ * @param {string} selector
+ * @param {string} value
+ * @returns {void}
+ */
 function setLeadingText(selector, value) {
     document.querySelectorAll(selector).forEach((element) => {
         const textNode = [...element.childNodes].find(
@@ -389,9 +415,15 @@ export function getCurrentLanguage() {
     return navigator.language?.toLowerCase().startsWith('es') ? 'es' : 'en';
 }
 
+/**
+ * @param {string} key
+ * @param {Record<string, unknown>} [params]
+ * @returns {string}
+ */
 export function t(key, params = {}) {
     const language = getCurrentLanguage();
-    const template = translations[language]?.[key] ?? translations.es[key] ?? key;
+    const translationsMap = /** @type {Record<string, string>} */ (translations[language] ?? translations.es);
+    const template = translationsMap[key] ?? key;
     return typeof template === 'string' ? interpolate(template, params) : template;
 }
 
@@ -399,6 +431,12 @@ export function buildReloadButtonHtml() {
     return `<button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()">${t('reload')} <i class="bi bi-arrow-clockwise"></i></button>`;
 }
 
+/**
+ * @param {string} summary
+ * @param {unknown} error
+ * @param {string} [hint]
+ * @returns {string}
+ */
 export function buildErrorToastMessage(summary, error, hint = 'storage') {
     const helpText = hint === 'cache' ? t('errorCacheHint') : t('errorStorageHint');
     return `
@@ -410,35 +448,60 @@ export function buildErrorToastMessage(summary, error, hint = 'storage') {
         ${buildReloadButtonHtml()}`;
 }
 
+/**
+ * @param {string} channel
+ * @param {string} signal
+ * @returns {string}
+ */
 export function buildPreferredSignalUnavailableMessage(channel, signal) {
     return `${t('preferredSignalUnavailable', { channel, signal })}<br><span class="fw-bold">${t('nextSignalFallback')}</span>.`;
 }
 
+/**
+ * @param {boolean} visible
+ * @returns {string}
+ */
 export function getVisibilityLabel(visible) {
     return `[${t(visible ? 'visible' : 'hidden')}]`;
 }
 
+/**
+ * @param {boolean} isDarkTheme
+ * @returns {string}
+ */
 export function getThemeLabel(isDarkTheme) {
     return t(isDarkTheme ? 'dark' : 'light');
 }
 
+/**
+ * @param {boolean} isExpanded
+ * @returns {string}
+ */
 export function getHeightLabel(isExpanded) {
     return t(isExpanded ? 'expanded' : 'reduced');
 }
 
+/**
+ * @returns {string}
+ */
 export function getDisabledLabel() {
     return t('disabled');
 }
 
+/**
+ * @param {string} layout
+ * @returns {string}
+ */
 export function getLayoutLabel(layout) {
     return layout === 'vision-unica' ? t('singleView') : t('gridView');
 }
 
 function refreshLanguageButtons() {
     document.querySelectorAll('[data-language-option]').forEach((button) => {
-        const isActive = button.dataset.languageOption === getCurrentLanguage();
-        button.classList.toggle('active', isActive);
-        button.setAttribute('aria-pressed', `${isActive}`);
+        const element = /** @type {HTMLElement} */ (button);
+        const isActive = element.dataset.languageOption === getCurrentLanguage();
+        element.classList.toggle('active', isActive);
+        element.setAttribute('aria-pressed', `${isActive}`);
     });
 }
 
@@ -446,10 +509,11 @@ function refreshTooltips() {
     if (!window.bootstrap?.Tooltip) return;
 
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((element) => {
-        const instance = window.bootstrap.Tooltip.getInstance(element);
+        const target = /** @type {HTMLElement} */ (element);
+        const instance = window.bootstrap.Tooltip.getInstance(target);
         if (instance) {
             instance.dispose();
-            new window.bootstrap.Tooltip(element);
+            new window.bootstrap.Tooltip(target);
         }
     });
 }
@@ -661,6 +725,10 @@ export function translatePage() {
     refreshTooltips();
 }
 
+/**
+ * @param {string} language
+ * @returns {void}
+ */
 export function setCurrentLanguage(language) {
     if (language !== 'es' && language !== 'en') return;
 
@@ -671,10 +739,11 @@ export function setCurrentLanguage(language) {
 
 export function initI18n() {
     document.querySelectorAll('[data-language-option]').forEach((button) => {
-        if (button.dataset.i18nBound === 'true') return;
-        button.dataset.i18nBound = 'true';
-        button.addEventListener('click', () => {
-            setCurrentLanguage(button.dataset.languageOption);
+        const element = /** @type {HTMLElement} */ (button);
+        if (element.dataset.i18nBound === 'true') return;
+        element.dataset.i18nBound = 'true';
+        element.addEventListener('click', () => {
+            setCurrentLanguage(element.dataset.languageOption);
         });
     });
 

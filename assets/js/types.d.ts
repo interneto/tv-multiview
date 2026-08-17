@@ -3,6 +3,9 @@
  */
 
 declare global {
+  /** SortableJS library */
+  var Sortable: any;
+
   /** video.js player instance */
   function videojs(
     id: string | HTMLElement,
