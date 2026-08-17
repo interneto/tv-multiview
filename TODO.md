@@ -6,7 +6,7 @@
 
 ## 📋 Pending
 
-- [ ] **Partial migration to TypeScript** → Enable `checkJs` in tsconfig to leverage existing JSDoc annotations for type-checking. Improves robustness incrementally without rewriting code.
+- [x] **Partial migration to TypeScript** → `checkJs` enabled and 14% of helper errors fixed. Infrastructure ready (types.d.ts, improved JSDoc). Remaining 95 errors can be tackled incrementally. Type-checking now active for all `assets/js/helpers/` files.
 
 ## Known limits
 
