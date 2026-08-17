@@ -2,6 +2,8 @@ node_modules/
 dist/
 migration/
 extra/
-canales.json
+playwright-mcp/
+.claude/
 .worktrees/
+canales.json
 json-tv/m3u8_check_report.txt
