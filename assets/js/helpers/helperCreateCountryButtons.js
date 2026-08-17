@@ -26,24 +26,27 @@ export function crearBotonesPaises() {
 
         const PAISES_SIN_REPETIRSE = [...new Set(NUMERO_CANALES_CON_PAIS)];
 
+        /** @type {Record<string, number>} */
         const CONTEO_NUMERO_CANALES_POR_PAIS = NUMERO_CANALES_CON_PAIS.reduce((conteo, country) => {
-            conteo[COUNTRY_CODES[country] ?? 'Desconocido'] =
-                (conteo[COUNTRY_CODES[country] ?? 'Desconocido'] || 0) + 1;
+            const countryCode = /** @type {string} */(country);
+            const countryName = COUNTRY_CODES[countryCode] ?? 'Desconocido';
+            conteo[countryName] = (conteo[countryName] || 0) + 1;
             return conteo;
         }, {});
 
         const PAISES_ORDENADOS = PAISES_SIN_REPETIRSE.filter(
-            (country) => COUNTRY_CODES[country],
+            (country) => COUNTRY_CODES[/** @type {string} */(country)],
         ).sort((a, b) => {
-            const codigoA = COUNTRY_CODES[a] ? COUNTRY_CODES[a].toLowerCase() : '';
-            const codigoB = COUNTRY_CODES[b] ? COUNTRY_CODES[b].toLowerCase() : '';
+            const codigoA = COUNTRY_CODES[/** @type {string} */(a)]?.toLowerCase() ?? '';
+            const codigoB = COUNTRY_CODES[/** @type {string} */(b)]?.toLowerCase() ?? '';
             return codigoA.localeCompare(codigoB);
         });
 
         const FRAGMENT_BOTONES_PAISES = document.createDocumentFragment();
         for (const PAIS of PAISES_ORDENADOS) {
-            if (COUNTRY_CODES[PAIS]) {
-                let namePais = COUNTRY_CODES[PAIS];
+            const paisKey = /** @type {string} */(PAIS);
+            if (COUNTRY_CODES[paisKey]) {
+                let namePais = COUNTRY_CODES[paisKey];
                 let cantidadCanales = CONTEO_NUMERO_CANALES_POR_PAIS[namePais] || 0;
                 let botonPais = document.createElement('button');
                 botonPais.setAttribute('type', 'button');
@@ -114,12 +117,13 @@ export function crearBotonesPaises() {
             contenedorBotonesFiltroPaises.querySelectorAll('button').forEach((botonPaisEnDom) => {
                 botonPaisEnDom.addEventListener('click', () => {
                     try {
-                        let country = botonPaisEnDom.dataset.country;
+                        const country = botonPaisEnDom.dataset.country;
+                        const countryKey = /** @type {string} */(country);
                         let filtro =
-                            COUNTRY_CODES[country] ||
-                            (country === 'Desconocido'
+                            COUNTRY_CODES[countryKey] ||
+                            (countryKey === 'Desconocido'
                                 ? 'Desconocido'
-                                : country === 'all'
+                                : countryKey === 'all'
                                   ? ''
                                   : '');
 
