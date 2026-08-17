@@ -10,7 +10,7 @@ export const activarTooltipsBootstrap = () => {
     if (typeof window.bootstrap === 'undefined' || !window.bootstrap.Tooltip) return;
 
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((tooltip) => {
-        const el = /** @type {HTMLElement & {__bootstrapTooltipInstance?: bootstrap.Tooltip}} */ (tooltip);
+        const el = /** @type {HTMLElement & {__bootstrapTooltipInstance?: any}} */ (tooltip);
         if (!el || el.getAttribute('data-bs-tooltip-bound') === 'true') return;
 
         try {
@@ -35,12 +35,13 @@ export const removerTooltipsBootstrap = () => {
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((tooltip) => {
         if (!tooltip) return;
 
-        const instance = tooltip.__bootstrapTooltipInstance;
+        const el = /** @type {any} */ (tooltip);
+        const instance = el.__bootstrapTooltipInstance;
         if (instance && typeof instance.dispose === 'function') {
             instance.dispose();
         }
 
         tooltip.removeAttribute('data-bs-tooltip-bound');
-        delete tooltip.__bootstrapTooltipInstance;
+        delete el.__bootstrapTooltipInstance;
     });
 };

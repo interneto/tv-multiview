@@ -40,7 +40,7 @@ declare const isMobile: {
   tablet(): boolean;
 };
 
-/** Bootstrap components */
+/** Bootstrap components namespace */
 declare namespace bootstrap {
   export class Tooltip {
     constructor(element: HTMLElement, options?: Record<string, unknown>);
