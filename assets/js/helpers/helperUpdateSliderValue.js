@@ -11,8 +11,11 @@ import {
  * @returns {void}
  */
 export function actualizarValorSlider() {
-    let valorInputRange = parseInt(localStorage.getItem('valor-input-range') ?? 100);
-    INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA.setAttribute('value', valorInputRange);
+    const valorInputRange = parseInt(localStorage.getItem('valor-input-range') ?? '100');
+    INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA.setAttribute(
+        'value',
+        String(valorInputRange),
+    );
     SPAN_VALOR_INPUT_RANGE.textContent = `${valorInputRange}%`;
-    CONTAINER_VISION_CUADRICULA.style.maxWidth = `${valorInputRange}%`;
+    /** @type {HTMLElement} */ (CONTAINER_VISION_CUADRICULA).style.maxWidth = `${valorInputRange}%`;
 }

@@ -9,7 +9,7 @@
  * @returns {Promise<Object<string, Object>>} Canales indexados por id.
  */
 export async function M3U_A_JSON(m3u) {
-    const channels = {};
+    const channels = /** @type {Record<string, any>} */ ({});
     const lines = m3u.split('\n').filter((line) => line.trim() !== '');
 
     for (let i = 1; i < lines.length; i++) {
@@ -19,7 +19,7 @@ export async function M3U_A_JSON(m3u) {
                 const [key, value] = attr.split('=');
                 acc[key.replace(/"/g, '')] = value.replace(/"/g, '');
                 return acc;
-            }, {});
+            }, /** @type {Record<string, string>} */ ({}));
 
             // Extraer el nombre del canal correctamente, incluso si hay atributos extra antes de la coma
             const NOMBRE_CANAL =

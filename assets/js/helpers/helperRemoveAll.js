@@ -14,7 +14,7 @@ export function removeAllActiveChannels() {
         playAudioSinDelay(AUDIO_TV_SHUTDOWN);
 
         document.querySelectorAll('div[data-canal]').forEach((canalActivo) => {
-            const CANAL_A_REMOVER = canalActivo.dataset.canal;
+            const CANAL_A_REMOVER = /** @type {HTMLElement} */ (canalActivo).dataset.canal;
             if (CANAL_A_REMOVER) {
                 tele.remove(CANAL_A_REMOVER);
             }

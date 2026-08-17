@@ -59,39 +59,46 @@ export function adjustChannelColumnCount() {
         if (!isMobile.any) {
             if (transmisionesEnGrid.length < numCanalesFila && uso100vh !== 'activo') {
                 for (let transmisionActiva of transmisionesEnGrid) {
-                    AsignarClaseColumna(transmisionActiva, [`col-${lsTransmisionesFila}`]);
+                    const el = /** @type {HTMLElement} */(transmisionActiva);
+                    AsignarClaseColumna(el, [`col-${lsTransmisionesFila}`]);
                 }
             } else if (transmisionesEnGrid.length < numCanalesFila) {
                 for (let transmisionActiva of transmisionesEnGrid) {
-                    AsignarClaseColumna(transmisionActiva, ['col', ...claseCienViewHeight]);
+                    const el = /** @type {HTMLElement} */(transmisionActiva);
+                    AsignarClaseColumna(el, ['col', ...claseCienViewHeight]);
                 }
             } else {
                 for (let transmisionActiva of transmisionesEnGrid) {
-                    AsignarClaseColumna(transmisionActiva, [`col-${lsTransmisionesFila}`]);
+                    const el = /** @type {HTMLElement} */(transmisionActiva);
+                    AsignarClaseColumna(el, [`col-${lsTransmisionesFila}`]);
                     if (lsTransmisionesFila === '12' || lsTransmisionesFila === '6')
-                        transmisionActiva.classList.add(...claseCienViewHeight);
+                        el.classList.add(...claseCienViewHeight);
                 }
             }
         } else if (screen.orientation && screen.orientation.type === 'landscape-primary') {
             if (transmisionesEnGrid.length < numCanalesFila) {
                 for (let transmisionActiva of transmisionesEnGrid) {
-                    AsignarClaseColumna(transmisionActiva, ['col', ...claseCienViewHeight]);
+                    const el = /** @type {HTMLElement} */(transmisionActiva);
+                    AsignarClaseColumna(el, ['col', ...claseCienViewHeight]);
                 }
             } else {
                 for (let transmisionActiva of transmisionesEnGrid) {
-                    AsignarClaseColumna(transmisionActiva, [`col-${lsTransmisionesFila}`]);
+                    const el = /** @type {HTMLElement} */(transmisionActiva);
+                    AsignarClaseColumna(el, [`col-${lsTransmisionesFila}`]);
                     if (lsTransmisionesFila === '12' || lsTransmisionesFila === '6')
-                        transmisionActiva.classList.add(...claseCienViewHeight);
+                        el.classList.add(...claseCienViewHeight);
                 }
             }
         } else {
             if (transmisionesEnGrid.length < numCanalesFila) {
                 for (let transmisionActiva of transmisionesEnGrid) {
-                    AsignarClaseColumna(transmisionActiva, ['col', ...claseCienViewHeight]);
+                    const el = /** @type {HTMLElement} */(transmisionActiva);
+                    AsignarClaseColumna(el, ['col', ...claseCienViewHeight]);
                 }
             } else {
                 for (let transmisionActiva of transmisionesEnGrid) {
-                    AsignarClaseColumna(transmisionActiva, [`col-${lsTransmisionesFila}`]);
+                    const el = /** @type {HTMLElement} */(transmisionActiva);
+                    AsignarClaseColumna(el, [`col-${lsTransmisionesFila}`]);
                 }
             }
         }
@@ -122,6 +129,6 @@ export function ajustarClaseColTransmisionesPorFila(columnaValue) {
         boton.classList.replace(CSS_CLASS_PRIMARY_BUTTON, 'btn-light-subtle');
     });
     botonDejarActivo.classList.replace('btn-light-subtle', CSS_CLASS_PRIMARY_BUTTON);
-    localStorage.setItem('numero-class-columnas-por-fila', columnaValue);
+    localStorage.setItem('numero-class-columnas-por-fila', String(columnaValue));
     adjustChannelColumnCount();
 }

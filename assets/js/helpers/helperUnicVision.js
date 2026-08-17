@@ -59,9 +59,10 @@ export function activarVisionUnica() {
             CONTAINER_VISION_CUADRICULA.querySelectorAll('div[data-canal]');
         if (CANALES_ACTIVOS_EN_DOM.length > 0) {
             CANALES_ACTIVOS_EN_DOM.forEach((divCanal) => {
-                divCanal.innerHTML = ''; // limpia html en vez de remover para evitar activar observer
-                divCanal.dataset.respaldo = divCanal.dataset.canal;
-                divCanal.dataset.canal = `no-${divCanal.dataset.canal}`;
+                const el = /** @type {HTMLElement} */ (divCanal);
+                el.innerHTML = ''; // limpia html en vez de remover para evitar activar observer
+                el.dataset.respaldo = el.dataset.canal;
+                el.dataset.canal = `no-${el.dataset.canal}`;
             });
         }
 
@@ -79,23 +80,24 @@ export function activarVisionUnica() {
 
         actualizarBotonesPersonalizarOverlay();
 
-        INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA.disabled = true;
+        /** @type {HTMLInputElement} */ (INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA).disabled =
+            true;
         SPAN_VALOR_INPUT_RANGE.textContent = getDisabledLabel();
 
-        CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.disabled = true;
+        /** @type {HTMLInputElement} */ (CHECKBOX_PERSONALIZAR_USO_100VH_CANALES).disabled = true;
         SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getDisabledLabel();
 
         BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach((boton) => {
-            boton.disabled = true;
+            /** @type {HTMLInputElement} */ (boton).disabled = true;
         });
         SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = getDisabledLabel();
 
         let lsCanales = readStoredObject('canales-vision-cuadricula');
 
-        if (CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]'))
-            tele.remove(
-                CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]').dataset.canal,
-            );
+        const divVisionUnica = /** @type {HTMLElement|null} */ (
+            CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]')
+        );
+        if (divVisionUnica) tele.remove(divVisionUnica.dataset.canal);
 
         if (Object.keys(lsCanales).length > 0) {
             try {
@@ -131,10 +133,10 @@ export function desactivarVisionUnica() {
         BOTON_ACTIVAR_VISION_UNICA.classList.replace('btn-indigo', 'btn-light-subtle');
         BOTON_ACTIVAR_VISION_GRID.classList.replace('btn-light-subtle', 'btn-indigo');
 
-        if (CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]'))
-            tele.remove(
-                CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]').dataset.canal,
-            );
+        const divVisionUnica = /** @type {HTMLElement|null} */ (
+            CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]')
+        );
+        if (divVisionUnica) tele.remove(divVisionUnica.dataset.canal);
 
         ICONO_SIN_SEÑAL_ACTIVA_VISION_UNICA.classList.remove('d-none');
 
@@ -143,9 +145,10 @@ export function desactivarVisionUnica() {
 
         if (CANALES_ACTIVOS_EN_DOM.length > 0) {
             CANALES_ACTIVOS_EN_DOM.forEach((divCanal) => {
-                divCanal.dataset.canal = divCanal.dataset.respaldo;
-                divCanal.append(createChannelFragment(divCanal.dataset.canal));
-                ajustarClaseBotonCanal(divCanal.dataset.canal, true);
+                const el = /** @type {HTMLElement} */ (divCanal);
+                el.dataset.canal = el.dataset.respaldo;
+                el.append(createChannelFragment(el.dataset.canal));
+                ajustarClaseBotonCanal(el.dataset.canal, true);
                 activarTooltipsBootstrap();
                 hideTextoBotonesOverlay();
                 divCanal.removeAttribute('data-respaldo');
@@ -168,16 +171,17 @@ export function desactivarVisionUnica() {
 
         actualizarBotonesPersonalizarOverlay();
 
-        INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA.disabled = false;
+        /** @type {HTMLInputElement} */ (INPUT_RANGE_PERSONALIZACION_TAMAÑO_VISION_CUADRICULA).disabled =
+            false;
         actualizarValorSlider();
 
-        CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.disabled = false;
+        /** @type {HTMLInputElement} */ (CHECKBOX_PERSONALIZAR_USO_100VH_CANALES).disabled = false;
         SPAN_VALOR_CHECKBOX_PERSONALIZAR_USO_100VH_CANALES.textContent = getHeightLabel(
             localStorage.getItem('uso-100vh') === 'activo',
         );
 
         BOTONES_PERSONALIZAR_TRANSMISIONES_POR_FILA.forEach((boton) => {
-            boton.disabled = false;
+            /** @type {HTMLInputElement} */ (boton).disabled = false;
         });
         SPAN_VALOR_TRANSMISIONES_POR_FILA.innerHTML = `${obtenerNumeroCanalesFila()}`;
 

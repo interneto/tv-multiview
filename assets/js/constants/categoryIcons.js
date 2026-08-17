@@ -1,3 +1,4 @@
+/** @type {Record<string, string>} */
 export const CATEGORY_ICONS = {
     // Formato de https://github.com/iptv-org/iptv?tab=readme-ov-file#grouped-by-category
     animation: '<i class="bi bi-emoji-laughing-fill" title="Icono dibujos animados"></i>',

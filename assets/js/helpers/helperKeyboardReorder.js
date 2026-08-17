@@ -12,6 +12,7 @@
 import { saveActiveChannelsToStorage } from './index.js';
 
 /** Flecha -> desplazamiento respecto al canal actual. */
+/** @type {Record<string, -1|1>} */
 const KEY_TO_OFFSET = {
     ArrowLeft: -1,
     ArrowUp: -1,
@@ -53,7 +54,7 @@ export function enableKeyboardReorder(moveButton) {
         const offset = KEY_TO_OFFSET[event.key];
         if (!offset || event.altKey || event.ctrlKey || event.metaKey) return;
 
-        const tile = moveButton.closest('div[data-canal]');
+        const tile = /** @type {HTMLElement|null} */ (moveButton.closest('div[data-canal]'));
         if (!tile) return;
 
         // Las flechas dentro de la cuadrícula significan "mover", no "desplazar la

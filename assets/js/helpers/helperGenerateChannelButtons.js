@@ -71,35 +71,38 @@ export function crearBotonesParaCanales() {
                 '#modal-canales-body-botones-canales button, #offcanvas-canales-body-botones-canales button',
             )
             .forEach((botonCanalEnDOM) => {
-                botonCanalEnDOM.addEventListener('click', () => {
-                    let accionBoton = botonCanalEnDOM.classList.contains(CSS_CLASS_SECONDARY_BUTTON)
+                const btn = /** @type {HTMLElement} */(botonCanalEnDOM);
+                btn.addEventListener('click', () => {
+                    const accionBoton = btn.classList.contains(CSS_CLASS_SECONDARY_BUTTON)
                         ? 'add'
                         : 'remove';
-                    tele[accionBoton](botonCanalEnDOM.dataset.canal);
+                    tele[accionBoton](btn.dataset.canal);
                 });
             });
 
         document
             .querySelectorAll('#modal-cambiar-canal-body-botones-canales button')
             .forEach((botonCanalEnDOM) => {
-                botonCanalEnDOM.setAttribute('data-bs-dismiss', 'modal');
+                const btn = /** @type {HTMLElement} */(botonCanalEnDOM);
+                btn.setAttribute('data-bs-dismiss', 'modal');
             });
 
         document
             .querySelectorAll('#vision-unica-body-botones-canales button')
             .forEach((botonCanalEnDOM) => {
-                botonCanalEnDOM.addEventListener('click', () => {
+                const btn = /** @type {HTMLElement} */(botonCanalEnDOM);
+                btn.addEventListener('click', () => {
                     if (CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]')) {
                         tele.remove(
-                            CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]').dataset
+                            /** @type {HTMLElement} */(CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]')).dataset
                                 .canal,
                         );
                     }
 
-                    let accionBoton = botonCanalEnDOM.classList.contains(CSS_CLASS_SECONDARY_BUTTON)
+                    const accionBoton = btn.classList.contains(CSS_CLASS_SECONDARY_BUTTON)
                         ? 'add'
                         : 'remove';
-                    tele[accionBoton](botonCanalEnDOM.dataset.canal);
+                    tele[accionBoton](btn.dataset.canal);
                 });
             });
 

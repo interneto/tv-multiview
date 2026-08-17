@@ -107,6 +107,7 @@ function esBotonReposicionar(boton, top, start, margin, translate) {
 export function actualizarBotonesFlotantes(top, start, margin, translate) {
     alternarPosicionBotonesFlotantes(top, start, margin, translate);
     BOTONES_REPOSICIONAR_BOTONES_FLOTANTES.forEach((boton) => {
-        boton.checked = esBotonReposicionar(boton, top, start, margin, translate);
+        const el = /** @type {HTMLInputElement} */ (boton);
+        el.checked = esBotonReposicionar(el, top, start, margin, translate);
     });
 }

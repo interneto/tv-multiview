@@ -58,30 +58,34 @@ export function filtrarCanalesPorInput(valorInput, containerBotonesDeCanales) {
                     `#${PREFIJO}-collapse-botones-listado-filtro-countries button`,
                 );
                 botonesFiltroPorPais.forEach((boton) => {
-                    if (boton.classList.contains(CSS_CLASS_PRIMARY_BUTTON)) {
+                    const btn = /** @type {HTMLElement} */(boton);
+                    if (btn.classList.contains(CSS_CLASS_PRIMARY_BUTTON)) {
                         filtroPorPaisActivo =
-                            COUNTRY_CODES[boton.dataset.country] ?? boton.dataset.country;
+                            COUNTRY_CODES[/** @type {string} */(btn.dataset.country)] ?? btn.dataset.country;
                     }
                 });
                 BOTONES_CANALES.forEach((boton) => {
                     if (!boton) return;
+                    const btn = /** @type {HTMLElement} */(boton);
                     const contenidoBotonNormalizado = normalizarInput(
-                        `${boton.dataset.country} - ${boton.textContent}`,
+                        `${btn.dataset.country} - ${btn.textContent}`,
                     );
                     const esCoincidencia = contenidoBotonNormalizado.includes(INPUT_NORMALIZADO);
                     if (filtroPorPaisActivo !== 'all') {
-                        if (boton.dataset.country === filtroPorPaisActivo) {
-                            boton.classList.toggle('d-none', !esCoincidencia);
+                        if (btn.dataset.country === filtroPorPaisActivo) {
+                            btn.classList.toggle('d-none', !esCoincidencia);
                             if (esCoincidencia) booleanCoincidencia = true;
                         } else {
-                            boton.classList.add('d-none');
+                            btn.classList.add('d-none');
                         }
                     } else {
-                        boton.classList.toggle('d-none', !esCoincidencia);
+                        btn.classList.toggle('d-none', !esCoincidencia);
                         if (esCoincidencia) booleanCoincidencia = true;
                     }
                 });
-                const alerta = document.querySelector(`#${PREFIJO}-mensaje-alerta`);
+                const alerta = /** @type {HTMLElement|null} */ (
+                    document.querySelector(`#${PREFIJO}-mensaje-alerta`)
+                );
                 alertaNoCoincidencias(alerta, booleanCoincidencia, INPUT_NORMALIZADO);
                 break;
             }

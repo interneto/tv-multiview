@@ -1,3 +1,4 @@
+/** @type {Record<string, string>} */
 export const COUNTRY_CODES = {
     ad: 'Andorra',
     ae: 'United Arab Emirates (الإمارات العربية المتحدة)',

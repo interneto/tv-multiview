@@ -18,7 +18,9 @@ import { buildErrorToastMessage, getVisibilityLabel, t } from '../i18n.js';
 export function actualizarBotonesPersonalizarOverlay() {
     try {
         BOTONES_PERSONALIZAR_OVERLAY.forEach((contenedorBoton) => {
-            let botonIndividual = contenedorBoton.querySelector('.btn-check');
+            let botonIndividual = /** @type {HTMLInputElement} */ (
+                contenedorBoton.querySelector('.btn-check')
+            );
             let datasetBoton = botonIndividual.dataset.botonoverlay;
             let spanValorBoton = contenedorBoton.querySelector('span');
 
@@ -26,8 +28,8 @@ export function actualizarBotonesPersonalizarOverlay() {
                 botonIndividual.disabled = false;
                 document.body.classList.remove('d-none__barras-overlay');
                 setCheckboxState(
-                    CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY,
-                    SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY,
+                    /** @type {HTMLInputElement} */ (CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY),
+                    /** @type {HTMLElement} */ (SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY),
                     'overlay-display',
                     true,
                 );
@@ -46,8 +48,8 @@ export function actualizarBotonesPersonalizarOverlay() {
                 spanValorBoton.innerHTML = getVisibilityLabel(false);
                 document.body.classList.add('d-none__barras-overlay');
                 setCheckboxState(
-                    CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY,
-                    SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY,
+                    /** @type {HTMLInputElement} */ (CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY),
+                    /** @type {HTMLElement} */ (SPAN_VALOR_CHECKBOX_PERSONALIZAR_VISUALIZACION_OVERLAY),
                     'overlay-display',
                     false,
                 );

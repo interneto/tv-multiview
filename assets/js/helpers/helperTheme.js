@@ -15,13 +15,15 @@ const THEME_LIGHT = 'light';
 export function aplicarTema(esTemaOscuro) {
     if (typeof document === 'undefined') return;
     if (esTemaOscuro) {
-        if (CHECKBOX_PERSONALIZAR_TEMA) CHECKBOX_PERSONALIZAR_TEMA.checked = true;
+        if (CHECKBOX_PERSONALIZAR_TEMA)
+            /** @type {HTMLInputElement} */ (CHECKBOX_PERSONALIZAR_TEMA).checked = true;
         document.documentElement.setAttribute('data-bs-theme', THEME_DARK);
         if (SPAN_VALOR_TEMA_ACTIVO) SPAN_VALOR_TEMA_ACTIVO.textContent = getThemeLabel(true);
         ICONO_PERSONALIZAR_TEMA?.classList.replace('bi-sun', 'bi-moon-stars');
         if (localStorage.getItem('theme') !== THEME_DARK) localStorage.setItem('theme', THEME_DARK);
     } else {
-        if (CHECKBOX_PERSONALIZAR_TEMA) CHECKBOX_PERSONALIZAR_TEMA.checked = false;
+        if (CHECKBOX_PERSONALIZAR_TEMA)
+            /** @type {HTMLInputElement} */ (CHECKBOX_PERSONALIZAR_TEMA).checked = false;
         document.documentElement.setAttribute('data-bs-theme', THEME_LIGHT);
         if (SPAN_VALOR_TEMA_ACTIVO) SPAN_VALOR_TEMA_ACTIVO.textContent = getThemeLabel(false);
         ICONO_PERSONALIZAR_TEMA?.classList.replace('bi-moon-stars', 'bi-sun');

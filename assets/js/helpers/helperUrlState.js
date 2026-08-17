@@ -13,7 +13,9 @@ const CHANNEL_SEPARATOR = '.';
 
 // Los valores de layout en localStorage ('diseño-seleccionado') se mantienen en
 // español por compatibilidad interna; el enlace para compartir sí se traduce.
+/** @type {Record<string, string>} */
 const LAYOUT_TO_URL = { 'vision-cuadricula': 'grid', 'vision-unica': 'single' };
+/** @type {Record<string, string>} */
 const LAYOUT_FROM_URL = { grid: 'vision-cuadricula', single: 'vision-unica' };
 
 /**
@@ -26,7 +28,7 @@ export function getActiveChannelsFromDom(containerSelector) {
     if (!container) return '';
     const canales = container.querySelectorAll('div[data-canal]');
     return Array.from(canales)
-        .map((div) => div.dataset.canal)
+        .map((div) => /** @type {HTMLElement} */ (div).dataset.canal)
         .filter(Boolean)
         .join(CHANNEL_SEPARATOR);
 }

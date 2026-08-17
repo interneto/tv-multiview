@@ -6,7 +6,7 @@
  * llama; esto devuelve {} ante clave ausente O contenido corrupto.
  *
  * @param {string} key
- * @returns {Object} El objeto guardado, o {} si falta o está corrupto.
+ * @returns {Record<string, any>} El objeto guardado, o {} si falta o está corrupto.
  */
 export function readStoredObject(key) {
     try {

@@ -49,7 +49,7 @@ export function showConfirmDialog({ title, body, actions, cancelLabel = t('cance
             </div>`;
 
         const footer = modalElement.querySelector('.modal-footer');
-        let chosen = null;
+        let chosen = /** @type {string|null} */ (null);
 
         for (const action of actions) {
             const button = document.createElement('button');
