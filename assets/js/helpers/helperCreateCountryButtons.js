@@ -8,6 +8,12 @@ import { filtrarCanalesPorInput, mostrarToast } from './index.js';
 import { insertarDivError } from './helperInsertDivError.js';
 import { buildErrorToastMessage, t } from '../i18n.js';
 
+/**
+ * Crea los botones de filtro por país a partir de los países que aparecen en el
+ * catálogo, para no ofrecer filtros que no devuelven ningún canal.
+ *
+ * @returns {void}
+ */
 export function crearBotonesPaises() {
     try {
         const NUMERO_CANALES_CON_PAIS = Object.values(listChannels).map((canal) => {
@@ -55,7 +61,7 @@ export function crearBotonesPaises() {
                     'rounded-3',
                 );
                 botonPais.innerHTML = `<span class="flex-grow-1">${namePais}</span>
-                    <img src="https://flagcdn.com/${PAIS}.svg" alt="bandera ${namePais}" title="${namePais}" class="svg-bandera rounded-1">
+                    <img src="https://flagcdn.com/${PAIS}.svg" alt="bandera ${namePais}" title="${namePais}" loading="lazy" decoding="async" class="svg-bandera rounded-1">
                     <span class="badge bg-secondary">${cantidadCanales}</span>`;
                 FRAGMENT_BOTONES_PAISES.append(botonPais);
             }

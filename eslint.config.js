@@ -40,6 +40,15 @@ module.exports = [
         },
     },
     {
+        // Tests: ESM sobre el runner de Node, así que globals de Node y de módulo.
+        files: ['test/**/*.mjs'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'module',
+            globals: globals.node,
+        },
+    },
+    {
         files: ['tools/**/*.js', '*.config.js'],
         languageOptions: {
             ecmaVersion: 2022,

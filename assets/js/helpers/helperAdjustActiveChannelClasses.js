@@ -7,6 +7,14 @@ import {
     CONTAINER_VISION_CUADRICULA,
 } from '../main.js';
 
+/**
+ * Cambia el ancho de un canal quitando todas las clases `col-*` previas antes de
+ * poner las nuevas: dos clases de columna a la vez dan un ancho impredecible.
+ *
+ * @param {HTMLElement} transmisionPorModifica Div del canal.
+ * @param {string[]} clasesPorAñadir Clases a aplicar.
+ * @returns {void}
+ */
 function AsignarClaseColumna(transmisionPorModifica, clasesPorAñadir) {
     if (!transmisionPorModifica || !clasesPorAñadir) return;
     const clasesAEliminar = [
@@ -24,6 +32,14 @@ function AsignarClaseColumna(transmisionPorModifica, clasesPorAñadir) {
     transmisionPorModifica.classList.add(...clasesPorAñadir);
 }
 
+/**
+ * Reaplica a cada canal de la cuadrícula el ancho que toca según los canales por
+ * fila elegidos y si está activo el modo de altura completa.
+ *
+ * En móvil el ancho lo decide el propio dispositivo, no el ajuste de escritorio.
+ *
+ * @returns {void}
+ */
 export function adjustChannelColumnCount() {
     try {
         if (typeof isMobile === 'undefined' || !CONTAINER_VISION_CUADRICULA) return;
@@ -90,6 +106,13 @@ export function adjustChannelColumnCount() {
     }
 }
 
+/**
+ * Marca el botón de "canales por fila" elegido, guarda el valor y redibuja los
+ * anchos de la cuadrícula.
+ *
+ * @param {string|number} columnaValue Valor `col-*` de Bootstrap (12, 6, 4, 3, 2, 1).
+ * @returns {void}
+ */
 export function ajustarClaseColTransmisionesPorFila(columnaValue) {
     const botonDejarActivo = document.querySelector(
         `#container-botones-personalizar-transmisiones-por-fila button[value='${columnaValue}']`,

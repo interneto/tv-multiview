@@ -6,6 +6,12 @@ const ICONO_PERSONALIZAR_TEMA = document.querySelector('#icono-personalizar-tema
 const THEME_DARK = 'dark';
 const THEME_LIGHT = 'light';
 
+/**
+ * Aplica el tema claro/oscuro a toda la página y lo persiste.
+ *
+ * @param {boolean} esTemaOscuro
+ * @returns {void}
+ */
 export function aplicarTema(esTemaOscuro) {
     if (typeof document === 'undefined') return;
     if (esTemaOscuro) {
@@ -24,6 +30,12 @@ export function aplicarTema(esTemaOscuro) {
     }
 }
 
+/**
+ * Elige tema al arrancar: manda lo que el usuario haya guardado y, si nunca ha
+ * elegido, la preferencia del sistema.
+ *
+ * @returns {void}
+ */
 export function detectarTemaSistema() {
     const TEMA_LOCALSTORAGE = localStorage.getItem('theme');
     const PREFIERE_TEMA_OSCURO =

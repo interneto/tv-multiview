@@ -1345,3 +1345,17 @@ pwa-update {
             -1px -0.5px 2px #75fa69;
     }
 }
+
+/* MARK: contraste selector de idioma
+   El gris de .btn-outline-secondary (#6c757d) se queda en 3.6:1 sobre el fondo
+   oscuro y en ~4.0:1 sobre el claro: por debajo del 4.5:1 que pide WCAG AA para
+   texto normal. Se sube el tono del texto sin tocar el resto de botones grises. */
+[data-language-option].btn-outline-secondary {
+    --bs-btn-color: #565e64;
+    --bs-btn-border-color: #6c757d;
+}
+
+html[data-bs-theme='dark'] [data-language-option].btn-outline-secondary {
+    --bs-btn-color: #adb5bd;
+    --bs-btn-border-color: #adb5bd;
+}

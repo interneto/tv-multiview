@@ -4,15 +4,12 @@
     "description": "PWA for viewing multiple TV channels simultaneously.",
     "lang": "es",
     "categories": ["television", "productivity", "utilities", "video", "news"],
-
     "theme_color": "#4b01c3",
     "background_color": "#212529",
     "display": "standalone",
     "orientation": "any",
-
     "start_url": "./",
     "id": "./",
-
     "icons": [
         {
             "src": "./assets/favicon/android-chrome-192x192.png",
@@ -27,32 +24,41 @@
             "purpose": "any"
         }
     ],
-
     "screenshots": [
         {
-            "src": "./assets/img/PWA/1.jpg",
-            "type": "image/jpeg",
-            "sizes": "1080x1920"
+            "src": "./assets/img/PWA/1.webp",
+            "type": "image/webp",
+            "sizes": "1080x1920",
+            "label": "Cuadrícula de canales en vivo con la barra de botones de cada canal",
+            "form_factor": "narrow"
         },
         {
-            "src": "./assets/img/PWA/2.jpg",
-            "type": "image/jpeg",
-            "sizes": "1080x1920"
+            "src": "./assets/img/PWA/2.webp",
+            "type": "image/webp",
+            "sizes": "1080x1920",
+            "label": "Panel lateral para buscar y añadir canales",
+            "form_factor": "narrow"
         },
         {
-            "src": "./assets/img/PWA/3.jpg",
-            "type": "image/jpeg",
-            "sizes": "1080x1920"
+            "src": "./assets/img/PWA/3.webp",
+            "type": "image/webp",
+            "sizes": "1080x1920",
+            "label": "Modo de visión única con un canal en grande",
+            "form_factor": "narrow"
         },
         {
-            "src": "./assets/img/PWA/4.jpg",
-            "type": "image/jpeg",
-            "sizes": "1080x1920"
+            "src": "./assets/img/PWA/4.webp",
+            "type": "image/webp",
+            "sizes": "1080x1920",
+            "label": "Panel de ajustes para personalizar la interfaz",
+            "form_factor": "narrow"
         },
         {
-            "src": "./assets/img/PWA/5.jpg",
-            "type": "image/jpeg",
-            "sizes": "1080x1920"
+            "src": "./assets/img/PWA/5.webp",
+            "type": "image/webp",
+            "sizes": "1080x1920",
+            "label": "Selector completo de canales filtrado por país",
+            "form_factor": "narrow"
         }
     ],
     "edge_side_panel": {

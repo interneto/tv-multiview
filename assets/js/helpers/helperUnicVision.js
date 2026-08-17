@@ -29,6 +29,15 @@ import { CSS_CLASS_PRIMARY_BUTTON, CSS_CLASS_SECONDARY_BUTTON } from '../constan
 import { listChannels } from '../channelsData.js';
 import { buildErrorToastMessage, getDisabledLabel, getHeightLabel, t } from '../i18n.js';
 
+/**
+ * Cambia a visión única: un solo canal en grande con la lista al lado.
+ *
+ * Los canales de la cuadrícula no se eliminan, se vacían y se renombran a
+ * `no-<id>`: así el IntersectionObserver no se dispara y la selección del
+ * usuario sigue ahí para cuando vuelva a la cuadrícula.
+ *
+ * @returns {void}
+ */
 export function activarVisionUnica() {
     try {
         localStorage.setItem('diseño-seleccionado', 'vision-unica');
@@ -110,6 +119,12 @@ export function activarVisionUnica() {
     }
 }
 
+/**
+ * Vuelve a la cuadrícula y reconstruye los canales que se habían vaciado al
+ * entrar en visión única.
+ *
+ * @returns {void}
+ */
 export function desactivarVisionUnica() {
     try {
         localStorage.setItem('diseño-seleccionado', 'vision-cuadricula');

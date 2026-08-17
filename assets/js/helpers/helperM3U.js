@@ -1,3 +1,13 @@
+/**
+ * Convierte una lista M3U (formato iptv-org) al mismo esquema que usa
+ * tv-channels.json, para poder mezclar ambas fuentes sin casos especiales.
+ *
+ * El id sale de `tvg-id` (`nombre.pais`); el país, de su sufijo. Al buscar la
+ * URL se saltan las líneas `#EXTVLCOPT`, que van entre el `#EXTINF` y el stream.
+ *
+ * @param {string} m3u Contenido del archivo .m3u.
+ * @returns {Promise<Object<string, Object>>} Canales indexados por id.
+ */
 export async function M3U_A_JSON(m3u) {
     const channels = {};
     const lines = m3u.split('\n').filter((line) => line.trim() !== '');

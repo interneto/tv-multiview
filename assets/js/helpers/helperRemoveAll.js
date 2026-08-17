@@ -3,6 +3,12 @@ import { tele } from '../main.js';
 import { playAudioSinDelay, mostrarToast } from '../helpers/index.js';
 import { buildErrorToastMessage, t } from '../i18n.js';
 
+/**
+ * Quita todos los canales activos del DOM (en cualquier layout) y avisa por
+ * toast si algo falla.
+ *
+ * @returns {void}
+ */
 export function removeAllActiveChannels() {
     try {
         playAudioSinDelay(AUDIO_TV_SHUTDOWN);

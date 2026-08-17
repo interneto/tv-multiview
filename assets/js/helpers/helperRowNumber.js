@@ -1,3 +1,9 @@
+/**
+ * Traduce la clase de columna guardada (`col-N` de Bootstrap, sistema de 12) al
+ * número de canales por fila que ve el usuario.
+ *
+ * @returns {number|undefined} Canales por fila, o undefined si no hay valor guardado.
+ */
 export function obtenerNumeroCanalesFila() {
     // el numero, no el valor clase 'col-'
     let lsTransmisionesFila = localStorage.getItem('numero-class-columnas-por-fila');

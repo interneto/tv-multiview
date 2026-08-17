@@ -1,5 +1,14 @@
 import { t } from '../i18n.js';
 
+/**
+ * Muestra un toast de Bootstrap.
+ *
+ * @param {string} [mensaje=''] HTML del cuerpo (lo compone el propio sitio).
+ * @param {'primary'|'secondary'|'success'|'warning'|'danger'|'info'} [tipo='secondary']
+ * @param {boolean} [autohideValue=true] false para errores que el usuario debe leer y cerrar.
+ * @param {number} [delayValue=3500] Milisegundos en pantalla si se auto-oculta.
+ * @returns {void}
+ */
 export function mostrarToast(
     mensaje = '',
     tipo = 'secondary',

@@ -8,7 +8,9 @@ import {
     hideTextoBotonesOverlay,
     activarTooltipsBootstrap,
     readStoredObject,
+    enableKeyboardReorder,
 } from './helpers/index.js';
+import { acquirePlayerSlotHandle } from './helpers/helperPlayerSlots.js';
 import { buildErrorToastMessage, t } from './i18n.js';
 
 // Funciones de UI de canales extraídas de main.js
@@ -75,35 +77,8 @@ const STREAM_ERROR_PRESENTATION = {
 
 // Algunos mirrors aceptan la conexión y nunca responden: ni error ni datos, readyState
 // se queda en 0 para siempre. Sin este timeout ese player nunca libera su cupo (ver
-// MAX_CONCURRENT_PLAYERS) y el resto de la cola espera un turno que no llega nunca.
-const STREAM_LOAD_TIMEOUT_MS = 15000;
-
-// Con N players ABR cargando a la vez, play() empieza a rechazar por contención de
-// recursos (decoders/MediaSource) antes de que el propio stream tenga chance de
-// fallar o funcionar — confirmado en pruebas: canales que fallan en un batch de 18
-// funcionan bien solos. Este límite evita que más de MAX_CONCURRENT_PLAYERS
-// instancien video.js a la vez; el resto espera turno en cola.
-// ponytail: cupo fijo, ajustar/derivar de navigator.hardwareConcurrency si algún día hace falta.
-const MAX_CONCURRENT_PLAYERS = 6;
-let activePlayerSlots = 0;
-const playerSlotQueue = [];
-
-function acquirePlayerSlot() {
-    if (activePlayerSlots < MAX_CONCURRENT_PLAYERS) {
-        activePlayerSlots += 1;
-        return Promise.resolve();
-    }
-    return new Promise((resolve) => playerSlotQueue.push(resolve));
-}
-
-function releasePlayerSlot() {
-    const next = playerSlotQueue.shift();
-    if (next) {
-        next();
-    } else {
-        activePlayerSlots = Math.max(0, activePlayerSlots - 1);
-    }
-}
+// helperPlayerSlots) y el resto de la cola espera un turno que no llega nunca.
+export const STREAM_LOAD_TIMEOUT_MS = 15000;
 
 export function generateStreamIframe(canalId, tipoSeñalParaIframe, valorIndex = 0) {
     valorIndex = Number(valorIndex);
@@ -193,9 +168,9 @@ export function createVideoPlayer(canalId, urlCarga) {
         // Espera turno si ya hay MAX_CONCURRENT_PLAYERS cargando: instanciar video.js sobre
         // todos los canales a la vez es lo que hace que play() rechace por contención de
         // recursos, no que el stream esté caído.
-        await acquirePlayerSlot();
+        const slot = await acquirePlayerSlotHandle();
         if (!document.body.contains(videoElement)) {
-            releasePlayerSlot();
+            slot.release();
             return;
         }
 
@@ -212,19 +187,16 @@ export function createVideoPlayer(canalId, urlCarga) {
             html5: { vhs: { enableLowInitialPlaylist: true } },
         });
 
-        let slotHeld = true;
-        const releaseSlotOnce = () => {
-            if (!slotHeld) return;
-            slotHeld = false;
-            releasePlayerSlot();
-        };
-
         // Si el m3u8 falla (CORS, servidor caído, timeout, etc.) y el canal tiene un yt_id
         // de respaldo, lo usamos automáticamente en vez de mostrar solo un error: un embed
         // de YouTube es un iframe, nunca pega contra los mismos bloqueos de CORS/hotlink.
         // Siempre dispone el player: ya no se va a usar, sea cual sea el desenlace.
         const fallbackToYoutubeOrShowError = (tipoError) => {
             clearTimeout(loadTimeoutId);
+            // Un mismo fallo llega por dos vías (el evento 'error' y el rechazo de
+            // play(), o el timeout): disponer dos veces el mismo player lanza
+            // "Invalid target for null#trigger" dentro de video.js.
+            if (player.isDisposed()) return;
             player.dispose();
             const ytId = listChannels[canalId]?.signals?.yt_id;
             if (ytId) {
@@ -239,18 +211,25 @@ export function createVideoPlayer(canalId, urlCarga) {
 
         const loadTimeoutId = setTimeout(() => {
             console.warn(`Timeout de carga para canal "${canalId}". Source: ${urlCarga}`);
-            releaseSlotOnce();
+            slot.release();
             fallbackToYoutubeOrShowError('network-error');
         }, STREAM_LOAD_TIMEOUT_MS);
 
         player.on('dispose', () => {
             clearTimeout(loadTimeoutId);
-            releaseSlotOnce();
+            slot.release();
         });
-        player.on('loadeddata', () => clearTimeout(loadTimeoutId));
+        // El cupo limita cuántos players *cargan* a la vez, no cuántos reproducen: la
+        // contención de recursos está en arrancar el stream. Si el cupo se mantuviera
+        // mientras el canal se ve bien, con más canales sanos que cupos los últimos de
+        // la cola no arrancarían nunca (7 canales buenos con 6 cupos = uno en negro).
+        player.on('loadeddata', () => {
+            clearTimeout(loadTimeoutId);
+            slot.release();
+        });
 
         player.on('error', async () => {
-            releaseSlotOnce();
+            slot.release();
             const tipoError = await classifyStreamError(player, urlCarga);
             console.warn(
                 `Video.js error for channel "${canalId}" [${tipoError}]. Source: ${urlCarga}`,
@@ -265,7 +244,7 @@ export function createVideoPlayer(canalId, urlCarga) {
 
         player.ready(() => {
             player.play().catch(() => {
-                releaseSlotOnce();
+                slot.release();
                 fallbackToYoutubeOrShowError();
             });
         });
@@ -445,6 +424,9 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
             'rounded-3',
             'clase-para-mover',
         );
+        // Sortable.js solo escucha el puntero; las flechas cubren el mismo gesto
+        // para quien navega con teclado.
+        enableKeyboardReorder(MOVE_CHANNEL_BUTTON);
 
         const CHANGE_CHANNEL_BUTTON = document.createElement('button');
         CHANGE_CHANNEL_BUTTON.id = 'overlay-boton-cambiar';
@@ -482,6 +464,10 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
             website = `https://www.twitch.tv/${signals.twitch_id}`;
         OFFICIAL_CHANNEL_LINK.href =
             website !== '' ? website : `https://www.qwant.com/?q=${name}+en+vivo`;
+        // El nombre del canal es el texto visible del enlace, pero se oculta cuando
+        // los botones no caben (hideTextoBotonesOverlay): sin aria-label el enlace se
+        // queda sin nombre accesible justo en las rejillas más apretadas.
+        OFFICIAL_CHANNEL_LINK.setAttribute('aria-label', `${name}: ${t('officialPage')}`);
         OFFICIAL_CHANNEL_LINK.setAttribute('role', 'button');
         OFFICIAL_CHANNEL_LINK.setAttribute('data-bs-toggle', 'tooltip');
         OFFICIAL_CHANNEL_LINK.setAttribute('data-bs-title', t('officialPage'));

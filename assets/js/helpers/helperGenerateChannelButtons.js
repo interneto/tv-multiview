@@ -10,6 +10,12 @@ import { mostrarToast, revisarSeñalesVacias, guardarOrdenOriginal } from './ind
 import { insertarDivError } from './helperInsertDivError.js';
 import { buildErrorToastMessage, t } from '../i18n.js';
 
+/**
+ * Pinta un botón por canal del catálogo en cada contenedor que los usa (modal,
+ * offcanvas, cambiar canal y visión única).
+ *
+ * @returns {void}
+ */
 export function crearBotonesParaCanales() {
     try {
         const FRAGMENT_BOTONES_CANALES = document.createDocumentFragment();
@@ -40,7 +46,7 @@ export function crearBotonesParaCanales() {
             );
             if (revisarSeñalesVacias(canal)) botonCanal.classList.add('d-none');
             botonCanal.innerHTML = `<span class="flex-grow-1">${name}</span>
-                    ${country && typeof country === 'string' && COUNTRY_CODES[country.toLowerCase()] ? `<img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${namePais}" title="${namePais}" class="svg-bandera rounded-1">` : ''}
+                    ${country && typeof country === 'string' && COUNTRY_CODES[country.toLowerCase()] ? `<img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${namePais}" title="${namePais}" loading="lazy" decoding="async" class="svg-bandera rounded-1">` : ''}
                     ${iconoCategoria ? `${iconoCategoria}` : ''}`;
             // ${logo ? `<img src="${logo}" alt="logo ${name}" title="logo ${name}" class="img-logos rounded-1">` : ''}
             FRAGMENT_BOTONES_CANALES.append(botonCanal);

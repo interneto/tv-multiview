@@ -1,0 +1,85 @@
+name: Channel maintenance
+
+# Link rot is continuous, but the cleanup used to be manual — which is how the list
+# drifted far enough to need a 77-channel prune in a single pass. This runs the whole
+# maintenance chain weekly and opens a PR with the diff, so the list is reviewed in
+# small increments instead of occasional big batches.
+
+on:
+    schedule:
+        # Mondays at 05:00 UTC.
+        - cron: '0 5 * * 1'
+    workflow_dispatch:
+
+permissions:
+    contents: write
+    pull-requests: write
+
+concurrency:
+    group: channel-maintenance
+    cancel-in-progress: false
+
+jobs:
+    refresh:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+
+            # Health check first: everything downstream reads check_results.json.
+            - name: Check stream health
+              run: node tools/report_status_channels.js --timeout=10000
+
+            # Un servidor puede responder 200 a Node y seguir siendo inservible en el
+            # navegador si no manda Access-Control-Allow-Origin: eso solo lo ve esta
+            # comprobación, y el prune la usa igual que la de alcanzabilidad.
+            - name: Check browser (CORS) usability
+              run: node tools/check_cors_channels.js --timeout=10000
+
+            # Merge before pruning: a channel that gains a YouTube fallback here
+            # survives the prune instead of being retired for a dead m3u8.
+            - name: Merge YouTube fallbacks
+              run: node tools/merge_youtube_from_json_teles.js
+
+            - name: Upgrade or retire plain-http streams
+              run: node tools/upgrade_insecure_streams.js --timeout=10000
+
+            - name: Prune channels with no working signal
+              run: node tools/prune_dead_channels.js
+
+            - name: Validate JSON
+              run: node tools/validate_json_light.js
+
+            - name: Open pull request with the diff
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  if git diff --quiet -- json-tv/; then
+                    echo "No channel changes this week."
+                    exit 0
+                  fi
+
+                  BRANCH="chore/channel-maintenance-$(date -u +%Y-%m-%d)"
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git checkout -b "$BRANCH"
+                  git add json-tv/
+                  git commit -m "chore: weekly channel maintenance ($(date -u +%Y-%m-%d))"
+                  git push --force-with-lease origin "$BRANCH"
+
+                  ACTIVE=$(node -p "Object.keys(require('./json-tv/tv-channels.json')).length")
+                  INACTIVE=$(node -p "Object.keys(require('./json-tv/inactive.json')).length")
+
+                  gh pr create \
+                    --title "chore: weekly channel maintenance" \
+                    --body "Automated run of the maintenance chain (health check → YouTube fallbacks → https upgrade → prune).
+
+                  Active channels: $ACTIVE
+                  Inactive channels: $INACTIVE
+
+                  Review the diff before merging: a channel can fail the check from the runner's network and still work for users." \
+                    --head "$BRANCH" \
+                    --base main

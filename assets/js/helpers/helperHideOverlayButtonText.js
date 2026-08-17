@@ -1,4 +1,12 @@
-// Función para ocultar texto si el tamaño de los botones excede el tamaño del contenedor
+/**
+ * Deja solo los iconos en la barra overlay de cada canal cuando los botones con
+ * texto ya no caben a lo ancho.
+ *
+ * Antes de medir vuelve a mostrar el texto: si midiera con el texto oculto,
+ * jamás volvería a caber y los rótulos no reaparecerían al agrandar la ventana.
+ *
+ * @returns {void}
+ */
 export function hideTextoBotonesOverlay() {
     const BARRAS_OVERLAY = document.querySelectorAll('.barra-overlay');
     BARRAS_OVERLAY.forEach((overlay) => {

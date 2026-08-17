@@ -1,5 +1,17 @@
 import { BOTONES_REPOSICIONAR_BOTONES_FLOTANTES } from '../main.js';
 
+/**
+ * Reposiciona el grupo de botones flotantes cambiando sus clases de utilidad.
+ *
+ * Limpia primero todas las posiciones posibles: acumularlas dejaría dos anclajes
+ * en conflicto sobre el mismo elemento.
+ *
+ * @param {string} topClass Clase vertical ('top-0', 'bottom-0'...).
+ * @param {string} startClass Clase horizontal ('start-0', 'end-0'...).
+ * @param {string} marginClass Margen opcional ('mt-3', 'mb-3').
+ * @param {string} translateClass Traslación opcional para centrar.
+ * @returns {void}
+ */
 export function alternarPosicionBotonesFlotantes(
     topClass,
     startClass,
@@ -31,6 +43,15 @@ export function alternarPosicionBotonesFlotantes(
     clasesPorAgregar.forEach((clase) => divBotonesFlotantes.classList.add(clase));
 }
 
+/**
+ * Aplica y persiste la posición elegida por el usuario para los botones flotantes.
+ *
+ * @param {string} topClass
+ * @param {string} startClass
+ * @param {string} [margin='']
+ * @param {string} [translateClass='']
+ * @returns {void}
+ */
 export function clicBotonPosicionBotonesFlotantes(
     topClass,
     startClass,
@@ -55,6 +76,9 @@ export function clicBotonPosicionBotonesFlotantes(
     }
 }
 
+/**
+ * @returns {boolean} true si el botón corresponde a esa combinación de posición.
+ */
 function esBotonReposicionar(boton, top, start, margin, translate) {
     const BOTON_DATASET_POSITION = boton.dataset.position.split(' ');
     return (
@@ -65,6 +89,16 @@ function esBotonReposicionar(boton, top, start, margin, translate) {
     );
 }
 
+/**
+ * Marca como activo, entre los botones de posición de ajustes, el que coincide
+ * con la posición actual.
+ *
+ * @param {string} top
+ * @param {string} start
+ * @param {string} margin
+ * @param {string} translate
+ * @returns {void}
+ */
 export function actualizarBotonesFlotantes(top, start, margin, translate) {
     alternarPosicionBotonesFlotantes(top, start, margin, translate);
     BOTONES_REPOSICIONAR_BOTONES_FLOTANTES.forEach((boton) => {

@@ -1,10 +1,12 @@
 import { tele } from './main.js';
+import { clearChannelBackup } from './channelsData.js';
 import {
     aplicarTema,
     mostrarToast,
     playAudioSinDelay,
     removeAllActiveChannels,
     obtenerCanalesPredeterminados,
+    showConfirmDialog,
 } from './helpers/index.js';
 import {
     AUDIO_STATIC_EFFECT as AUDIO_NOTIFICATION,
@@ -97,18 +99,48 @@ BOTON_COMPARTIR_VISTA?.addEventListener('click', async () => {
 });
 
 // MARK: Botones carga canales predeterminados
-const cargarCanalesPredeterminados = () => {
+function aplicarCanalesPredeterminados(modo) {
     try {
-        document.querySelectorAll('div[data-canal]').forEach((transmision) => {
-            tele.remove(transmision.dataset.canal);
-        });
+        if (modo === 'replace') {
+            document.querySelectorAll('div[data-canal]').forEach((transmision) => {
+                tele.remove(transmision.dataset.canal);
+            });
+        }
         playAudioSinDelay(AUDIO_TURN_ON);
-        obtenerCanalesPredeterminados(isMobile?.any).forEach((canal) => tele.add(canal));
+        const yaActivos = new Set(
+            Array.from(document.querySelectorAll('div[data-canal]')).map(
+                (div) => div.dataset.canal,
+            ),
+        );
+        obtenerCanalesPredeterminados(isMobile?.any)
+            .filter((canal) => !yaActivos.has(canal))
+            .forEach((canal) => tele.add(canal));
     } catch (error) {
         console.error(`Error durante carga canales predeterminados. Error: ${error}`);
         mostrarToast(buildErrorToastMessage(t('errorLoadDefaultChannels'), error), 'danger', false);
         return;
     }
+}
+
+// Cargar los predeterminados borraba la selección del usuario sin avisar. Solo
+// preguntamos si hay algo que perder: con la cuadrícula vacía la pregunta sobra.
+const cargarCanalesPredeterminados = async () => {
+    const activos = document.querySelectorAll('div[data-canal]').length;
+    if (activos === 0) {
+        aplicarCanalesPredeterminados('replace');
+        return;
+    }
+
+    const eleccion = await showConfirmDialog({
+        title: t('loadDefaultsTitle'),
+        body: t('loadDefaultsBody', { count: activos }),
+        actions: [
+            { id: 'add', label: t('loadDefaultsAdd'), variant: 'btn-light-subtle' },
+            { id: 'replace', label: t('loadDefaultsReplace'), variant: 'btn-indigo' },
+        ],
+    });
+    if (!eleccion) return;
+    aplicarCanalesPredeterminados(eleccion);
 };
 
 export const DEFAULT_CHANNEL_LOAD_BUTTON = document.querySelector(
@@ -138,6 +170,9 @@ BOTON_BORRAR_LOCALSTORAGE?.addEventListener('click', () => {
     try {
         removeAllActiveChannels();
         localStorage.clear();
+        // localStorage.clear() no toca IndexedDB: el backup del catálogo vive ahí
+        // desde que dejó de caber cómodo en localStorage.
+        clearChannelBackup();
         AUDIO_NOTIFICATION.volume = 0.8;
         AUDIO_NOTIFICATION.loop = true;
         AUDIO_NOTIFICATION.play();
@@ -150,6 +185,23 @@ BOTON_BORRAR_LOCALSTORAGE?.addEventListener('click', () => {
             false,
         );
         return;
+    }
+});
+
+// Mismo botón, pero en la pantalla de "no se pudieron cargar los canales": ahí es
+// justo donde hace falta, porque el estado que impide arrancar suele ser un backup
+// corrupto. Recarga sola, ya que esa pantalla tapa el resto de la interfaz.
+const BOTON_BORRAR_LOCALSTORAGE_ERROR_CARGA = document.querySelector(
+    '#boton-borrar-localstorage-no-carga-canales',
+);
+BOTON_BORRAR_LOCALSTORAGE_ERROR_CARGA?.addEventListener('click', async () => {
+    try {
+        localStorage.clear();
+        await clearChannelBackup();
+    } catch (error) {
+        console.error('Error al intentar eliminar almacenamiento local sitio: ', error);
+    } finally {
+        location.reload();
     }
 });
 

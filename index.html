@@ -67,7 +67,7 @@
         />
         <meta
             property="og:image"
-            content="assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp"
+            content="https://interneto.github.io/tv-multiview/assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp"
         />
         <!-- Twitter Card-->
         <meta
@@ -83,7 +83,7 @@
         />
         <meta
             name="twitter:image"
-            content="assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp"
+            content="https://interneto.github.io/tv-multiview/assets/img/previews/shots_tv-multiview_v0-18_dark_canales.webp"
         />
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
@@ -167,9 +167,14 @@
                             class="position-relative bg-light-subtle p-3 rounded-4 shadow"
                             tabindex="-1"
                         >
+                            <!-- width/height explícitos: el CSS lo reescala, pero así el
+                                 navegador reserva el hueco y la tarjeta no salta al cargar. -->
                             <img
                                 src="assets/favicon/android-chrome-512x512.png"
                                 alt="logo tv-multiview"
+                                width="512"
+                                height="512"
+                                decoding="async"
                             />
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
@@ -243,6 +248,30 @@
             })();
         </script>
 
+        <!-- Registro del service worker.
+             Hasta ahora el registro dependía solo del componente <pwa-update>, que se
+             importa desde un CDN: si esa carga falla (bloqueada, sin red, CSP), la PWA
+             se puede instalar igualmente pero se queda sin caché offline. Registrarlo
+             aquí quita esa dependencia; llamar dos veces al mismo script es idempotente.
+             Se hace tras 'load' para no competir con los recursos de la primera pintura,
+             y nunca en local, donde el bloque de arriba lo desregistra para depurar. -->
+        <script>
+            (function () {
+                const isLocal =
+                    location.hostname === 'localhost' ||
+                    location.hostname === '127.0.0.1' ||
+                    location.hostname === '';
+                if (isLocal || !('serviceWorker' in navigator)) return;
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker
+                        .register('pwabuilder-sw.js')
+                        .catch((err) =>
+                            console.warn('No se pudo registrar el service worker', err),
+                        );
+                });
+            })();
+        </script>
+
         <!-- Alerta tras borrado localstorage -->
         <div
             id="alerta-borrado-localstorage"
@@ -290,7 +319,7 @@
                         class="btn btn-sm btn-outline-indigo rounded-end-pill"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-canales"
-                        aria-label="Abrir selector completo de canales"
+                        aria-label="Canales: abrir selector completo"
                     >
                         <i class="bi bi-collection-play"></i> Canales
                     </button>

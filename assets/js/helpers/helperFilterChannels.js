@@ -6,6 +6,11 @@ import {
 import { mostrarToast } from './index.js';
 import { buildErrorToastMessage, t } from '../i18n.js';
 
+/**
+ * Pasa a minúsculas y quita acentos para que "canal" encuentre "Canál".
+ * @param {string|undefined|null} normalizarEsto
+ * @returns {string}
+ */
 function normalizarInput(normalizarEsto) {
     return (
         normalizarEsto
@@ -15,6 +20,13 @@ function normalizarInput(normalizarEsto) {
     );
 }
 
+/**
+ * Muestra u oculta el aviso de "sin resultados" del contenedor.
+ * @param {HTMLElement|null} elemento
+ * @param {boolean} esOcultar
+ * @param {string} textoQueNoFueEncontrado Búsqueda que no dio resultados.
+ * @returns {void}
+ */
 function alertaNoCoincidencias(elemento, esOcultar, textoQueNoFueEncontrado) {
     if (!elemento) return;
     elemento.classList.toggle('d-none', esOcultar);
@@ -22,7 +34,16 @@ function alertaNoCoincidencias(elemento, esOcultar, textoQueNoFueEncontrado) {
     if (span) span.textContent = textoQueNoFueEncontrado;
 }
 
-// filtro canales
+/**
+ * Filtra los botones de canal por texto, respetando el filtro de país activo.
+ *
+ * Busca en nombre y país, sin acentos, para que la búsqueda funcione igual se
+ * escriba como se escriba.
+ *
+ * @param {string} valorInput Texto tecleado por el usuario.
+ * @param {HTMLElement} containerBotonesDeCanales Contenedor de botones a filtrar.
+ * @returns {void}
+ */
 export function filtrarCanalesPorInput(valorInput, containerBotonesDeCanales) {
     try {
         if (!containerBotonesDeCanales) return;

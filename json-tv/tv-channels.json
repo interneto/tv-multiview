@@ -33,40 +33,6 @@
     "category": "general",
     "country": "af"
   },
-  "news24": {
-    "name": "News 24",
-    "logo": "https://i.imgur.com/eG33jue.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://tv.balkanweb.com:8081/news24/livestream/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "news",
-    "country": "al"
-  },
-  "alternatv": {
-    "name": "AlternaTV",
-    "logo": "https://alternatv.ar/alternatv.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://tv.alterna.ar/stream/hls/live.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "culture;documentary;entertainment;general;movies;music",
-    "country": "ar"
-  },
   "rtn": {
     "name": "RTN",
     "logo": "https://i.imgur.com/8xqYg4C.png",
@@ -101,23 +67,6 @@
     "category": "sports",
     "country": "at"
   },
-  "rtv": {
-    "name": "RTV",
-    "logo": "https://raw.githubusercontent.com/jnk22/kodinerds-iptv/master/logos/tv/rtvat.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://iptv.rtv-ooe.at/stream.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "",
-    "country": "at"
-  },
   "abcnews": {
     "name": "ABC News",
     "logo": "https://i.imgur.com/BrW7gk8.png",
@@ -127,23 +76,6 @@
         "https://c.mjh.nz/abc-news.m3u8"
       ],
       "yt_id": "UCBi2mrWuNuyYy4gbM6fU18Q",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "news",
-    "country": "au"
-  },
-  "skynews": {
-    "name": "Sky News",
-    "logo": "https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1404.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://jmp2.uk/plu-55b285cd2665de274553d66f.m3u8"
-      ],
-      "yt_id": "",
       "yt_embed": "",
       "yt_playlist": "",
       "twitch_id": ""
@@ -168,23 +100,6 @@
     "website": "",
     "category": "news",
     "country": "bb"
-  },
-  "ctvbolivia": {
-    "name": "CTV Bolivia",
-    "logo": "https://i.imgur.com/ljKb0UX.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://live.ctvbolivia.com/hls/ctv.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "bo"
   },
   "rbatv": {
     "name": "RBATV",
@@ -237,74 +152,6 @@
     "category": "news",
     "country": "ca"
   },
-  "ctv": {
-    "name": "CTV",
-    "logo": "https://i.imgur.com/pRscvrp.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://live.ctvbolivia.com/hls/ctv.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "news",
-    "country": "ca"
-  },
-  "hardknocks": {
-    "name": "Hard Knocks",
-    "logo": "https://i.imgur.com/nt9B6jx.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://d3uyzhwvmemdyf.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/Hard-Knocks-DistroTV/109.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "sports",
-    "country": "ca"
-  },
-  "pardesitv": {
-    "name": "Pardesi TV",
-    "logo": "https://i.imgur.com/CwAdPpZ.jpg",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://stream.pardesitv.online/pardesi/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "culture",
-    "country": "ca"
-  },
-  "sardaritv": {
-    "name": "Sardari TV",
-    "logo": "https://i.imgur.com/AhbJjPL.jpg",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://158.69.124.9:1935/sardaritv/sardaritv/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "",
-    "country": "ca"
-  },
   "13c": {
     "name": "13C",
     "logo": "https://i.ibb.co/3fbvkZ3/13cultura.png",
@@ -329,10 +176,7 @@
       "iframe_url": [
         "https://rudo.video/live/t13"
       ],
-      "m3u8_url": [
-        "https://redirector.rudo.video/hls-video/10b92cafdf3646cbc1e727f3dc76863621a327fd/t13/t13.smil/playlist.m3u8",
-        "https://jireh-4-hls-video-cl-isp.dps.live/hls-video/10b92cafdf3646cbc1e727f3dc76863621a327fd/t13/t13.smil/playlist_900.m3u8"
-      ],
+      "m3u8_url": [],
       "yt_id": "UCsRnhjcUCR78Q3Ud6OXCTNg",
       "yt_embed": "",
       "yt_playlist": "",
@@ -366,10 +210,7 @@
       "iframe_url": [
         "https://rudo.video/live/cnn"
       ],
-      "m3u8_url": [
-        "https://redirector.rudo.video/hls-video/lvcl5/cnn/cnn.smil/playlist.m3u8?DVR",
-        "https://jireh-2-hls-video-cl-vtr.dps.live/hls-video/lvcl5/cnn/cnn.smil/cnn/livestream1/chunks.m3u8"
-      ],
+      "m3u8_url": [],
       "yt_id": "UCpOAcjJNAp0Y0fhznRrXIJQ",
       "yt_embed": "",
       "yt_playlist": "",
@@ -497,23 +338,6 @@
     "website": "",
     "category": "news",
     "country": "cn"
-  },
-  "caracoltv": {
-    "name": "Caracol TV SD",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Caracol_Televisi%C3%B3n_logo.svg/512px-Caracol_Televisi%C3%B3n_logo.svg.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://138.121.15.230:9002/CARACOL/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "co"
   },
   "nicoyatv": {
     "name": "NicoyaTV",
@@ -775,9 +599,7 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c1/France_24_logo_%282013%29.svg",
     "signals": {
       "iframe_url": [],
-      "m3u8_url": [
-        "https://viamotionhsi.netplus.ch/live/eds/france24/browser-HLS8/france24.m3u8"
-      ],
+      "m3u8_url": [],
       "yt_id": "l8PMl7tUDIE",
       "yt_embed": "",
       "yt_playlist": "",
@@ -785,23 +607,6 @@
     },
     "website": "",
     "category": "news",
-    "country": "fr"
-  },
-  "m6": {
-    "name": "M6 SD",
-    "logo": "https://i.imgur.com/7GVp3fW.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://99.27.51.147:8080/M6/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "entertainment",
     "country": "fr"
   },
   "bbcdramaes": {
@@ -819,40 +624,6 @@
     },
     "website": "",
     "category": "entertainment",
-    "country": "gb"
-  },
-  "bbearth": {
-    "name": "BBC Earth",
-    "logo": "https://i.imgur.com/0v3mX1H.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://jmp2.uk/plu-656535fc2c46f30008870fae.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "documentary",
-    "country": "gb"
-  },
-  "bbcnews": {
-    "name": "BBC News NorthAmerica",
-    "logo": "https://i.imgur.com/vSz2WEp.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65d92a8c8b24c80008e285c0/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c26f5a2-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=9f1a48db-9022-43d1-bb25-ba665285192f"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "news",
     "country": "gb"
   },
   "trt": {
@@ -888,23 +659,6 @@
     "website": "",
     "category": "general",
     "country": "hr"
-  },
-  "tatv": {
-    "name": "TATV",
-    "logo": "https://i.imgur.com/1f0EC7t.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://v2.siar.us/tatv/live.sdp/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "",
-    "country": "id"
   },
   "aajtak": {
     "name": "Aaj Tak",
@@ -955,23 +709,6 @@
     },
     "website": "",
     "category": "movies",
-    "country": "in"
-  },
-  "starsports1": {
-    "name": "Star Sports 1 HD",
-    "logo": "https://i.imgur.com/E5jjKHI.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://41.205.93.154/STARSPORTS1/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "sports",
     "country": "in"
   },
   "tv9bharatvarsh": {
@@ -1178,23 +915,6 @@
     "category": "sports",
     "country": "it"
   },
-  "arirangradio": {
-    "name": "Arirang Radio",
-    "logo": "https://i.imgur.com/dtfiG9k.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://amdlive-ch01.ctnd.com.edgesuite.net/arirang_3ch/smil:arirang_3ch.smil/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "kr"
-  },
   "arirangun": {
     "name": "Arirang UN",
     "logo": "https://i.imgur.com/Jdy3WNm.png",
@@ -1228,40 +948,6 @@
     "website": "",
     "category": "education",
     "country": "kr"
-  },
-  "kbs1tv": {
-    "name": "KBS 1TV",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/KBS_1_logo.svg/512px-KBS_1_logo.svg.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://mytv.dothome.co.kr/ch/public/1.php"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "kr"
-  },
-  "rtl9": {
-    "name": "RTL9 SD",
-    "logo": "https://i.imgur.com/nFqjVNW.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://rezofoot.tv/rtl-9/index.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "entertainment",
-    "country": "lu"
   },
   "rtlteleletzebuerg": {
     "name": "RTL Tele Letzebuerg",
@@ -1591,9 +1277,7 @@
     "logo": "https://i.imgur.com/7bRVpnu.png",
     "signals": {
       "iframe_url": [],
-      "m3u8_url": [
-        "https://d1cy85syyhvqz5.cloudfront.net/v1/master/7b67fbda7ab859400a821e9aa0deda20ab7ca3d2/aljazeeraLive/AJE/index.m3u8"
-      ],
+      "m3u8_url": [],
       "yt_id": "UCNye-wNBqNL5ZzHSJj3l8Bg",
       "yt_embed": "",
       "yt_playlist": "",
@@ -1671,40 +1355,6 @@
     "category": "news",
     "country": "ru"
   },
-  "sbttv": {
-    "name": "SBT TV SD",
-    "logo": "https://i.imgur.com/rmNDylW.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://122.155.12.107:1935/live/sbt_tv_aac_300/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "",
-    "country": "th"
-  },
-  "thaipbs": {
-    "name": "Thai PBS",
-    "logo": "https://i.imgur.com/CwalZjr.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://thaipbs-live.cdn.byteark.com/live/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "",
-    "country": "th"
-  },
   "atvalanya": {
     "name": "ATV Alanya",
     "logo": "https://i.imgur.com/bUwarR0.png",
@@ -1712,23 +1362,6 @@
       "iframe_url": [],
       "m3u8_url": [
         "https://cdn-alanyatv.yayin.com.tr/alanyatv/alanyatv/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "general",
-    "country": "tr"
-  },
-  "kardelentv": {
-    "name": "Kardelen TV",
-    "logo": "https://i.imgur.com/0RATxcN.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://edge1.socialsmart.tv/kardelentv/bant1/playlist.m3u8"
       ],
       "yt_id": "",
       "yt_embed": "",
@@ -1756,31 +1389,12 @@
     "category": "news",
     "country": "tr"
   },
-  "bbcdrama": {
-    "name": "BBC drama",
-    "logo": "https://wiki2023.mundoplus.tv/_media/logos/bbcdrama.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/60dafb9a0df1ba000758d37b/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&serverSideAds=false&studio_id=viacom&tags=ROKU_CONTENT_TAGS"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "entertainment",
-    "country": "tv"
-  },
   "abc": {
     "name": "ABC",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/ABC_News_Live_logo_2021.svg/512px-ABC_News_Live_logo_2021.svg.png",
     "signals": {
       "iframe_url": [],
-      "m3u8_url": [
-        "https://livetv-fa.tubi.video/abc-news/index.m3u8"
-      ],
+      "m3u8_url": [],
       "yt_id": "a6VCmB3P-zc",
       "yt_embed": "",
       "yt_playlist": "",
@@ -1824,99 +1438,12 @@
     "category": "general",
     "country": "us"
   },
-  "bbchomegarden": {
-    "name": "BBC Home & Garden",
-    "logo": "https://i.imgur.com/rC0pi1D.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5fb5836fe745b600070fc743/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c26f5a1-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=844b6663-bad2-462b-9aef-d0f33d5dfaa0"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "lifestyle",
-    "country": "us"
-  },
-  "beachtv": {
-    "name": "Beach TV",
-    "logo": "https://i.imgur.com/aLYz7Bv.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://media4.tripsmarter.com:1935/LiveTV/MTVHD/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "travel",
-    "country": "us"
-  },
-  "beinsportsxtra": {
-    "name": "beIN SPORTS XTRA",
-    "logo": "https://i.imgur.com/uJosqHh.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://bein-xtra-xumo.amagi.tv/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "sports",
-    "country": "us"
-  },
-  "billiardtv": {
-    "name": "Billiard TV SD",
-    "logo": "https://i.imgur.com/BZijfKh.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65df0cff66eec8000897b3a4/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=1b1cc775-4b81-11ef-a8ac-e146e4e7be02&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=36e4c683-680e-486f-91f0-ce1f0f88c4b6"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "sports",
-    "country": "us"
-  },
-  "cbsnews247": {
-    "name": "CBS News 24/7",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/560px-CBS_News_247_logo.svg.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5a6b92f6e22a617379789618/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c276ad5-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=36903a12-54e9-4279-a247-c026f64396a8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "news",
-    "country": "us"
-  },
   "cnbc": {
     "name": "CNBC",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/CNBC_logo.svg/512px-CNBC_logo.svg.png",
     "signals": {
       "iframe_url": [],
-      "m3u8_url": [
-        "http://rezofoot.tv/CNBC/index.m3u8"
-      ],
+      "m3u8_url": [],
       "yt_id": "UCvJJ_dzjViJCoLf5uKUTwoA",
       "yt_embed": "",
       "yt_playlist": "",
@@ -1960,23 +1487,6 @@
     "category": "radio",
     "country": "us"
   },
-  "heartland": {
-    "name": "Heartland Web",
-    "logo": "https://i.imgur.com/djCq2Z5.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/61f07513227feb00073ee6bc/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c291888-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=4c0b4f02-0b37-467a-87a8-5f605cce8cba"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "entertainment",
-    "country": "us"
-  },
   "nbc": {
     "name": "NBC",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/NBC_logo_2022_%28vertical%29.svg/512px-NBC_logo_2022_%28vertical%29.svg.png",
@@ -1992,40 +1502,6 @@
     },
     "website": "",
     "category": "general",
-    "country": "us"
-  },
-  "nbcnewsnow": {
-    "name": "NBC News NOW",
-    "logo": "https://i.imgur.com/JZt2qh5.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5df97894467dfa00091c873c/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2a5101-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=f97284ae-c6d0-447a-b3ee-5be284830e0b"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "news",
-    "country": "us"
-  },
-  "pbsantiquesroadshow": {
-    "name": "PBS Antiques Roadshow",
-    "logo": "https://i.imgur.com/U9CYaok.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/636c2b3c55d2e700074105c4/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2a9f22-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=45ec09d8-36de-4581-9848-35cbe70a0eb0"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "series",
     "country": "us"
   },
   "pbskidseasterncentral": {
@@ -2045,23 +1521,6 @@
     "category": "education;kids",
     "country": "us"
   },
-  "pbsnature": {
-    "name": "PBS Nature",
-    "logo": "https://i.imgur.com/Brry7cZ.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/640a64bd73e013000893d4e0/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2a9f23-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=c1a2f62c-0e00-4ba7-b555-34d14d59fee4"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "series",
-    "country": "us"
-  },
   "portlandia": {
     "name": "Portlandia",
     "logo": "https://i.imgur.com/I4KDvu9.png",
@@ -2077,57 +1536,6 @@
     },
     "website": "",
     "category": "",
-    "country": "us"
-  },
-  "scrippsnews": {
-    "name": "Scripps News",
-    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Scripps_News_logo.svg/473px-Scripps_News_logo.svg.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://jmp2.uk/plu-5459795fc9f133a519bc0bef.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "news",
-    "country": "us"
-  },
-  "storiesbyamc": {
-    "name": "Stories by AMC",
-    "logo": "https://i.imgur.com/QJtwJoS.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5e8254118601b80007b4b7ae/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2bd7a7-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=376bc851-10a1-4952-ada7-86e9d28d5845"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "entertainment",
-    "country": "us"
-  },
-  "totallyturtles": {
-    "name": "Totally Turtles",
-    "logo": "https://i.imgur.com/1gIpagY.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5d0c16d686454ead733d08f8/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2c73e9-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=3441abd1-12dc-4351-b79d-3b4eb58dc339"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "kids",
     "country": "us"
   },
   "telesur": {
@@ -2157,11 +1565,7 @@
       "iframe_url": [
         "https://mbliveec.telesur.ultrabase.net/"
       ],
-      "m3u8_url": [
-        "https://cdnenmain.telesur.ultrabase.net/mblivev3/hd/playlist.m3u8",
-        "https://cdnenmain.telesur.ultrabase.net/mblivev3/480p/playlist.m3u8",
-        "https://cdnenmain.telesur.ultrabase.net/mblivev3/360p/playlist.m3u8"
-      ],
+      "m3u8_url": [],
       "yt_id": "UCmuTmpLY35O3csvhyA6vrkg",
       "yt_embed": "",
       "yt_playlist": "",
@@ -2176,9 +1580,7 @@
     "logo": "https://i.imgur.com/WQoNKgJ.png",
     "signals": {
       "iframe_url": [],
-      "m3u8_url": [
-        "https://vcp5.myplaytv.com/globovision/globovision/playlist.m3u8"
-      ],
+      "m3u8_url": [],
       "yt_id": "UCfJtBtmhnIyfUB6RqXeImMw",
       "yt_embed": "",
       "yt_playlist": "",
@@ -2187,23 +1589,6 @@
     "website": "https://www.globovision.com/",
     "category": "news",
     "country": "ve"
-  },
-  "vicetv": {
-    "name": "VICE TV",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Vice_TV_logo.svg/512px-Vice_TV_logo.svg.png",
-    "signals": {
-      "iframe_url": [],
-      "m3u8_url": [
-        "https://vicetv-vicefast1-firetv.amagi.tv/playlist.m3u8"
-      ],
-      "yt_id": "",
-      "yt_embed": "",
-      "yt_playlist": "",
-      "twitch_id": ""
-    },
-    "website": "",
-    "category": "",
-    "country": "us"
   },
   "sabcnews": {
     "name": "SABC News",

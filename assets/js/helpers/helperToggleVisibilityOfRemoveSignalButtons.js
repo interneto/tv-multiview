@@ -21,6 +21,12 @@ const displayRemoveAllSignalButtons = () => {
     BUTTON_LOAD_DEFAULT_CHANNELS?.classList.add('d-none');
 };
 
+/**
+ * Alterna entre "Quitar todos" y "Cargar predeterminados": solo tiene sentido
+ * ofrecer uno de los dos según haya o no canales en pantalla.
+ *
+ * @returns {void}
+ */
 export const toggleVisibilityOfRemoveSignalButtons = () => {
     const canales = document.querySelectorAll('div[data-canal]');
     if (canales.length === 0) {

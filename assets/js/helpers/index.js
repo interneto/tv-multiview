@@ -32,3 +32,7 @@ export * from './helperSingleView.js';
 export * from './helperUnicVision.js';
 export * from './helperUrlState.js';
 export * from './helperStorage.js';
+export * from './helperIdbStore.js';
+export * from './helperPlayerSlots.js';
+export * from './helperKeyboardReorder.js';
+export * from './helperConfirmDialog.js';

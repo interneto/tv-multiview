@@ -8,6 +8,13 @@ const ordenOriginal = {
     'vision-unica': [],
 };
 
+/**
+ * Memoriza el orden con el que se pintaron los botones de un contenedor, para
+ * poder deshacer una ordenación alfabética y volver al orden del catálogo.
+ *
+ * @param {string} containerBotones Id del contenedor.
+ * @returns {void}
+ */
 export function guardarOrdenOriginal(containerBotones) {
     try {
         const BOTONES_EN_CONTENEDOR = Array.from(
@@ -25,6 +32,11 @@ export function guardarOrdenOriginal(containerBotones) {
     }
 }
 
+/**
+ * Ordena los botones de canal de A a Z.
+ * @param {string} containerBotones Id del contenedor.
+ * @returns {void}
+ */
 export function ordenarBotonesCanalesAscendente(containerBotones) {
     try {
         const BODY_CONTENEDOR_BOTONES = document.querySelector(`#${containerBotones}`);
@@ -47,6 +59,11 @@ export function ordenarBotonesCanalesAscendente(containerBotones) {
     }
 }
 
+/**
+ * Ordena los botones de canal de Z a A.
+ * @param {string} containerBotones Id del contenedor.
+ * @returns {void}
+ */
 export function ordenarBotonesCanalesDescendente(containerBotones) {
     try {
         const BODY_CONTENEDOR_BOTONES = document.querySelector(`#${containerBotones}`);
@@ -69,6 +86,11 @@ export function ordenarBotonesCanalesDescendente(containerBotones) {
     }
 }
 
+/**
+ * Devuelve los botones al orden memorizado por {@link guardarOrdenOriginal}.
+ * @param {string} containerBotones Id del contenedor.
+ * @returns {void}
+ */
 export function restaurarOrdenOriginalBotonesCanales(containerBotones) {
     try {
         const BODY_CONTENEDOR_BOTONES = document.querySelector(`#${containerBotones}`);

@@ -6,6 +6,15 @@ import {
 import { mostrarToast, setCheckboxState, hideTextoBotonesOverlay } from '../helpers/index.js';
 import { buildErrorToastMessage, getVisibilityLabel, t } from '../i18n.js';
 
+/**
+ * Sincroniza los checkboxes de "qué botones muestra el overlay" con lo guardado
+ * y aplica las clases correspondientes al `body`.
+ *
+ * El interruptor general manda: con el overlay oculto, los checkboxes de cada
+ * botón se deshabilitan en vez de dejar activar algo que no se va a ver.
+ *
+ * @returns {void}
+ */
 export function actualizarBotonesPersonalizarOverlay() {
     try {
         BOTONES_PERSONALIZAR_OVERLAY.forEach((contenedorBoton) => {

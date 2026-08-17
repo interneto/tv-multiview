@@ -3,6 +3,12 @@ import { CONTAINER_VISION_CUADRICULA } from '../main.js';
 import { mostrarToast } from '../helpers/index.js';
 import { buildErrorToastMessage, t } from '../i18n.js';
 
+/**
+ * Guarda los canales de la cuadrícula, en su orden actual, para restaurarlos en
+ * la próxima visita. Muestra el indicador de "guardando" durante un instante.
+ *
+ * @returns {void}
+ */
 export function saveActiveChannelsToStorage() {
     try {
         const CANALES_ACTIVOS_EN_DOM =

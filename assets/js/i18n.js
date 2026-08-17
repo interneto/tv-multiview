@@ -15,7 +15,7 @@ const translations = {
         noInternet: 'Sin conexión a internet',
         searchByCountryOrChannel: 'Buscar por país o canal',
         openChannelsSidebar: 'Abrir panel lateral de canales',
-        openChannelsCatalog: 'Abrir selector completo de canales',
+        openChannelsCatalog: 'Canales: abrir selector completo',
         openSettingsPanel: 'Abrir panel de ajustes',
         filterByCountry: 'Filtrar por país',
         sort: 'Orden',
@@ -32,6 +32,12 @@ const translations = {
             'Tu almacenamiento local ha sido eliminado, prueba recargando el sitio/PWA',
         removeAll: 'Quitar todos',
         loadDefaults: 'Cargar predeterminados',
+        loadDefaultsTitle: '¿Cargar los canales predeterminados?',
+        loadDefaultsBody:
+            'Tienes {count} canal(es) en pantalla. Puedes reemplazar tu selección por la lista predeterminada o añadir solo los que falten.',
+        loadDefaultsReplace: 'Reemplazar mi selección',
+        loadDefaultsAdd: 'Añadir a lo que ya tengo',
+        cancel: 'Cancelar',
         reload: 'Recargar',
         close: 'Cerrar',
         disclaimerTitle: 'Descargo de responsabilidad',
@@ -93,7 +99,7 @@ const translations = {
         unknown: 'Desconocido',
         move: 'Mover',
         movePanel: 'Arrastrar y mover este panel [izquierda-derecha]',
-        moveChannel: 'Arrastrar y mover este canal',
+        moveChannel: 'Arrastrar y mover este canal (o usa las flechas del teclado)',
         change: 'Cambiar',
         changeChannel: 'Cambiar este canal',
         remove: 'Quitar',
@@ -186,7 +192,7 @@ const translations = {
         noInternet: 'No internet connection',
         searchByCountryOrChannel: 'Search by country or channel',
         openChannelsSidebar: 'Open channel sidebar',
-        openChannelsCatalog: 'Open full channel selector',
+        openChannelsCatalog: 'Channels: open the full selector',
         openSettingsPanel: 'Open settings panel',
         filterByCountry: 'Filter by country',
         sort: 'Sort',
@@ -203,6 +209,12 @@ const translations = {
         localStorageDeleted: 'Your local storage has been removed. Try reloading the site or PWA.',
         removeAll: 'Remove all',
         loadDefaults: 'Load defaults',
+        loadDefaultsTitle: 'Load the default channels?',
+        loadDefaultsBody:
+            'You have {count} channel(s) on screen. You can replace your selection with the default list, or just add the ones you are missing.',
+        loadDefaultsReplace: 'Replace my selection',
+        loadDefaultsAdd: 'Add to what I have',
+        cancel: 'Cancel',
         reload: 'Reload',
         close: 'Close',
         disclaimerTitle: 'Disclaimer',
@@ -264,7 +276,7 @@ const translations = {
         unknown: 'Unknown',
         move: 'Move',
         movePanel: 'Drag and move this panel [left-right]',
-        moveChannel: 'Drag and move this channel',
+        moveChannel: 'Drag and move this channel (or use the arrow keys)',
         change: 'Change',
         changeChannel: 'Change this channel',
         remove: 'Remove',
@@ -620,6 +632,7 @@ export function translatePage() {
         element.innerHTML = `<span>${t('selectSignal')}</span><i class="bi bi-collection" data-bs-toggle="tooltip" data-bs-title="${t('selectDifferentSignal')}"></i>`;
     });
     document.querySelectorAll('#overlay-boton-mover').forEach((element) => {
+        element.setAttribute('aria-label', t('moveChannel'));
         element.setAttribute('title', t('moveChannel'));
         element.setAttribute('data-bs-title', t('moveChannel'));
         element.innerHTML = `<span>${t('move')}</span><i class="bi bi-arrows-move"></i>`;
@@ -632,6 +645,10 @@ export function translatePage() {
     document.querySelectorAll('#overlay-boton-pagina-oficial').forEach((element) => {
         element.setAttribute('title', t('officialPage'));
         element.setAttribute('data-bs-title', t('officialPage'));
+        // El nombre del canal lo pone channelUI y no se traduce; solo se recompone
+        // el aria-label para que la parte traducible siga el idioma elegido.
+        const nombreCanal = element.querySelector('span')?.textContent.trim();
+        if (nombreCanal) element.setAttribute('aria-label', `${nombreCanal}: ${t('officialPage')}`);
     });
     document.querySelectorAll('#overlay-boton-quitar').forEach((element) => {
         element.setAttribute('aria-label', t('removeChannel'));

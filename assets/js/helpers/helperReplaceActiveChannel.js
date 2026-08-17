@@ -3,6 +3,16 @@ import { tele } from '../main.js';
 import { mostrarToast, ajustarClaseBotonCanal, saveActiveChannelsToStorage } from './index.js';
 import { buildErrorToastMessage, t } from '../i18n.js';
 
+/**
+ * Sustituye un canal activo por otro conservando su hueco en la cuadrícula.
+ *
+ * Si el canal entrante ya estaba en pantalla en otro hueco, se quita de allí:
+ * el mismo canal dos veces gasta dos reproductores para mostrar lo mismo.
+ *
+ * @param {string} canalIdBotonPulsadoEnModal Canal que entra.
+ * @param {string} canalIdExistente Canal que se reemplaza.
+ * @returns {void}
+ */
 export function reemplazarCanalActivo(canalIdBotonPulsadoEnModal, canalIdExistente) {
     try {
         let divPadreACambiar = document.querySelector(`div[data-canal="${canalIdExistente}"]`);

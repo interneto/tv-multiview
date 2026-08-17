@@ -1,3 +1,11 @@
+/**
+ * Inicializa los tooltips de Bootstrap que aún no lo estén.
+ *
+ * Marca cada elemento ya inicializado para no crear instancias duplicadas al
+ * volver a llamarla tras redibujar canales.
+ *
+ * @returns {void}
+ */
 export const activarTooltipsBootstrap = () => {
     if (typeof window.bootstrap === 'undefined' || !window.bootstrap.Tooltip) return;
 
@@ -14,6 +22,12 @@ export const activarTooltipsBootstrap = () => {
     });
 };
 
+/**
+ * Destruye los tooltips activos. Necesario antes de mover canales: un tooltip
+ * abierto sobre el botón que se arrastra se queda flotando huérfano.
+ *
+ * @returns {void}
+ */
 export const removerTooltipsBootstrap = () => {
     if (typeof window.bootstrap === 'undefined' || !window.bootstrap.Tooltip) return;
 

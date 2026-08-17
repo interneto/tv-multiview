@@ -1,5 +1,33 @@
 # Changelog
 
+## [Unreleased]
+
+- Fixed
+    - A healthy player kept its concurrency slot for as long as it played, so with more working channels than slots the last ones never started (the 9-channel default grid left one tile black). The slot is now released once the stream is up: the cap throttles loading, not playback.
+    - Channels whose only signal is a platform id (`yt_id`, `twitch_id`…) were treated as having no usable signal and their buttons were hidden, because the check demanded an `http` URL.
+    - Disposing an already-disposed player threw "Invalid target for null#trigger" inside video.js when a stream failed through two paths at once (load timeout and `error`).
+    - Both social preview meta tags pointed at `shots_tv-multiview_*.webp` while the files were still named `shots_teles_*.webp`, so link previews had no image. Files renamed, URLs made absolute.
+    - The "Reiniciar almacenamiento local" button on the channel-load error screen had no handler and did nothing.
+    - Accessibility: the overlay "official page" link lost its accessible name whenever overlay text was hidden, the channel-selector button's `aria-label` did not include its visible text, and the language buttons were below the AA contrast ratio in both themes. Lighthouse accessibility 87 → 95.
+
+- Added
+    - Weekly `Channel maintenance` workflow: health check → CORS check → YouTube fallbacks → https upgrade → prune, opening a PR with the diff.
+    - `tools/check_cors_channels.js`: checks whether a stream is usable _from a browser_. The reachability check runs in Node, which ignores the same-origin policy, so servers that answer 200 without a usable `Access-Control-Allow-Origin` used to pass while never playing a frame.
+    - `tools/upgrade_insecure_streams.js`: probes the https twin of every plain-http stream, upgrades it when it answers and retires it when it does not.
+    - Keyboard reordering of channels with the arrow keys on the overlay "Move" button; drag-and-drop was pointer-only.
+    - A confirmation dialog for "Load defaults", with the option to add only the missing channels instead of replacing the current selection.
+    - Explicit service worker registration, no longer dependent on the CDN-loaded `<pwa-update>` component.
+    - Tests for the player-slot queue and the player sizing options (19 in total).
+    - JSDoc on every helper.
+
+- Changed
+    - The channel catalog backup moved from localStorage to IndexedDB, with automatic migration and a localStorage fallback.
+    - PWA screenshots converted to WebP: 1.90 MB → 244 KB.
+    - Default grid: `skynews` and `bbearth` (CORS-blocked), `m6` (plain http, no https twin) replaced by `dw`, `cgtndocumentary` and `tvmonaco`.
+
+- Removed
+    - Retired 35 channels that cannot play on the published site (dead links, plain-http with no https twin, or CORS-blocked with no fallback); 117 → 96 active. All of them are kept in `inactive.json`.
+
 ## [v0.22]
 
 - Fixed

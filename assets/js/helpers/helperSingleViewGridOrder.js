@@ -4,6 +4,13 @@ import { buildErrorToastMessage, t } from '../i18n.js';
 export const CONTAINER_INTERNO_VISION_UNICA = document.querySelector('.vision-unica-grid');
 const ID_EN_ORDEN_ORIGINAL = ['panel-canales-vision-unica', 'container-video-vision-unica'];
 
+/**
+ * Restaura el orden guardado de los dos paneles de visión única (lista de
+ * canales y vídeo). Si lo guardado no cuadra con los paneles que existen hoy,
+ * se descarta y se vuelve al orden original.
+ *
+ * @returns {void}
+ */
 export function cargarOrdenVisionUnica() {
     try {
         const ordenGuardado = localStorage.getItem('orden-grid-vision-unica');
@@ -41,14 +48,28 @@ export function cargarOrdenVisionUnica() {
     }
 }
 
+/**
+ * Persiste el orden actual de los paneles de visión única.
+ * @returns {void}
+ */
 export function guardarOrdenPanelesVisionUnica() {
     let ordenActual = Array.from(CONTAINER_INTERNO_VISION_UNICA.children).map((item) => item.id);
     localStorage.setItem('orden-grid-vision-unica', JSON.stringify(ordenActual));
 }
 
+/**
+ * @returns {string[]} Ids de los paneles en el orden en que están ahora.
+ */
 function getOrdenActual() {
     return Array.from(CONTAINER_INTERNO_VISION_UNICA.children).map((item) => item.id);
 }
+
+/**
+ * Marca la cuadrícula de visión única como "reordenada" cuando el orden difiere
+ * del original: el CSS invierte las columnas a partir de esa clase.
+ *
+ * @returns {void}
+ */
 export function toggleClaseOrdenado() {
     const ordenActual = getOrdenActual();
     const esOrdenOriginal = JSON.stringify(ID_EN_ORDEN_ORIGINAL) === JSON.stringify(ordenActual);
