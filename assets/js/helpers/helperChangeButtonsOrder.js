@@ -1,6 +1,7 @@
 import { CHANNEL_CONTAINER_ID_PREFIXES } from '../constants/index.js';
 
 // Almacenar el orden original de los botones como identificadores únicos
+/** @type {Record<string, (string | null)[]>} */
 const ordenOriginal = {
     'modal-canales': [],
     'offcanvas-canales': [],

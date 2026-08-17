@@ -33,6 +33,7 @@ export function getActiveChannelsFromDom(containerSelector) {
 
 /**
  * Serializa el estado actual (canales + layout) en el hash de la URL.
+ * @param {string} containerSelector Selector del contenedor de canales.
  */
 export function pushStateToUrl(containerSelector) {
     const canales = getActiveChannelsFromDom(containerSelector);

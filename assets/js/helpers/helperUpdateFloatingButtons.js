@@ -77,6 +77,11 @@ export function clicBotonPosicionBotonesFlotantes(
 }
 
 /**
+ * @param {HTMLElement} boton
+ * @param {string} top
+ * @param {string} start
+ * @param {string} margin
+ * @param {string} translate
  * @returns {boolean} true si el botón corresponde a esa combinación de posición.
  */
 function esBotonReposicionar(boton, top, start, margin, translate) {

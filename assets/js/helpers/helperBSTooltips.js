@@ -10,12 +10,13 @@ export const activarTooltipsBootstrap = () => {
     if (typeof window.bootstrap === 'undefined' || !window.bootstrap.Tooltip) return;
 
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((tooltip) => {
-        if (!tooltip || tooltip.getAttribute('data-bs-tooltip-bound') === 'true') return;
+        const el = /** @type {HTMLElement & {__bootstrapTooltipInstance?: bootstrap.Tooltip}} */ (tooltip);
+        if (!el || el.getAttribute('data-bs-tooltip-bound') === 'true') return;
 
         try {
-            const instance = new window.bootstrap.Tooltip(tooltip);
-            tooltip.setAttribute('data-bs-tooltip-bound', 'true');
-            tooltip.__bootstrapTooltipInstance = instance;
+            const instance = new window.bootstrap.Tooltip(el);
+            el.setAttribute('data-bs-tooltip-bound', 'true');
+            el.__bootstrapTooltipInstance = instance;
         } catch (error) {
             console.warn('Tooltip bootstrap no pudo inicializarse:', error);
         }

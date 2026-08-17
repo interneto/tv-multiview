@@ -10,7 +10,8 @@
         "strict": false,
         "noImplicitAny": true,
         "skipLibCheck": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "typeRoots": ["./node_modules/@types", "./assets/js"]
     },
-    "include": ["assets/js/helpers/**/*.js"]
+    "include": ["assets/js/helpers/**/*.js", "assets/js/**/*.d.ts"]
 }
