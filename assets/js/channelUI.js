@@ -371,6 +371,7 @@ export function createChannelOverlay(canalId, tipoSeñalCargada, valorIndex = 0)
             'gap-2',
             'justify-content-end',
             'align-items-start',
+            'align-content-start',
             'flex-wrap',
             'top-0',
             'end-0',

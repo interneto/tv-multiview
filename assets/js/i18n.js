@@ -83,10 +83,6 @@ const translations = {
         infoDescription:
             'Personaliza la interfaz, instala la PWA y guarda tu seleccion de canales localmente.',
         backgroundLogo: 'Logo en fondo',
-        experimentalMode: 'Activar modo experimental canales IPTV',
-        experimentalLoading: 'Cargando...',
-        experimentalTooltip:
-            'Este botón carga la lista IPTV junto con los canales predeterminados. El funcionamiento de estos, así como sus enlaces a sitios oficiales, no se garantiza. Esta carga siempre debe activarse manualmente.',
         install: 'Instalar',
         savingChannels: 'Guardando canales',
         languageSelector: 'Selector de idioma',
@@ -115,9 +111,6 @@ const translations = {
         reset: 'Reiniciar',
         alreadySingleView: 'Ya estas en modo visión única',
         alreadyGridView: 'Ya estas en modo visión cuadrícula',
-        experimentalEnabled:
-            'Modo experimental activado: {added} canales IPTV añadidos, {updated} señales m3u8 actualizadas.',
-        iptvDeactivate: 'Desactivar modo experimental',
         iptvBadge: 'Canal IPTV añadido por el modo experimental',
         shareText:
             'PWA de codigo abierto para ver y comparar transmisiones de noticias y TV en vivo.',
@@ -141,7 +134,6 @@ const translations = {
             'Ha ocurrido un error durante la eliminación del canal con id: {channel}.',
         errorLoadChannels: 'Ha ocurrido un error durante la carga de canales predeterminados.',
         errorInitialLoad: 'Ha ocurrido un error durante la carga inicial.',
-        errorExperimentalMode: 'Ha ocurrido un error al intentar activar modo experimental.',
         errorCreateOverlay:
             'Ha ocurrido un error durante la creación del overlay para el canal con id: {channel}.',
         errorChangeSignal:
@@ -260,10 +252,6 @@ const translations = {
         infoDescription:
             'Customize the interface, install the PWA, and keep your channel selection locally.',
         backgroundLogo: 'Background logo',
-        experimentalMode: 'Enable IPTV experimental mode',
-        experimentalLoading: 'Loading...',
-        experimentalTooltip:
-            'This button loads the IPTV list together with the default channels. Their behavior, as well as links to official sites, is not guaranteed. This load must always be enabled manually.',
         install: 'Install',
         savingChannels: 'Saving channels',
         languageSelector: 'Language selector',
@@ -292,9 +280,6 @@ const translations = {
         reset: 'Reset',
         alreadySingleView: 'You are already in single-view mode',
         alreadyGridView: 'You are already in grid mode',
-        experimentalEnabled:
-            'Experimental mode enabled: {added} IPTV channels added, {updated} m3u8 signals updated.',
-        iptvDeactivate: 'Deactivate experimental mode',
         iptvBadge: 'IPTV channel added by experimental mode',
         shareText: 'Open-source PWA to watch and compare live news and TV streams.',
         copyLink: 'Copy link',
@@ -314,7 +299,6 @@ const translations = {
         errorRemoveChannel: 'An error occurred while removing the channel with id: {channel}.',
         errorLoadChannels: 'An error occurred while loading default channels.',
         errorInitialLoad: 'An error occurred during the initial load.',
-        errorExperimentalMode: 'An error occurred while enabling experimental mode.',
         errorCreateOverlay:
             'An error occurred while creating the overlay for the channel with id: {channel}.',
         errorChangeSignal:
@@ -674,8 +658,6 @@ export function translatePage() {
         t('infoDescription'),
     );
     setLeadingText('label[for="checkbox-tarjeta-logo-background"]', t('backgroundLogo'));
-    setText('#boton-experimental span', t('experimentalMode'));
-    setAttr('#boton-experimental i.bi-question-circle', 'data-bs-title', t('experimentalTooltip'));
     setHtml('#boton-instalar-pwa', `<i class="bi bi-plus-circle-dotted"></i> ${t('install')}`);
     setText('#sidepanel > .d-flex.p-3 .btn.btn-secondary.ms-auto.rounded-pill', t('close'));
     setAttr('#sidepanel .btn-close.close-sidepanel', 'aria-label', t('close'));

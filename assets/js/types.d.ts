@@ -28,21 +28,23 @@ declare global {
     }
   }
 
-  /** isMobile detection library */
+  /** isMobile detection library (ismobilejs@1.1.1: plain object, not methods) */
   const isMobile: {
-    android(): boolean;
-    blackberry(): boolean;
-    iphone(): boolean;
-    ipod(): boolean;
-    ipad(): boolean;
-    ie(): boolean;
-    opera(): boolean;
-    windows(): boolean;
-    windows_phone(): boolean;
-    other(): boolean;
-    any(): boolean;
-    phone(): boolean;
-    tablet(): boolean;
+    apple: { phone: boolean; ipod: boolean; tablet: boolean; universal: boolean; device: boolean };
+    amazon: { phone: boolean; tablet: boolean; device: boolean };
+    android: { phone: boolean; tablet: boolean; device: boolean };
+    windows: { phone: boolean; tablet: boolean; device: boolean };
+    other: {
+      blackberry: boolean;
+      blackberry10: boolean;
+      opera: boolean;
+      firefox: boolean;
+      chrome: boolean;
+      device: boolean;
+    };
+    any: boolean;
+    phone: boolean;
+    tablet: boolean;
   };
 
   /** Bootstrap components namespace */

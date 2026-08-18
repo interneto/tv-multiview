@@ -1,4 +1,4 @@
-import { loadChannelData, fetchIptvChannelsData, listChannels } from './channelsData.js';
+import { loadChannelData, listChannels } from './channelsData.js';
 import { createChannelFragment, disposeVideoPlayer } from './channelUI.js';
 import {
     CHANNEL_CONTAINER_ID_PREFIXES,
@@ -15,7 +15,6 @@ import {
     iniciarRevisarConexion,
     mostrarToast,
     playAudioSinDelay,
-    removeAllActiveChannels as removeAllActiveChannels,
     obtenerCanalesPredeterminados,
     saveActiveChannelsToStorage,
     ajustarClaseBotonCanal,
@@ -420,7 +419,7 @@ export let tele = {
     cargaCanalesPredeterminados: () => {
         let lsCanales = readStoredObject('canales-vision-cuadricula');
         if (Object.keys(lsCanales).length === 0 && lsModal !== 'hide') {
-            obtenerCanalesPredeterminados(isMobile.any()).forEach((canal) => tele.add(canal));
+            obtenerCanalesPredeterminados(isMobile.any).forEach((canal) => tele.add(canal));
         } else {
             try {
                 Object.keys(lsCanales).forEach((canal) => {
@@ -711,17 +710,6 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             await loadChannelData();
             if (listChannels) {
-                // El modo experimental persiste entre recargas: mientras la bandera
-                // siga activa se vuelve a fusionar la lista m3u con el catálogo para
-                // que los canales IPTV reaparezcan (y sus insignias) en cada sesión.
-                if (localStorage.getItem('modo-experimental') === 'activo') {
-                    await fetchIptvChannelsData();
-                    for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
-                        document
-                            .querySelector(`#${PREFIJO}-body-botones-canales`)
-                            .classList.add('border', 'border-warning', 'rounded-3');
-                    }
-                }
                 crearBotonesParaCanales();
                 crearBotonesPaises();
                 borraPreferenciaSeñalInvalida();
@@ -801,66 +789,9 @@ window.addEventListener('DOMContentLoaded', () => {
         /** @type {HTMLElement} */ (event.target).remove();
     });
 
-    const BOTON_EXPERIMENTAL = document.querySelector('#boton-experimental');
-    BOTON_EXPERIMENTAL.addEventListener('click', async () => {
-        try {
-            if (localStorage.getItem('modo-experimental') !== 'activo') {
-                BOTON_EXPERIMENTAL.querySelector('span').textContent = t('experimentalLoading');
-                const { added, updated } = await fetchIptvChannelsData();
-                localStorage.setItem('modo-experimental', 'activo');
-                for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
-                    document
-                        .querySelector(`#${PREFIJO}-body-botones-canales`)
-                        .classList.add('border', 'border-warning', 'rounded-3');
-                    document.querySelector(`#${PREFIJO}-body-botones-canales`).innerHTML = '';
-                    document.querySelector(
-                        `#${PREFIJO}-collapse-botones-listado-filtro-countries`,
-                    ).innerHTML = '';
-                }
-                removeAllActiveChannels();
-                crearBotonesParaCanales();
-                crearBotonesPaises();
-                syncInterfaceStatus();
-
-                mostrarToast(t('experimentalEnabled', { added, updated }), 'warning');
-            } else {
-                // Ya activo: el mismo botón desactiva y recarga (salir del modo).
-                localStorage.setItem('modo-experimental', 'inactivo');
-                location.reload();
-            }
-        } catch (error) {
-            console.error(`Error al intentar activar modo experimental. Error: ${error}`);
-            mostrarToast(
-                buildErrorToastMessage(t('errorExperimentalMode'), error),
-                'danger',
-                false,
-            );
-            return;
-        } finally {
-            BOTON_EXPERIMENTAL.querySelector('span').textContent =
-                localStorage.getItem('modo-experimental') === 'activo'
-                    ? t('iptvDeactivate')
-                    : t('experimentalMode');
-        }
-    });
-
-    // Si el modo quedó activo de una sesión anterior, el botón ofrece desactivarlo.
-    if (localStorage.getItem('modo-experimental') === 'activo') {
-        BOTON_EXPERIMENTAL.querySelector('span').textContent = t('iptvDeactivate');
-    }
-
     window.addEventListener('ui-language-change', () => {
         syncInterfaceStatus();
         refreshLocalizedUiState();
-        // translatePage repone el texto "Activar" del botón experimental; si el modo
-        // sigue activo hay que devolverle el rótulo de desactivación.
-        const spanBotonExperimental = BOTON_EXPERIMENTAL.querySelector('span');
-        if (spanBotonExperimental) {
-            spanBotonExperimental.textContent =
-                localStorage.getItem('modo-experimental') === 'activo'
-                    ? t('iptvDeactivate')
-                    : t('experimentalMode');
-        }
     });
 
     refreshLocalizedUiState();

@@ -122,7 +122,7 @@ function aplicarCanalesPredeterminados(modo) {
                 (div) => /** @type {HTMLElement} */ (div).dataset.canal,
             ),
         );
-        obtenerCanalesPredeterminados(isMobile ? isMobile.any() : false)
+        obtenerCanalesPredeterminados(isMobile ? isMobile.any : false)
             .filter((canal) => !yaActivos.has(canal))
             .forEach((canal) => tele.add(canal));
     } catch (error) {
