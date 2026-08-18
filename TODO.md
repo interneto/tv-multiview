@@ -1,12 +1,10 @@
 # To Do
 
-## Status Overview
-
-✅ **12 tasks completed** — See [changelog.md](changelog.md) for full details under `[Unreleased]`.
+See [changelog.md](changelog.md) for everything already shipped, under `[Unreleased]`.
 
 ## 📋 Pending
 
-- [x] **Partial migration to TypeScript** → `checkJs` enabled and 14% of helper errors fixed. Infrastructure ready (types.d.ts, improved JSDoc). Remaining 95 errors can be tackled incrementally. Type-checking now active for all `assets/js/helpers/` files.
+Nothing open right now.
 
 ## Known limits
 

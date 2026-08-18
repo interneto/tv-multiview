@@ -13,5 +13,5 @@
         "resolveJsonModule": true,
         "typeRoots": ["./node_modules/@types", "./assets/js"]
     },
-    "include": ["assets/js/helpers/**/*.js", "assets/js/**/*.d.ts"]
+    "include": ["assets/js/**/*.js", "assets/js/**/*.d.ts"]
 }

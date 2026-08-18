@@ -19,7 +19,7 @@ let frameSolicitado = 0;
 const VISIBILITY_OBSERVER = new IntersectionObserver(
     (entries) => {
         entries.forEach((entry) => {
-            const canalId = entry.target.dataset.canal;
+            const canalId = /** @type {HTMLElement} */ (entry.target).dataset.canal;
             if (canalId) setPlayerVisibility(canalId, entry.isIntersecting);
         });
     },
