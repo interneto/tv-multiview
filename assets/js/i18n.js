@@ -116,9 +116,9 @@ const translations = {
         alreadySingleView: 'Ya estas en modo visión única',
         alreadyGridView: 'Ya estas en modo visión cuadrícula',
         experimentalEnabled:
-            'Modo experimental activado. Se han combinado listas de canales y sus signals m3u8.',
-        alreadyExperimental:
-            'Ya estas en modo experimental. Revisa los canales que se cargaron. Para regresar al modo normal recarga la página.',
+            'Modo experimental activado: {added} canales IPTV añadidos, {updated} señales m3u8 actualizadas.',
+        iptvDeactivate: 'Desactivar modo experimental',
+        iptvBadge: 'Canal IPTV añadido por el modo experimental',
         shareText:
             'PWA de codigo abierto para ver y comparar transmisiones de noticias y TV en vivo.',
         copyLink: 'Copiar enlace',
@@ -293,9 +293,9 @@ const translations = {
         alreadySingleView: 'You are already in single-view mode',
         alreadyGridView: 'You are already in grid mode',
         experimentalEnabled:
-            'Experimental mode enabled. Channel lists and m3u8 signals were merged.',
-        alreadyExperimental:
-            'Experimental mode is already active. Review the loaded channels. Reload the page to return to normal mode.',
+            'Experimental mode enabled: {added} IPTV channels added, {updated} m3u8 signals updated.',
+        iptvDeactivate: 'Deactivate experimental mode',
+        iptvBadge: 'IPTV channel added by experimental mode',
         shareText: 'Open-source PWA to watch and compare live news and TV streams.',
         copyLink: 'Copy link',
         copySuccess: 'Copied successfully',
@@ -422,7 +422,9 @@ export function getCurrentLanguage() {
  */
 export function t(key, params = {}) {
     const language = getCurrentLanguage();
-    const translationsMap = /** @type {Record<string, string>} */ (translations[language] ?? translations.es);
+    const translationsMap = /** @type {Record<string, string>} */ (
+        translations[language] ?? translations.es
+    );
     const template = translationsMap[key] ?? key;
     return typeof template === 'string' ? interpolate(template, params) : template;
 }

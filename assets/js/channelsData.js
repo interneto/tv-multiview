@@ -1,5 +1,5 @@
 import { URL_TV_CHANNELS_JSON, URL_IPTV_CHANNELS_M3U } from './constants/index.js';
-import { areSimilarNames, M3U_A_JSON } from './helpers/index.js';
+import { M3U_A_JSON } from './helpers/index.js';
 import { idbGet, idbSet, idbDelete } from './helpers/helperIdbStore.js';
 
 // 9 canales para la grilla 3x3 por defecto, uno por tema para que la primera
@@ -193,35 +193,59 @@ function normalizeChannelList(obj) {
     return out;
 }
 
+/**
+ * Carga la lista m3u (modo experimental IPTV) y la combina en `listChannels`.
+ * Deduplica por nombre normalizado o por tvg-id, marca los canales procedentes
+ * del m3u con `iptv: true` y devuelve cuántos se añadieron/actualizaron para
+ * que la UI pueda resumirlo en un toast.
+ *
+ * @returns {Promise<{added: number, updated: number}>}
+ */
 export async function fetchIptvChannelsData() {
     console.info('Probando carga archivo m3u');
     const m3uResponse = await fetchWithTimeout(URL_IPTV_CHANNELS_M3U);
     const m3uData = await m3uResponse.text();
     const parseM3u = await M3U_A_JSON(m3uData);
 
-    // Crear un mapa para indexar los canales por name
-    /** @type {Record<string, any>} */
-    const mapCanales = {};
-    if (listChannels) {
-        for (const canal of Object.keys(listChannels)) {
-            const nameLista = listChannels[canal].name ?? 'Canal sin name';
-            mapCanales[nameLista] = listChannels[canal];
-        }
+    if (!listChannels) return { added: 0, updated: 0 };
 
-        // Combinar los canales de parseM3u con los de listChannels
-        for (const nameCanal in parseM3u) {
-            const nameParseM3u = parseM3u[nameCanal].name ?? 'Canal sin name';
-            const existingChannel = mapCanales[nameParseM3u];
+    let added = 0;
+    let updated = 0;
 
-            if (existingChannel && areSimilarNames(existingChannel.name, nameParseM3u)) {
-                const existingUrls = /** @type {string[]} */ (existingChannel.signals.m3u8_url);
-                const newUrls = /** @type {string[]} */ (
-                    parseM3u[nameCanal].signals.m3u8_url
-                ).filter((url) => !existingUrls.includes(url));
-                existingUrls.push(...newUrls);
-            } else {
-                listChannels[nameCanal] = parseM3u[nameCanal];
+    // Índice doble (nombre normalizado + tvg-id) para no duplicar un canal que el
+    // m3u lista con distinta capitalización o por su id en vez de por nombre.
+    /** @type {Map<string, {id: string, canal: any}>} */
+    const mapaPorNombre = new Map();
+    /** @type {Map<string, {id: string, canal: any}>} */
+    const mapaPorId = new Map();
+    for (const id of Object.keys(listChannels)) {
+        const canal = listChannels[id];
+        mapaPorNombre.set((canal.name ?? '').trim().toLowerCase(), { id, canal });
+        if (id) mapaPorId.set(id.toLowerCase(), { id, canal });
+    }
+
+    for (const idM3u of Object.keys(parseM3u)) {
+        const canalM3u = parseM3u[idM3u];
+        const claveNombre = (canalM3u.name ?? '').trim().toLowerCase();
+        const existente = mapaPorNombre.get(claveNombre) ?? mapaPorId.get(idM3u.toLowerCase());
+
+        if (existente) {
+            const { canal } = existente;
+            const urlsExistentes = /** @type {string[]} */ (canal.signals?.m3u8_url ?? []);
+            const urlsNuevas = /** @type {string[]} */ (canalM3u.signals?.m3u8_url ?? []).filter(
+                (url) => !urlsExistentes.includes(url),
+            );
+            if (urlsNuevas.length > 0) {
+                canal.signals = { ...canal.signals, m3u8_url: [...urlsExistentes, ...urlsNuevas] };
+                canal.iptv = true;
+                updated++;
             }
+        } else {
+            listChannels[idM3u] = { ...canalM3u, iptv: true };
+            added++;
         }
     }
+
+    console.info(`IPTV m3u: ${added} canales añadidos, ${updated} actualizados`);
+    return { added, updated };
 }

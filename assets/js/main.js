@@ -539,6 +539,22 @@ new Sortable(CONTAINER_INTERNO_VISION_UNICA, {
 // ocultar texto si el tamaño de los botones excede el tamaño del contenedor
 window.addEventListener('resize', hideTextoBotonesOverlay);
 
+// MARK: auto-ocultar barras de overlay tras inactividad
+// Mientras el usuario no mueve el puntero ni usa el teclado, las barras de canal
+// se atenúan (ver .barra-overlay-idle en style.css) para no tapar la señal;
+// cualquier interacción las devuelve. Se reinicia el temporizador en cada evento.
+/** @type {number | undefined} */
+let timerIdleOverlay;
+const revelarBarrasOverlay = () => {
+    document.body.classList.remove('barra-overlay-idle');
+    clearTimeout(timerIdleOverlay);
+    timerIdleOverlay = setTimeout(() => document.body.classList.add('barra-overlay-idle'), 3000);
+};
+['pointermove', 'pointerdown', 'keydown', 'touchstart'].forEach((evento) =>
+    document.addEventListener(evento, revelarBarrasOverlay, { passive: true }),
+);
+revelarBarrasOverlay();
+
 // MARK: DOMContentLoaded
 window.addEventListener('DOMContentLoaded', () => {
     initI18n();
@@ -603,8 +619,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     BOTONES_REPOSICIONAR_BOTONES_FLOTANTES.forEach((boton) => {
         boton.addEventListener('click', () => {
-            const BOTON_DATASET_POSITION =
-                /** @type {[string, string, string, string]} */ (boton.dataset.position.split(' '));
+            const BOTON_DATASET_POSITION = /** @type {[string, string, string, string]} */ (
+                boton.dataset.position.split(' ')
+            );
             clicBotonPosicionBotonesFlotantes(...BOTON_DATASET_POSITION);
         });
     });
@@ -694,6 +711,17 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             await loadChannelData();
             if (listChannels) {
+                // El modo experimental persiste entre recargas: mientras la bandera
+                // siga activa se vuelve a fusionar la lista m3u con el catálogo para
+                // que los canales IPTV reaparezcan (y sus insignias) en cada sesión.
+                if (localStorage.getItem('modo-experimental') === 'activo') {
+                    await fetchIptvChannelsData();
+                    for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
+                        document
+                            .querySelector(`#${PREFIJO}-body-botones-canales`)
+                            .classList.add('border', 'border-warning', 'rounded-3');
+                    }
+                }
                 crearBotonesParaCanales();
                 crearBotonesPaises();
                 borraPreferenciaSeñalInvalida();
@@ -773,13 +801,12 @@ window.addEventListener('DOMContentLoaded', () => {
         /** @type {HTMLElement} */ (event.target).remove();
     });
 
-    localStorage.setItem('modo-experimental', 'inactivo');
     const BOTON_EXPERIMENTAL = document.querySelector('#boton-experimental');
     BOTON_EXPERIMENTAL.addEventListener('click', async () => {
         try {
             if (localStorage.getItem('modo-experimental') !== 'activo') {
                 BOTON_EXPERIMENTAL.querySelector('span').textContent = t('experimentalLoading');
-                await fetchIptvChannelsData();
+                const { added, updated } = await fetchIptvChannelsData();
                 localStorage.setItem('modo-experimental', 'activo');
                 for (const PREFIJO of CHANNEL_CONTAINER_ID_PREFIXES) {
                     document
@@ -795,13 +822,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 crearBotonesPaises();
                 syncInterfaceStatus();
 
-                mostrarToast(t('experimentalEnabled'), 'warning');
+                mostrarToast(t('experimentalEnabled', { added, updated }), 'warning');
             } else {
-                playAudioSinDelay(AUDIO_FAIL);
-                mostrarToast(
-                    `${t('alreadyExperimental')} <br> <button type="button" class="btn btn-light rounded-pill btn-sm w-100 border-light mt-2" onclick="location.reload()">${t('reload')} <i class="bi bi-arrow-clockwise"></i></button>`,
-                    'info',
-                );
+                // Ya activo: el mismo botón desactiva y recarga (salir del modo).
+                localStorage.setItem('modo-experimental', 'inactivo');
+                location.reload();
             }
         } catch (error) {
             console.error(`Error al intentar activar modo experimental. Error: ${error}`);
@@ -812,13 +837,30 @@ window.addEventListener('DOMContentLoaded', () => {
             );
             return;
         } finally {
-            BOTON_EXPERIMENTAL.querySelector('span').textContent = t('experimentalMode');
+            BOTON_EXPERIMENTAL.querySelector('span').textContent =
+                localStorage.getItem('modo-experimental') === 'activo'
+                    ? t('iptvDeactivate')
+                    : t('experimentalMode');
         }
     });
+
+    // Si el modo quedó activo de una sesión anterior, el botón ofrece desactivarlo.
+    if (localStorage.getItem('modo-experimental') === 'activo') {
+        BOTON_EXPERIMENTAL.querySelector('span').textContent = t('iptvDeactivate');
+    }
 
     window.addEventListener('ui-language-change', () => {
         syncInterfaceStatus();
         refreshLocalizedUiState();
+        // translatePage repone el texto "Activar" del botón experimental; si el modo
+        // sigue activo hay que devolverle el rótulo de desactivación.
+        const spanBotonExperimental = BOTON_EXPERIMENTAL.querySelector('span');
+        if (spanBotonExperimental) {
+            spanBotonExperimental.textContent =
+                localStorage.getItem('modo-experimental') === 'activo'
+                    ? t('iptvDeactivate')
+                    : t('experimentalMode');
+        }
     });
 
     refreshLocalizedUiState();

@@ -45,7 +45,11 @@ export function crearBotonesParaCanales() {
                 'rounded-3',
             );
             if (revisarSeñalesVacias(canal)) botonCanal.classList.add('d-none');
-            botonCanal.innerHTML = `<span class="flex-grow-1">${name}</span>
+            const insiggniaIptv =
+                listChannels[canal].iptv === true
+                    ? `<span class="badge text-bg-warning ms-1" title="${t('iptvBadge')}">IPTV</span>`
+                    : '';
+            botonCanal.innerHTML = `<span class="flex-grow-1">${name}${insiggniaIptv}</span>
                     ${country && typeof country === 'string' && COUNTRY_CODES[country.toLowerCase()] ? `<img src="https://flagcdn.com/${country.toLowerCase()}.svg" alt="bandera ${namePais}" title="${namePais}" loading="lazy" decoding="async" class="svg-bandera rounded-1">` : ''}
                     ${iconoCategoria ? `${iconoCategoria}` : ''}`;
             // ${logo ? `<img src="${logo}" alt="logo ${name}" title="logo ${name}" class="img-logos rounded-1">` : ''}
@@ -71,7 +75,7 @@ export function crearBotonesParaCanales() {
                 '#modal-canales-body-botones-canales button, #offcanvas-canales-body-botones-canales button',
             )
             .forEach((botonCanalEnDOM) => {
-                const btn = /** @type {HTMLElement} */(botonCanalEnDOM);
+                const btn = /** @type {HTMLElement} */ (botonCanalEnDOM);
                 btn.addEventListener('click', () => {
                     const accionBoton = btn.classList.contains(CSS_CLASS_SECONDARY_BUTTON)
                         ? 'add'
@@ -83,19 +87,20 @@ export function crearBotonesParaCanales() {
         document
             .querySelectorAll('#modal-cambiar-canal-body-botones-canales button')
             .forEach((botonCanalEnDOM) => {
-                const btn = /** @type {HTMLElement} */(botonCanalEnDOM);
+                const btn = /** @type {HTMLElement} */ (botonCanalEnDOM);
                 btn.setAttribute('data-bs-dismiss', 'modal');
             });
 
         document
             .querySelectorAll('#vision-unica-body-botones-canales button')
             .forEach((botonCanalEnDOM) => {
-                const btn = /** @type {HTMLElement} */(botonCanalEnDOM);
+                const btn = /** @type {HTMLElement} */ (botonCanalEnDOM);
                 btn.addEventListener('click', () => {
                     if (CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]')) {
                         tele.remove(
-                            /** @type {HTMLElement} */(CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]')).dataset
-                                .canal,
+                            /** @type {HTMLElement} */ (
+                                CONTAINER_VIDEO_VISION_UNICA.querySelector('div[data-canal]')
+                            ).dataset.canal,
                         );
                     }
 

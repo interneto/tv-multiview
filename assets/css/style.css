@@ -1371,3 +1371,36 @@ html[data-bs-theme='dark'] [data-language-option].btn-outline-secondary {
 .vjs-control-bar .vjs-time-control {
     font-size: 1.15em !important;
 }
+
+/* MARK: barra de controles video.js — limpia
+   La barra nativa solo aparece al posar el cursor (o enfocar/interactuar) sobre
+   el canal, nunca en reposo, para no tapar la transmisión. En táctil video.js
+   marca `.vjs-user-active` al tocar, que también la revela. */
+div[data-canal] .video-js .vjs-control-bar {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+div[data-canal] .video-js:hover .vjs-control-bar,
+div[data-canal] .video-js:focus-within .vjs-control-bar,
+div[data-canal] .video-js.vjs-user-active .vjs-control-bar {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* MARK: auto-ocultar barra de canales al dejar de interactuar
+   main.js pone `.barra-overlay-idle` en <body> tras 3s sin mover el puntero;
+   cualquier interacción la quita. Hover o foco sobre la propia barra la vuelve
+   a mostrar aunque el cuerpo esté "idle". */
+body.barra-overlay-idle .barra-overlay {
+    opacity: 0;
+}
+
+body.barra-overlay-idle .barra-overlay:hover,
+body.barra-overlay-idle .barra-overlay:focus-within {
+    opacity: 1;
+}
